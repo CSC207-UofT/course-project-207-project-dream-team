@@ -4,7 +4,7 @@
 Java (1.7 or later)
 
 ## Running the program
-Running the project starts with an initially empty timetable arrangement interface that allows the user to enter his course code, course name, and its corresponding timeslot.
+Running the project starts with an initially empty timetable arrangement interface that allows the user to make arrangement.
 
 ### Compiling
 To compile the code, run the command bellow in the terminal
