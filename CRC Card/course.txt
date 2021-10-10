@@ -14,4 +14,3 @@ Responsibility:
 Collaborator：
 
 * PreferenceManager
-* PersonalActivity
