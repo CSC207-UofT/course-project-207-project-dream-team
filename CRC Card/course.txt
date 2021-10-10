@@ -1,0 +1,17 @@
+Class name: Course
+Parent class: None
+Subclass: None
+
+Responsibility:
+* Store the information of the course
+ -- Attribute:
+  - CourseCode  (e.g. CSC207H1F)
+  - Session (e.g. TUT0101)
+  - Instructor
+  - Timeslot (e.g. M10-12)
+  - Location
+
+Collaborator：
+
+* PreferenceManager
+* PersonalActivity
