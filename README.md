@@ -1,6 +1,22 @@
-## Replace this README.md!
+# Course Schedule System
 
-This is a standard README.md file for you to replace. You'll want to include your own content here!
+## System Requirements
+Java (1.7 or later)
 
-MD (Markdown) files use [Markdown formatting](https://guides.github.com/features/mastering-markdown/): 
-these look very much like .txt files, so you can write them in a very similar way.
+## Running the program
+Running the project starts with an initially empty timetable arrangement interface that allows the user to enter his course code, course name, and its corresponding timeslot.
+
+### Compiling
+To compile the code, run the command bellow in the terminal
+Note: Make sure you're running it from the root directory:
+'''
+TO-BE-DONE-LATER
+'''
+
+## Commands 
+List of prompts to enter:
+* Course Code
+* Course name
+* Course's timetable
+* Schedule Preference (Night, Morning, Intermediate)
+* Extra Personal Activty
