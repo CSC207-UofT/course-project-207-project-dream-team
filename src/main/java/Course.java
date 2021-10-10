@@ -14,3 +14,4 @@ public class Course {
         this.location = location;
     }
 }
+}
