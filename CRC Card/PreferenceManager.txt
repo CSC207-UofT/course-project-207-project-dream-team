@@ -1,0 +1,13 @@
+Class name: PreferenceManager
+Parent Class: None
+Subclass: None
+
+Responsibility:
+* Enable user to choose their preference about the schedule
+ - Avoid Instructor
+ - Avoid Specific Timeslot
+ - Max / Min Hours per day
+ - Avoid Back-to-Back arrangement
+
+Collaborator:
+Course Class
