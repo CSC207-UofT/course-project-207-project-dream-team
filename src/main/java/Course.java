@@ -2,7 +2,7 @@ public class Course {
     public String courseCode;
     public String session;
     public String instructor;
-    public String timeSlot;
+    public String timeSlot;  // ArrayList<String> ???????
     public String location;
 
     public Course(String courseCode, String session,
@@ -13,5 +13,4 @@ public class Course {
         this.timeSlot = timeSlot;
         this.location = location;
     }
-}
 }
