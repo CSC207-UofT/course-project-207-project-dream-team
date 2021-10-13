@@ -1,10 +1,8 @@
+import java.awt.*;
 import java.util.ArrayList;
 
 public class CourseManager {
-    //basic course info
-    public String courseCode;
-    public String session;
-    public String deliveryMethod;
+    public ArrayList<Course> courses;
     //Possible preferences.
     // 0: no preference; 1: prefer; -1: avoid.
     public int preferInstructor;
@@ -18,11 +16,13 @@ public class CourseManager {
     // -1: search for results meeting any preferences.
     public int generalPreference;
 
-    public CourseManager(int preferInstructor,
+    public CourseManager(ArrayList<Course> courses,
+                         int preferInstructor,
                          int preferTimeslot,
                          int preferDuration,
                          int preferBackToBack,
                          int generalPreference) {
+        this.courses = courses;
         this.preferInstructor = preferInstructor;
         this.preferTimeslot = preferTimeslot;
         this.preferDuration = preferDuration;
@@ -30,24 +30,21 @@ public class CourseManager {
         this.generalPreference = generalPreference;
     }
 
-    public ArrayList<Course[]> Arranging(){
-        //The return type can also be ArrayList<String[]> if we choose to return the course codes only.
-        ArrayList<Course[]> output = new ArrayList<>();
-        if (this.generalPreference == 1){
-            //some operations
-            return output;
-        }else if (this.generalPreference == -1){
-            //some operations
-            return output;
-        }else{
-            //some operations
-            return output;
-        }
+    @Override
+    public String toString() {
+        return "CourseManager{" +
+                "courses=" + courses +
+                ", preferInstructor=" + preferInstructor +
+                ", preferTimeslot=" + preferTimeslot +
+                ", preferDuration=" + preferDuration +
+                ", preferBackToBack=" + preferBackToBack +
+                ", generalPreference=" + generalPreference +
+                '}';
     }
 
     //getter methods
     public int getPreferInstructor(){
-        return preferInstructor;
+        return this.preferInstructor;
     }
     public int getPreferTimeslot(){
         return this.preferTimeslot;
@@ -60,9 +57,14 @@ public class CourseManager {
     }
 
     public static void main(String[] args) {
+        Course csc207 = new Course("CSC207", new String[]{"LEC5201"},
+                new String[]{"Online/In-Person Sync"}, new String[]{"6.00/8.00/THUR"},
+                new String[]{"Lindsey Shorser"}, new String[]{"Online"});
+        ArrayList<Course> courses = new ArrayList<Course>();
+        courses.add(csc207);
         CourseManager pm = new CourseManager
-                (1,1,1,1,1);
+                (courses, 1, 1, 1, 1,1);
         //some operations
-        System.out.println(pm.Arranging());
+        System.out.println(pm);
     }
 }
