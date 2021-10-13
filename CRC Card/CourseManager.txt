@@ -1,0 +1,11 @@
+Class name: CourseManager
+Parent Class: None
+Subclass: None
+
+Responsibility:
+- Interact with class InfoCenter to store the user's input
+- Stores instances of Course
+- Stores an instance of Scheduler by user's choice
+
+Collaborator:
+Course, Scheduler, InfoCenter
