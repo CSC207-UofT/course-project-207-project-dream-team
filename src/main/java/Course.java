@@ -1,16 +1,18 @@
 public class Course {
-    public String courseName;
+    public String courseCode;
+    public String Session;
     public String deliveryMethod;
     public String instructor;
     public String timeSpanInfo;
     public String location;
 
-    public Course(String courseName, String deliveryMethod,
+    public Course(String courseCode, String Session, String deliveryMethod,
                   String instructor, String timeSpanInfo, String location) {
-        this.courseName = courseName;
+        this.courseCode = courseCode;
+        this.Session = Session;
         this.deliveryMethod = deliveryMethod;
-        this.instructor = instructor;
         this.timeSpanInfo = timeSpanInfo;
+        this.instructor = instructor;
         this.location = location;
     }
 }

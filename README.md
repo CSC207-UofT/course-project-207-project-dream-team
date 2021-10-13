@@ -25,16 +25,18 @@ TO-BE-DONE-LATER
 
 ## User Input
 List of information to enter:
-* Course Code
+* Course code
 * Session
-* TimeSlot
+* Delivery method
+* Time span info
 * Instructor
 * Location
 
 
 ## Example entering prompts
-* Course Code  $ CSC207H1F
-* Session: $ TUT0101 
-* Location:  $ Bahen
-* Schedule Preference:  $ Night
-* TimeSlot: $ TBD
+* Course code  $ CSC207H1F
+* Session: $ LEC5201
+* Delivery method $ Online/In-Person Sync
+* Time span info: $ 6.00/8.00/THUR
+* Instructor $ Lindsey Shorser
+* Location:  $ Online
