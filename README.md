@@ -1,7 +1,7 @@
 # Course Schedule System
 
 ## System Requirements
-Java (1.8 or later)
+Java (1.7 or later)
 
 ## Running the program
 Running the project starts with an initially empty timetable arrangement interface that allows the user to make
