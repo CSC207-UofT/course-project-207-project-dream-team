@@ -1,3 +1,5 @@
+package java;
+
 public class Timeslot {
     String day;
     String init_hour;
