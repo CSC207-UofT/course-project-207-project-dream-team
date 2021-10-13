@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class TimeslotScheduler {
     CourseManager pm;
-    int y_n = pm.getPrefer_timeslot();//1 or -1
+    int y_n = pm.getPreferTimeslot();//1 or -1
     ArrayList<Timeslot> timeslot;//exact timeslot(s)
 
     static ArrayList<Course[]> Ins_Select(ArrayList<Course[]> input, int y_n, ArrayList<Timeslot> timeslot) {

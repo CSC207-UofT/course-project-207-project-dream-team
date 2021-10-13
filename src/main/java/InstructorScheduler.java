@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class InstructorScheduler {
     CourseManager pm;
-    int y_n = pm.getPrefer_instructor();//1 or -1
+    int y_n = pm.getPreferInstructor();//1 or -1
     ArrayList<String> names;//name(s) of instructor(s)
 
     static ArrayList<Course[]> Ins_Select(ArrayList<Course[]> input, int y_n, ArrayList<String> names){

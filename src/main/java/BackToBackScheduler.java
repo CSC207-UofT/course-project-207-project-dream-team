@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class BackToBackScheduler {
     CourseManager pm;
-    private int y_n = pm.getPrefer_back_to_back();//1 or -1
+    private int y_n = pm.getPreferBackToBack();//1 or -1
 
     static ArrayList<Course[]> BTB_Select(ArrayList<Course[]> input, int y_n){
         //The return type can also be ArrayList<String[]> if we choose to return the course codes only.
