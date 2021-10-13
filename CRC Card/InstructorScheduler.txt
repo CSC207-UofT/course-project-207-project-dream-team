@@ -1,4 +1,4 @@
-Class name: ProfPreferenceScheduler
+Class name: InstructorScheduler
 Parent Class: Scheduler
 Subclass: None
 
