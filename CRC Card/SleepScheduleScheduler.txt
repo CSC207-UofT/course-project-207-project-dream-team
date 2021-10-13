@@ -1,0 +1,11 @@
+Class name: SleepScheduleScheduler
+Parent Class: Scheduler
+Subclass: None
+
+Responsibility:
+- Store a start time given by the user
+- Store an end time given by the user
+- Schedule courses such that they all fit in the given time interval (from start time to end time)
+
+Collaborator:
+Course, CourseManager, Timetable

@@ -1,0 +1,11 @@
+Class name: ProfPreferenceScheduler
+Parent Class: Scheduler
+Subclass: None
+
+Responsibility:
+- Store the names of profs that the user wishes to avoid as a Collection of String
+- Store the names of profs that the user likes as another Collection of String
+- Schedule the user's courses, on the basis of having the most profs that the user prefers, and having the least profs that the user dislikes.
+
+Collaborator:
+Course, CourseManager, Timetable
