@@ -13,7 +13,18 @@ public abstract class Scheduler {
         this.output = new ArrayList<Timetable>();
     }
 
-    public void Arrange(ArrayList<Course> course, int y_n, Object detail){
+    public void Arrange(ArrayList<Course> courses, int y_n, Object detail){
+        output = new ArrayList<Timetable>();
         //some code here
+        //task: put courses into timetable
+        for (Course course:courses){
+            for (Timeslot grid:output[0]) {
+                if (// course fits the grid){
+                    //update the grid
+                }
+            }
+        }
+
+
     }
 }
