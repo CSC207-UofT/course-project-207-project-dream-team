@@ -1,7 +1,15 @@
 # Course Schedule System
 
+## License
+MIT License
+
+Copyright (c) 2021 CSC207-Project-Dream-Team-UofT
+
 ## System Requirements
 Java (1.7 or later)
+
+## Goal
+The purpose of this project is to facilitate UofT students with their course arrangements.
 
 ## Running the program
 Running the project starts with an initially empty timetable arrangement interface that allows the user to make
