@@ -1,13 +1,18 @@
 import java.util.ArrayList;
 
-public class BackToBackScheduler {
+public class BackToBackScheduler extends Scheduler{
     CourseManager pm;
+    ArrayList<Course> courses;//courses to be arranged
     private int y_n = pm.getPreferBackToBack();//1 or -1
+    Object detail = null;
 
-    static ArrayList<Course[]> BTB_Select(ArrayList<Course[]> input, int y_n){
-        //The return type can also be ArrayList<String[]> if we choose to return the course codes only.
-        ArrayList<Course[]> output = new ArrayList<>();
+    public BackToBackScheduler(ArrayList<Course> courses, int y_n) {
+        super(courses);
+        this.y_n = y_n;
+    }
+
+    public void Arrange(ArrayList<Course> courses, int y_n, Object detail){
+        output = new ArrayList<Timetable>();
         //some operations
-        return output;
     }
 }

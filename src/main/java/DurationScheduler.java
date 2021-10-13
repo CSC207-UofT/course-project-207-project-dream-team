@@ -1,15 +1,21 @@
 import java.util.ArrayList;
 
-public class DurationScheduler {
+class DurationScheduler extends Scheduler{
     CourseManager pm;
-    private int y_n = pm.getPreferDuration();//1 or -1
+    ArrayList<Course> courses;//courses to be arranged
+    int y_n = pm.getPreferDuration();//1 or -1
     int hours;//exact hours
 
-    static ArrayList<Course[]> Dur_Select(ArrayList<Course[]> input, int y_n){
-        //The return type can also be ArrayList<String[]> if we choose to return the course codes only.
-        ArrayList<Course[]> output = new ArrayList<>();
+    public DurationScheduler(ArrayList<Course> courses, int y_n, int hours) {
+        super(courses);
+        this.y_n = y_n;
+        this.hours = hours;
+    }
+
+    @Override
+    public void Arrange(ArrayList<Course> courses, int y_n, Object hours){
+        output = new ArrayList<Timetable>();
         //some operations
-        return output;
     }
 
 }
