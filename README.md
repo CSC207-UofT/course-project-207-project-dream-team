@@ -23,8 +23,8 @@ Note: Make sure you're running it from the root directory:
 TO-BE-DONE-LATER
 '''
 
-## Commands 
-List of prompts to enter:
+## User Input
+List of information to enter:
 * Course Code
 * Session
 * TimeSlot
@@ -33,7 +33,7 @@ List of prompts to enter:
 
 
 ## Example entering prompts
-* Course Code  $ CSC369H1F
+* Course Code  $ CSC207H1F
 * Session: $ TUT0101 
 * Location:  $ Bahen
 * Schedule Preference:  $ Night

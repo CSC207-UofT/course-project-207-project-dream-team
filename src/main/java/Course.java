@@ -1,16 +1,16 @@
 public class Course {
-    public String courseCode;
-    public String session;
+    public String courseName;
+    public String deliveryMethod;
     public String instructor;
-    public String timeSlot;  // ArrayList<String> ???????
+    public String timeSpanInfo;
     public String location;
 
-    public Course(String courseCode, String session,
-                  String instructor, String timeSlot, String location) {
-        this.courseCode = courseCode;
-        this.session = session;
+    public Course(String courseName, String deliveryMethod,
+                  String instructor, String timeSpanInfo, String location) {
+        this.courseName = courseName;
+        this.deliveryMethod = deliveryMethod;
         this.instructor = instructor;
-        this.timeSlot = timeSlot;
+        this.timeSpanInfo = timeSpanInfo;
         this.location = location;
     }
 }
