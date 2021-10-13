@@ -1,8 +1,7 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class InstructorScheduler {
-    PreferenceManager pm;
+    CourseManager pm;
     int y_n = pm.getPrefer_instructor();//1 or -1
     ArrayList<String> names;//name(s) of instructor(s)
 

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class DurationScheduler {
-    PreferenceManager pm;
+    CourseManager pm;
     private int y_n = pm.getPrefer_duration();//1 or -1
     int hours;//exact hours
 

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class BackToBackScheduler {
-    PreferenceManager pm;
+    CourseManager pm;
     private int y_n = pm.getPrefer_back_to_back();//1 or -1
 
     static ArrayList<Course[]> BTB_Select(ArrayList<Course[]> input, int y_n){

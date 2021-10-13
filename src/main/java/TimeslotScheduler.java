@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class TimeslotScheduler {
-    PreferenceManager pm;
+    CourseManager pm;
     int y_n = pm.getPrefer_timeslot();//1 or -1
     ArrayList<Timeslot> timeslot;//exact timeslot(s)
 
