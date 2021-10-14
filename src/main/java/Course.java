@@ -1,17 +1,21 @@
+import com.intellij.application.options.codeStyle.arrangement.action.ArrangementRemoveConditionAction;
+import com.intellij.psi.search.TodoAttributes;
+import com.sun.xml.bind.v2.TODO;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Course {
-    public String courseCode;
-    public String[] sessions;
-    public String[] deliveryMethod;
-    public String[] instructor;
-    public String[] timeSpan;
-    public String[] location;
+    private final String courseCode;
+    private final ArrayList<String> sessions;
+    private final ArrayList<String> deliveryMethod;
+    private final ArrayList<String> instructor;
+    private final ArrayList<String> timeSpan;
+    private final ArrayList<String> location;
 
     //constructor
-    public Course(String courseCode, String[] sessions, String[] deliveryMethod,
-                  String[] instructor, String[] timeSpan, String[] location) {
+    public Course(String courseCode, ArrayList<String> sessions, ArrayList<String> deliveryMethod,
+                  ArrayList<String> instructor, ArrayList<String> timeSpan, ArrayList<String> location) {
         this.courseCode = courseCode;
         this.sessions = sessions;
         this.deliveryMethod = deliveryMethod;
@@ -24,38 +28,63 @@ public class Course {
     public String toString() {
         return "Course{" +
                 "courseCode='" + courseCode + '\'' +
-                ", sessions=" + Arrays.toString(sessions) +
-                ", deliveryMethod=" + Arrays.toString(deliveryMethod) +
-                ", instructor=" + Arrays.toString(instructor) +
-                ", timeSpan=" + Arrays.toString(timeSpan) +
-                ", location=" + Arrays.toString(location) +
+                ", sessions=" + sessions +
+                ", deliveryMethod=" + deliveryMethod +
+                ", instructor=" + instructor +
+                ", timeSpan=" + timeSpan +
+                ", location=" + location +
                 '}';
     }
+
+
 
     //getter methods
     public String getCourseCode() {
         return this.courseCode;
     }
-    public String[] getSessions() {
+    public ArrayList<String> getSessions() {
         return this.sessions;
     }
-    public String[] getDeliveryMethod() {
+    public ArrayList<String> getDeliveryMethod() {
         return this.deliveryMethod;
     }
-    public String[] getTimeSpan() {
+    public ArrayList<String> getTimeSpan() {
         return this.timeSpan;
     }
-    public String[] getInstructor() {
+    public ArrayList<String> getInstructor() {
         return this.instructor;
     }
-    public String[] getLocation() {
+    public ArrayList<String> getLocation() {
         return this.location;
     }
 
+
+    public boolean addSession(String session, String deliveryMethod, String timeSpan,
+                              String instructor, String location) {
+        if (this.sessions.size() != 12) {
+            this.sessions.add(session);
+            this.deliveryMethod.add(deliveryMethod);
+            this.timeSpan.add(timeSpan);
+            this.instructor.add(instructor);
+            this.location.add(location);
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
-        Course csc207 = new Course("CSC207", new String[]{"LEC5201"},
-                new String[]{"Online/In-Person Sync"}, new String[]{"6.00/8.00/THUR"},
-                new String[]{"Lindsey Shorser"}, new String[]{"Online"});
+        ArrayList<String> sessions = new ArrayList<>();
+        ArrayList<String> deliveryMethod = new ArrayList<>();
+        ArrayList<String> timeSpan = new ArrayList<>();
+        ArrayList<String> instructor = new ArrayList<>();
+        ArrayList<String> location = new ArrayList<>();
+        sessions.add("LEC5201");
+        deliveryMethod.add("Online/In-Person Sync");
+        timeSpan.add("6.00/8.00/THUR");
+        instructor.add("Lindsey Shorser");
+        location.add("Online");
+        Course csc207 = new Course("CSC207", sessions, deliveryMethod,
+                timeSpan, instructor, location);
         System.out.println(csc207);
     }
 }
