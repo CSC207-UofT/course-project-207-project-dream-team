@@ -1,4 +1,3 @@
-package java;
 
 public class Timeslot {
     String day;
