@@ -1,8 +1,6 @@
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 
 public class Timetable {
     //constants
@@ -13,23 +11,22 @@ public class Timetable {
     final static String FRIDAY = "FRID";
     //the Timetable class implementation uses tiled map
     //we will first create an empty tiled map
-    private final Map<Integer, Map<Integer, Object>> week;
+    private HashMap<Integer[], Course> timeTable;
+
     //constructor
     public Timetable() {
-        this.week = new HashMap<Integer, Map<Integer, Object>>(5);
+        this.timeTable = new Map<Integer[], Course>;
         for (int i = 1; i <= 5; i ++) {
-            HashMap<Integer, Object> day = new HashMap<Integer, Object>();
-            for (int j = 0; j < 12; j ++) {
-                HashMap<Integer, Object> emptySlot = new HashMap<>();
-                emptySlot.put(0, new Object[] {true, });
-                day.put(j, emptySlot);
+            for (int k = 9; k <= 21; k++) {
+                Integer[] tempArray = {i, k};
+                this.timeTable.put(tempArray, null);
             }
-            this.week.put(i, day);
         }
     }
+
     //getter
-    public Map<Integer, Map<Integer, Object>> getTable() {
-        return week;
+    public HashMap<Integer[], Course> getTable() {
+        return timeTable;
     }
 
     //helper methods
@@ -53,61 +50,46 @@ public class Timetable {
     }
 
     //return the start time
-    private int startTime(String timeSpan) {
-        int start = Integer.parseInt(timeSpan.substring(0, timeSpan.indexOf(".")));
-        if (start < 9) {
-            start = start + 12;
-        }
-        return start;
-    }
-
-    //return the end time
-    private int endTime(String timeSpan) {
-        int end = Integer.parseInt(timeSpan.substring(timeSpan.indexOf("/") + 1, timeSpan.lastIndexOf(".")));
-        if (end <= 9) {
-            end = end + 12;
-        }
-        return end;
-    }
+//    private int startTime(String timeSpan) {
+//        return Integer.parseInt(timeSpan.substring(0, timeSpan.indexOf(".")));
+//    }
+//
+//    //return the end time
+//    private int endTime(String timeSpan) {
+//        return Integer.parseInt(timeSpan.substring(timeSpan.indexOf("/") + 1, timeSpan.lastIndexOf(".")));
+//    }
     //this conversion works because there is no start time earlier than 9am and no end time later than 9pm
 
     //public methods
-    public boolean isEmpty(String timeSpan) {
-        //before the code body, we should make clear of the time conversions here.
-        //We access weekdays starting from 1, so weekday = index
-        //We access timeslot info using Hashmap keyed from 0, so key_value + 9 = start of the hour
-        //Notice that here the time is converted from 12h to 24h
-        int start = startTime(timeSpan);
-        int end = endTime(timeSpan);
-        int day = whatDay(timeSpan);
-        for (int i = start; i < end; i ++) {
-            //each hour is represented by its start hour
-            if (this.week.get(day).get(i - 9) instanceof HashMap) {
-                if (!(boolean) ((Object[]) (((HashMap<?, ?>) this.week.get(day).get(i - 9)).get(0)))[0]) {
-                    //I doubt this casting works, but I am literally out of ideas :(
-                    return false;
+    public boolean isEmpty(Integer[] timeSpan) {
+        // check whether timeSpan is in the key set.
+        if (this.timeTable.containsKey(timeSpan)) {
+            for (Integer[] key: this.timeTable.keySet()) {
+                if (key == timeSpan) {
+                    this.timeTable
                 }
             }
         }
-        return true;
+
     }
 
-    public boolean addCourse(String timeSpan, Course courseAdded) {
-        int start = startTime(timeSpan);
-        int end = endTime(timeSpan);
-        int day = whatDay(timeSpan);
-        for (int i = start; i < end; i ++) {
-            //each hour is represented by its start hour
-            if (this.week.get(day).get(i - 9) instanceof HashMap) {
-                if (this.isEmpty(timeSpan)) {
-                    ((HashMap<Integer, Object>) this.week.get(day).get(i - 9))
-                            .replace(0, new Object[] {false, courseAdded});
-                    //I have no fucking idea how this can work
-                } else {
-                    return false;
-                }
-            }
-        }
+    public boolean addCourse(Course course) {
+//        int start = startTime(timeSpan);
+//        int end = endTime(timeSpan);
+//        int day = whatDay(timeSpan);
+//        for (int i = start; i < end; i ++) {
+//            //each hour is represented by its start hour
+//            if (this.timeTable.get(day).get(i - 9) instanceof HashMap) {
+//                if (this.isEmpty(timeSpan)) {
+//                    ((HashMap<Integer, Object>) this.timeTable.get(day).get(i - 9))
+//                            .put(0, (!(boolean) ((HashMap<?, ?>) this.timeTable.get(day).get(i - 9)).get(0)));
+//                    //I have no fucking idea how this can work
+//                } else {
+//                    return false;
+//                }
+//            }
+//        }
+//        return true;
         return true;
     }
 
@@ -116,7 +98,4 @@ public class Timetable {
         //TODO: make presentable timetable using string
         return "";
     }
-
 }
-
-
