@@ -24,4 +24,6 @@ public class Timeslot {
         return this.day + this.init_hour+ ':' + this.init_minute + '-' +
                 this.final_hour + ':' + this.final_minute;
     }
+
+    //create an equals method!!(used in schedulers)
 }
