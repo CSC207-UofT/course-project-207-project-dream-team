@@ -1,0 +1,10 @@
+Class name: UserInterface
+Parent class: None
+Subclass: None
+
+Responsibility:
+* Retrieve information from the user, and store that information to CourseManager to be used by Scheduler.
+* Display the computed timetables based on the information given.
+
+Collaborator：
+* CourseManager
