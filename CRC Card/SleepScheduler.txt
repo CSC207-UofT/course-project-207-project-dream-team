@@ -1,11 +1,13 @@
-Class name: SleepScheduler
+Class name: TimeslotScheduler
 Parent Class: Scheduler
 Subclass: None
 
 Responsibility:
-- Store a start time given by the user
-- Store an end time given by the user
-- Schedule courses such that they all fit in the given time interval (from start time to end time)
+- Store an array of strings specifying the time intervals that the user does not want to have courses scheduled.
+- Schedule courses such that no course goes into the time intervals indicated by the user
+
+-- Attributes
+ - noClassTimeslots
 
 Collaborator:
 Course, CourseManager, Timetable

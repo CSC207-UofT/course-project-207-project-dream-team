@@ -58,13 +58,22 @@ public class CourseManager {
     }
 
     public static void main(String[] args) {
-        Course csc207 = new Course("CSC207", new String[]{"LEC5201"},
-                new String[]{"Online/In-Person Sync"}, new String[]{"6.00/8.00/THUR"},
-                new String[]{"Lindsey Shorser"}, new String[]{"Online"});
+        ArrayList<String> sessions = new ArrayList<>();
+        ArrayList<String> deliveryMethod = new ArrayList<>();
+        ArrayList<String> timeSpan = new ArrayList<>();
+        ArrayList<String> instructor = new ArrayList<>();
+        ArrayList<String> location = new ArrayList<>();
+        sessions.add("LEC5201");
+        deliveryMethod.add("Online/In-Person Sync");
+        timeSpan.add("6.00/8.00/THUR");
+        instructor.add("Lindsey Shorser");
+        location.add("Online");
+        Course csc207 = new Course("CSC207", sessions, deliveryMethod,
+                timeSpan, instructor, location);
         ArrayList<Course> courses = new ArrayList<Course>();
         courses.add(csc207);
         CourseManager pm = new CourseManager
-                (courses, 1, 1, 1, 1,1);
+                (courses, 0, 0, 0, 0,0);
         //some operations
         System.out.println(pm);
     }
