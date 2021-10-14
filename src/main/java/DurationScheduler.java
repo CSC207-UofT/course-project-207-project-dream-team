@@ -3,7 +3,7 @@ import java.util.ArrayList;
 class DurationScheduler extends Scheduler{
     CourseManager pm;
     ArrayList<Course> courses;//courses to be arranged
-    int y_n = pm.getPreferDuration();//1 or -1
+    int y_n = pm.getPreferDuration();  //1 or -1
     int hours;//exact hours
 
     public DurationScheduler(ArrayList<Course> courses, int y_n, int hours) {

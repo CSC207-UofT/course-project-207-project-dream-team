@@ -43,7 +43,8 @@ public class CourseManager {
     }
 
     //getter methods
-    public int getPreferInstructor(){
+    public int getPreferInstructor()
+    {
         return this.preferInstructor;
     }
     public int getPreferTimeslot(){

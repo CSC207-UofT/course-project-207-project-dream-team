@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class SleepScheduler extends Scheduler{
     CourseManager pm;
     ArrayList<Course> courses;//courses to be arranged
-    int y_n;//1 or -1
+    int y_n;  //1 or -1
     ArrayList<Timeslot> timeslot;//exact timeslot(s)
 
     public SleepScheduler(ArrayList<Course> courses, int y_n, ArrayList<Timeslot> timeslot) {
