@@ -1,3 +1,4 @@
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class Timetable {
             HashMap<Integer, Object> day = new HashMap<Integer, Object>();
             for (int j = 0; j < 12; j ++) {
                 HashMap<Integer, Object> emptySlot = new HashMap<>();
-                emptySlot.put(0, true);
+                emptySlot.put(0, new Object[] {true, });
                 day.put(j, emptySlot);
             }
             this.week.put(i, day);
@@ -82,7 +83,7 @@ public class Timetable {
         for (int i = start; i < end; i ++) {
             //each hour is represented by its start hour
             if (this.week.get(day).get(i - 9) instanceof HashMap) {
-                if (!(boolean) ((HashMap<?, ?>) this.week.get(day).get(i - 9)).get(0)) {
+                if (!(boolean) ((Object[]) (((HashMap<?, ?>) this.week.get(day).get(i - 9)).get(0)))[0]) {
                     //I doubt this casting works, but I am literally out of ideas :(
                     return false;
                 }
@@ -91,7 +92,7 @@ public class Timetable {
         return true;
     }
 
-    public boolean addCourse(String timeSpan) {
+    public boolean addCourse(String timeSpan, Course courseAdded) {
         int start = startTime(timeSpan);
         int end = endTime(timeSpan);
         int day = whatDay(timeSpan);
@@ -100,7 +101,7 @@ public class Timetable {
             if (this.week.get(day).get(i - 9) instanceof HashMap) {
                 if (this.isEmpty(timeSpan)) {
                     ((HashMap<Integer, Object>) this.week.get(day).get(i - 9))
-                            .put(0, (!(boolean) ((HashMap<?, ?>) this.week.get(day).get(i - 9)).get(0)));
+                            .replace(0, new Object[] {false, courseAdded});
                     //I have no fucking idea how this can work
                 } else {
                     return false;
@@ -115,4 +116,7 @@ public class Timetable {
         //TODO: make presentable timetable using string
         return "";
     }
+
 }
+
+
