@@ -11,11 +11,15 @@ public class Timetable {
     final static String FRIDAY = "FRID";
     //the Timetable class implementation uses tiled map
     //we will first create an empty tiled map
-    private HashMap<Integer[], Course> timeTable;
+    private final HashMap<Integer[], Course> timeTable;
 
     //constructor
+    /* Notice that the hashmap is mapping a course to a specific time.
+     * A key-value pair might be (3, 17), CSC207,
+     * meaning CSC207 takes place every Wednesday at 17.
+     */
     public Timetable() {
-        this.timeTable = new Map<Integer[], Course>;
+        this.timeTable = new HashMap<Integer[], Course>();
         for (int i = 1; i <= 5; i ++) {
             for (int k = 9; k <= 21; k++) {
                 Integer[] tempArray = {i, k};
@@ -63,14 +67,7 @@ public class Timetable {
     //public methods
     public boolean isEmpty(Integer[] timeSpan) {
         // check whether timeSpan is in the key set.
-        if (this.timeTable.containsKey(timeSpan)) {
-            for (Integer[] key: this.timeTable.keySet()) {
-                if (key == timeSpan) {
-                    this.timeTable
-                }
-            }
-        }
-
+        return this.timeTable.get(timeSpan) == null;
     }
 
     public boolean addCourse(Course course) {
