@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.time.DayOfWeek;
 
 public class Timetable {
 
@@ -39,19 +41,40 @@ public class Timetable {
         return true;
     }
 
+    public boolean allEmpty(Course course){
+        ArrayList<Integer[]> timeSpans = this.courseToTimespan(course);
+        boolean result = true;
+        for (int j=0; j<timeSpans.size(); j++){
+            result = result && (this.isEmpty(timeSpans.get(j)));
+        }
+        return result;
+    }
+
+    public ArrayList<Integer[]> courseToTimespan(Course course){
+        ArrayList<Integer[]> timeSpans = new ArrayList<Integer[]>();
+        for (int k=0; k<course.timeslots.size(); k++){
+            Integer[] class_time = {((DayOfWeek) course.timeslots.get(k)[0]).getValue(),
+                    (int) course.timeslots.get(k)[1], (int) course.timeslots.get(k)[2]};
+            timeSpans.add(class_time);
+        }
+        return timeSpans;
+    }
+
 
     public boolean addCourse(Course course) {
+        ArrayList<Integer[]> timeSpans = this.courseToTimespan(course);
 
-        Integer[] course_time = {course.day.getValue(), course.startTime, course.endTime};  // info of the course
-        int courseDuration = course.endTime - course.startTime;  // how long the course would last
-
-        if (this.isEmpty(course_time)) {
-            for (int j = 0; j < courseDuration; j++) {    // add course to the timeTable
-                Integer[] time_key = {course.day.getValue(), course.startTime + j, course.startTime + j + 1};
-                this.timeTable.put(time_key, course);
+        if (this.allEmpty(course)){
+            for (int m=0; m<course.timeslots.size(); m++){
+                for (int n=0; n<((int) course.timeslots.get(m)[2]- (int) course.timeslots.get(m)[1]); n++){
+                    Integer[] time_key = {((DayOfWeek) course.timeslots.get(m)[0]).getValue(),
+                            (int) course.timeslots.get(m)[1]+n, (int) course.timeslots.get(m)[1]+n+1};
+                    this.timeTable.put(time_key, course);
+                }
             }
-        } else return false;  // return false if timeSpan in timeTable is not empty.
-
+        } else {
+            return false;
+        }
         return true;
     }
 }
