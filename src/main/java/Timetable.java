@@ -9,7 +9,7 @@ public class Timetable {
      * meaning CSC207 takes place every Wednesday from 17 to 18.
      */
 
-    public Timetable() {
+    public Timetable() {     // Construct
         this.timeTable = new HashMap<Integer[], Course>();
         for (int i = 1; i <= 5; i++) {
             for (int k = 9; k <= 21; k++) {
