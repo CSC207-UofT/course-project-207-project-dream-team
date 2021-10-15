@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 
 public class InstructorScheduler extends Scheduler {
     public InstructorScheduler(ArrayList<Course> courses){
@@ -10,4 +10,4 @@ public class InstructorScheduler extends Scheduler {
         //TODO: method to be implemented.
     }
 
-}
+}*/

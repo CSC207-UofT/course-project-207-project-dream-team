@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 
 class DurationScheduler extends Scheduler {
 
@@ -10,4 +10,4 @@ class DurationScheduler extends Scheduler {
     public ArrayList<Timetable> Arrange() {
         //TODO: method to be implemented.
     }
-}
+}*/
