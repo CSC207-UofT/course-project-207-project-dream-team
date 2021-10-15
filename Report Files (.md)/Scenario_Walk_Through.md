@@ -11,15 +11,15 @@
    
        (1) Course code: CSC207H1F
    
-       (2) Session: LEC5201
+       (2) Type: LEC
    
-       (3) Delivery method: Online/In-Person Sync
+       (3) Instructor: Lindsey Shorsern
    
-       (4) Time span info: 6.00/8.00/THUR
+       (4) Day of week: 4
    
-       (5) Instructor: Lindsey Shorser
+       (5) Start time: 18
 
-       (6) Location: Online
+       (6) End time: 20
 
    (*) The program will ask for any tut/lab/pra under each course 
          and treat lec and tut/lab/pra equally, as they take the same precedence 
