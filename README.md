@@ -38,5 +38,5 @@ List of information to enter:
 * Type: $ LEC
 * Instructor: $ Lindsey Shorser
 * Day of week: $ 4
-* Start time: 18
-* End time: 20
+* Start time: $ 18
+* End time: $ 20
