@@ -14,7 +14,7 @@ public class Course {
         this.courseCode = courseCode;
         this.type = type;
         this.instructor = instructor;
-        this.day = day;  // to get the int representation of DayOfWeek, just call day.getValue()
+        this.day = day;               // to get the int representation of DayOfWeek, just call day.getValue()
         this.startTime = startTime;
         this.endTime = endTime;
     }

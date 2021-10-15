@@ -1,14 +1,12 @@
 import java.util.ArrayList;
 
-public class TimeslotScheduler {
-    CourseManager pm;
-    int y_n = pm.getPreferTimeslot();//1 or -1
-    ArrayList<Timeslot> timeslot;//exact timeslot(s)
+public class TimeslotScheduler extends Scheduler {
+    public TimeslotScheduler(ArrayList<Course> courses){
+        super(courses);
+    }
 
-    static ArrayList<Course[]> Ins_Select(ArrayList<Course[]> input, int y_n, ArrayList<Timeslot> timeslot) {
-        //The return type can also be ArrayList<String[]> if we choose to return the course codes only.
-        ArrayList<Course[]> output = new ArrayList<>();
-        //some operations
-        return output;
+    @Override
+    public ArrayList<Timetable> Arrange() {
+        //TODO: method to be implemented.
     }
 }
