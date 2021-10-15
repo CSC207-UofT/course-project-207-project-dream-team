@@ -9,5 +9,7 @@ public class SleepScheduler extends Scheduler {
     @Override
     public ArrayList<Timetable> Arrange() {
         //TODO: method to be implemented.
+        ArrayList<Timetable> list = new ArrayList<>();
+        return list;
     }
 }*/
