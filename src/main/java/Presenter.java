@@ -5,23 +5,14 @@ import java.util.List;
 
 public class Presenter {
     private static final String HORIZONTAL_SEP = "-";
-    private String verticalSep;
-    private String joinSep;
-    private static final String[] headers = {"MON", "TUE", "WED", "THU", "FRI"};
+    private static final String verticalSep = "|";
+    private static final String joinSep = "+";
+    private static final String[] headers = {"", "MON", "TUE", "WED", "THU", "FRI"};
     private List<String[]> rows = new ArrayList<>();
-    private boolean rightAlign;
 
     public Presenter() {
-        setShowVerticalLines(false);
-    }
-
-    public void setRightAlign(boolean rightAlign) {
-        this.rightAlign = rightAlign;
-    }
-
-    public void setShowVerticalLines(boolean showVerticalLines) {
-        verticalSep = showVerticalLines ? "|" : "";
-        joinSep = showVerticalLines ? "+" : " ";
+        //Nothing here for now
+        // TODO: Load course info from Timetable into Presenter
     }
 
     public void addRow(String... cells) {
@@ -63,11 +54,8 @@ public class Presenter {
         for (int i = 0; i < cells.length; i++) {
             String s = cells[i];
             String verStrTemp = i == cells.length - 1 ? verticalSep : "";
-            if (rightAlign) {
-                System.out.printf("%s %" + maxWidths[i] + "s %s", verticalSep, s, verStrTemp);
-            } else {
-                System.out.printf("%s %-" + maxWidths[i] + "s %s", verticalSep, s, verStrTemp);
-            }
+
+            System.out.printf("%s %-" + maxWidths[i] + "s %s", verticalSep, s, verStrTemp);
         }
         System.out.println();
     }
@@ -75,12 +63,10 @@ public class Presenter {
     public static void main(String[] args) {
         //test code
         Presenter st = new Presenter();
-        //st.setRightAlign(true);//if true then cell text is right aligned
-        st.setShowVerticalLines(true);//if false (default) then no vertical lines are shown
 
-        st.addRow(" ", "broccoli", "flexible", "I love you", "Chicken breast");
-        st.addRow(" ", "announcement", "reflection", "RRRUAAA", "RERORERO");
-        st.addRow("logic", " ", "wild", "Salmon", " ");
+        st.addRow("9-10", "", "CSC258 Lec0101", "", "CSC236 TUT0301", "EAS220 LEC0201");
+        st.addRow("10-11", "", "", "MAT235 TUT0101", "MAT235 LEC0101", "RERORERO");
+        st.addRow("11-12", "CSC207 LEC0301", "", "", "CSC258 PRA0103", "");
         st.print();
     }
 }
