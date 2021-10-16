@@ -1,0 +1,10 @@
+Class name: Presenter
+Parent class: None
+Subclass: None
+
+Responsibility:
+* Presenting the user with all possible timetables
+
+Collaborator：
+* Timetable
+* Controller

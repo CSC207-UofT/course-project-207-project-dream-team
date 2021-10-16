@@ -1,9 +1,0 @@
-Class name: Timetable
-Parent Class: None
-Subclass: None
-
-Responsibility:
-- Stores a particular mapping of course codes to time slots
-
-Collaborator:
-CourseManager, Scheduler

@@ -9,4 +9,5 @@ Responsibility:
 - Print every Timetable stored
 
 Collaborator:
-Course, CourseManager, Timetable
+* Course
+* Timetable

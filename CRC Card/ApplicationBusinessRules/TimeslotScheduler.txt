@@ -10,4 +10,5 @@ Responsibility:
  - noClassTimeslots
 
 Collaborator:
-Course, CourseManager, Timetable
+* Course
+* Timetable

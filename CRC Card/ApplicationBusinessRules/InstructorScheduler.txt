@@ -9,4 +9,5 @@ Responsibility:
   that the user dislikes.
 
 Collaborator:
-Course, CourseManager, Timetable
+* Course
+* Timetable
