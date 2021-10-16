@@ -1,6 +1,6 @@
 # Scenario Walk-Through
 
-1. The program asks for course info.
+1. Controller tells InputInfo to asks for course info.
 
    (i) Courses the user intends to take associated info for the respective courses.
    
@@ -25,29 +25,29 @@
 
    (ii) Any preference info the user provides when prompted.
    
-   (*) The user will put no for any preferences for the purpose of the 
+   (*) The user does not have a chance to put in any preferences for the purpose of the 
          run-through.
 
+   (iii) InputInfo put the input data into Entity and hands them to Controller.
 
-2. The program runs based on the info provided by the user. 
 
-   (i) The program will generate timetables for each preference provided by the user.
+2. Controller passes that data to Scheduler to run based on the info provided by the user. 
+
+   (i) Controller will determine which scheduler child class to run based on preference info.
    
    (*) In this case, there is no preference.
 
-   (ii) The program will store the generated timetables.
+   (ii) the selected scheduler will take the data from Controller and collaborate with Entities 
+   to make instances of Entities and put them into memory and pass them back to Controller.
    
    (*) In this case, there will only be one timetable for the one course.
 
-   (iii) The program will generate a List of timetables based on the user’s priority 
-   input we obtained in the last section.
-   
-   (*) In this case, there is no preference hence no priority input.
+   (iii) Controller calls the presenter and give the data from scheduler to Presenter.
 
 
-3. The program reports to the user.
+3. Presenter reports to the user.
 
-   i. A collection of formatted timetables will be displayed to the user as terminal 
-    commands.
-   
+   (i) Presenter takes the information from Controller and display the Timetable to the user on 
+   Terminal.
+
    (*) In this case, only one timetable is displayed for the one course.
