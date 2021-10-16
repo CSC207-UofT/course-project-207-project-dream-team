@@ -8,15 +8,14 @@ class SimpleScheduler extends Scheduler {
     }
 
     @Override
-    public ArrayList<Timetable> Arrange() {
-        Timetable tt1 = new Timetable();
+    public ArrayList<Timetable> arrange(Timetable timetable) {
         ArrayList<Timetable> result = new ArrayList<Timetable>();
-        for (int i=0; i<this.courses.size(); i++){
-                if (tt1.canAdd(this.courses.get(i))){
-                    tt1.addCourse(this.courses.get(i));
-                }
+        for (Course cours : this.courses) {
+            if (timetable.canAdd(cours)) {
+                timetable.addCourse(cours);
+            }
         }
-        result.add(tt1);
+        result.add(timetable);
         return result;
     }
 }

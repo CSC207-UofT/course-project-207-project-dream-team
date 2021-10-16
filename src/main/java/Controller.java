@@ -1,3 +1,4 @@
+import java.sql.Time;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -23,11 +24,18 @@ public class Controller {
         return course;
     }
 
-    private void schedule() {
+    private ArrayList<Timetable> schedule() {
         // In demo, we only choose a simple scheduler to schedule
         // a small set of courses.
+        // Then return an array list of scheduled timetables.
+        Timetable tempTimetable = new Timetable();
+        SimpleScheduler simple = new SimpleScheduler(this.courseList);
+        return simple.arrange(tempTimetable);
+    }
 
-
+    /* Print out the scheduled arraylist of timetables.
+     */
+    private void present(ArrayList<Timetable> tableToPrint) {
     }
 
 
