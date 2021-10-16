@@ -100,8 +100,9 @@ public class Timetable {
         for (String k:this.occupied){
             boolean flag = false;
             for (int line=0; line<result.size(); line++){
-                if ((Objects.equals(result.get(line)[1], k.substring(1,5)))& (this.timeTable.get(k) != null)) {
-                    result.get(line)[Integer.parseInt(k.substring(0,1))] = this.timeTable.get(k).courseCode;
+                if ((result.get(line)[0].equals(k.substring(1,5)))& (this.timeTable.get(k) != null)) {
+                    result.get(line)[Integer.parseInt(k.substring(0,1))] = this.timeTable.get(k).courseCode+
+                            " "+this.timeTable.get(k).type;
                     flag = true;
                 }
             }
@@ -112,6 +113,9 @@ public class Timetable {
                 result.add(newString);
             }
         }
+
+
+        result.remove(0);
 
         for (int i = 0; i < result.size(); i++) {
             for (int j = 0; j < result.size() - 1 - i; j++)
@@ -125,7 +129,7 @@ public class Timetable {
 
 
 
-   /* public static void main(String[] args) {
+    public static void main(String[] args) {
         Course c1 = new Course("CSC207","TUT101","PIAO", DayOfWeek.FRIDAY, 9, 10);
         Course c2 = new Course("CSC207","LEC101","PIAO", DayOfWeek.MONDAY, 9,10);
         ArrayList<Course> courses = new ArrayList<>();
@@ -136,8 +140,7 @@ public class Timetable {
         ArrayList<Timetable> tts = ss.arrange(tt);
         ArrayList<String[]> presentable = tts.get(0).Presentable();
         Presenter st = new Presenter();
-        st.addRow(presentable.get(0));
-        System.out.println(presentable.get(0)[0]);
-    }*/
+        st.Present(presentable);
+    }
 
 }
