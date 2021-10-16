@@ -116,8 +116,11 @@ public class Timetable {
             }
         }
 
-        for (int i = 1; i < result.size(); i++) {
-            for (int j = 1; j < result.size() - 1 - i; j++)
+
+        result.remove(0);
+
+        for (int i = 0; i < result.size(); i++) {
+            for (int j = 0; j < result.size() - 1 - i; j++)
                 if (Integer.parseInt(result.get(j)[0]) > Integer.parseInt(result.get(j + 1)[0])) {
                     Collections.swap(result, j, j + 1);
                 }
