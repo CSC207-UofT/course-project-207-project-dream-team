@@ -1,3 +1,4 @@
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -63,6 +64,14 @@ public class Presenter {
         System.out.println();
     }
 
+
+    // Load timetable info into the presenter, row-by-row
+    public void load(Timetable tb){
+        for (int i = 9; i <= 21; i++){
+            this.rows.add(tb.outputRow(i));
+            }
+        }
+
     public static void main(String[] args) {
         //test code
         Presenter st = new Presenter();
@@ -71,5 +80,15 @@ public class Presenter {
         st.addRow("10-11", "", "", "MAT235 TUT0101", "MAT235 LEC0101", "RERORERO");
         st.addRow("11-12", "CSC207 LEC0301", "", "", "CSC258 PRA0103", "");
         st.print();
+
+        Presenter st2 = new Presenter();
+        Timetable tb = new Timetable();
+        Course c1 = new Course("CSC207", "LEC", "Me", DayOfWeek.MONDAY, 12, 13);
+        Course c2 = new Course("CSC258", "PRA", "Me", DayOfWeek.TUESDAY, 9, 12);
+        tb.timeTable.put(new Integer[]{1, 12, 13}, c1);
+        tb.timeTable.put(new Integer[]{2, 9, 12}, c2);
+        st2.load(tb);
+        st2.print();
+
     }
 }

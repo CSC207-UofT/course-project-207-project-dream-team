@@ -1,8 +1,11 @@
+import java.time.DayOfWeek;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 public class Timetable {
 
-    private final HashMap<Integer[], Course> timeTable;
+    public HashMap<Integer[], Course> timeTable;
 
     /* Notice that the hashmap is mapping from specific time to course.
      * A key-value pair might be (3, 17, 18), CSC207, -- Wednesday 17 - 18
@@ -39,19 +42,30 @@ public class Timetable {
         return true;
     }
 
+    // Convert the timetable into a form understandable by the Presenter
+    public String[] outputRow(int startTime){
 
-    public boolean addCourse(Course course) {
-
-        Integer[] course_time = {course.day.getValue(), course.startTime, course.endTime};  // info of the course
-        int courseDuration = course.endTime - course.startTime;  // how long the course would last
-
-        if (this.isEmpty(course_time)) {
-            for (int j = 0; j < courseDuration; j++) {    // add course to the timeTable
-                Integer[] time_key = {course.day.getValue(), course.startTime + j, course.startTime + j + 1};
-                this.timeTable.put(time_key, course);
+        String[] output = new String[6];
+        output[0] = Integer.toString(startTime) + "-" + Integer.toString(startTime + 1);
+        for (int week = 1; week <= 5; week++){
+            if (this.timeTable.get(new Integer[]{week, startTime, startTime + 1}) == null){
+                output[week] = "";
+            } else{
+                Course c = this.timeTable.get(new Integer[]{week, startTime, startTime + 1});
+                output[week] = c.courseCode + " " + c.type;
             }
-        } else return false;  // return false if timeSpan in timeTable is not empty.
+        }
+        return output;
+    }
 
-        return true;
+
+
+    public static void main(String[] args) {
+        Timetable tt = new Timetable();
+        Integer[] key = {1, 9, 10};
+        Course c = new Course("csc207", "1", "1", DayOfWeek.FRIDAY, 13, 14);
+        tt.timeTable.put(key, c);
+        System.out.println(c);
+        System.out.println(tt.timeTable.get(key));
     }
 }
