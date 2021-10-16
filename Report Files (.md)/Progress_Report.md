@@ -14,6 +14,7 @@ Whether the program can schedule one's personal activities or estimate the build
 - InstructorScheduler (Child Class): for users who have preferences on instructors
 - DurationScheduler (Child Class): for users who have preferences on class duration
 - TimeslotScheduler (Child Class): for users who prefer to have class in certain timeslot
+- SimpleScheduler (Child Class): for users who have no scheduling preference
 - Presenter: display the timetables to the users
 - Controller: Utilize multiple classes to retrieval course information from users and provide possible timetables to the users
 
