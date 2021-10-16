@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public abstract class Scheduler {
 
@@ -9,4 +10,5 @@ public abstract class Scheduler {
     }
 
     abstract ArrayList<Timetable> Arrange();
+
 }
