@@ -10,9 +10,9 @@ class SimpleScheduler extends Scheduler {
     @Override
     public ArrayList<Timetable> arrange(Timetable timetable) {
         ArrayList<Timetable> result = new ArrayList<Timetable>();
-        for (Course cours : this.courses) {
-            if (timetable.canAdd(cours)) {
-                timetable.addCourse(cours);
+        for (Course course : this.courses) {
+            if (timetable.canAdd(course)) {
+                timetable.addCourse(course);
             }
         }
         result.add(timetable);

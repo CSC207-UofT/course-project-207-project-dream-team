@@ -67,13 +67,36 @@ public class Presenter {
         System.out.println();
     }
 
-    /*public static void main(String[] args) {
-        //test code
-        Presenter st = new Presenter();
 
-        st.addRow("9-10", "", "CSC258 Lec0101", "", "CSC236 TUT0301", "EAS220 LEC0201");
-        st.addRow("10-11", "", "", "MAT235 TUT0101", "MAT235 LEC0101", "RERORERO");
-        st.addRow("11-12", "CSC207 LEC0301", "", "", "CSC258 PRA0103", "");
-        st.print();
-    }*/
+    public static ArrayList<String[]> Presentable(Timetable timetable){
+        ArrayList<String[]> result = new ArrayList<String[]>();
+        result.add(new String[] {"","","","","",""});
+        for (String k:timetable.occupied){
+            boolean flag = false;
+            for (int line = 0; line < result.size(); line ++){
+                if ((result.get(line)[0].equals(k.substring(1, 5))) & (timetable.timeTable.get(k) != null)) {
+                    result.get(line)[Integer.parseInt(k.substring(0, 1))] = timetable.timeTable.get(k).courseCode +
+                            " "+timetable.timeTable.get(k).type;
+                    flag = true;
+                }
+            }
+            if (!flag) {
+                String[] newString = new String[]{k.substring(1, 5), "", "", "", "", ""};
+                newString[Integer.parseInt(k.substring(0,1))] = timetable.timeTable.get(k).courseCode+
+                        " "+timetable.timeTable.get(k).type;
+                result.add(newString);
+            }
+        }
+
+
+        result.remove(0);
+
+        for (int i = 0; i < result.size(); i++) {
+            for (int j = 0; j < result.size() - 1 - i; j++)
+                if (Integer.parseInt(result.get(j)[0]) > Integer.parseInt(result.get(j + 1)[0])) {
+                    Collections.swap(result, j, j + 1);
+                }
+        }
+        return result;
+    }
 }
