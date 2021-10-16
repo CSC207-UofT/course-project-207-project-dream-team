@@ -7,23 +7,21 @@
    (*) We will give value to each segment for the purpose of the walk-through.
    
    (*) We will allow for multiple inputs for the below info but the program will
-    take only one for the purpose of the walk-through.
+    take only one course for the purpose of the walk-through.
+       
+       (1) Number of courses: 1
+       
+       (2) Course code: CSC207H1F
    
-       (1) Course code: CSC207H1F
+       (3) Type: LEC
    
-       (2) Type: LEC
+       (4) Instructor: Lindsey Shorsern
    
-       (3) Instructor: Lindsey Shorsern
+       (5) Day of week: 4
    
-       (4) Day of week: 4
-   
-       (5) Start time: 18
+       (6) Start time: 18
 
-       (6) End time: 20
-
-   (*) The program will ask for any tut/lab/pra under each course 
-         and treat lec and tut/lab/pra equally, as they take the same precedence 
-         when it comes to allocating time. 
+       (7) End time: 20
 
    (ii) Any preference info the user provides when prompted.
    
