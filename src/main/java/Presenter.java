@@ -15,6 +15,13 @@ public class Presenter {
 
     }
 
+    public void Present(ArrayList<String[]> presentable){
+        for (String[] ss:presentable){
+            addRow(ss);
+        }
+        print();
+    }
+
     public void addRow(String... cells) {
         rows.add(cells);
     }
@@ -60,7 +67,7 @@ public class Presenter {
         System.out.println();
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         //test code
         Presenter st = new Presenter();
 
@@ -68,5 +75,5 @@ public class Presenter {
         st.addRow("10-11", "", "", "MAT235 TUT0101", "MAT235 LEC0101", "RERORERO");
         st.addRow("11-12", "CSC207 LEC0301", "", "", "CSC258 PRA0103", "");
         st.print();
-    }
+    }*/
 }
