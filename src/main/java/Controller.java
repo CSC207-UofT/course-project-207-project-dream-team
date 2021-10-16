@@ -2,9 +2,6 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    // Variables
-    ArrayList<Course> courseList;
-
     public static void main(String[] args) {
 
         // Step 1: Ask for user's information about courses

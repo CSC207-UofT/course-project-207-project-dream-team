@@ -8,7 +8,7 @@ public class Presenter {
     private static final String verticalSep = "|";
     private static final String joinSep = "+";
     private static final String[] headers = {"", "MON", "TUE", "WED", "THU", "FRI"};
-    private List<String[]> rows = new ArrayList<>();
+    private final List<String[]> rows = new ArrayList<>();
     
 
     public Presenter() {
@@ -69,14 +69,14 @@ public class Presenter {
 
 
     public static ArrayList<String[]> Presentable(Timetable timetable){
-        ArrayList<String[]> result = new ArrayList<String[]>();
+        ArrayList<String[]> result = new ArrayList<>();
         result.add(new String[] {"","","","","",""});
         for (String k:timetable.occupied){
             boolean flag = false;
-            for (int line = 0; line < result.size(); line ++){
-                if ((result.get(line)[0].equals(k.substring(1, 5))) & (timetable.timeTable.get(k) != null)) {
-                    result.get(line)[Integer.parseInt(k.substring(0, 1))] = timetable.timeTable.get(k).courseCode +
-                            " "+timetable.timeTable.get(k).type;
+            for (String[] strings : result) {
+                if ((strings[0].equals(k.substring(1, 5))) & (timetable.timeTable.get(k) != null)) {
+                    strings[Integer.parseInt(k.substring(0, 1))] = timetable.timeTable.get(k).courseCode +
+                            " " + timetable.timeTable.get(k).type;
                     flag = true;
                 }
             }

@@ -20,8 +20,7 @@ public class Timetable {
                 this.timeTable.put(key, null);
             }
         }
-        ArrayList<String> occupied = new ArrayList<>();
-        this.occupied = occupied;
+        this.occupied = new ArrayList<>();
     }
 
     public Integer[] hashcodeToSpan(String timeCode){

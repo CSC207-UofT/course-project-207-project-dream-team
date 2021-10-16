@@ -9,7 +9,7 @@ Whether the program can schedule one's personal activities or estimate the build
 - Course: the basic information about a course including course code, session, instructor, timeslot and location.
 - CampusMap: store the map of University of Toronto
 - TimeTable: store a mapping of course code to time slots
-- Scheduler (Super Class): an abstract class with multiple child classes
+- Scheduler (Abstract Super Class): an abstract class with multiple child classes
 - BackToBackScheduler (Child Class): for users who prefer a clustered timetable
 - InstructorScheduler (Child Class): for users who have preferences on instructors
 - DurationScheduler (Child Class): for users who have preferences on class duration
