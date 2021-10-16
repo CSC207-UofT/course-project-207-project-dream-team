@@ -19,9 +19,10 @@ arrangement with their preference.
 To compile the code, run the command bellow in the terminal
 Note: Make sure you're running it from the root directory:
 
-'''
-TO-BE-DONE-LATER
-'''
+1. cd Course_Project/main/java
+2. $ javac Controller.java
+3. $ java Controller
+
 
 ## User Input
 List of information to enter:
