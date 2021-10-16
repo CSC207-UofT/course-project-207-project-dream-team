@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Presenter {
     private static final String HORIZONTAL_SEP = "-";
@@ -9,10 +6,10 @@ public class Presenter {
     private static final String joinSep = "+";
     private static final String[] headers = {"", "MON", "TUE", "WED", "THU", "FRI"};
     private List<String[]> rows = new ArrayList<>();
+    
 
     public Presenter() {
-        //Nothing here for now
-        // TODO: Load course info from Timetable into Presenter
+
     }
 
     public void addRow(String... cells) {

@@ -1,3 +1,5 @@
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Timetable {
@@ -54,4 +56,27 @@ public class Timetable {
 
         return true;
     }
+
+
+    // the form of output is: an ArrayList contains several Arrays
+    // { {"9-10", "", "CSC258 Lec0101", "", "CSC236 TUT0301", "EAS220 LEC0201"}
+    //   {"11-12", "CSC301 Lec0101", "CSC300 Lec0101", "", "CSC236 TUT0301", "EAS220 LEC0201"}}
+
+
+    //public ArrayList<String[]> presentable() {
+
+        // initialize an empty ArrayList as output
+        //ArrayList<String[]> output = new ArrayList<>(5);
+
+        // loop over the HashMap to access timeSlot
+        // for (Integer[] timeSlot: timeTable.keySet()) {
+
+           // String[] specificTime =
+
+
+
+
+
+
+
 }
