@@ -15,6 +15,13 @@ public class Presenter {
 
     }
 
+    public void Present(ArrayList<String[]> presentable){
+        for (String[] ss:presentable){
+            addRow(ss);
+        }
+        print();
+    }
+
     public void addRow(String... cells) {
         rows.add(cells);
     }
