@@ -3,7 +3,8 @@ Parent Class: None
 Subclass: None
 
 Responsibility:
-- Stores a particular mapping of course codes to time slots
+* Stores a particular mapping from timeslot to Course instance.
+* Making access available to other classes.
 
 Collaborator:
 * Course

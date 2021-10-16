@@ -11,9 +11,6 @@ Java (1.7 or later)
 ## Goal
 The purpose of this project is to facilitate UofT students with their course arrangements.
 
-## Running the program
-Running the project starts with an initially empty timetable arrangement interface that allows the user to make
-arrangement with their preference.
 
 ## Compiling
 To compile the code, run the command bellow in the terminal
@@ -22,6 +19,12 @@ Note: Make sure you're running it from the root directory:
 1. cd Course_Project/main/java
 2. $ javac Controller.java
 3. $ java Controller
+
+
+
+## Running the program
+Running the project starts with an initially empty timetable arrangement interface that allows the user to make
+arrangement with their preference.
 
 
 ## User Input
