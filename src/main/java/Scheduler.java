@@ -8,5 +8,5 @@ public abstract class Scheduler {
         this.courses = courses;
     }
 
-    abstract ArrayList<Timetable> Arrange();
+    abstract ArrayList<Timetable> arrange(Timetable timetable);
 }

@@ -10,7 +10,7 @@ public class Controller {
     public static void main(String[] args) {
         //for each course instance
         String[] ask = {"course code", "type", "instructor", "day of week",
-        "start time", "end time"};
+                "start time", "end time"};
         Scanner sc = new Scanner(System.in);
         String[] inputs = new String[6];
         for (int i = 0; i < inputs.length; i++)
