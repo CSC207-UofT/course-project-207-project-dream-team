@@ -41,6 +41,10 @@ public class Timetable {
         return true;
     }
 
+    public boolean canAdd(Course course){
+        Integer[] course_time = {course.day.getValue(), course.startTime, course.endTime};
+        return this.isEmpty(course_time);
+        }
 
     public boolean addCourse(Course course) {
 
