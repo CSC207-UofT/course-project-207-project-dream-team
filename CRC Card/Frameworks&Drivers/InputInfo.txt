@@ -1,0 +1,11 @@
+Class name: InputInfo
+Parent Class: None
+Subclass: None
+
+Responsibility:
+- Ask the user to provide basic information about their courses
+  * the number of coursers a user want to enter
+  * the course code, course type, instructor, day of week, start time, end time of the courses
+
+Collaborator:
+* Course

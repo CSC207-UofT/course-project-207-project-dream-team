@@ -1,0 +1,9 @@
+Class name: CampusMap
+Parent class: None
+Subclass: None
+
+Responsibility:
+* Store campus map
+
+Collaborator:
+* Scheduler
