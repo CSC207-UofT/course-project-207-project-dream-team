@@ -29,17 +29,3 @@ public class TimetableTest {
     }
 
 }
-
-//    DrivableMap dm;
-//    @Before
-//    public void setUp() {
-//        dm = new DrivableMap();
-//    }
-//
-//    @Test(timeout = 50)
-//    public void testAddDrivable() {
-//        Horse h = new Horse();
-//        assertTrue(dm.addDrivable("Name", h));
-//        assertFalse(dm.addDrivable("Name", h));
-//        assertTrue(dm.addDrivable("Name2", h));
-//    }
