@@ -6,11 +6,6 @@ public class Controller {
     //variables
     ArrayList<Course> courseList;
 
-
-    //We don't need a constructor right?
-
-    //methods
-
     //run
     public static void main(String[] args) {
         //for each course instance
