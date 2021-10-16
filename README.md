@@ -26,17 +26,17 @@ TO-BE-DONE-LATER
 ## User Input
 List of information to enter:
 * Course code
-* Session
-* Delivery method
-* Time span info
+* Type
 * Instructor
-* Location
+* Day of week
+* Start time
+* End time
 
 
 ## Example entering prompts
-* Course code  $ CSC207H1F
-* Session: $ LEC5201
-* Delivery method $ Online/In-Person Sync
-* Time span info: $ 6.00/8.00/THUR
-* Instructor $ Lindsey Shorser
-* Location:  $ Online
+* Course code:  $ CSC207H1F
+* Type: $ LEC
+* Instructor: $ Lindsey Shorser
+* Day of week: $ 4
+* Start time: $ 18
+* End time: $ 20

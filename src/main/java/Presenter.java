@@ -3,6 +3,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+// Citation: Code structure obtained from
+// https://www.logicbig.com/how-to/code-snippets/jcode-java-cmd-command-line-table.html
+
 public class Presenter {
     private static final String HORIZONTAL_SEP = "-";
     private static final String verticalSep = "|";
