@@ -35,6 +35,7 @@ List of information to enter:
 * Day of week
 * Start time
 * End time
+* Location
 
 
 ## Example entering prompts
