@@ -3,8 +3,7 @@ Parent Class: None
 Subclass: None
 
 Responsibility:
-* Stores a particular mapping from timeslot to Course instance.
-* Making access available to other classes.
+* Stores an accessible mapping from timeslot to Course instance.
 
 Collaborator:
 * Course

@@ -3,7 +3,7 @@ Parent class: None
 Subclass: None
 
 Responsibility:
-* Store campus map
+* Stores campus map
 
 Collaborator:
 * Scheduler
