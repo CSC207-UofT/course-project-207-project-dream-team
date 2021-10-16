@@ -60,10 +60,15 @@ The methods for Scheduler have not been designed and implemented explicitly.
 ## Members Tasks
 - Everyone participated in designing the program structure.
 - Everyone participated in coding the skeleton programs and unittest.
+- Members all participated in writing scenario_walk_through and progress_report.
 
 ## Next Step
 - We will design the specific implementations for all the Scheduler class 
-- We will discuss if the programs should include features of scheduling one's personal activities or estimating the buildings,
+- We will discuss if the programs should include features like scheduling one's personal activities or estimating the buildings,
+and try to implement the classes
 
 ## Worked Well
-We have 
+- We have successfully designed and implemented InterfaceAdapters (Controller, Presenter);
+- We have successfully designed and implemented Frameworks&Driver (InputInfo);
+- We have successfully designed and implemented EnterpriseBusiness (Course, Timetable);
+- We have successfully designed and ran the unittests for TimeTable.
