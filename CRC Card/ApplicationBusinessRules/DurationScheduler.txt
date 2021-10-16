@@ -7,4 +7,5 @@ Responsibility:
 - Schedule courses, such that everyday, the sum of course time is equal or less than the duration given.
 
 Collaborator:
-Course, CourseManager, Timetable
+* Course
+* Timetable

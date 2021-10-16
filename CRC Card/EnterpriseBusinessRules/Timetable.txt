@@ -6,4 +6,4 @@ Responsibility:
 - Stores a particular mapping of course codes to time slots
 
 Collaborator:
-CourseManager, Scheduler
+* Course
