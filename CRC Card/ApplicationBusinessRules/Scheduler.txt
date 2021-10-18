@@ -1,6 +1,6 @@
 Class name: Scheduler
 Parent Class: None
-Subclass: BackToBackScheduler, ProfPreferenceScheduler, DurationScheduler, SleepScheduleScheduler
+Subclass: BackToBackScheduler, InstructorScheduler, DurationScheduler, TimeslotScheduler, SimpleScheduler
 
 Responsibility:
 - Store instances of class Course
