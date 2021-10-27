@@ -1,5 +1,4 @@
 import java.io.*;
-import java.lang.reflect.Array;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 
@@ -12,8 +11,8 @@ public class UserData {
                 String line =
                         course.courseCode + "," + course.type + "," +
                                 course.instructor + "," + course.day.toString() + "," +
-                                String.valueOf(course.startTime) + "," +
-                                String.valueOf(course.endTime) + "\n";
+                                course.startTime + "," +
+                                course.endTime + "\n";
                 bw.write(line);
             }
             bw.close();
@@ -52,6 +51,6 @@ public class UserData {
         courses.add(c2);
         UserData.download(courses, path);
         ArrayList<Course> cs = UserData.upload(path);
-        System.out.println(cs.get(0).type);
+        System.out.println(cs);
     }
 }
