@@ -1,0 +1,10 @@
+Class name: SimpleScheduler
+Parent Class: Scheduler
+Subclass: None
+
+Responsibility:
+- For users without any preference, schedule courses simply based on the users' input
+
+Collaborator:
+* Course
+* Timetable

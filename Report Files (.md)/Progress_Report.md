@@ -64,11 +64,18 @@ The methods for Scheduler have not been designed and implemented explicitly.
 
 ## Next Step
 - We will design the specific implementations for all the Scheduler class 
-- We will discuss if the programs should include features like scheduling one's personal activities or estimating the buildings,
-and try to implement the classes
+- We will discuss how the programs should include features like scheduling one's personal activities or estimating the 
+distance between buildings, and try to implement the classes
 
 ## Worked Well
 - We have successfully designed and implemented InterfaceAdapters (Controller, Presenter);
 - We have successfully designed and implemented Frameworks&Driver (InputInfo);
 - We have successfully designed and implemented EnterpriseBusiness (Course, Timetable);
 - We have successfully designed and ran the unittests for TimeTable.
+- We are effective during in-person meetings.
+
+## One Open Question
+- How to consider multiple preferences at the same time in our program in an efficient and effective manner, how do the
+classes interact during such tasks.
+- How to make UI enjoyable to the user
+- Result output alternatives: website, pdf file. How can they be accomplished.
