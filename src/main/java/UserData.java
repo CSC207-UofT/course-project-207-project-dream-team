@@ -51,6 +51,6 @@ public class UserData {
         courses.add(c2);
         UserData.download(courses, path);
         ArrayList<Course> cs = UserData.upload(path);
-        System.out.println(cs);
+        System.out.println(cs.get(0).courseCode);
     }
 }
