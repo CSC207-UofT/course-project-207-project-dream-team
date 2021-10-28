@@ -1,5 +1,6 @@
 /*import java.util.ArrayList;
 
+
 class DurationScheduler extends Scheduler {
 
     public DurationScheduler(ArrayList<Course> courses){

@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.time.DayOfWeek;
 
 public class Timetable {
 
-    private final HashMap<Integer[], Course> timeTable;
+    public HashMap<String, Course> timeTable;
+    public ArrayList<String> occupied;
 
     /* Notice that the hashmap is mapping from specific time to course.
      * A key-value pair might be (3, 17, 18), CSC207, -- Wednesday 17 - 18
@@ -12,29 +12,33 @@ public class Timetable {
      */
 
     public Timetable() {     // Constructor
-        this.timeTable = new HashMap<Integer[], Course>();
-        for (int i = 1; i <= 5; i++) {
+        this.timeTable = new HashMap<>();
+        for (int i = 1; i <= 5; i ++) {
             for (int k = 9; k <= 21; k++) {
-                Integer[] tempArray = {i, k, k + 1};
-                this.timeTable.put(tempArray, null);
+                int num_key = i * 10000 + k * 100 + k + 1;
+                String key = String.valueOf(num_key);
+                this.timeTable.put(key, null);
             }
         }
+        this.occupied = new ArrayList<>();
     }
 
-    // Getter
-    public HashMap<Integer[], Course> getTable() {
-        return timeTable;
+    public Integer[] hashcodeToSpan(String timeCode){
+        int day = Integer.parseInt(timeCode.substring(0, 1));
+        int start_time = Integer.parseInt(timeCode.substring(1, 3));
+        int end_time = Integer.parseInt(timeCode.substring(3, 5));
+        int duration = end_time - start_time;
+        return new Integer[] {day, start_time, end_time, duration};
     }
+
 
 
     // Check if the timeSpan is empty in timeTable
-    public boolean isEmpty(Integer[] timeSpan) {
-        int day_timeSpan = timeSpan[0], start_timeSpan = timeSpan[1], end_timeSpan = timeSpan[2];
-        int lenSpan = end_timeSpan - start_timeSpan;  // the length of the span
+    public boolean isEmpty(String timeCode) {
+        int lenSpan = hashcodeToSpan(timeCode)[3];  // the length of the span
 
         for (int i = 0; i < lenSpan; i = i + 1) {
-            Integer[] time = {day_timeSpan, start_timeSpan + i, start_timeSpan + i + 1};
-            if (this.timeTable.get(time) != null) {
+            if (this.timeTable.get(timeCode) != null) {
                 return false;
             }
         }
@@ -43,37 +47,23 @@ public class Timetable {
 
     public boolean canAdd(Course course){
         Integer[] course_time = {course.day.getValue(), course.startTime, course.endTime};
-        return this.isEmpty(course_time);
-        }
+        String timeCode = String.valueOf(course_time[0] * 10000 + course_time[1] * 100 + course_time[2]);
+        return this.isEmpty(timeCode);
+    }
 
-    public boolean addCourse(Course course) {
+    public void addCourse(Course course) {
 
         Integer[] course_time = {course.day.getValue(), course.startTime, course.endTime};  // info of the course
-        int courseDuration = course.endTime - course.startTime;  // how long the course would last
+        String timeCode = String.valueOf(course_time[0] * 10000 + course_time[1] * 100 + course_time[2]);
+        int courseDuration = hashcodeToSpan(timeCode)[3];  // how long the course would last
 
-        if (this.isEmpty(course_time)) {
+        if (this.isEmpty(timeCode)) {
             for (int j = 0; j < courseDuration; j++) {    // add course to the timeTable
-                Integer[] time_key = {course.day.getValue(), course.startTime + j, course.startTime + j + 1};
+                String time_key = String.valueOf(course_time[0] * 10000 + (course_time[1] + j) * 100 +
+                        course_time[1] + j + 1);
                 this.timeTable.put(time_key, course);
-            }
-        } else return false;  // return false if timeSpan in timeTable is not empty.
-
-        return true;
-    }
-
-    public ArrayList<String[]> Presentable(){
-        ArrayList<String[]> result = new ArrayList<String[]>();
-        for (Integer[] k:this.timeTable.keySet()){
-            for (String[] s:result){
-                if (s[1].substring(0) == k[1].toString()){
-                    s[k[0]] = this.timeTable.get(k).courseCode;
-                } else {
-                    String[] newString = new String[] {k[1]+"-"+k[2],"","","","",""};
-                    newString[k[1]] = this.timeTable.get(k).courseCode;
-                }
+                this.occupied.add(time_key);
             }
         }
-        return result;
     }
-
 }
