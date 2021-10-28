@@ -1,0 +1,12 @@
+Class name: Controller
+Parent class: None
+Subclass: None
+
+Responsibility:
+* Utilize multiple classes to obtain course information from users and provide possible timetables to the users.
+
+Collaborator：
+* InputInfo
+* Scheduler
+* Timetable
+* Presenter

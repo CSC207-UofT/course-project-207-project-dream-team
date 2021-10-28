@@ -1,0 +1,10 @@
+Class name: BackToBackScheduler
+Parent Class: Scheduler
+Subclass: None
+
+Responsibility:
+- Schedules given courses on the basis of having minimal time gaps in between.
+
+Collaborator:
+* Course
+* Timetable
