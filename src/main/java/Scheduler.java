@@ -10,3 +10,4 @@ public abstract class Scheduler {
 
     abstract ArrayList<Timetable> arrange(Timetable timetable);
 }
+
