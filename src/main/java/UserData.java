@@ -43,7 +43,7 @@ public class UserData {
 
 
     public static void main(String[] args) {
-        String path = "C:\\Users\\user\\Desktop\\output.csv";
+        String path = "C:\\Users\\user\\Desktop\\output.txt";
         Course c1 = new Course("csc207", "tut", "piao", DayOfWeek.MONDAY, 14, 16);
         Course c2 = new Course("csc207", "lec", "piao", DayOfWeek.FRIDAY, 10, 11);
         ArrayList<Course> courses = new ArrayList<Course>();
@@ -51,6 +51,6 @@ public class UserData {
         courses.add(c2);
         UserData.download(courses, path);
         ArrayList<Course> cs = UserData.upload(path);
-        System.out.println(cs.get(1).courseCode);
+        System.out.println(cs.get(0).courseCode);
     }
 }

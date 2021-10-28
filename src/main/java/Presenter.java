@@ -9,7 +9,7 @@ public class Presenter {
     private static final String joinSep = "+";
     private static final String[] headers = {"", "MON", "TUE", "WED", "THU", "FRI"};
     private final List<String[]> rows = new ArrayList<>();
-    
+
 
     public Presenter() {
 
@@ -88,6 +88,7 @@ public class Presenter {
             }
         }
 
+
         result.remove(0);
 
         for (int i = 0; i < result.size(); i++) {
@@ -98,5 +99,4 @@ public class Presenter {
         }
         return result;
     }
-
 }
