@@ -23,7 +23,6 @@ public class Controller {
             Presenter newPresenter = new Presenter();
             newPresenter.Present(toPrint);
 
-
         }
     }
 }

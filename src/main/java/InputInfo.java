@@ -2,7 +2,6 @@ import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class InputInfo {
 
     public static ArrayList<Course> askCourses(){
@@ -35,4 +34,3 @@ public class InputInfo {
     }
 
 }
-

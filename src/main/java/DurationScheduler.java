@@ -1,6 +1,5 @@
 /*import java.util.ArrayList;
 
-
 class DurationScheduler extends Scheduler {
 
     public DurationScheduler(ArrayList<Course> courses){
@@ -14,4 +13,3 @@ class DurationScheduler extends Scheduler {
         return list;
     }
 }*/
-

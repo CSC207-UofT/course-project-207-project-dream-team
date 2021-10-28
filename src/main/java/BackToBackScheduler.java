@@ -1,6 +1,5 @@
 /*import java.util.ArrayList;
 
-
 public class BackToBackScheduler extends Scheduler{
 
     public BackToBackScheduler(ArrayList<Course> courses){
@@ -15,4 +14,3 @@ public class BackToBackScheduler extends Scheduler{
     }
 
 }*/
-
