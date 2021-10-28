@@ -88,7 +88,6 @@ public class Presenter {
             }
         }
 
-
         result.remove(0);
 
         for (int i = 0; i < result.size(); i++) {
@@ -99,5 +98,6 @@ public class Presenter {
         }
         return result;
     }
+
 }
 

@@ -1,5 +1,6 @@
 import java.time.DayOfWeek;
 
+
 public class Course {
 
     public String courseCode; // CSC207H1F
