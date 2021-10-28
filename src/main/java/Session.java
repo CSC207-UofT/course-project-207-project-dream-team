@@ -11,6 +11,6 @@ public class Session {
         this.instructor = instructor;//e.g. G
         this.courseCode = courseCode;//e.g. CSC207H1F
         this.sessionCode = sessionCode;//e.g. LEC0101
-        this.timeslots = timeslots; //e.g. [21415, 41314]
+        this.timeslots = timeslots; //e.g. [21415, 41315]
     }
 }
