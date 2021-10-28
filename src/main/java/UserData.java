@@ -43,7 +43,7 @@ public class UserData {
 
 
     public static void main(String[] args) {
-        String path = "C:\\Users\\user\\Desktop\\output.txt";
+        String path = "C:\\Users\\user\\Desktop\\output.csv";
         Course c1 = new Course("csc207", "tut", "piao", DayOfWeek.MONDAY, 14, 16);
         Course c2 = new Course("csc207", "lec", "piao", DayOfWeek.FRIDAY, 10, 11);
         ArrayList<Course> courses = new ArrayList<Course>();
