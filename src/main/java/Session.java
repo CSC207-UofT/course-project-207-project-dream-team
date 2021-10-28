@@ -8,9 +8,9 @@ public class Session {
                    String courseCode,
                    String sessionCode,
                    Integer[] timeslots){
-        this.instructor = instructor;//e.g. G
-        this.courseCode = courseCode;//e.g. CSC207H1F
-        this.sessionCode = sessionCode;//e.g. LEC0101
-        this.timeslots = timeslots; //e.g. [21415, 41315]
+        this.instructor = instructor;     //e.g. G
+        this.courseCode = courseCode;     //e.g. CSC207H1F
+        this.sessionCode = sessionCode;   //e.g. LEC0101
+        this.timeslots = timeslots;       //e.g. [21415, 41315]
     }
 }
