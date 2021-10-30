@@ -41,11 +41,27 @@ public class Timetable {
         return true;
     }
 
-    public boolean canAdd(Course course){
-        Integer[] course_time = {course.day.getValue(), course.startTime, course.endTime};
-        String timeCode = String.valueOf(course_time[0] * 10000 + course_time[1] * 100 + course_time[2]);
-        return this.isEmpty(timeCode);
+    // Big Function change:
+    // Purpose: return ArrayList of lecture sessions that can be added to the timeTable
+    // Criteria: if the Session has one lecture time can be added, then the session is added to the output.
+    public ArrayList<Session> lecCanAdd(NewCourse course){
+
+        ArrayList<Session> availableLEC= new ArrayList<>();     // the output
+
+        for (Session session: course.lectures) {                // loop all the lecture sessions of this course
+
+            for (Integer time: session.timeslots) {             // loop timeslots of the session
+
+                // if ANYONE TIME is not in occupied in timetable, then add the session
+                if (!occupied.contains(time.toString()) && !availableLEC.contains(session))
+                    availableLEC.add(session);
+            }
+        }
+    return availableLEC;
     }
+
+
+
 
     public void addCourse(Course course) {
 
