@@ -60,6 +60,11 @@ public class Timetable {
     return availableLEC;
     }
 
+    public ArrayList<Session> labCanAdd(NewCourse course){
+        // method to be completed soon
+        return new ArrayList<>();
+    }
+
 
 
 
