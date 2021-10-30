@@ -1,36 +1,59 @@
-import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InputInfo {
 
-    public static ArrayList<Course> askCourses(){
+    public static ArrayList<Session> askSessions(String courseCode){
         Scanner sc1 = new Scanner(System.in);
         String numberOfCourses;
-        System.out.println("How many courses would you like to enter?");
+        System.out.println("How many sessions for this course would you like to enter?");
         numberOfCourses = sc1.nextLine();
         int num = Integer.parseInt(numberOfCourses);
 
-        ArrayList<Course> result = new ArrayList<>();
+        ArrayList<Session> result = new ArrayList<>();
         for (int i = 0; i < num; i ++){
-            result.add(askSingleCourse(i + 1));
+            result.add(askSingleSession(i + 1, courseCode, i + 1));
         }
         return result;
     }
 
-    public static Course askSingleCourse(int order){
+    private static Session askSingleSession(int order, String courseCode, int sessionNum){
         //for each course instance
-        String[] ask = {"course code", "type", "instructor", "day of week",
-                "start time", "end time"};
+        String[] ask = {"instructor", "session code"};
         Scanner sc = new Scanner(System.in);
-        String[] inputs = new String[6];
-        for (int i = 0; i < inputs.length; i++)
+        String[] inputs = new String[3];
+        for (int i = 0; i < ask.length; i++)
         {
-            System.out.println("What is the " + ask[i] + " of this course #"+String.valueOf(order)+"?");
+            System.out.println("What is the " + ask[i] + " of this session #" + String.valueOf(order) + "?");
             inputs[i] = sc.nextLine();
         }
-        return new Course(inputs[0], inputs[1], inputs[2],
-                DayOfWeek.of(Integer.parseInt(inputs[3])), Integer.parseInt(inputs[4]), Integer.parseInt(inputs[5]));
+        Integer[] timeSlots = askTimeSlots(sessionNum).toArray(new Integer[0]);
+        return new Session(inputs[0], courseCode, inputs[1], timeSlots);
+    }
+
+    private static ArrayList<Integer> askTimeSlots(int sessionNum){
+        Scanner scanner = new Scanner(System.in);
+        String numberOfTimeSlots;
+        System.out.println("How many time slots does this session have?");
+        numberOfTimeSlots = scanner.nextLine();
+        int num = Integer.parseInt(numberOfTimeSlots);
+
+        ArrayList<Integer> slotList = new ArrayList<>();
+        for (int i = 0; i < num; i ++) {
+            System.out.println("What is the day of week for slot #" + String.valueOf(i)
+                    + "Session #" + String.valueOf(sessionNum));
+            String day = (scanner.nextLine());
+            System.out.println("What is the start time for this slot on " +
+                    String.valueOf(day) + " day?"); //polish later
+            String start = (scanner.nextLine());
+            System.out.println("What is the end time for this slot on " +
+                    String.valueOf(day) + " day?");
+            String end = (scanner.nextLine());
+
+            int timeFormatted = Integer.parseInt(day + start + end);
+            slotList.add(timeFormatted);
+        }
+        return slotList;
     }
 
 }
