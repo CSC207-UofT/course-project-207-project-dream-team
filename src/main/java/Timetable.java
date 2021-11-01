@@ -63,7 +63,7 @@ public class Timetable {
 
     public ArrayList<Session> labCanAdd(NewCourse course){
         ArrayList<Session> availableLAB= new ArrayList<>();
-        for (Session session: course.lectures) {
+        for (Session session: course.labs) {
             for (Integer time: session.timeslots) {
                 if (!occupied.contains(time.toString()) && !availableLAB.contains(session))
                     availableLAB.add(session);
@@ -74,7 +74,7 @@ public class Timetable {
 
     public ArrayList<Session> tutCanAdd(NewCourse course){
         ArrayList<Session> availableTUT= new ArrayList<>();
-        for (Session session: course.lectures) {
+        for (Session session: course.tutorials) {
             for (Integer time: session.timeslots) {
                 if (!occupied.contains(time.toString()) && !availableTUT.contains(session))
                     availableTUT.add(session);
