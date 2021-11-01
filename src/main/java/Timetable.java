@@ -41,7 +41,7 @@ public class Timetable {
         return true;
     }
 
-    // Big Function change:
+    // Big Function change:  lecCanAdd, tutCanAdd, labCanAdd
     // Purpose: return ArrayList of lecture sessions that can be added to the timeTable
     // Criteria: if the Session has one lecture time can be added, then the session is added to the output.
     public ArrayList<Session> lecCanAdd(NewCourse course){
@@ -60,11 +60,28 @@ public class Timetable {
     return availableLEC;
     }
 
+
     public ArrayList<Session> labCanAdd(NewCourse course){
-        // method to be completed soon
-        return new ArrayList<>();
+        ArrayList<Session> availableLAB= new ArrayList<>();
+        for (Session session: course.lectures) {
+            for (Integer time: session.timeslots) {
+                if (!occupied.contains(time.toString()) && !availableLAB.contains(session))
+                    availableLAB.add(session);
+            }
+        }
+        return availableLAB;
     }
 
+    public ArrayList<Session> tutCanAdd(NewCourse course){
+        ArrayList<Session> availableTUT= new ArrayList<>();
+        for (Session session: course.lectures) {
+            for (Integer time: session.timeslots) {
+                if (!occupied.contains(time.toString()) && !availableTUT.contains(session))
+                    availableTUT.add(session);
+            }
+        }
+        return availableTUT;
+    }
 
 
 
