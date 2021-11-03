@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class Timetable {
 
-    public HashMap<String, Course> timeTable;
+    public HashMap<String, NewCourse> timeTable;
     public ArrayList<String> occupied;       // quick checker for time occupied in timeslot.
 
     /* Notice that the hashmap is mapping from specific time to course.
@@ -76,7 +76,6 @@ public class Timetable {
             return availableLAB;
         }
 
-
    public ArrayList<Session> tutCanAdd (NewCourse course){
         ArrayList<Session> availableTUT = new ArrayList<>();
         for (Session session : course.tutorials) {
@@ -93,18 +92,19 @@ public class Timetable {
         }
 
 
-    public void addCourse (Course course){
+    // Similar function to addCourse, but the structure is different.
+    // Purpose: Add session (lec, tut, lab) to the timetable.
+    // Use number to specify the type to add
+    // 1: lec, 2: tut, 3: lab
 
-        Integer[] course_time = {course.day.getValue(), course.startTime, course.endTime};  // info of the course
-        String timeCode = String.valueOf(course_time[0] * 10000 + course_time[1] * 100 + course_time[2]);
-        int courseDuration = timeConverter(timeCode)[3];  // how long the course would last
-
-        if (this.isEmpty(timeCode)) {
-            for (int j = 0; j < courseDuration; j++) {    // add course to the timeTable
-                String time_key = String.valueOf(course_time[0] * 10000 + (course_time[1] + j) * 100 +
-                        course_time[1] + j + 1);
-                this.timeTable.put(time_key, course);
-                this.occupied.add(time_key);
+    public void addSession(NewCourse course, int type) {
+        if (type == 1) {
+            ArrayList<Session> availSessions = lecCanAdd(course);
+            Session sessionTOADD = availSessions.get(0);
+            for (int time: sessionTOADD.timeslots) {
+                String time1 = String.valueOf(time);
+                this.timeTable.put(time1, course);
+                this.occupied.add(time1);
             }
         }
     }
