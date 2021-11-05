@@ -73,10 +73,10 @@ public class Timetable {
                 availableLAB.add(session);
             }
         }
-            return availableLAB;
-        }
+        return availableLAB;
+    }
 
-   public ArrayList<Session> tutCanAdd (NewCourse course){
+    public ArrayList<Session> tutCanAdd(NewCourse course) {
         ArrayList<Session> availableTUT = new ArrayList<>();
         for (Session session : course.tutorials) {
             int count = 0;
@@ -89,7 +89,7 @@ public class Timetable {
             }
         }
         return availableTUT;
-        }
+    }
 
 
     // Similar function to addCourse, but the structure is different.
@@ -101,12 +101,32 @@ public class Timetable {
         if (type == 1) {
             ArrayList<Session> availSessions = lecCanAdd(course);
             Session sessionTOADD = availSessions.get(0);
-            for (int time: sessionTOADD.timeslots) {
+            for (int time : sessionTOADD.timeslots) {
+                String time1 = String.valueOf(time);
+                this.timeTable.put(time1, course);
+                this.occupied.add(time1);
+            }
+        }
+        if (type == 2) {
+            ArrayList<Session> availSessions = tutCanAdd(course);
+            Session sessionTOADD = availSessions.get(0);
+            for (int time : sessionTOADD.timeslots) {
+                String time1 = String.valueOf(time);
+                this.timeTable.put(time1, course);
+                this.occupied.add(time1);
+
+            }
+
+        }
+        if (type == 3) {
+            ArrayList<Session> availSessions = labCanAdd(course);
+            Session sessionTOADD = availSessions.get(0);
+            for (int time : sessionTOADD.timeslots) {
                 String time1 = String.valueOf(time);
                 this.timeTable.put(time1, course);
                 this.occupied.add(time1);
             }
         }
     }
-
 }
+
