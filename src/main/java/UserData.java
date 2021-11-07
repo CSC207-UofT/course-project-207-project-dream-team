@@ -97,6 +97,29 @@ public class UserData {
         bwriter.close();
     }
 
+    public static Integer typeToNum(String type){
+        if (type == "backtoback"){
+            return 1;
+        }else if (type == "duration"){
+            return 2;
+        }else if (type == "instructor"){
+            return 3;
+        }else{
+            return 4;
+        }
+    }
+
+    public static void inputPreference(Integer type, String content) throws IOException{
+        String[] lines = readAllLines();
+        FileWriter fwriter = new FileWriter(f.getAbsolutePath());
+        BufferedWriter bwriter = new BufferedWriter(fwriter);
+        lines[type] = lines[type] + content + ",";
+        for (String line:lines){
+            bwriter.write(line);
+        }
+        bwriter.close();
+    }
+
 
     public static void main(String[] args) throws IOException {
         /*String path = "C:\\Users\\user\\Desktop\\output.txt";
@@ -109,7 +132,7 @@ public class UserData {
         ArrayList<Course> cs = UserData.upload(path);
         System.out.println(cs.get(0).courseCode);*/
         inputExists();
-        System.out.println(readAllLines()[1]);
-        inputCourse("a");
+        inputCourse("CSC108H1F");
+        inputPreference(4, "11012");
     }
 }
