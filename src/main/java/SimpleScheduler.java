@@ -7,15 +7,16 @@ class SimpleScheduler extends Scheduler {
         super(courses);
     }
 
-    @Override
-    public ArrayList<Timetable> arrange(Timetable timetable) {
-        ArrayList<Timetable> result = new ArrayList<>();
-        for (Course course : this.courses) {
-            if (timetable.canAdd(course)) {
-                timetable.addCourse(course);
-            }
-        }
-        result.add(timetable);
-        return result;
+
+    public SimpleScheduler(NewCourse course1, NewCourse course2,
+                           NewCourse course3, NewCourse course4,
+                           NewCourse course5, NewCourse course6) {
+        this.course1 = course1;
+        this.course2 = course2;
+        this.course3 = course3;
+        this.course4 = course4;
+        this.course5 = course5;
+        this.course6 = course6;
+        this.output = new ArrayList<>();
     }
 }
