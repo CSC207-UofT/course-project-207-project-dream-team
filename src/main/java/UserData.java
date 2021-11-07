@@ -88,36 +88,33 @@ public class UserData {
 
     public static void inputCourse(String courseCode) throws IOException{
         String[] lines = readAllLines();
-        FileWriter fwriter = new FileWriter(f.getAbsolutePath());
-        BufferedWriter bwriter = new BufferedWriter(fwriter);
-        lines[0] = lines[0] + courseCode + ",";
-        for (String line:lines){
-            bwriter.write(line);
-        }
-        bwriter.close();
-    }
-
-    public static Integer typeToNum(String type){
-        if (type == "backtoback"){
-            return 1;
-        }else if (type == "duration"){
-            return 2;
-        }else if (type == "instructor"){
-            return 3;
-        }else{
-            return 4;
+        if (lines[0].contains(courseCode)){
+            return;
+        }else {
+            FileWriter fwriter = new FileWriter(f.getAbsolutePath());
+            BufferedWriter bwriter = new BufferedWriter(fwriter);
+            lines[0] = lines[0] + courseCode + ",";
+            for (String line : lines) {
+                bwriter.write(line);
+            }
+            bwriter.close();
         }
     }
 
+    //type1: back-to-back, type2: duration, type3: instructor, type4: timeslot
     public static void inputPreference(Integer type, String content) throws IOException{
         String[] lines = readAllLines();
-        FileWriter fwriter = new FileWriter(f.getAbsolutePath());
-        BufferedWriter bwriter = new BufferedWriter(fwriter);
-        lines[type] = lines[type] + content + ",";
-        for (String line:lines){
-            bwriter.write(line);
+        if (lines[type].contains(content)){
+            return;
+        }else {
+            FileWriter fwriter = new FileWriter(f.getAbsolutePath());
+            BufferedWriter bwriter = new BufferedWriter(fwriter);
+            lines[type] = lines[type] + content + ",";
+            for (String line : lines) {
+                bwriter.write(line);
+            }
+            bwriter.close();
         }
-        bwriter.close();
     }
 
 
@@ -134,5 +131,7 @@ public class UserData {
         inputExists();
         inputCourse("CSC108H1F");
         inputPreference(4, "11012");
+        inputPreference(3, "Piao");
+        inputPreference(1, "Y");
     }
 }
