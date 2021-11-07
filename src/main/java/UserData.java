@@ -1,4 +1,6 @@
 import java.io.*;
+import java.lang.reflect.AnnotatedArrayType;
+import java.nio.file.Files;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 
@@ -19,9 +21,9 @@ public class UserData {
         } catch (Exception ex) {
             return;
         }
-    }
+    }*/
 
-    public static ArrayList<Course> upload(String path) throws IOException{
+    /*public static ArrayList<Course> upload(String path) throws IOException{
         BufferedReader br = new BufferedReader(
                 new FileReader(path));
         ArrayList<Course> courses = new ArrayList<Course>();
@@ -37,32 +39,59 @@ public class UserData {
         return courses;
     }*/
 
-    public static boolean inputExists(String path) throws IOException {//path = "src\\input.txt"
-        File f = new File(path);//the path should be changed after packaging
+
+    final static String path = "src\\input.txt";//the path should be changed after packaging
+    final static File f = new File(path);
+
+    public static boolean inputExists() throws IOException {
         if (f.exists()){
             return true;
         }else{
-            initInput(f);
+            initInput();
             return false;
         }
     }
 
     public static String[] initHeader(){
         String[] header = new String[5];//{courseCode, backToBack, duration, instructor, timeslots}
-        header[0]="Course Codes,\n";
-        header[1]="Back-to-back,\n";
-        header[2]=("Max Duration,\n");
-        header[3]=("Instructors,\n");
-        header[4]=("Timeslots,\n");
+        header[0]="Course Codes,";
+        header[1]="\nBack-to-back,";
+        header[2]=("\nMax Duration,");
+        header[3]=("\nInstructors,");
+        header[4]=("\nTimeslots,");
         return header;
     }
 
-    public static void initInput(File f) throws IOException {
+    public static void initInput() throws IOException {
         f.createNewFile();
         FileWriter fwriter = new FileWriter(f.getAbsolutePath());
         BufferedWriter bwriter = new BufferedWriter(fwriter);
         String[] header = initHeader();
         for (String line:header){
+            bwriter.write(line);
+        }
+        bwriter.close();
+    }
+
+    public static String[] readAllLines() throws IOException{
+        FileReader freader = new FileReader(f.getAbsolutePath());
+        BufferedReader breader = new BufferedReader(freader);
+        String[] lines = new String[5];
+        int i = 0;
+        for(String line = breader.readLine(); line != null; line = breader.readLine()){
+            lines[i] = "\n" + line;
+            i++;
+        }
+        lines[0] = lines[0].substring(1,lines[0].length());
+        return lines;
+    }
+
+    public static void inputCourse(String courseCode) throws IOException{
+        String[] lines = readAllLines();
+        FileWriter fwriter = new FileWriter(f.getAbsolutePath());
+        BufferedWriter bwriter = new BufferedWriter(fwriter);
+        lines[0] = lines[0] + courseCode + ",";
+        for (String line:lines){
             bwriter.write(line);
         }
         bwriter.close();
@@ -79,6 +108,8 @@ public class UserData {
         UserData.download(courses, path);
         ArrayList<Course> cs = UserData.upload(path);
         System.out.println(cs.get(0).courseCode);*/
-        System.out.println(inputExists("src\\input.txt"));
+        inputExists();
+        System.out.println(readAllLines()[1]);
+        inputCourse("a");
     }
 }
