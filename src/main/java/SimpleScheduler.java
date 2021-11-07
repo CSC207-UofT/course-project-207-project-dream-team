@@ -1,11 +1,14 @@
-import java.sql.Time;
 import java.util.ArrayList;
 
-class SimpleScheduler extends Scheduler {
+class SimpleScheduler {
 
-    public SimpleScheduler(ArrayList<Course> courses){
-        super(courses);
-    }
+    public NewCourse course1;
+    public NewCourse course2;
+    public NewCourse course3;
+    public NewCourse course4;
+    public NewCourse course5;
+    public NewCourse course6;
+    public ArrayList<Timetable> output;
 
 
     public SimpleScheduler(NewCourse course1, NewCourse course2,
