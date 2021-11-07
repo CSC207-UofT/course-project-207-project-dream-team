@@ -101,6 +101,22 @@ public class UserData {
         }
     }
 
+    public static void removeCourse(String courseCode) throws IOException{
+        String[] lines = readAllLines();
+        if (!lines[0].contains(courseCode)){
+            return;
+        }else {
+            FileWriter fwriter = new FileWriter(f.getAbsolutePath());
+            BufferedWriter bwriter = new BufferedWriter(fwriter);
+            Integer ccLength = courseCode.length();
+            lines[0] = lines[0].substring(0, lines[0].length()-ccLength-1);
+            for (String line : lines) {
+                bwriter.write(line);
+            }
+            bwriter.close();
+        }
+    }
+
     //type1: back-to-back, type2: duration, type3: instructor, type4: timeslot
     public static void inputPreference(Integer type, String content) throws IOException{
         String[] lines = readAllLines();
@@ -110,6 +126,22 @@ public class UserData {
             FileWriter fwriter = new FileWriter(f.getAbsolutePath());
             BufferedWriter bwriter = new BufferedWriter(fwriter);
             lines[type] = lines[type] + content + ",";
+            for (String line : lines) {
+                bwriter.write(line);
+            }
+            bwriter.close();
+        }
+    }
+
+    public static void removePreference(Integer type, String content) throws IOException{
+        String[] lines = readAllLines();
+        if (!lines[type].contains(content)){
+            return;
+        }else {
+            FileWriter fwriter = new FileWriter(f.getAbsolutePath());
+            BufferedWriter bwriter = new BufferedWriter(fwriter);
+            Integer cLength = content.length();
+            lines[type] = lines[type].substring(0, lines[type].length()-cLength-1);
             for (String line : lines) {
                 bwriter.write(line);
             }
@@ -133,5 +165,9 @@ public class UserData {
         inputPreference(4, "11012");
         inputPreference(3, "Piao");
         inputPreference(1, "Y");
+        removeCourse("CSC104H1F");
+        removeCourse("CSC108H1F");
+        removePreference(3, "Xuanyi");
+        removePreference(4, "11012");
     }
 }
