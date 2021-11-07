@@ -100,7 +100,7 @@ public class Timetable {
     public void addSession(NewCourse course, int type) {
         if (type == 1) {
             ArrayList<Session> availSessions = lecCanAdd(course);
-            Session sessionTOADD = availSessions.get(0);
+            Session sessionTOADD = availSessions.get(0);  //////////////
             for (int time : sessionTOADD.timeslots) {
                 String time1 = String.valueOf(time);
                 this.timeTable.put(time1, course);
@@ -116,7 +116,6 @@ public class Timetable {
                 this.occupied.add(time1);
 
             }
-
         }
         if (type == 3) {
             ArrayList<Session> availSessions = labCanAdd(course);
