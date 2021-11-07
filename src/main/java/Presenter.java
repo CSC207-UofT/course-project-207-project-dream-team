@@ -9,7 +9,7 @@ public class Presenter {
     private static final String joinSep = "+";
     private static final String[] headers = {"", "MON", "TUE", "WED", "THU", "FRI"};
     private final List<String[]> rows = new ArrayList<>();
-    
+
 
     public Presenter() {
 
