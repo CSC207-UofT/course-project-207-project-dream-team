@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 
-public class InstructorScheduler extends Scheduler {
-    public InstructorScheduler(ArrayList<Course> courses){
+class DurationScheduler extends Scheduler {
+
+    public DurationScheduler(ArrayList<Course> courses){
         super(courses);
     }
 
@@ -11,5 +12,4 @@ public class InstructorScheduler extends Scheduler {
         ArrayList<Timetable> list = new ArrayList<>();
         return list;
     }
-
 }
