@@ -1,9 +1,9 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.sql.Time;
+import java.util.*;
 
 public class Timetable {
 
-    public HashMap<String, NewCourse> timeTable;
+    public HashMap<String, Session> timeTable;
     public ArrayList<String> occupied;       // quick checker for time occupied in timeslot.
 
     /* Notice that the hashmap is mapping from specific time to course.
@@ -97,36 +97,89 @@ public class Timetable {
     // Use number to specify the type to add
     // 1: lec, 2: tut, 3: lab
 
-    public void addSession(NewCourse course, int type) {
-        if (type == 1) {
-            ArrayList<Session> availSessions = lecCanAdd(course);
-            Session sessionTOADD = availSessions.get(0);
-            for (int time : sessionTOADD.timeslots) {
-                String time1 = String.valueOf(time);
-                this.timeTable.put(time1, course);
-                this.occupied.add(time1);
-            }
-        }
-        if (type == 2) {
-            ArrayList<Session> availSessions = tutCanAdd(course);
-            Session sessionTOADD = availSessions.get(0);
-            for (int time : sessionTOADD.timeslots) {
-                String time1 = String.valueOf(time);
-                this.timeTable.put(time1, course);
-                this.occupied.add(time1);
+//    public void addSession(NewCourse course, int type) {
+//        if (type == 1) {
+//            ArrayList<Session> availSessions = lecCanAdd(course);
+//            Session sessionTOADD = availSessions.get(0);
+//            for (int time : sessionTOADD.timeslots) {
+//                String time1 = String.valueOf(time);
+//                this.timeTable.put(time1, course);
+//                this.occupied.add(time1);
+//            }
+//        }
+//        if (type == 2) {
+//            ArrayList<Session> availSessions = tutCanAdd(course);
+//            Session sessionTOADD = availSessions.get(0);
+//            for (int time : sessionTOADD.timeslots) {
+//                String time1 = String.valueOf(time);
+//                this.timeTable.put(time1, course);
+//                this.occupied.add(time1);
+//
+//            }
+//
+//        }
+//        if (type == 3) {
+//            ArrayList<Session> availSessions = labCanAdd(course);
+//            Session sessionTOADD = availSessions.get(0);
+//            for (int time : sessionTOADD.timeslots) {
+//                String time1 = String.valueOf(time);
+//                this.timeTable.put(time1, course);
+//                this.occupied.add(time1);
+//            }
+//        }
+//    }
 
-            }
+    // Return a mapping of course codes to collections of session codes, based on the sessions that are in timetable.
+    // e.g. If timetable has tut0101 and lec0201 for CSC207, then we return {"CSC207": ["TUT0101", "LEC0201"]}.
+    // Precondition: the timetable is set up correctly.
 
-        }
-        if (type == 3) {
-            ArrayList<Session> availSessions = labCanAdd(course);
-            Session sessionTOADD = availSessions.get(0);
-            for (int time : sessionTOADD.timeslots) {
-                String time1 = String.valueOf(time);
-                this.timeTable.put(time1, course);
-                this.occupied.add(time1);
+    private Map<String, Set<String>> courseToSession(){
+        Collection<Session> sessionsInTimetable = this.timeTable.values();
+        Map<String, Set<String>> result = new HashMap<>();
+
+        for (Session s : sessionsInTimetable){
+            if (result.containsKey(s.courseCode)){
+                result.get(s.courseCode).add(s.sessionCode);
+            }
+            else {
+                Set<String> newValue = new HashSet<>(Collections.singleton(s.sessionCode));
+                result.put(s.courseCode, newValue);
             }
         }
+        return result;
+    }
+
+
+    // Return true iff sessionToAdd has no time conflict with the Timetable, and is reasonable to be added
+    // (i.e. we don't want a LEC0101 and a LEC0201 for CSC207 in the same timetable).
+    private boolean hasNoConflict(Session sessionToAdd, Map<String, Set<String>> TimetableMapping){
+        for (int time:sessionToAdd.timeslots){
+            if (this.occupied.contains(Integer.toString(time))){
+                return false;
+            }
+        }
+        if (TimetableMapping.containsKey(sessionToAdd.courseCode)){
+            return !TimetableMapping.get(sessionToAdd.courseCode).contains(sessionToAdd.sessionCode);
+        }
+        return true;
+    }
+
+    // Precondition: sessionToAdd has no conflict with this timetable.
+    // Add this session.
+    private void addSession(Session sessionToAdd){
+        for (int time : sessionToAdd.timeslots){
+            String timeString = Integer.toString(time);
+            this.timeTable.put(timeString, sessionToAdd);
+            this.occupied.add(timeString);
+        }
+    }
+
+
+
+    // Return all possible timetables with one more potential session (that has no conflict) added.
+    public ArrayList<Timetable> extensions (ArrayList<NewCourse> courses){
+        ArrayList<Session> remainingSessions = this.neededSessions(courses);
+
     }
 }
 
