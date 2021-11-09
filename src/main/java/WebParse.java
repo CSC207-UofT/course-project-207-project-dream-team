@@ -90,13 +90,19 @@ public class WebParse{
 
     public static NewCourse courseParse(String courseCode) throws IOException {
         Elements spans = courseToTags(courseCode);
-        ArrayList<String> infos = tagsToList(spans);
-        ArrayList<String[]> infoSessions = breakList(infos);
-        ArrayList<Session> sessions = new ArrayList<Session>();
-        for (String[] infoSession:infoSessions){
-            sessions.add(listToSession(infoSession, courseCode));
+        NewCourse course;
+        if (spans.get(0).text() == "Error"){
+            ArrayList<Session> a = new ArrayList<>();
+            course = new NewCourse("", a,a,a);
+        }else {
+            ArrayList<String> infos = tagsToList(spans);
+            ArrayList<String[]> infoSessions = breakList(infos);
+            ArrayList<Session> sessions = new ArrayList<Session>();
+            for (String[] infoSession : infoSessions) {
+                sessions.add(listToSession(infoSession, courseCode));
+            }
+            course = sessionsToCourse(sessions, courseCode);
         }
-        NewCourse course = sessionsToCourse(sessions, courseCode);
         return course;
     }
 
