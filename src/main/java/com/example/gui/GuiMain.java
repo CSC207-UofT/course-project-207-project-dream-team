@@ -1,6 +1,7 @@
 package com.example.gui;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -10,10 +11,9 @@ public class GuiMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        AnchorPane root=new AnchorPane();
-        Scene scene=new Scene(root,600,400);
-        TextField textField=new TextField("Gradle JavaFX");
-        root.getChildren().add(textField);
+        FXMLLoader fxmlLoader = new FXMLLoader(GuiMain.class.getResource("hello-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 830, 500);
+        primaryStage.setTitle("Hello!");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
