@@ -24,7 +24,7 @@ public class InputInfo {
             //for each course, call askSingleCourse to let that do the work
             System.out.println("What is the #" + Integer.toString(i + 1) + " course you want to enter?");
             String eachCourse = scanner.nextLine();
-            while ((Integer) WebParse.courseParse(eachCourse) == -1){
+            while (WebParse.courseParse(eachCourse).courseCode.equals("")){
                 inputErrorCount ++;
                 System.out.println("Sorry, we are not able to process your input, could you check your spelling? \n" +
                         "Please include every component of your course code. ex. CSC207H1F \n");
@@ -58,7 +58,7 @@ public class InputInfo {
 
         for (String s : ask) {
             //for each type in ask, we call askSessions to let that do the work
-            System.out.println("Please enter information about " + s + "'s of course #" + String.valueOf(order));
+            System.out.println("Please enter information about " + s + "'s of this course");
             records.add(askSessions(courseCode, s));
         }
         //assign each type to the NewCourse instance and return the one course
