@@ -1,6 +1,7 @@
 import java.util.*;
 
-public class Timetable {
+public class
+Timetable {
 
     public HashMap<String, Session> timeTable;
     public ArrayList<String> occupied;       // quick checker for time occupied in timeslot.
@@ -39,7 +40,7 @@ public class Timetable {
     }
 
 
-    // Return a mapping of course codes to what typeS of sessions are already in the timetable (e.g. Lec, Tut), based on
+    // Return a mapping of course codes to what types of sessions are already in the timetable (e.g. Lec, Tut), based on
     // the sessions that are in timetable.
     // e.g. If timetable has tut0101 and lec0201 for CSC207, then we return {"CSC207": ["TUT", "LEC"]},
     // where {} means a dictionary and [] means a set.
@@ -112,4 +113,38 @@ public class Timetable {
         }
         return result;
     }
+
+
+//    private void add(Set<Session> courseSessions, ArrayList<NewCourse> courses) {
+//        for (NewCourse course : courses){
+//            courseSessions.addAll(course.lectures);
+//            courseSessions.addAll(course.labs);
+//            courseSessions.addAll(course.tutorials);
+//        }
+//    }
+
+
+
+    // Return true iff the timetable has all the sessions required.
+
+    public boolean isSolved (ArrayList<NewCourse> courses) {
+        Map<String, Set<String>> mapping = this.courseToSession();
+
+        Set<Session> sessionSet = new HashSet<>();
+        for (NewCourse course : courses){
+            if (!(mapping.containsKey(course.courseCode))){
+                return false;
+            }
+            else {
+                Set<String> currentSessions = mapping.get(course.courseCode);
+                Set<String> allNeededSessions = course.allRequiredSessions();
+                allNeededSessions.removeAll(currentSessions);
+                if (!(allNeededSessions.isEmpty())){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 }
