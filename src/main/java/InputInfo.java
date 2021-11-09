@@ -18,12 +18,13 @@ public class InputInfo {
 
         //initialize an ArrayList to store the list of courses from user input
         ArrayList<NewCourse> result = new ArrayList<>();
-        int inputErrorCount = 0;
+        int inputErrorCount;
         String manual = "";
         for (int i = 0; i < num; i ++){
             //for each course, call askSingleCourse to let that do the work
             System.out.println("What is the #" + Integer.toString(i + 1) + " course you want to enter?");
             String eachCourse = scanner.nextLine();
+            inputErrorCount = 0;
             while (WebParse.courseParse(eachCourse).courseCode.equals("")){
                 inputErrorCount ++;
                 System.out.println("Sorry, we are not able to process your input, could you check your spelling? \n" +
