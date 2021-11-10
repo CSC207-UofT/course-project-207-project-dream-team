@@ -1,11 +1,12 @@
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Controller {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         // Step 1: Ask for user's information about courses
-        ArrayList<Course> inputs = InputInfo.askCourses();
+        ArrayList<NewCourse> inputs = InputInfo.askCourses();
 
         // Step 2: Schedule the courses entered
         // return an ArrayList of timeTables with arranged courses
