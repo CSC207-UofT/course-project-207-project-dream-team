@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="852.0" xmlns="http://javafx.com/javafx/14.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gui.Controller">
+    <top>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <MenuBar>
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Close" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Delete" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                                <MenuItem mnemonicParsing="false" text="123" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Close" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+                <HBox>
+                    <children>
+                        <TextField fx:id="searchField" prefHeight="26.0" prefWidth="124.0" promptText="search courses" />
+                        <Separator orientation="VERTICAL" prefHeight="26.0" prefWidth="7.0" visible="false" />
+                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonClicked" text="search" />
+                        <MenuBar prefHeight="28.0" prefWidth="636.0" HBox.hgrow="ALWAYS">
+                            <menus>
+                                <Menu mnemonicParsing="false" text="export">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Close" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="save">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Delete" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="select timetable">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Delete" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="fall">
+                                    <graphic>
+                                        <Separator prefHeight="7.0" prefWidth="341.0" visible="false" />
+                                    </graphic>
+                                </Menu>
+                                <Menu mnemonicParsing="false" text="winter">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="About" />
+                                    </items>
+                                </Menu>
+                            </menus>
+                            <opaqueInsets>
+                                <Insets left="8.0" />
+                            </opaqueInsets>
+                        </MenuBar>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+    <bottom>
+        <HBox prefWidth="811.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Label" />
+            </children>
+        </HBox>
+    </bottom>
+    <left>
+        <ListView prefHeight="404.0" prefWidth="186.0" BorderPane.alignment="CENTER" />
+    </left>
+    <center>
+        <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn prefWidth="75.0" text="C2" />
+            </columns>
+        </TableView>
+    </center>
+    <right>
+        <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+    </right>
+</BorderPane>
+

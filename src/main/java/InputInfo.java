@@ -1,9 +1,11 @@
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class InputInfo {
 
-    public static ArrayList<NewCourse> askCourses(){
+    public static ArrayList<NewCourse> askCourses() throws IOException {
         //set up scanner
         Scanner scanner = new Scanner(System.in);
 
@@ -16,14 +18,32 @@ public class InputInfo {
 
         //initialize an ArrayList to store the list of courses from user input
         ArrayList<NewCourse> result = new ArrayList<>();
+        int inputErrorCount;
+        String manual = "";
         for (int i = 0; i < num; i ++){
             //for each course, call askSingleCourse to let that do the work
-            result.add(askSingleCourse(i + 1));
+            System.out.println("What is the #" + Integer.toString(i + 1) + " course you want to enter?");
+            String eachCourse = scanner.nextLine();
+            inputErrorCount = 0;
+            while (WebParse.courseParse(eachCourse).courseCode.equals("")){
+                inputErrorCount ++;
+                System.out.println("Sorry, we are not able to process your input, could you check your spelling? \n" +
+                        "Please include every component of your course code. ex. CSC207H1F \n");
+                if (inputErrorCount > 1){
+                    System.out.println("If the problem persists, this could be due to that we don't have your course " +
+                            "in our system. \n If you would like to add a course manually, enter manual");
+                }
+                manual = scanner.nextLine();
+                if (manual.toLowerCase(Locale.ROOT).equals("manual")){
+                    result.add(askSingleCourse());
+                }
+            }
+            result.add(WebParse.courseParse(eachCourse));
         }
         return result;
     }
 
-    private static NewCourse askSingleCourse(int order){
+    private static NewCourse askSingleCourse(){
         //Doing work for askCourses, return one course at a time
 
         //the list of session types, can change
@@ -31,7 +51,7 @@ public class InputInfo {
         Scanner sc = new Scanner(System.in); //setup scanner for all user inputs
 
         //determine the course code
-        System.out.println("What is the course code for course #" + String.valueOf(order) + "?");
+        System.out.println("What is the course code for this course?");
         String courseCode = sc.nextLine();
 
         //initialize an ArrayList to store the three types of session separately
@@ -39,7 +59,7 @@ public class InputInfo {
 
         for (String s : ask) {
             //for each type in ask, we call askSessions to let that do the work
-            System.out.println("Please enter information about " + s + "'s of course #" + String.valueOf(order));
+            System.out.println("Please enter information about " + s + "'s of this course");
             records.add(askSessions(courseCode, s));
         }
         //assign each type to the NewCourse instance and return the one course
@@ -121,5 +141,6 @@ public class InputInfo {
         }
         return slotList;
     }
+
 
 }
