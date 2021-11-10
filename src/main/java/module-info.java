@@ -7,7 +7,7 @@ module com.example.gui.main{
         requires org.kordamp.ikonli.javafx;
         requires org.kordamp.bootstrapfx.core;
         requires org.jsoup;
-//    requires itextpdf;
+    requires itextpdf;
     requires itextg;
 
     opens com.example.gui to javafx.fxml;
