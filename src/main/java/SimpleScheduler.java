@@ -1,7 +1,6 @@
-
 import java.util.ArrayList;
 
-class SimpleScheduler{
+class SimpleScheduler {
 
     public ArrayList<NewCourse> coursesToSchedule;
 
@@ -9,5 +8,14 @@ class SimpleScheduler{
         coursesToSchedule = courses;
     }
 
-    public ArrayList<Timetable>
+//    public ArrayList<Timetable> arrange(ArrayList<NewCourse> courses) {
+//
+//
+//        // Base Case
+//    }
+
+
+
+
+
 }
