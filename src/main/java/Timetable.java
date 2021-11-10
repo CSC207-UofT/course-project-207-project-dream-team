@@ -4,7 +4,7 @@ import java.util.HashMap;
 public class Timetable {
     public HashMap<String, Session> timeTable;
 
-    // Constructor
+    // Constructor //
     public Timetable() {
         this.timeTable = new HashMap<>();
         for (int i = 1; i <= 5; i++) {
