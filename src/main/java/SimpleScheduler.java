@@ -1,21 +1,13 @@
-import java.sql.Time;
+
 import java.util.ArrayList;
 
-class SimpleScheduler extends Scheduler {
+class SimpleScheduler{
 
-    public SimpleScheduler(ArrayList<Course> courses){
-        super(courses);
+    public ArrayList<NewCourse> coursesToSchedule;
+
+    public SimpleScheduler(ArrayList<NewCourse> courses){
+        coursesToSchedule = courses;
     }
 
-    @Override
-    public ArrayList<Timetable> arrange(Timetable timetable) {
-        ArrayList<Timetable> result = new ArrayList<>();
-        for (Course course : this.courses) {
-            if (timetable.canAdd(course)) {
-                timetable.addCourse(course);
-            }
-        }
-        result.add(timetable);
-        return result;
-    }
+    public ArrayList<Timetable>
 }
