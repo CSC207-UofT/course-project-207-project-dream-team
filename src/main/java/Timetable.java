@@ -48,15 +48,20 @@ Timetable {
 
     private Map<String, Set<String>> courseToSession(){
         Collection<Session> sessionsInTimetable = this.timeTable.values();
+
         Map<String, Set<String>> result = new HashMap<>();
+
+        if (sessionsInTimetable.isEmpty()){
+            return result;
+        }
 
         for (Session s : sessionsInTimetable){
             if (result.containsKey(s.courseCode)){
                 result.get(s.courseCode).add(s.sessionCode.substring(0, 3));
             }
             else {
-                Set<String> newValue = new HashSet<>(Collections.singleton(s.sessionCode.substring(0, 3)));
-                result.put(s.courseCode, newValue);
+                Set<String> newVal = new HashSet<>(Collections.singleton(s.sessionCode.substring(0, 3)));
+                result.put(s.courseCode, newVal);
             }
         }
         return result;
@@ -115,22 +120,11 @@ Timetable {
     }
 
 
-//    private void add(Set<Session> courseSessions, ArrayList<NewCourse> courses) {
-//        for (NewCourse course : courses){
-//            courseSessions.addAll(course.lectures);
-//            courseSessions.addAll(course.labs);
-//            courseSessions.addAll(course.tutorials);
-//        }
-//    }
-
-
 
     // Return true iff the timetable has all the sessions required.
-
     public boolean isSolved (ArrayList<NewCourse> courses) {
         Map<String, Set<String>> mapping = this.courseToSession();
 
-        Set<Session> sessionSet = new HashSet<>();
         for (NewCourse course : courses){
             if (!(mapping.containsKey(course.courseCode))){
                 return false;
@@ -145,6 +139,12 @@ Timetable {
             }
         }
         return true;
+    }
+
+
+    // Return true iff the timetable is not solved, and cannot be solved
+    public boolean failFast (ArrayList<NewCourse> courses){
+        return (this.extensions(courses).isEmpty() && !this.isSolved(courses));
     }
 
 }
