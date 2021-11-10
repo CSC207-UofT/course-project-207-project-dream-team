@@ -32,7 +32,7 @@ Timetable {
 
     // Check if the timeSpan is empty in timeTable
     public boolean isEmpty(String timeCode) {
-     return this.occupied.contains(timeCode);
+     return !this.occupied.contains(timeCode);
     }
 
 
