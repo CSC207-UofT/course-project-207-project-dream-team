@@ -1,9 +1,6 @@
 package filter;
-
 import timetable.Timetable;
-
 import java.util.ArrayList;
-
 
 public class TimeslotFilter extends Filter {
 

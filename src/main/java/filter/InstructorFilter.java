@@ -19,7 +19,6 @@ public class InstructorFilter extends Filter{
     public ArrayList<Timetable> sort() {
 
         for (Timetable singleTimetable : this.input) {                // loop every timetable
-
             // get the data of timetable in hashmap form.
             HashMap<String, Session> mapTimetable = singleTimetable.timeTable;
 
@@ -40,7 +39,6 @@ public class InstructorFilter extends Filter{
 
                 if (!this.unwanted.contains(mapTimetable.get(key).instructor)) {
                     checker += 1;
-
                 }
                 if (size == checker) {
                     this.output.add(singleTimetable);
