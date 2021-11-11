@@ -7,24 +7,26 @@ import java.util.ArrayList;
 
 public class TimeslotFilter extends Filter {
 
-    public TimeslotFilter(ArrayList<Timetable> input, ArrayList<Object> unwanted) {
+    public TimeslotFilter(ArrayList<Timetable> input, ArrayList<String> unwanted) {
         super(input, unwanted);
     }
 
     @Override
-    public ArrayList<Timetable> sort(){
+    public ArrayList<Timetable> sort() {
 
-        ArrayList<Timetable> output = new ArrayList<>();
+        for (Timetable singleTimetable : this.input) {
 
-        for (Timetable singleTimetable: this.input) {
-            for (Object timeslot: this.unwanted) {
-                String time = timeslot.toString();
-                if (!singleTimetable.occupied.contains(time)) {
-                    output.add(singleTimetable);
+            int size = 0;
+            for (String timeslot : this.unwanted) {
+                if (size == this.unwanted.size()) {
+                    this.output.add(singleTimetable);
+                }
+
+                if (!singleTimetable.occupied.contains(timeslot)) {
+                    size += 1;
                 }
             }
         }
-        return output;
+        return this.output;
     }
-    // to be implemented
 }

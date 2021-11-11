@@ -11,7 +11,7 @@ public abstract class Filter {
     public ArrayList<Timetable> output; // timetables that meets users' preferences
     public ArrayList<Object> unwanted; // a list of unwanted instructors, timeslot etc.
 
-    public Filter(ArrayList<Timetable> input, ArrayList<Object> unwanted) {
+    public Filter(ArrayList<Timetable> input, ArrayList<String> unwanted) {
 
         this.input = input;
         this.output = new ArrayList<Timetable>();

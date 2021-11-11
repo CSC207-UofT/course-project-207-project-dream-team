@@ -11,14 +11,12 @@ public class InstructorFilter extends Filter{
 
     // filter out the timetables with unwanted timetables
 
-    public InstructorFilter(ArrayList<Timetable> input, ArrayList<Object> unwanted) {
+    public InstructorFilter(ArrayList<Timetable> input, ArrayList<String> unwanted) {
         super(input, unwanted);
     }
 
     @Override
     public ArrayList<Timetable> sort() {
-
-        ArrayList<Timetable> output = new ArrayList<>();            // initialize the output
 
         for (Timetable singleTimetable : this.input) {                // loop every timetable
 
@@ -45,11 +43,11 @@ public class InstructorFilter extends Filter{
 
                 }
                 if (size == checker) {
-                    output.add(singleTimetable);
+                    this.output.add(singleTimetable);
                 }
             }
         }
-    return output;
+    return this.output;
     }
 }
 
