@@ -13,15 +13,15 @@ public class TimeslotFilter extends Filter {
 
         for (Timetable singleTimetable : this.input) {
 
-            int size = 0;
+            boolean tag = true;
             for (String timeslot : this.unwanted) {
-                if (size == this.unwanted.size()) {
-                    this.output.add(singleTimetable);
+                if (singleTimetable.occupied.contains(timeslot)) {
+                    tag = false;
+                    break;
                 }
-
-                if (!singleTimetable.occupied.contains(timeslot)) {
-                    size += 1;
-                }
+            }
+            if (tag) {
+                this.output.add(singleTimetable);
             }
         }
         return this.output;
