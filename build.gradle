@@ -1,15 +1,5 @@
 plugins {
     id 'java'
-    id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
-}
-
-sourceCompatibility = 11
-targetCompatibility = 11
-
-javafx {
-    version = "14.0.2"  //你要javafx的版本，我用jdk一样的版本
-    modules("javafx.controls", "javafx.fxml")
 }
 
 group 'org.example'
@@ -17,35 +7,19 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    google()
 }
 
-ext {
-    junitVersion = '5.7.1'
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
 
 dependencies {
     implementation 'junit:junit:4.13.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     implementation 'org.jsoup:jsoup:1.14.3'
-    implementation('org.controlsfx:controlsfx:11.1.0')
-    implementation('com.dlsc.formsfx:formsfx-core:11.3.2') {
-        exclude(group: 'org.openjfx')
-    }
-    implementation('org.kordamp.ikonli:ikonli-javafx:12.2.0')
-    implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
+    implementation 'com.itextpdf:itextpdf:5.5.13.2'
 
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:20.0.0'
-    implementation 'com.google.code.gson:gson:2.3.1'
-    implementation 'com.itextpdf:itextg:5.5.9'
+
+
 }
-
 
 test {
     testLogging {

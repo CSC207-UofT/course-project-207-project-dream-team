@@ -5,7 +5,6 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,8 +15,7 @@ public class WebParse{
                 "courseInquiry?methodToCall=start&viewId=CourseDetails-" +
                 "InquiryView&courseId=" + courseCode + "20219";
         Document html = Jsoup.connect(url).get();
-        Elements spans = html.select("span");
-        return spans;
+        return html.select("span");
     }
 
     public static Boolean tagMatch(String spanID){
@@ -28,7 +26,7 @@ public class WebParse{
     }
 
     public static ArrayList<String> tagsToList(Elements spans) {
-        ArrayList<String> infos = new ArrayList<String>();
+        ArrayList<String> infos = new ArrayList<>();
         for (Element span : spans) {
             if (tagMatch(span.id())) {
                 infos.add(span.text());
@@ -38,7 +36,7 @@ public class WebParse{
     }
 
     public static ArrayList<String[]> breakList(ArrayList<String> infos) {
-        ArrayList<String[]> infoSessions = new ArrayList<String[]>();
+        ArrayList<String[]> infoSessions = new ArrayList<>();
         for (int i=0; i<infos.size(); i = i+7) {
             String[] sublist = new String[7];
             for (int j = 0; j < 7; j++) {
@@ -53,9 +51,9 @@ public class WebParse{
         String[] list = time.split(" ");
         Integer[] timeslots = new Integer[list.length/2];
         for (int i=0; i<list.length; i=i+2){
-            String day = DayOfWeek.valueOf(list[i]).toString();
-            String start = list[i+1].substring(0,1);
-            String end = list[i+1].substring(6,7);
+            String day = String.valueOf(DayOfWeek.valueOf(list[i]).getValue());
+            String start = list[i+1].substring(0,2);
+            String end = list[i+1].substring(6,8);
             timeslots[i/2] = Integer.parseInt(day + start + end);
         }
         return timeslots;
@@ -64,11 +62,10 @@ public class WebParse{
     public static Session listToSession(String[] infoSession, String courseCode){
         String instructor = infoSession[2];
         int end = infoSession[0].length();
-        String sessionCode = (infoSession[0].substring(0,2)+
+        String sessionCode = (infoSession[0].substring(0,3)+
                 infoSession[0].substring(4,end)).toUpperCase();
         Integer[] timeslots = toTimeslots(infoSession[1]);
-        Session newSession = new Session(instructor, courseCode, sessionCode, timeslots);
-        return newSession;
+        return new Session(instructor, courseCode, sessionCode, timeslots);
     }
 
     public static NewCourse sessionsToCourse(ArrayList<Session> sessions, String courseCode){
@@ -76,28 +73,27 @@ public class WebParse{
         ArrayList<Session> lectures = new ArrayList<>();
         ArrayList<Session> labs = new ArrayList<>();
         for (Session session: sessions){
-            if (session.sessionCode.substring(0,2) == "TUT"){
+            if (session.sessionCode.substring(0,3).equals("TUT")){
                 tutorials.add(session);
-            }else if (session.sessionCode.substring(0,2) == "LEC"){
+            }else if (session.sessionCode.substring(0,3).equals("LEC")){
                 lectures.add(session);
             }else{
                 labs.add(session);
             }
         }
-        NewCourse course = new NewCourse(courseCode, tutorials, lectures, labs);
-        return course;
+        return new NewCourse(courseCode, tutorials, lectures, labs);
     }
 
     public static NewCourse courseParse(String courseCode) throws IOException {
         Elements spans = courseToTags(courseCode);
         NewCourse course;
-        if (spans.get(0).text() == "Error"){
+        if (spans.get(0).text().equals("Error")){
             ArrayList<Session> a = new ArrayList<>();
             course = new NewCourse("", a,a,a);
         }else {
             ArrayList<String> infos = tagsToList(spans);
             ArrayList<String[]> infoSessions = breakList(infos);
-            ArrayList<Session> sessions = new ArrayList<Session>();
+            ArrayList<Session> sessions = new ArrayList<>();
             for (String[] infoSession : infoSessions) {
                 sessions.add(listToSession(infoSession, courseCode));
             }
@@ -106,7 +102,8 @@ public class WebParse{
         return course;
     }
 
-    public static void main(String[] args) throws IOException{
-            System.out.println(courseParse("CSC108H1F"));
-        }
+    public static void main(String[] args) throws IOException {
+        System.out.println(courseParse("CSC108H1F").lectures);
+    }
+
 }
