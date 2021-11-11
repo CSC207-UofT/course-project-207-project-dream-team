@@ -29,14 +29,10 @@ Timetable {
         this.occupied = occupied;
     }
 
+
     // Check if the timeSpan is empty in timeTable
     public boolean isEmpty(String timeCode) {
-        for (String occupied_time : occupied) {       // check timeCode is already in the occupied list.
-            if (timeCode.equals(occupied_time)) {
-                return false;
-            }
-        }
-        return true;
+     return !this.occupied.contains(timeCode);
     }
 
 
