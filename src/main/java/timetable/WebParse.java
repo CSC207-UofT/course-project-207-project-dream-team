@@ -4,6 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import java.io.IOException;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class WebParse{
+public class WebParse {
     public static Elements courseToTags(String courseCode) throws IOException{
         String url = "https://coursefinder.utoronto.ca/course-search/search/" +
                 "courseInquiry?methodToCall=start&viewId=CourseDetails-" +
@@ -88,12 +89,12 @@ public class WebParse{
 
     public static NewCourse courseParse(String courseCode) throws IOException {
         Elements spans = courseToTags(courseCode);
+        ArrayList<String> infos = tagsToList(spans);
         NewCourse course;
-        if (spans.get(0).text().equals("Error")){
+        if ((infos.size() == 0) || (infos.get(6).equals("ASYNC"))){
             ArrayList<Session> a = new ArrayList<>();
             course = new NewCourse("", a,a,a);
         }else {
-            ArrayList<String> infos = tagsToList(spans);
             ArrayList<String[]> infoSessions = breakList(infos);
             ArrayList<Session> sessions = new ArrayList<>();
             for (String[] infoSession : infoSessions) {
@@ -105,7 +106,8 @@ public class WebParse{
     }
 
     public static void main(String[] args) throws IOException {
-        System.out.println(courseParse("CSC108H1F").lectures);
+        System.out.println(courseParse("PSY100H1F"));
+
     }
 
 }
