@@ -77,9 +77,9 @@ class SimpleScheduler {
 
         courses.add(new NewCourse("MAT224H1F", mat224tut, mat224lec, new ArrayList<>()));
 
-//        courses.add(WebParse.courseParse("CSC108H1F"));
-//        courses.add(WebParse.courseParse("PSY100H1F"));
-//        courses.add(WebParse.courseParse("MAT224H1F"));
+        courses.add(WebParse.courseParse("CSC108H1F"));
+        courses.add(WebParse.courseParse("PSY100H1F"));
+        courses.add(WebParse.courseParse("MAT224H1F"));
 
 
 
