@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 
-public class MaximumHourFilter extends Filter {
+public class MaximumHourFilter extends Filter{
 
     public MaximumHourFilter(ArrayList<Timetable> input, ArrayList<String> unwanted) {
         super(input, unwanted);
@@ -19,28 +19,54 @@ public class MaximumHourFilter extends Filter {
     @Override
     public ArrayList<Timetable> sort() {
 
-        // the maximum hour that should not be exceeded per day
+        // the output of after being filtered
+        ArrayList<Timetable> output = new ArrayList<>();
+
+        // the maximum hour that should not be exceeded per day   # As a constant
         int maxHour = Integer.getInteger(this.unwanted.get(0));
 
-        for (Timetable singleTimetable : this.input) {                // loop every timetable
+        // loop every timetable
+        for (Timetable singleTimetable : this.input) {
 
-            // get the data of timetable in hashmap form.
-            HashMap<String, Session> mapTimetable = singleTimetable.timeTable;
+            // Timetable is added iff weeklyCounter == 5
+            // All study hours of five days are not exceeds the Maximum limit
+            int weeklyCounter = 0;
 
-            // get the keys of mapTimetable
-            Set<String> keys = mapTimetable.keySet();
+            // # Get the information of the entire Timetable
+            // Get the data of timetable in hashmap form.
+            HashMap<String, Session> dataTimetable = singleTimetable.timeTable;
+            // Get the keys of dataTimetable
+            Set<String> keys = dataTimetable.keySet();
 
-//            for (int i=0; i < 5; i++) {
-//
-//                for (String key: keys) {
-//                    if (String key[0] == String.valueOf(i)) {
-//                        String diff = key.substring(3, 6) - key.substring(1,3);
-//                    }
-//                }
-//            }
+            // i refers to the day: {1: Monday 2: Tuesday ...}
+            for (int i=1; i < 5; i++) {
 
+                // counter of the hours study everyday
+                int dailyHour = 0;
 
+                // Checker: filter sort the time of the same day::
+                // "11517" -> all times on Monday
+                for (String key: keys) {
+
+                    // if statement here has the following functionality:
+                    // the first char of key == the Day (Monday)
+                    if (key.substring(0,1).equals(String.valueOf(i))){
+
+                        int diff = Integer.getInteger(key.substring(3, 6)) -
+                                Integer.getInteger(key.substring(1, 3));
+                        dailyHour += diff;
+                    }
+                }
+                if (dailyHour <= maxHour) {
+                    weeklyCounter ++;}
+            }
+            // Check if all five day of the week satisfies.
+            if (weeklyCounter == 5) {
+                output.add(singleTimetable);
+            }
         }
-        return this.output;
+        return output;
     }
+
 }
+

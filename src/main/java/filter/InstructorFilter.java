@@ -18,6 +18,7 @@ public class InstructorFilter extends Filter{
     @Override
     public ArrayList<Timetable> sort() {
 
+
         for (Timetable singleTimetable : this.input) {                // loop every timetable
             // get the data of timetable in hashmap form.
             HashMap<String, Session> mapTimetable = singleTimetable.timeTable;
