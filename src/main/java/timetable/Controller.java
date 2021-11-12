@@ -8,7 +8,7 @@ public class Controller {
     public static void main(String[] args) throws IOException {
 
         // Step 1: Ask for user's information about courses
-        ArrayList<NewCourse> inputs = InputInfo.askCourses();
+        ArrayList<NewCourse> inputs = ConvertToUI.askCourses();
 
         // Step 2: Schedule the courses entered
         // return an ArrayList of timeTables with arranged courses
