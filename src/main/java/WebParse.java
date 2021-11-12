@@ -105,6 +105,7 @@ public class WebParse {
 
     public static void main(String[] args) throws IOException {
         System.out.println(courseParse("PSY100H1F"));
+
     }
 
 }
