@@ -1,3 +1,5 @@
+package timetable;
+
 import java.util.*;
 
 public class

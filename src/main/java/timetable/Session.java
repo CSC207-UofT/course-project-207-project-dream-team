@@ -1,3 +1,5 @@
+package timetable;
+
 public class Session {
     public String instructor;
     public String courseCode;

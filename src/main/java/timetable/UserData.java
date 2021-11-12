@@ -1,3 +1,5 @@
+package timetable;
+
 import java.io.*;
 import java.lang.reflect.AnnotatedArrayType;
 import java.nio.file.Files;

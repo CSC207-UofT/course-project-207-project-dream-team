@@ -1,3 +1,5 @@
+package timetable;
+
 import java.util.*;
 
 // Citation: Code structure obtained from
