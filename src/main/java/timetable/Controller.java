@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    public static void main(String[] args) throws IOException {
+    /*public static void main(String[] args) throws IOException {
 
         // Step 1: Ask for user's information about courses
         ArrayList<NewCourse> inputs = ConvertToUI.askCourses();
@@ -27,5 +27,5 @@ public class Controller {
             newPresenter.Present(toPrint);
 
         }
-    }
+    }*/
 }
