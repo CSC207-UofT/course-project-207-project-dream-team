@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.TreeMap;
 
 
 public class InstructorFilter {
@@ -18,7 +19,7 @@ public class InstructorFilter {
         for (Timetable singleTimetable : inputTimetables) {                // loop every timetable
 
             // get the data of timetable in hashmap form.
-            HashMap<String, Session> mapTimetable = singleTimetable.timeTable;
+            TreeMap<String, Session> mapTimetable = singleTimetable.timeTable;
 
             // get the keys of mapTimetable
             Set<String> keys = mapTimetable.keySet();
