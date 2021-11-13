@@ -1,4 +1,8 @@
 import org.junit.Test;
+import timetable.NewCourse;
+import timetable.Session;
+import timetable.SimpleScheduler;
+import timetable.Timetable;
 
 import java.util.*;
 

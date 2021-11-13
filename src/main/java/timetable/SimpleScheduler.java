@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.Time;
 import java.util.*;
 
-class SimpleScheduler {
+public class SimpleScheduler {
 
     public ArrayList<NewCourse> coursesToSchedule;
 
