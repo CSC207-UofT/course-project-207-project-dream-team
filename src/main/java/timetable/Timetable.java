@@ -5,7 +5,7 @@ import java.util.*;
 public class
 Timetable {
 
-    public HashMap<String, Session> timeTable;
+    public TreeMap<String, Session> timeTable;
     public ArrayList<String> occupied;       // quick checker for time occupied in timeslot.
 
     /* Notice that the hashmap is mapping from specific time to course.
@@ -13,20 +13,20 @@ Timetable {
      */
 
     // Constructor
-    public Timetable() {
-        this.timeTable = new HashMap<>();
-        for (int i = 1; i <= 5; i++) {
-            for (int k = 9; k <= 21; k++) {
-                int num_key = i * 10000 + k * 100 + k + 1;
-                String key = String.valueOf(num_key);
-                this.timeTable.put(key, null);
-            }
-        }
-        this.occupied = new ArrayList<>();
-    }
+//    public Timetable() {
+//        this.timeTable = new HashMap<>();
+//        for (int i = 1; i <= 5; i++) {
+//            for (int k = 9; k <= 21; k++) {
+//                int num_key = i * 10000 + k * 100 + k + 1;
+//                String key = String.valueOf(num_key);
+//                this.timeTable.put(key, null);
+//            }
+//        }
+//        this.occupied = new ArrayList<>();
+//    }
 
     // Overloaded Constructor
-    public Timetable(HashMap<String, Session> timeTable, ArrayList<String> occupied){
+    public Timetable(TreeMap<String, Session> timeTable, ArrayList<String> occupied){
         this.timeTable = timeTable;
         this.occupied = occupied;
     }
@@ -35,6 +35,18 @@ Timetable {
     // Check if the timeSpan is empty in timeTable
     public boolean isEmpty(String timeCode) {
      return !this.occupied.contains(timeCode);
+    }
+
+
+    // toString method for testing purposes
+    // Return a string comprised of every session in this timetable, sorted by time in ascending order.
+    @Override
+    public String toString(){
+        StringBuilder result = new StringBuilder("");
+        for (Session s : this.timeTable.values()){
+            result.append(s.courseCode).append(s.sessionCode).append(Arrays.toString(s.timeslots)).append(s.instructor);
+        }
+        return result.toString();
     }
 
 
@@ -68,14 +80,15 @@ Timetable {
 
     // Return true iff sessionToAdd has no time conflict with the Timetable, and is reasonable to be added
     // (i.e. we don't want a LEC0101 and a LEC0201 for CSC207 in the same timetable).
-    private boolean hasNoConflict(Session sessionToAdd, Map<String, Set<String>> TimetableMapping){
+    private boolean hasNoConflict(Session sessionToAdd){
+        Map<String, Set<String>> mapping = this.courseToSession();
         for (int time:sessionToAdd.timeslots){
             if (this.occupied.contains(Integer.toString(time))){
                 return false;
             }
         }
-        if (TimetableMapping.containsKey(sessionToAdd.courseCode)){
-            return !TimetableMapping.get(sessionToAdd.courseCode).contains(sessionToAdd.sessionCode.substring(0,3));
+        if (mapping.containsKey(sessionToAdd.courseCode)){
+            return !mapping.get(sessionToAdd.courseCode).contains(sessionToAdd.sessionCode.substring(0,3));
         }
         return true;
     }
@@ -83,7 +96,7 @@ Timetable {
     // Precondition: sessionToAdd has no conflict with this timetable.
     // Return a new timetable with this session added.
     private Timetable addSession(Session sessionToAdd){
-        HashMap<String, Session> newMapping = new HashMap<>(this.timeTable);
+        TreeMap<String, Session> newMapping = new TreeMap<>(this.timeTable);
         ArrayList<String> newOccupied = new ArrayList<>(this.occupied);
 
         for (int time : sessionToAdd.timeslots){
@@ -99,7 +112,6 @@ Timetable {
 
     // Return all possible timetables with one more potential session (that has no conflict) added.
     public ArrayList<Timetable> extensions (ArrayList<NewCourse> courses){
-        Map<String, Set<String>> mapping = this.courseToSession();
         ArrayList<Timetable> result = new ArrayList<>();
 
         Set<Session> courseSessions = new HashSet<>();
@@ -109,8 +121,9 @@ Timetable {
             courseSessions.addAll(course.tutorials);
         }
 
+        // Got Problems Here!!!
         for (Session s : courseSessions){
-            if (this.hasNoConflict(s, mapping)){
+            if (this.hasNoConflict(s)){
                 result.add(this.addSession(s));
             }
         }
@@ -140,9 +153,8 @@ Timetable {
     }
 
 
-    // Return true iff the timetable is not solved, and cannot be solved
-    public boolean failFast (ArrayList<NewCourse> courses){
-        return (this.extensions(courses).isEmpty() && !this.isSolved(courses));
-    }
-
+//    // Return true iff the timetable is not solved, and cannot be solved
+//    public boolean failFast (ArrayList<NewCourse> courses){
+//        return (this.extensions(courses).isEmpty() && !this.isSolved(courses));
+//    }
 }

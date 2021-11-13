@@ -25,11 +25,11 @@ public class NewCourse {
             result.add("LAB");
         }
 
-        else if (!(this.lectures.isEmpty())){
+        if (!(this.lectures.isEmpty())){
             result.add("LEC");
         }
 
-        else if (!(this.tutorials.isEmpty())){
+        if (!(this.tutorials.isEmpty())){
             result.add("TUT");
         }
         return result;

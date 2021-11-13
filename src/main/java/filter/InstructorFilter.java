@@ -1,27 +1,25 @@
-package filter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
-import timetable.Timetable;
-import timetable.Session;
+import java.util.TreeMap;
 
 
-public class InstructorFilter extends Filter{
+public class InstructorFilter {
 
     // filter out the timetables with unwanted timetables
 
-    public InstructorFilter(ArrayList<Timetable> input, ArrayList<String> unwanted) {
-        super(input, unwanted);
+    public InstructorFilter() {
+        super();
     }
 
-    @Override
-    public ArrayList<Timetable> sort() {
+    public ArrayList<Timetable> sort(ArrayList<Timetable> inputTimetables, ArrayList<String> unwantedProfs) {
 
+        ArrayList<Timetable> output = new ArrayList<>();            // initialize the output
 
-        for (Timetable singleTimetable : this.input) {                // loop every timetable
+        for (Timetable singleTimetable : inputTimetables) {                // loop every timetable
+
             // get the data of timetable in hashmap form.
-            HashMap<String, Session> mapTimetable = singleTimetable.timeTable;
+            TreeMap<String, Session> mapTimetable = singleTimetable.timeTable;
 
             // get the keys of mapTimetable
             Set<String> keys = mapTimetable.keySet();
@@ -38,15 +36,16 @@ public class InstructorFilter extends Filter{
 
             for (String key : keys) {
 
-                if (!this.unwanted.contains(mapTimetable.get(key).instructor)) {
+                if (!unwantedProfs.contains(mapTimetable.get(key).instructor)) {
                     checker += 1;
+
                 }
                 if (size == checker) {
-                    this.output.add(singleTimetable);
+                    output.add(singleTimetable);
                 }
             }
         }
-    return this.output;
+    return output;
     }
 }
 
