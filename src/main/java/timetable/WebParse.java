@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class WebParse {
     public static Elements courseToTags(String courseCode) throws IOException {
         String url_fy = "https://coursefinder.utoronto.ca/course-search/search/" +
@@ -117,15 +118,18 @@ public class WebParse {
 
     public static Integer[] toTimeslots(String time) {
         String[] list = time.split(" ");
-        Integer[] timeslots = new Integer[list.length / 2];
+        ArrayList<Integer> timeslots = new ArrayList<>();
         for (int i = 0; i < list.length; i = i + 2) {
-            String day = String.valueOf(DayOfWeek.valueOf(list[i]).getValue());
-            String start = list[i + 1].substring(0, 2);
-            String end = list[i + 1].substring(6, 8);
-            timeslots[i / 2] = Integer.parseInt(day + start + end);
+            int day = DayOfWeek.valueOf(list[i]).getValue();
+            int start = Integer.parseInt(list[i + 1].substring(0, 2));
+            int end = Integer.parseInt(list[i + 1].substring(6, 8));
+            for (int j=0; j<end-start; j++){
+                timeslots.add(day * 10000 + (start+j)*100 + (start+1+j));
+            }
         }
-        return timeslots;
+        return timeslots.toArray(new Integer[0]);
     }
+
 
     public static Session listToSession(String[] infoSession, String courseCode) {
         String instructor = infoSession[2];
@@ -192,7 +196,9 @@ public class WebParse {
         NewCourse sta257 = courseParse("STA257H1F");
         NewCourse bio130 = courseParse("BIO130H1S");
         NewCourse mat137 = courseParse("MAT137Y1Y");
-        print(sta257);
+        for (Integer time:sta257.lectures.get(1).timeslots){
+            System.out.println(time);
+        }
         //print(bio130);
         //print(mat137);
     }
