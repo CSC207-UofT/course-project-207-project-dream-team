@@ -5,6 +5,8 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import timetable.Session;
+
 
 import java.io.FileOutputStream;
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ import java.util.HashMap;
 
 public class MakePDF {
 
-    public static void makePDF(HashMap<String, Session> timetable){
+    public static void MakePDF(HashMap<String, Session> timetable){
         Document document = new Document();
 
         try {
@@ -133,7 +135,7 @@ public class MakePDF {
         sampleTimetable.put("41314", COG250);
         sampleTimetable.put("41416", COG250);
         sampleTimetable.put("31416", COG250);
-        makePDF(sampleTimetable);
+        MakePDF(sampleTimetable);
 
     }
 }

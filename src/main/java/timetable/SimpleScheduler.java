@@ -1,3 +1,5 @@
+package timetable;
+
 import java.io.IOException;
 import java.sql.Time;
 import java.util.*;

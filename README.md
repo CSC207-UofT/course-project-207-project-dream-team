@@ -35,7 +35,6 @@ List of information to enter:
 * Day of week
 * Start time
 * End time
-* Location
 
 
 ## Example entering prompts
@@ -45,3 +44,7 @@ List of information to enter:
 * Day of week: $ 4
 * Start time: $ 18
 * End time: $ 20
+
+## Filter Package
+The package includes filter that meet different users' preferences.
+
