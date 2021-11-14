@@ -10,12 +10,12 @@ import timetable.Session;
 
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 
 public class MakePDF {
 
-    public static void MakePDF(HashMap<String, Session> timetable){
+    public static void makePDF(TreeMap<String, Session> timetable){
         Document document = new Document();
 
         try {
@@ -26,7 +26,6 @@ public class MakePDF {
 
             Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
 
-            int[] hi = {1, 2, 2, 2, 2, 2};
             PdfPTable table = new PdfPTable(new float[] {1, 2, 2, 2, 2, 2}); // 6 columns.
 
             // set how much of the page the whole table takes horizontally
@@ -57,7 +56,7 @@ public class MakePDF {
 
             for (int yCoords = 9; yCoords < 21; yCoords ++){
                 // Every row has a time mark
-                String timeslot = String.valueOf(yCoords) + ":00\n\n" + String.valueOf(yCoords + 1) + ":00";
+                String timeslot = yCoords + ":00\n\n" + (yCoords + 1) + ":00";
                 PdfPCell timeslotCell = new PdfPCell();
                 timeslotCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 timeslotCell.setHorizontalAlignment(Element.ALIGN_MIDDLE);
@@ -130,12 +129,12 @@ public class MakePDF {
         Integer[] sessionTime = {41820};
         Session CSC207 = new Session("Paul", "CSC207H1F", "LEC0401", sessionTime);
         Session COG250 = new Session("John", "COG250H1Y", "LEC0101", sessionTime);
-        HashMap<String, Session> sampleTimetable = new HashMap<>();
+        TreeMap<String, Session> sampleTimetable = new TreeMap<>();
         sampleTimetable.put("40912", CSC207);
         sampleTimetable.put("41314", COG250);
         sampleTimetable.put("41416", COG250);
         sampleTimetable.put("31416", COG250);
-        MakePDF(sampleTimetable);
+        makePDF(sampleTimetable);
 
     }
 }

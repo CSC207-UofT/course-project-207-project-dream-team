@@ -1,3 +1,4 @@
+/*
 package filter;
 
 import timetable.Timetable;
@@ -71,3 +72,4 @@ public class MaximumHourFilter extends Filter{
     }
 }
 
+*/
