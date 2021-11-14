@@ -1,9 +1,7 @@
-package ApplicationBusinessRule;
-
-import EnterpriseBusinessRules.NewCourse;
-import FrameworksDrivers.WebParse;
+package timetable;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.util.*;
 
 public class SimpleScheduler {
@@ -23,11 +21,6 @@ public class SimpleScheduler {
         if (seen.contains(tb.toString())){
             return new ArrayList<>();
         }
-
-//        // If we see a state that has no possible extensions and is not solved, return no solution.
-//        if (tb.failFast(this.coursesToSchedule)){
-//            return new ArrayList<>();
-//        }
 
         if (tb.isSolved(this.coursesToSchedule)){
             solutions.add(tb);
@@ -78,23 +71,24 @@ public class SimpleScheduler {
 //
 //        courses.add(new NewCourse("MAT224H1F", mat224tut, mat224lec, new ArrayList<>()));
 
-//        courses.add(WebParse.courseParse("CSC108H1F"));
+        courses.add(WebParse.courseParse("CSC108H1F"));
         courses.add(WebParse.courseParse("CSC258H1F"));
         courses.add(WebParse.courseParse("CSC336H1F"));
         courses.add(WebParse.courseParse("CSC236H1F"));
         courses.add(WebParse.courseParse("STA257H1F"));
-
+//
+//
+//
+//
+//
         SimpleScheduler ss = new SimpleScheduler(courses);
-        Timetable tb = new Timetable();
+        Timetable tb = new Timetable(new TreeMap<>(), new ArrayList<>());
         Set<String> seen = new HashSet<>();
         ArrayList<Timetable> solutions = ss.arrange(tb, seen);
         for (Timetable t : solutions){
             System.out.println(t.toString());
         }
     }
-
-
-
 
 
 }
