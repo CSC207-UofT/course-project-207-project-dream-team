@@ -11,19 +11,19 @@ public class TimeslotFilter extends Filter {
     @Override
     public ArrayList<Timetable> sort() {
 
-        for (Timetable singleTimetable : this.input) {
+        for (Timetable singleTimetable : this.getInput()) {
 
             boolean tag = true;
-            for (String timeslot : this.unwanted) {
+            for (String timeslot : this.getUnwanted()) {
                 if (singleTimetable.getOccupied().contains(timeslot)) {
                     tag = false;
                     break;
                 }
             }
             if (tag) {
-                this.output.add(singleTimetable);
+                this.getOutput().add(singleTimetable);
             }
         }
-        return this.output;
+        return this.getOutput();
     }
 }
