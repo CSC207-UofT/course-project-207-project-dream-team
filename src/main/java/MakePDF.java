@@ -10,12 +10,12 @@ import timetable.Session;
 
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 
 public class MakePDF {
 
-    public static void MakePDF(HashMap<String, Session> timetable){
+    public static void MakePDF(TreeMap<String, Session> timetable){
         Document document = new Document();
 
         try {
@@ -130,7 +130,7 @@ public class MakePDF {
         Integer[] sessionTime = {41820};
         Session CSC207 = new Session("Paul", "CSC207H1F", "LEC0401", sessionTime);
         Session COG250 = new Session("John", "COG250H1Y", "LEC0101", sessionTime);
-        HashMap<String, Session> sampleTimetable = new HashMap<>();
+        TreeMap<String, Session> sampleTimetable = new TreeMap<>();
         sampleTimetable.put("40912", CSC207);
         sampleTimetable.put("41314", COG250);
         sampleTimetable.put("41416", COG250);
