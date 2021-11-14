@@ -15,7 +15,7 @@ import java.util.TreeMap;
 
 public class MakePDF {
 
-    public static void MakePDF(TreeMap<String, Session> timetable){
+    public static void makePDF(TreeMap<String, Session> timetable){
         Document document = new Document();
 
         try {
@@ -26,7 +26,6 @@ public class MakePDF {
 
             Font font = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
 
-            int[] hi = {1, 2, 2, 2, 2, 2};
             PdfPTable table = new PdfPTable(new float[] {1, 2, 2, 2, 2, 2}); // 6 columns.
 
             // set how much of the page the whole table takes horizontally
@@ -57,7 +56,7 @@ public class MakePDF {
 
             for (int yCoords = 9; yCoords < 21; yCoords ++){
                 // Every row has a time mark
-                String timeslot = String.valueOf(yCoords) + ":00\n\n" + String.valueOf(yCoords + 1) + ":00";
+                String timeslot = yCoords + ":00\n\n" + (yCoords + 1) + ":00";
                 PdfPCell timeslotCell = new PdfPCell();
                 timeslotCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                 timeslotCell.setHorizontalAlignment(Element.ALIGN_MIDDLE);
@@ -135,7 +134,7 @@ public class MakePDF {
         sampleTimetable.put("41314", COG250);
         sampleTimetable.put("41416", COG250);
         sampleTimetable.put("31416", COG250);
-        MakePDF(sampleTimetable);
+        makePDF(sampleTimetable);
 
     }
 }
