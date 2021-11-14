@@ -37,8 +37,16 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     implementation 'org.jsoup:jsoup:1.14.3'
     implementation 'com.itextpdf:itextpdf:5.5.13.2'
+    implementation 'com.pspdfkit:libraries-java:1.4.1'
+    implementation 'com.pspdfkit:libraries-java-ocr:1.4.1'
 }
-
+allprojects {
+    repositories {
+        maven {
+            url 'https://customers.pspdfkit.com/maven/'
+        }
+    }
+}
 test {
     useJUnitPlatform()
 }

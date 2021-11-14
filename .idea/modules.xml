@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gui/gui.iml" filepath="$PROJECT_DIR$/gui/gui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gui.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gui.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gui.test.iml" filepath="$PROJECT_DIR$/.idea/modules/gui.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/javafx.main.iml" filepath="$PROJECT_DIR$/.idea/modules/javafx.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/javafx.test.iml" filepath="$PROJECT_DIR$/.idea/modules/javafx.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/modules.iml" filepath="$PROJECT_DIR$/.idea/modules/modules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gui/modules.gui.iml" filepath="$PROJECT_DIR$/.idea/modules/gui/modules.gui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gui/modules.gui.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gui/modules.gui.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gui/modules.gui.test.iml" filepath="$PROJECT_DIR$/.idea/modules/gui/modules.gui.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/main/modules.main.iml" filepath="$PROJECT_DIR$/.idea/modules/main/modules.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test/modules.test.iml" filepath="$PROJECT_DIR$/.idea/modules/test/modules.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.example.modules.main.iml" filepath="$PROJECT_DIR$/.idea/modules/org.example.modules.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.example.modules.test.iml" filepath="$PROJECT_DIR$/.idea/modules/org.example.modules.test.iml" />
+    </modules>
+  </component>
+</project>
