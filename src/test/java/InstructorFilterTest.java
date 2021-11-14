@@ -41,7 +41,7 @@ public class InstructorFilterTest {
 
         InstructorFilter is = new InstructorFilter(timetables, unwanted);
 
-        ArrayList<Timetable> tt = is.sort(timetables, unwanted);
+        ArrayList<Timetable> tt = is.sort();
 
         assertEquals(0, tt.size());
     }
