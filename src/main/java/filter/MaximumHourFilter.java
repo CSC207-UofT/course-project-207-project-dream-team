@@ -1,8 +1,8 @@
-/*
 package filter;
 
 import timetable.Timetable;
 import timetable.Session;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeMap;
@@ -21,14 +21,11 @@ public class MaximumHourFilter extends Filter{
     @Override
     public ArrayList<Timetable> sort() {
 
-        // the output of after being filtered
-        ArrayList<Timetable> output = new ArrayList<>();
-
         // the maximum hour that should not be exceeded per day   # As a constant
-        int maxHour = Integer.getInteger(this.unwanted.get(0));
+        int maxHour = Integer.parseInt(this.getUnwanted().get(0));
 
         // loop every timetable
-        for (Timetable singleTimetable : this.input) {
+        for (Timetable singleTimetable : this.getInput()) {
 
             // Timetable is added iff weeklyCounter == 5
             // All study hours of five days are not exceeds the Maximum limit
@@ -36,7 +33,7 @@ public class MaximumHourFilter extends Filter{
 
             // # Get the information of the entire Timetable
             // Get the data of timetable in hashmap form.
-            TreeMap<String, Session> dataTimetable = singleTimetable.timeTable;
+            TreeMap<String, Session> dataTimetable = singleTimetable.getTimeTable();
             // Get the keys of dataTimetable
             Set<String> keys = dataTimetable.keySet();
 
@@ -54,10 +51,10 @@ public class MaximumHourFilter extends Filter{
                     // the first char of key == the Day (Monday)
                     if (key.substring(0,1).equals(String.valueOf(i))){
 
-                        int diff = Integer.getInteger(key.substring(3, 6)) -
-                                Integer.getInteger(key.substring(1, 3));
+                        int diff = Integer.parseInt(key.substring(3, 5)) -
+                                Integer.parseInt(key.substring(1, 3));
 
-                        dailyHour += diff;
+                        dailyHour = dailyHour + diff;
                     }
                 }
                 if (dailyHour <= maxHour) {
@@ -65,11 +62,9 @@ public class MaximumHourFilter extends Filter{
             }
             // Check if all five day of the week satisfies.
             if (weeklyCounter == 5) {
-                output.add(singleTimetable);
+                this.getOutput().add(singleTimetable);
             }
         }
-        return output;
+        return this.getOutput();
     }
 }
-
-*/
