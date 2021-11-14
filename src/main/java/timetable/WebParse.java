@@ -176,16 +176,16 @@ public class WebParse {
     }
 
     public static void print(NewCourse course){
-        System.out.println(course.courseCode);
-        for (Session session : course.lectures) {
+        System.out.println(course.getCourseCode());
+        for (Session session : course.getLectures()) {
             System.out.println(session.sessionCode);
         }
         System.out.println("------------");
-        for (Session session : course.tutorials) {
+        for (Session session : course.getTutorials()) {
             System.out.println(session.sessionCode);
         }
         System.out.println("------------");
-        for (Session session : course.labs) {
+        for (Session session : course.getLabs()) {
             System.out.println(session.sessionCode);
         }
         System.out.println("=================");
@@ -196,7 +196,7 @@ public class WebParse {
         NewCourse sta257 = courseParse("STA257H1F");
         NewCourse bio130 = courseParse("BIO130H1S");
         NewCourse mat137 = courseParse("MAT137Y1Y");
-        for (Integer time:sta257.lectures.get(1).timeslots){
+        for (Integer time:sta257.getLectures().get(1).timeslots){
             System.out.println(time);
         }
         //print(bio130);
