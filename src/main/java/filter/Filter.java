@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public abstract class Filter {
 
-    public ArrayList<Timetable> input;
-    public ArrayList<Timetable> output;     // timetables that meets users' preferences
-    public ArrayList<String> unwanted;      // a list of unwanted instructors, timeslot etc.
+    private final ArrayList<Timetable> input;
+    private ArrayList<Timetable> output;     // timetables that meets users' preferences
+    private final ArrayList<String> unwanted;      // a list of unwanted instructors, timeslot etc.
 
     public Filter(ArrayList<Timetable> input, ArrayList<String> unwanted) {
 
@@ -16,5 +16,17 @@ public abstract class Filter {
     }
 
     public abstract ArrayList<Timetable> sort();
+
+    public ArrayList<Timetable> getInput() {
+        return this.input;
+    }
+
+    public ArrayList<Timetable> getOutput() {
+        return this.output;
+    }
+
+    public ArrayList<String> getUnwanted() {
+        return this.unwanted;
+    }
 
 }
