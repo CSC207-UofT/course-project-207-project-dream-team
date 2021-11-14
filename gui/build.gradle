@@ -36,6 +36,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     implementation 'org.jsoup:jsoup:1.14.3'
+    implementation 'com.itextpdf:itextpdf:5.5.13.2'
 }
 
 test {
