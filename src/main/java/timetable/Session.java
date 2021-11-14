@@ -5,6 +5,7 @@ public class Session {
     public String courseCode;
     public String sessionCode;
     public Integer[] timeslots;
+    public String type;
 
     public Session(String instructor,
                    String courseCode,
@@ -14,5 +15,6 @@ public class Session {
         this.courseCode = courseCode;     //e.g. CSC207H1F
         this.sessionCode = sessionCode;   //e.g. LEC0101
         this.timeslots = timeslots;       //e.g. [21415, 41315]
+        this.type = sessionCode.substring(0,3);
     }
 }
