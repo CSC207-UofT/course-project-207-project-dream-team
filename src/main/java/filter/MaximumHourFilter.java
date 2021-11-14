@@ -1,9 +1,10 @@
 package filter;
+
 import timetable.Timetable;
 import timetable.Session;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Set;
+import java.util.TreeMap;
 
 
 public class MaximumHourFilter extends Filter{
@@ -34,12 +35,12 @@ public class MaximumHourFilter extends Filter{
 
             // # Get the information of the entire Timetable
             // Get the data of timetable in hashmap form.
-            HashMap<String, Session> dataTimetable = singleTimetable.timeTable;
+            TreeMap<String, Session> dataTimetable = singleTimetable.timeTable;
             // Get the keys of dataTimetable
             Set<String> keys = dataTimetable.keySet();
 
             // i refers to the day: {1: Monday 2: Tuesday ...}
-            for (int i=1; i < 5; i++) {
+            for (int i=1; i < 6; i++) {
 
                 // counter of the hours study everyday
                 int dailyHour = 0;
@@ -54,6 +55,7 @@ public class MaximumHourFilter extends Filter{
 
                         int diff = Integer.getInteger(key.substring(3, 6)) -
                                 Integer.getInteger(key.substring(1, 3));
+
                         dailyHour += diff;
                     }
                 }
@@ -67,6 +69,5 @@ public class MaximumHourFilter extends Filter{
         }
         return output;
     }
-
 }
 

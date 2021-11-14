@@ -1,5 +1,8 @@
+package filter;
+
+import timetable.Session;
+import timetable.Timetable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeMap;
 
@@ -18,35 +21,29 @@ public class InstructorFilter {
 
         for (Timetable singleTimetable : inputTimetables) {                // loop every timetable
 
-            // get the data of timetable in hashmap form.
+            // Get the data of timetable in TreeMap Form.
             TreeMap<String, Session> mapTimetable = singleTimetable.timeTable;
 
-            // get the keys of mapTimetable
+            // Due to property of TreeMap, all values in TreeMap are NON-NULL
             Set<String> keys = mapTimetable.keySet();
 
-            // get the size of sessions
-            int size = 0;
-            for (String key : keys) {
-                if (mapTimetable.get(key) != null) {
-                    size++;
-                }
-            }
-
-            int checker = 0;           // used to check
+            // A checker
+            int checker = 0;
 
             for (String key : keys) {
 
                 if (!unwantedProfs.contains(mapTimetable.get(key).instructor)) {
                     checker += 1;
+                }
 
-                }
-                if (size == checker) {
-                    output.add(singleTimetable);
-                }
+            }
+            if (checker == keys.size()) {
+                output.add(singleTimetable);
             }
         }
-    return output;
+        return output;
     }
 }
+
 
 
