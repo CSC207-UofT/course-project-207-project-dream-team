@@ -38,11 +38,10 @@ Timetable {
     }
 
 
-    // toString method for testing purposes
     // Return a string comprised of every session in this timetable, sorted by time in ascending order.
     @Override
     public String toString(){
-        StringBuilder result = new StringBuilder("");
+        StringBuilder result = new StringBuilder();
         for (Session s : this.timeTable.values()){
             result.append(s.courseCode).append(s.sessionCode).append(Arrays.toString(s.timeslots)).append(s.instructor);
         }
