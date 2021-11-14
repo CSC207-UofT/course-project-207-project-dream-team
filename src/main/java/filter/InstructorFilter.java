@@ -22,7 +22,7 @@ public class InstructorFilter {
         for (Timetable singleTimetable : inputTimetables) {                // loop every timetable
 
             // Get the data of timetable in TreeMap Form.
-            TreeMap<String, Session> mapTimetable = singleTimetable.timeTable;
+            TreeMap<String, Session> mapTimetable = singleTimetable.getTimeTable();
 
             // Due to property of TreeMap, all values in TreeMap are NON-NULL
             Set<String> keys = mapTimetable.keySet();
