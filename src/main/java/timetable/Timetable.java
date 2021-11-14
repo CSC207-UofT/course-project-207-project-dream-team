@@ -108,9 +108,9 @@ Timetable {
 
         Set<Session> courseSessions = new HashSet<>();
         for (NewCourse course : courses){
-            courseSessions.addAll(course.lectures);
-            courseSessions.addAll(course.labs);
-            courseSessions.addAll(course.tutorials);
+            courseSessions.addAll(course.getLectures());
+            courseSessions.addAll(course.getLabs());
+            courseSessions.addAll(course.getTutorials());
         }
 
         // Got Problems Here!!!
@@ -129,11 +129,11 @@ Timetable {
         Map<String, Set<String>> mapping = this.courseToSession();
 
         for (NewCourse course : courses){
-            if (!(mapping.containsKey(course.courseCode))){
+            if (!(mapping.containsKey(course.getCourseCode()))){
                 return false;
             }
             else {
-                Set<String> currentSessions = mapping.get(course.courseCode);
+                Set<String> currentSessions = mapping.get(course.getCourseCode());
                 Set<String> allNeededSessions = course.allRequiredSessions();
                 allNeededSessions.removeAll(currentSessions);
                 if (!(allNeededSessions.isEmpty())){

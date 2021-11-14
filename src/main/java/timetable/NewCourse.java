@@ -5,10 +5,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class NewCourse {
-    public String courseCode;  // CSC207H1F
-    public ArrayList<Session> tutorials;
-    public ArrayList<Session> lectures;
-    public ArrayList<Session> labs;
+    private final String courseCode;  // CSC207H1F
+    private final ArrayList<Session> tutorials;
+    private final ArrayList<Session> lectures;
+    private final ArrayList<Session> labs;
 
     public NewCourse(String courseCode,
                      ArrayList<Session> tutorials,
@@ -33,5 +33,21 @@ public class NewCourse {
             result.add("TUT");
         }
         return result;
+    }
+
+    public String getCourseCode() {
+        return this.courseCode;
+    }
+
+    public ArrayList<Session> getTutorials() {
+        return this.tutorials;
+    }
+
+    public ArrayList<Session> getLectures() {
+        return this.lectures;
+    }
+
+    public ArrayList<Session> getLabs() {
+        return this.labs;
     }
 }
