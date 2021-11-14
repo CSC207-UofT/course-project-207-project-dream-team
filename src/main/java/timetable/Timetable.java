@@ -12,18 +12,10 @@ Timetable {
      * A key-value pair might be <"31718", CSC207>, meaning CSC207 takes on Wednesday from 17 to 18
      */
 
-    // Constructor
-//    public Timetable() {
-//        this.timeTable = new HashMap<>();
-//        for (int i = 1; i <= 5; i++) {
-//            for (int k = 9; k <= 21; k++) {
-//                int num_key = i * 10000 + k * 100 + k + 1;
-//                String key = String.valueOf(num_key);
-//                this.timeTable.put(key, null);
-//            }
-//        }
-//        this.occupied = new ArrayList<>();
-//    }
+    public Timetable() {
+        this.timeTable = new TreeMap<>();
+        this.occupied = new ArrayList<>();
+    }
 
     // Overloaded Constructor
     public Timetable(TreeMap<String, Session> timeTable, ArrayList<String> occupied){
