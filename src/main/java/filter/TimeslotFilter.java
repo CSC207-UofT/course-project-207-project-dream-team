@@ -15,7 +15,7 @@ public class TimeslotFilter extends Filter {
 
             boolean tag = true;
             for (String timeslot : this.unwanted) {
-                if (singleTimetable.occupied.contains(timeslot)) {
+                if (singleTimetable.getOccupied().contains(timeslot)) {
                     tag = false;
                     break;
                 }

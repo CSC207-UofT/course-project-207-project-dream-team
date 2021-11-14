@@ -2,11 +2,10 @@ package timetable;
 
 import java.util.*;
 
-public class
-Timetable {
+public class Timetable {
 
-    public TreeMap<String, Session> timeTable;
-    public ArrayList<String> occupied;       // quick checker for time occupied in timeslot.
+    private final TreeMap<String, Session> timeTable;
+    private final ArrayList<String> occupied;       // quick checker for time occupied in timeslot.
 
     /* Notice that the hashmap is mapping from specific time to course.
      * A key-value pair might be <"31718", CSC207>, meaning CSC207 takes on Wednesday from 17 to 18
@@ -23,6 +22,13 @@ Timetable {
         this.occupied = occupied;
     }
 
+    public TreeMap<String, Session> getTimeTable(){
+        return this.timeTable;
+    }
+
+    public ArrayList<String> getOccupied(){
+        return this.occupied;
+    }
 
     // Check if the timeSpan is empty in timeTable
     public boolean isEmpty(String timeCode) {
@@ -34,7 +40,7 @@ Timetable {
     // Return a string comprised of every session in this timetable, sorted by time in ascending order.
     @Override
     public String toString(){
-        StringBuilder result = new StringBuilder("");
+        StringBuilder result = new StringBuilder();
         for (Session s : this.timeTable.values()){
             result.append(s.courseCode).append(s.sessionCode).append(Arrays.toString(s.timeslots)).append(s.instructor);
         }

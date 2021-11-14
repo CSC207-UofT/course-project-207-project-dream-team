@@ -73,19 +73,19 @@ public class Presenter {
     public static ArrayList<String[]> Presentable(Timetable timetable){
         ArrayList<String[]> result = new ArrayList<>();
         result.add(new String[] {"","","","","",""});
-        for (String k:timetable.occupied){
+        for (String k:timetable.getOccupied()){
             boolean flag = false;
             for (String[] strings : result) {
-                if ((strings[0].equals(k.substring(1, 5))) & (timetable.timeTable.get(k) != null)) {
-                    strings[Integer.parseInt(k.substring(0, 1))] = timetable.timeTable.get(k).courseCode +
-                            " " + timetable.timeTable.get(k).type;
+                if ((strings[0].equals(k.substring(1, 5))) & (timetable.getTimeTable().get(k) != null)) {
+                    strings[Integer.parseInt(k.substring(0, 1))] = timetable.getTimeTable().get(k).courseCode +
+                            " " + timetable.getTimeTable().get(k).type;
                     flag = true;
                 }
             }
             if (!flag) {
                 String[] newString = new String[]{k.substring(1, 5), "", "", "", "", ""};
-                newString[Integer.parseInt(k.substring(0,1))] = timetable.timeTable.get(k).courseCode+
-                        " "+timetable.timeTable.get(k).type;
+                newString[Integer.parseInt(k.substring(0,1))] = timetable.getTimeTable().get(k).courseCode+
+                        " "+timetable.getTimeTable().get(k).type;
                 result.add(newString);
             }
         }
