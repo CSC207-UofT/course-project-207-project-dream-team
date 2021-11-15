@@ -195,12 +195,13 @@ public class WebParse {
 
 
     public static void main(String[] args) throws IOException {
-        NewCourse sta257 = courseParse("STA257H1F");
+        NewCourse sta257 = courseParse("STA257");
         NewCourse bio130 = courseParse("BIO130H1S");
         NewCourse mat137 = courseParse("MAT137Y1Y");
-        for (Integer time:sta257.getLectures().get(1).timeslots){
-            System.out.println(time);
-        }
+        System.out.println(sta257.getCourseCode());
+        System.out.println(sta257.getLectures());
+        System.out.println(sta257.getTutorials());
+        System.out.println(sta257.getLabs());
         //print(bio130);
         //print(mat137);
     }
