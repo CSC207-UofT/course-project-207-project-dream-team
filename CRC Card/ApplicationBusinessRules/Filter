@@ -1,0 +1,12 @@
+Class name: Filter
+Parent Class: None
+Subclass: InstructorFilter, MaximumHourFilter, TimeslotFilter
+
+Responsibility:
+- Has an abstract method to rule out unwanted timetables, to be implemented by child classes
+- Return the attributes of the class
+- Check if the Filter has successfully filter out the unwanted timetables
+- Return an Arraylist of possible timetables
+
+Collaborator:
+* Timetable
