@@ -1,9 +1,0 @@
-Class name: InputInfo
-Parent Class: None
-Subclass: None
-
-Responsibility:
-- Ask and accept information from the user about their courses
-
-Collaborator:
-* Course

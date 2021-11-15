@@ -1,0 +1,9 @@
+Class name: UserInterface
+Parent Class: None
+Subclass: None
+
+Responsibility:
+- Present a user interface and gain user input through this user interface.
+
+Collaborator:
+* WebParse

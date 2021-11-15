@@ -1,8 +1,8 @@
-Class name: Course
+Class name: Session
 Parent class: None
 Subclass: None
 
 Responsibility:
-* Store information for one course
+* Store information for one session
 
 Collaborator：
