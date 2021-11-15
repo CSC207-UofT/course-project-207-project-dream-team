@@ -15,8 +15,8 @@ ext {
     junitVersion = '5.7.1'
 }
 
-sourceCompatibility = '13'
-targetCompatibility = '13'
+sourceCompatibility = '11'
+targetCompatibility = '11'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -28,17 +28,11 @@ application {
 }
 
 javafx {
-    version = '13.0.2'
+    version = '11.0.2'
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
 dependencies {
-    implementation('org.controlsfx:controlsfx:11.1.0')
-    implementation('com.dlsc.formsfx:formsfx-core:11.3.2') {
-        exclude(group: 'org.openjfx')
-    }
-    implementation('org.kordamp.ikonli:ikonli-javafx:12.2.0')
-    implementation('org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0')
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
