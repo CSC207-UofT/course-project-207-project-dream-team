@@ -1,8 +1,8 @@
+import ApplicationBusinessRule.Timetable;
+import EnterpriseBusinessRules.NewCourse;
+import EnterpriseBusinessRules.Session;
 import org.junit.Test;
 import org.junit.Before;
-import timetable.NewCourse;
-import timetable.Session;
-import timetable.Timetable;
 
 import java.util.*;
 
@@ -71,8 +71,8 @@ public class TimetableTest {
     @Test (timeout = 1000)
     public void testExtensions(){
 
-        TreeMap<String, Session> map2 = new TreeMap<>(tb.timeTable);
-        ArrayList<String> occupied2 = new ArrayList<>(tb.occupied);
+        TreeMap<String, Session> map2 = new TreeMap<>(tb.getTimeTable());
+        ArrayList<String> occupied2 = new ArrayList<>(tb.getOccupied());
         map2.put("11112", tutToAdd);
         occupied2.add("11112");
         Timetable extension2 = new Timetable(map2, occupied2);
