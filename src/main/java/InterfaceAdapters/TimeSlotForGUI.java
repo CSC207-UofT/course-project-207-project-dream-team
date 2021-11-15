@@ -5,22 +5,38 @@ import javafx.beans.property.StringProperty;
 
 
 public class TimeSlotForGUI {
+    private final StringProperty TimeSlot;
     private final StringProperty MondaySession;
     private final StringProperty TuesdaySession;
     private final StringProperty WednesdaySession;
     private final StringProperty ThursdaySession;
     private final StringProperty FridaySession;
 
-    public TimeSlotForGUI(String MondaySession,
+    public TimeSlotForGUI(String Timeslot,
+                          String MondaySession,
                           String TuesdaySession,
                           String WednesdaySession,
                           String ThursdaySession,
                           String FridaySession) {
+        this.TimeSlot = new SimpleStringProperty(Timeslot);
         this.MondaySession = new SimpleStringProperty(MondaySession);
         this.TuesdaySession = new SimpleStringProperty(TuesdaySession);
         this.WednesdaySession = new SimpleStringProperty(WednesdaySession);
         this.ThursdaySession = new SimpleStringProperty(ThursdaySession);
         this.FridaySession = new SimpleStringProperty(FridaySession);
+    }
+
+    // Time Slot
+    public String getTimeSlot() {
+        return TimeSlot.get();
+    }
+
+    public void setTimeSlot(String timeSlot) {
+        TimeSlot.set(timeSlot);
+    }
+
+    public StringProperty timeSlotProperty() {
+        return TimeSlot;
     }
 
     // Monday

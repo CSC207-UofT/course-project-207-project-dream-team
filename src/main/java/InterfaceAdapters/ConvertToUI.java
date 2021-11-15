@@ -4,10 +4,12 @@ import EnterpriseBusinessRules.Session;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class ConvertToUI {
 
-    public static ArrayList<ArrayList<String>> convertToUI(HashMap<String, Session> timetable){
+    public static ArrayList<ArrayList<String>> convertToUI(TreeMap<String, Session> timetable){
         ArrayList<Integer> record = new ArrayList<>();
         ArrayList<ArrayList<String>> entireTable = new ArrayList<>();
 
