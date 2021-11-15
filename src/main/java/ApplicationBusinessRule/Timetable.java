@@ -1,4 +1,7 @@
-package timetable;
+package ApplicationBusinessRule;
+
+import EnterpriseBusinessRules.NewCourse;
+import EnterpriseBusinessRules.Session;
 
 import java.util.*;
 

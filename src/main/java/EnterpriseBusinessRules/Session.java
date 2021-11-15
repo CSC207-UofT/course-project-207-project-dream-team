@@ -1,4 +1,4 @@
-package timetable;
+package EnterpriseBusinessRules;
 
 public class Session {
     public String instructor;

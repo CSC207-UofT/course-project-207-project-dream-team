@@ -1,5 +1,7 @@
-package timetable;
+package FrameworksDrivers;
 
+import EnterpriseBusinessRules.NewCourse;
+import EnterpriseBusinessRules.Session;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

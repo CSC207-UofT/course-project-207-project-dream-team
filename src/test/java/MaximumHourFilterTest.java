@@ -1,7 +1,7 @@
-import filter.MaximumHourFilter;
+import ApplicationBusinessRule.MaximumHourFilter;
 import org.junit.Test;
-import timetable.Session;
-import timetable.Timetable;
+import EnterpriseBusinessRules.Session;
+import ApplicationBusinessRule.Timetable;
 
 import java.io.IOException;
 import java.util.ArrayList;

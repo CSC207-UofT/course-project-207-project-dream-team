@@ -1,10 +1,7 @@
-import filter.InstructorFilter;
-import filter.TimeslotFilter;
+import ApplicationBusinessRule.TimeslotFilter;
 import org.junit.Test;
-import timetable.NewCourse;
-import timetable.Session;
-import timetable.SimpleScheduler;
-import timetable.Timetable;
+import EnterpriseBusinessRules.Session;
+import ApplicationBusinessRule.Timetable;
 
 import java.util.*;
 

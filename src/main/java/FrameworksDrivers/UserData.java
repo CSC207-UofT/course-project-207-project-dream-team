@@ -1,4 +1,4 @@
-package timetable;
+package FrameworksDrivers;
 
 import java.io.*;
 import java.lang.reflect.AnnotatedArrayType;
@@ -7,40 +7,6 @@ import java.time.DayOfWeek;
 import java.util.ArrayList;
 
 public class UserData {
-    /*public static void download(ArrayList<Course> courses, String path) {
-        try {
-            BufferedWriter bw = new BufferedWriter(
-                    new FileWriter(path));
-            for (Course course : courses) {
-                String line =
-                        course.courseCode + "," + course.type + "," +
-                                course.instructor + "," + course.day.toString() + "," +
-                                course.startTime + "," +
-                                course.endTime + "\n";
-                bw.write(line);
-            }
-            bw.close();
-        } catch (Exception ex) {
-            return;
-        }
-    }*/
-
-    /*public static ArrayList<Course> upload(String path) throws IOException{
-        BufferedReader br = new BufferedReader(
-                new FileReader(path));
-        ArrayList<Course> courses = new ArrayList<Course>();
-        while (br.readLine() != null){
-            String[] attributes = br.readLine().split(",");
-            Course course = new Course(
-                    attributes[0], attributes[1], attributes[2],
-                    DayOfWeek.valueOf(attributes[3]),
-                    Integer.parseInt(attributes[4]), Integer.parseInt(attributes[5]));
-            courses.add(course);
-        }
-        br.close();
-        return courses;
-    }*/
-
 
     final static String path = "src\\input.txt";//the path should be changed after packaging
     final static File f = new File(path);
