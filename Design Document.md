@@ -22,7 +22,11 @@ users’ acceptable study hours.
   private and can only be accessed through getter methods. The helper methods are also private so changes of the 
   data in Filter can only be made inside the Filter class. However, outside of the Filter class, only access is allowed 
   and no change shall occur to the data stored in the Filter class.
-  
+
+- Liskov Substitution principle:
+  - For our Filter Class and its subclasses, all three subclasses of Filter only has an overwritten version the parent 
+  class's abstract sort() method, which is used to filter out the unwanted timetables based on users' preference. We did 
+  not replace the parent class.
 
 ## Clean Architecture
 
