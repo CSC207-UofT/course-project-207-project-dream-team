@@ -1,5 +1,6 @@
-package ApplicationBusinessRule;
+package ApplicationBusinessRule.filter;
 
+import ApplicationBusinessRule.Timetable;
 import EnterpriseBusinessRules.Session;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.TreeMap;
 
 public class InstructorFilter extends Filter {
 
-    // filter out the timetables with unwanted timetables
+    // ApplicationBusinessRule.filter out the timetables with unwanted timetables
 
     public InstructorFilter(ArrayList<Timetable> input, ArrayList<String> unwanted) {
         super(input, unwanted);

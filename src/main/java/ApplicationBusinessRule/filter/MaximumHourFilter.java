@@ -1,5 +1,6 @@
-package ApplicationBusinessRule;
+package ApplicationBusinessRule.filter;
 
+import ApplicationBusinessRule.Timetable;
 import EnterpriseBusinessRules.Session;
 
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class MaximumHourFilter extends Filter {
                 // counter of the hours study everyday
                 int dailyHour = 0;
 
-                // Checker: filter sort the time of the same day::
+                // Checker: ApplicationBusinessRule.filter sort the time of the same day::
                 // "11517" -> all times on Monday
                 for (String key: keys) {
 

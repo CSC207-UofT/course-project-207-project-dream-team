@@ -186,7 +186,7 @@ public class HelloApplication extends Application {
 
         // The right side of the borderpane.
         VBox rightVBox = new VBox();
-        Label rightLabel = new Label("Choose filter:");
+        Label rightLabel = new Label("Choose ApplicationBusinessRule.filter:");
         RadioButton insRadioButton = new RadioButton("Instructor");
         RadioButton maxHourRadioButton = new RadioButton("Max Hour");
         RadioButton timeSlotRadioButton = new RadioButton("Time Slot");

@@ -49,13 +49,13 @@ users’ acceptable study hours.
     - Session is essentially the old Course class. It contains less information when compared to the old Course class for
       the sake of efficiency. Session instances are stored in NewCourse.
     - Filter is an abstract class that will call different child classes based on the users' preference.
-    - Instructor filter: if you have any preference on instructors, for instance, you prefer not to enroll in specific
-      instructors’ sessions, please choose the Instructor Filter. With this filter, our program will automatically rule out
+    - Instructor ApplicationBusinessRule.filter: if you have any preference on instructors, for instance, you prefer not to enroll in specific
+      instructors’ sessions, please choose the Instructor Filter. With this ApplicationBusinessRule.filter, our program will automatically rule out
       the lecture sessions delivered by your unwanted instructors in your schedule.
     - Maximum Hour Filter: if you have any preference on study hours per day, for instance, you prefer not to take more
       than 5 hours of lecture each day, please choose the Maximum Hour Filter. Our program will organize a timetable with an
       everyday lecture hour less or equal to your provided number.
-    - Timeslot filter: if you have any preference on certain time slots, for instance, you prefer not to take a morning
+    - Timeslot ApplicationBusinessRule.filter: if you have any preference on certain time slots, for instance, you prefer not to take a morning
       course (e.g. 9 am – 10 am) or a night course (e.g. 8 pm – 10 pm), please choose the Timeslot Filter. We will rule out
       the sessions with your unwanted timeslots in your timetable.
 
@@ -66,7 +66,7 @@ users’ acceptable study hours.
   the method. Everytime a user starts the program, our algorithms will automatically detect if the user has used the
   program before by calling inputExist(). If our program detects that there is an existing version stored on the computer,
   we would ask if you want to load your last version. If the user answers “Yes”, our program will load his or her stored
-  last version on the computer, and continue the rest process -- schedule timetables and filter unwanted timetables based
+  last version on the computer, and continue the rest process -- schedule timetables and ApplicationBusinessRule.filter unwanted timetables based
   on the users’ preferences. The state persists across runs of our program.
 
 
