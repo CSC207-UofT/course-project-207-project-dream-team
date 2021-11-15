@@ -17,4 +17,5 @@ public class Session {
         this.timeslots = timeslots;       //e.g. [21415, 41315]
         this.type = sessionCode.substring(0,3);
     }
+
 }
