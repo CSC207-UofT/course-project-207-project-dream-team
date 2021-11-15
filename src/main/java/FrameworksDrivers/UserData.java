@@ -5,6 +5,7 @@ import java.lang.reflect.AnnotatedArrayType;
 import java.nio.file.Files;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class UserData {
 
@@ -21,12 +22,11 @@ public class UserData {
     }
 
     public static String[] initHeader(){
-        String[] header = new String[5];//{courseCode, backToBack, duration, instructor, timeslots}
+        String[] header = new String[4];//{courseCode, duration, instructor, timeslots}
         header[0]="Course Codes,";
-        header[1]="\nBack-to-back,";
-        header[2]=("\nMax Duration,");
-        header[3]=("\nInstructors,");
-        header[4]=("\nTimeslots,");
+        header[1]=("\nMax Duration,");
+        header[2]=("\nInstructors,");
+        header[3]=("\nTimeslots,");
         return header;
     }
 
@@ -44,7 +44,7 @@ public class UserData {
     public static String[] readAllLines() throws IOException{
         FileReader freader = new FileReader(f.getAbsolutePath());
         BufferedReader breader = new BufferedReader(freader);
-        String[] lines = new String[5];
+        String[] lines = new String[4];
         int i = 0;
         for(String line = breader.readLine(); line != null; line = breader.readLine()){
             lines[i] = "\n" + line;
@@ -54,8 +54,10 @@ public class UserData {
         return lines;
     }
 
+
+    //Inputers
     public static void inputCourse(String courseCode) throws IOException{
-        String[] lines = readAllLines();
+       String[] lines = readAllLines();
         if (lines[0].contains(courseCode)){
             return;
         }else {
@@ -69,6 +71,56 @@ public class UserData {
         }
     }
 
+    public static void inputInstructor(ArrayList<String> names) throws IOException{
+        String[] lines = readAllLines();
+        for (String name:names) {
+            if (lines[2].contains(name)) {
+                return;
+            } else {
+                FileWriter fwriter = new FileWriter(f.getAbsolutePath());
+                BufferedWriter bwriter = new BufferedWriter(fwriter);
+                lines[2] = lines[2] + name + ",";
+                for (String line : lines) {
+                    bwriter.write(line);
+                }
+                bwriter.close();
+            }
+        }
+    }
+
+    public static void inputMaxDuration(String hour) throws IOException{
+        String[] lines = readAllLines();
+            if (lines[1].contains(hour)) {
+                return;
+            } else {
+                FileWriter fwriter = new FileWriter(f.getAbsolutePath());
+                BufferedWriter bwriter = new BufferedWriter(fwriter);
+                lines[1] = lines[1] + hour + ",";
+                for (String line : lines) {
+                    bwriter.write(line);
+                }
+                bwriter.close();
+            }
+    }
+
+    public static void inputTimeslot(ArrayList<String> times) throws IOException{
+        String[] lines = readAllLines();
+        for (String time:times) {
+            if (lines[3].contains(time)) {
+                return;
+            } else {
+                FileWriter fwriter = new FileWriter(f.getAbsolutePath());
+                BufferedWriter bwriter = new BufferedWriter(fwriter);
+                lines[3] = lines[3] + time + ",";
+                for (String line : lines) {
+                    bwriter.write(line);
+                }
+                bwriter.close();
+            }
+        }
+    }
+
+    //Removers
     public static void removeCourse(String courseCode) throws IOException{
         String[] lines = readAllLines();
         if (!lines[0].contains(courseCode)){
@@ -78,22 +130,6 @@ public class UserData {
             BufferedWriter bwriter = new BufferedWriter(fwriter);
             Integer ccLength = courseCode.length();
             lines[0] = lines[0].substring(0, lines[0].length()-ccLength-1);
-            for (String line : lines) {
-                bwriter.write(line);
-            }
-            bwriter.close();
-        }
-    }
-
-    //type1: back-to-back, type2: duration, type3: instructor, type4: timeslot
-    public static void inputPreference(Integer type, String content) throws IOException{
-        String[] lines = readAllLines();
-        if (lines[type].contains(content)){
-            return;
-        }else {
-            FileWriter fwriter = new FileWriter(f.getAbsolutePath());
-            BufferedWriter bwriter = new BufferedWriter(fwriter);
-            lines[type] = lines[type] + content + ",";
             for (String line : lines) {
                 bwriter.write(line);
             }
@@ -117,6 +153,15 @@ public class UserData {
         }
     }
 
+    //Readers
+    public static ArrayList<String> readCourses() throws IOException{
+        FileReader freader = new FileReader(f.getAbsolutePath());
+        BufferedReader breader = new BufferedReader(freader);
+        String firstLine = breader.readLine();
+        ArrayList<String> courseCodes = new ArrayList<>(Arrays.asList(firstLine.split(",")));
+        courseCodes.remove("Course Codes");
+        return courseCodes;
+    }
 
     public static void main(String[] args) throws IOException {
         /*String path = "C:\\Users\\user\\Desktop\\output.txt";
@@ -130,12 +175,22 @@ public class UserData {
         System.out.println(cs.get(0).courseCode);*/
         inputExists();
         inputCourse("CSC108H1F");
-        inputPreference(4, "11012");
-        inputPreference(3, "Piao");
-        inputPreference(1, "Y");
+        inputCourse("CSC207H1F");
+        inputCourse("CSC258H1F");
+        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> times = new ArrayList<>();
+        names.add("Piao");
+        names.add("Ethan");
+        names.add("Xuanyi");
+        times.add("11019");
+        times.add("51719");
+        inputTimeslot(times);
+        inputInstructor(names);
+        inputMaxDuration("6");
         removeCourse("CSC104H1F");
         removeCourse("CSC108H1F");
-        removePreference(3, "Xuanyi");
-        removePreference(4, "11012");
+        removePreference(1, "6");
+        removePreference(3, "11019");
+        System.out.println(readCourses());
     }
 }
