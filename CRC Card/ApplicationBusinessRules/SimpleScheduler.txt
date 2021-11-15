@@ -1,9 +1,9 @@
 Class name: SimpleScheduler
-Parent Class: Scheduler
+Parent Class: None
 Subclass: None
 
 Responsibility:
-- For users without any preference, schedule courses simply based on the users' input
+- Schedule the course combinations via recursion.
 
 Collaborator:
 * Course
