@@ -44,7 +44,7 @@ public abstract class Filter {
             TimeslotFilter aa = new TimeslotFilter(this.input, this.unwanted);
             return aa.sort();
         }
-        return null;
+        return new ArrayList<>(0);
     }
 
     public final void isFiltered() {
