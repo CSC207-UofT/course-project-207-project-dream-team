@@ -1,7 +1,6 @@
 package com.example.gui;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -39,9 +38,13 @@ public class HelloApplication extends Application {
         TextField unwanted2 = new TextField("Instructor 2");
         TextField unwanted3 = new TextField("Instructor 3");
         Button insConfirmButton = new Button("Confirm");
+        Button insBackButton = new Button("Back");
         insVBox.getChildren().addAll(insAsk1, wanted1, wanted2, wanted3,
-                insAsk2, unwanted1, unwanted2, unwanted3, insConfirmButton);
-        insVBox.setAlignment(Pos.CENTER);
+                insAsk2, unwanted1, unwanted2, unwanted3, insConfirmButton, insBackButton);
+        insVBox.setAlignment(Pos.TOP_CENTER);
+
+        insVBox.setSpacing(10);
+        insVBox.setPadding(new Insets(20, 220, 20, 220));
 
         Scene insScene = new Scene(insVBox, 855, 516);
 
@@ -81,6 +84,7 @@ public class HelloApplication extends Application {
         // create a scene for time slot user events
         VBox timeSlotVBox = new VBox();
         Label timeAsk = new Label("Please select your unwanted timeslots");
+        timeAsk.setFont(Font.font(20));
         GridPane grid = new GridPane();
 
         VBox box00 = new VBox();
@@ -176,6 +180,8 @@ public class HelloApplication extends Application {
         // set the left of the border pane to be the hbox
         borderPane.setLeft(leftListView);
 
+        leftListView.setPrefWidth(186);
+
 
 
         // The right side of the borderpane.
@@ -205,6 +211,12 @@ public class HelloApplication extends Application {
             }
         });
 
+        rightVBox.setPrefWidth(170);
+        rightVBox.setPrefHeight(376);
+        rightVBox.setPadding(new Insets(8, 8, 8, 8));
+        rightVBox.setSpacing(10);
+        rightVBox.setAlignment(Pos.TOP_CENTER);
+
 
         // set the right side of the border pane to be the right vbox.
         borderPane.setRight(rightVBox);
@@ -222,11 +234,13 @@ public class HelloApplication extends Application {
         Menu topMenuSelect = new Menu("select timetable");
         topMenuBar.getMenus().addAll(topMenuKnit, topMenuSelect);
         topMenuBar.setPrefHeight(28);
-        topMenuBar.setPrefWidth(636);
+        topMenuBar.setPrefWidth(700);
 
         topHBox.getChildren().addAll(topTextField, topSeparator, topSearchButton, topMenuBar);
         // set the top of the border pane to be the hbox
         borderPane.setTop(topHBox);
+
+        topTextField.setPrefWidth(120);
 
 
 
@@ -268,6 +282,13 @@ public class HelloApplication extends Application {
         centerTableView.getColumns().add(thursdayColumn);
         centerTableView.getColumns().add(fridayColumn);
 
+        timeSlotColumn.setPrefWidth(80);
+        mondayColumn.setPrefWidth(90);
+        tuesdayColumn.setPrefWidth(90);
+        wednesdayColumn.setPrefWidth(90);
+        thursdayColumn.setPrefWidth(90);
+        fridayColumn.setPrefWidth(90);
+
         TimeSlotForGUI line1 = new TimeSlotForGUI("CSC207LEC", "CSC207TUT", null, null, null);
         TimeSlotForGUI line2 = new TimeSlotForGUI("CSC207LEC", "CSC207TUT", null, null, null);
 
@@ -306,6 +327,10 @@ public class HelloApplication extends Application {
 
         // scene interaction
         insConfirmButton.setOnAction(e -> {
+            window.setScene(root);
+        });
+
+        insBackButton.setOnAction(e -> {
             window.setScene(root);
         });
 
