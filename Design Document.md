@@ -15,12 +15,13 @@ users’ acceptable study hours.
   - SimpleScheduler: only responsible for scheduling the timetable via recursion. 
   - Filter and its subclasses: For our three non-abstract filter classes, each of them is responsible for dealing with 
   one kind of user preference. For instance, Instructor Filter only works if users want to rule out specific unwanted 
-  instructors. Therefore, one non-abstract filter class has its own responsibility, and will change if and only its own filter method (named “sort” in the algorithms) changes.
+  instructors. Therefore, one non-abstract filter class has its own responsibility, and will change if and only its own
+  filter method (named “sort” in the algorithms) changes.
   
 - Open/closed principle:
   - An implementation of the Open/closed principle is the Filter class. The instance variables in Filter are made 
   private and can only be accessed through getter methods. The helper methods are also private so changes of the 
-  data in Filter can only be made inside the Filter class. However, outside of the Filter class, only access is allowed 
+  data in Filter can only be made inside the Filter class. However, outside the Filter class, only access is allowed 
   and no change shall occur to the data stored in the Filter class.
 
 - Liskov Substitution principle:
@@ -64,7 +65,7 @@ Template Method Design Pattern.
 ##Use of GitHub Features
 - Our group sufficiently used Pull Requests combined with branches to each finish the assigned tasks. Our Pull requests 
 are reviewed by people with related tasks (when classes communicate) unless changes are trivial or when we are meeting 
-in-person. We haven’t used Issues as much since we have been communicating over group chats or face-to-face everyday. 
+in-person. We haven’t used Issues as much since we have been communicating over group chats or face-to-face every day. 
 Actions is a great tracker of what we have been doing, so we use it as material for our meetings.
 
 ## Code Style and Documentation
@@ -128,8 +129,8 @@ application for initial display to the user.
   the sake of efficiency. Session instances are stored in NewCourse.
   - Filter is an abstract class that will call different child classes based on the users' preference.
   - Instructor filter: if you have any preference on instructors, for instance, you prefer not to enroll in specific
-      instructors’ sessions, please choose the Instructor Filter. With this filter, our program will automatically rule out
-      the lecture sessions delivered by your unwanted instructors in your schedule. 
+      instructors’ sessions, please choose the Instructor Filter. With this filter, our program will automatically rule 
+      out the lecture sessions delivered by your unwanted instructors in your schedule. 
   - Maximum Hour Filter: if you have any preference on study hours per day, for instance, you prefer not to take more
   than 5 hours of lecture each day, please choose the Maximum Hour Filter. Our program will organize a timetable with an
   everyday lecture hour less or equal to your provided number. 
