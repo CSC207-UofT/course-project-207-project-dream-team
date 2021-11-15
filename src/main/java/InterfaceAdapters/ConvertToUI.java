@@ -1,13 +1,14 @@
 package InterfaceAdapters;
 
+import ApplicationBusinessRule.Timetable;
 import EnterpriseBusinessRules.Session;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class ConvertToUI {
 
-    public static ArrayList<ArrayList<String>> convertToUI(HashMap<String, Session> timetable){
+    public static ArrayList<ArrayList<String>> convertToUI(Timetable timetable){
         ArrayList<Integer> record = new ArrayList<>();
         ArrayList<ArrayList<String>> entireTable = new ArrayList<>();
 
@@ -25,13 +26,13 @@ public class ConvertToUI {
                 String dualHrKey = xCoords + strY + (yCoords + 2);
                 String tripleHrKey = xCoords + strY + (yCoords + 3);
 
-                if (timetable.containsKey(singleHrKey)) {
-                    sameHr.add(timetable.get(singleHrKey).courseCode);
-                } else if (timetable.containsKey(dualHrKey)) {
-                    sameHr.add(timetable.get(dualHrKey).courseCode);
+                if (timetable.getTimeTable().containsKey(singleHrKey)) {
+                    sameHr.add(timetable.getTimeTable().get(singleHrKey).courseCode);
+                } else if (timetable.getTimeTable().containsKey(dualHrKey)) {
+                    sameHr.add(timetable.getTimeTable().get(dualHrKey).courseCode);
                     record.add(xCoords);
-                } else if (timetable.containsKey(tripleHrKey)) {
-                    sameHr.add(timetable.get(dualHrKey).courseCode);
+                } else if (timetable.getTimeTable().containsKey(tripleHrKey)) {
+                    sameHr.add(timetable.getTimeTable().get(dualHrKey).courseCode);
                     record.add(xCoords);
                     record.add(xCoords);
                 } else {
