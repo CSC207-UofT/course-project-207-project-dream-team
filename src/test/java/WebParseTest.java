@@ -1,6 +1,6 @@
+import EnterpriseBusinessRules.NewCourse;
+import FrameworksDrivers.WebParse;
 import org.junit.Test;
-import timetable.NewCourse;
-import timetable.WebParse;
 
 import java.io.IOException;
 
