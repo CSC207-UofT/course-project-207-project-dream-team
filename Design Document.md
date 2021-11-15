@@ -16,15 +16,21 @@ users’ acceptable study hours.
   - Filter and its subclasses: For our three non-abstract filter classes, each of them is responsible for dealing with 
   one kind of user preference. For instance, Instructor Filter only works if users want to rule out specific unwanted 
   instructors. Therefore, one non-abstract filter class has its own responsibility, and will change if and only its own filter method (named “sort” in the algorithms) changes.
-
-
+  
 - Open/closed principle:
   - An implementation of the Open/closed principle is the Filter class. The instance variables in Filter are made 
   private and can only be accessed through getter methods. The helper methods are also private so changes of the 
   data in Filter can only be made inside the Filter class. However, outside of the Filter class, only access is allowed 
   and no change shall occur to the data stored in the Filter class.
+  
 
 ## Clean Architecture
+
+- CRC
+  - In the CRC directories, we have divided CRCs of different courses into four packages based on the Clean Architecture.
+    (ApplicationBusinessRules, EnterpriseBusinessRules, Frameworks&Drivers, InterfaceAdapters). In each CRC, we have 
+  implicitly stated the basic information and functions of the classes.
+
 - Scenario walk-through:
   - The Controller class is the center of the operation. When run, it activates the Javafx application. The application 
   is the user interface. This is one of our Frameworks & Drivers. The Javafx application interacts with WebParse, which 
@@ -75,6 +81,16 @@ hours larger than the users’ preferential lecture hours.
 designed based on Template Method Design Pattern.
 - For #46 pull request, we have refactored the Presenter class: safe delete Presenter.
 - For #55 and #58 pull requests, we used refactoring functionality to package all Java files.
+
+## Code Organization
+- We have splitted our classes into four packages including ApplicationBusinessRule, EnterpriseBusinessRules, Frameworks 
+& Drivers, and InterfaceAdapters. These packages are divided based on clean architecture. The EnterpriseBusinessRules 
+include both of the classes as entities. They manage the most basic data structure in our program.  
+The ApplicationBusinessRule includes Filter and its subclasses. They impose our higher level rules on how to deal 
+with the input to produce our output. The Frameworks & Drivers classes include Userdata, UserInterface, and WebParse. 
+They handle the outer layer of the program that interacts in some way with either the user or the web. The Interface 
+Adapters translate the computer results to what the user can view and oversee the flow of the program. These roles are 
+taken by the Controller
 
 ## Functionality
 - When someone starts our program, the Controller class will call the user interface. On the User Interface, our program 
