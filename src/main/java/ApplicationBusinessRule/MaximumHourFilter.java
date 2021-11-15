@@ -1,14 +1,13 @@
-package filter;
+package ApplicationBusinessRule;
 
-import timetable.Timetable;
-import timetable.Session;
-import java.io.IOException;
+import EnterpriseBusinessRules.Session;
+
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeMap;
 
 
-public class MaximumHourFilter extends Filter{
+public class MaximumHourFilter extends Filter {
 
     public MaximumHourFilter(ArrayList<Timetable> input, ArrayList<String> unwanted) {
         super(input, unwanted);

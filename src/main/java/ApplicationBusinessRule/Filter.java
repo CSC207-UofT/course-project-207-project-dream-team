@@ -1,5 +1,4 @@
-package filter;
-import timetable.Timetable;
+package ApplicationBusinessRule;
 import java.util.ArrayList;
 
 public abstract class Filter {

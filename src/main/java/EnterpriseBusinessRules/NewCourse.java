@@ -1,4 +1,4 @@
-package timetable;
+package EnterpriseBusinessRules;
 
 import java.util.ArrayList;
 import java.util.HashSet;

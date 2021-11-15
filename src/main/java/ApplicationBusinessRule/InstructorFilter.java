@@ -1,7 +1,7 @@
-package filter;
+package ApplicationBusinessRule;
 
-import timetable.Session;
-import timetable.Timetable;
+import EnterpriseBusinessRules.Session;
+
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeMap;

@@ -1,14 +1,9 @@
-package timetable;
+package InterfaceAdapters;
 
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfPCell;
+import EnterpriseBusinessRules.Session;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
-import java.util.Scanner;
 
 public class ConvertToUI {
 

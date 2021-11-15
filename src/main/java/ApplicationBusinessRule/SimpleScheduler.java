@@ -1,7 +1,9 @@
-package timetable;
+package ApplicationBusinessRule;
+
+import EnterpriseBusinessRules.NewCourse;
+import FrameworksDrivers.WebParse;
 
 import java.io.IOException;
-import java.sql.Time;
 import java.util.*;
 
 public class SimpleScheduler {
@@ -82,12 +84,8 @@ public class SimpleScheduler {
         courses.add(WebParse.courseParse("CSC236H1F"));
         courses.add(WebParse.courseParse("STA257H1F"));
 
-
-
-
-
         SimpleScheduler ss = new SimpleScheduler(courses);
-        Timetable tb = new Timetable(new TreeMap<>(), new ArrayList<>());
+        Timetable tb = new Timetable();
         Set<String> seen = new HashSet<>();
         ArrayList<Timetable> solutions = ss.arrange(tb, seen);
         for (Timetable t : solutions){
