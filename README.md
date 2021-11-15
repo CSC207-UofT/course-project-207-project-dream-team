@@ -9,7 +9,15 @@ Copyright (c) 2021 CSC207-Project-Dream-Team-UofT
 Java (1.7 or later)
 
 ## Goal
-The purpose of this project is to facilitate UofT students with their course arrangements.
+Our program aims to help UofT (only St. George Campus) students organize appropriate timetables based on provided
+courses and users’ preferences. For instance, if a user want to take five courses in the winter semester, he or she can
+enter all the course codes (e.g. CSC207H1) on the user interface, and our algorithms will return all the possible
+combinations for the given courses. Specifically, our program has three different filters including Instructor Filter,
+Timeslot Filter and Maximum Hour Filter. The Instructor Filter helps to rule out the sessions that are delivered by
+users’ unwanted instructors. The Timeslot Filter helps to rule out the users’ unwanted timeslots (e.g. morning course
+from 9am - 10am). The Maximum Hour Filter will organize a timetable with everyday lecture hours less or equal to the
+users’ acceptable study hours.
+
 
 
 ## Compiling
@@ -45,6 +53,5 @@ List of information to enter:
 * Start time: $ 18
 * End time: $ 20
 
-## Filter Package
-The package includes filter that meet different users' preferences.
+
 
