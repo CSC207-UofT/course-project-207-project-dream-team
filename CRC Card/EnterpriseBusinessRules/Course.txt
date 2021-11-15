@@ -1,8 +1,0 @@
-Class name: Course
-Parent class: None
-Subclass: None
-
-Responsibility:
-* Store information for one course
-
-Collaborator：
