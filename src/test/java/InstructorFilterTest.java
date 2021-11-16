@@ -42,6 +42,8 @@ public class InstructorFilterTest {
         ArrayList<Timetable> tt = is.sort();
 
         assertEquals(0, tt.size());
+        
+        // more test to be added in the future
     }
 
 }
