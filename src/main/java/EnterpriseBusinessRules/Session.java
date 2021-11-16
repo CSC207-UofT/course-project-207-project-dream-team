@@ -1,12 +1,14 @@
 package EnterpriseBusinessRules;
 
 public class Session {
+    //instance variables
     public String instructor;
     public String courseCode;
     public String sessionCode;
     public Integer[] timeslots;
     public String type;
 
+    //Constructor
     public Session(String instructor,
                    String courseCode,
                    String sessionCode,
@@ -17,4 +19,5 @@ public class Session {
         this.timeslots = timeslots;       //e.g. [21415, 41315]
         this.type = sessionCode.substring(0,3);
     }
+
 }

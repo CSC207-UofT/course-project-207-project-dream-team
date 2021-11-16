@@ -30,6 +30,25 @@ public abstract class Filter {
         return this.unwanted;
     }
 
+
+    // this method is created to meet the Design Pattern
+    // 1: InstructorFilter; 2: MaximumFilter; 3: TimeslotFilter
+     public final ArrayList<Timetable> call(Integer type) {
+         if (type == 1) {
+             InstructorFilter aa = new InstructorFilter(this.input, this.unwanted);
+             return aa.sort();
+         }
+        if (type == 2) {
+             MaximumHourFilter aa = new MaximumHourFilter(this.input, this.unwanted);
+             return aa.sort();
+         }
+         if (type == 3) {
+             TimeslotFilter aa = new TimeslotFilter(this.input, this.unwanted);
+             return aa.sort();
+         }
+         return new ArrayList<>(0);
+     }
+
     public final void isFiltered() {
         try{
             if(this.sort().size() > 0){

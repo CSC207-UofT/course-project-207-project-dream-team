@@ -1,0 +1,9 @@
+Class name: AlertBox
+Parent class: None
+Subclass: None
+
+Responsibility:
+* Displays warnings to the user telling them what is wrong when encountered.
+
+Collaborator：
+* UserInterface

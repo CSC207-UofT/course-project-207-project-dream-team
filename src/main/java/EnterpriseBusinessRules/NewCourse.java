@@ -5,11 +5,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class NewCourse {
+    //instance variables
     private final String courseCode;  // CSC207H1F
     private final ArrayList<Session> tutorials;
     private final ArrayList<Session> lectures;
     private final ArrayList<Session> labs;
 
+    //Constructor
     public NewCourse(String courseCode,
                      ArrayList<Session> tutorials,
                      ArrayList<Session> lectures, ArrayList<Session> labs){
@@ -19,6 +21,7 @@ public class NewCourse {
         this.labs = labs;
     }
 
+    //This method determines what this course needs as complements
     public Set<String> allRequiredSessions(){
         Set<String> result = new HashSet<>();
         if (!(this.labs.isEmpty())){
@@ -35,6 +38,7 @@ public class NewCourse {
         return result;
     }
 
+    //Getter methods.
     public String getCourseCode() {
         return this.courseCode;
     }

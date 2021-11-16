@@ -39,7 +39,6 @@ public class Timetable {
     }
 
 
-    // toString method for testing purposes
     // Return a string comprised of every session in this timetable, sorted by time in ascending order.
     @Override
     public String toString(){
