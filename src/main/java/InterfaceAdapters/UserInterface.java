@@ -1,6 +1,7 @@
 package InterfaceAdapters;
 
 import ApplicationBusinessRule.*;
+import ApplicationBusinessRule.filter.*;
 import EnterpriseBusinessRules.NewCourse;
 import FrameworksDrivers.UserData;
 import FrameworksDrivers.WebParse;

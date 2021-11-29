@@ -1,6 +1,6 @@
 package FrameworksDrivers;
 
-import ApplicationBusinessRule.Filter;
+import ApplicationBusinessRule.filter.Filter;
 import EnterpriseBusinessRules.NewCourse;
 import EnterpriseBusinessRules.Session;
 import org.jsoup.Jsoup;

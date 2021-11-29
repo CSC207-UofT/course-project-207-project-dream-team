@@ -1,4 +1,4 @@
-import ApplicationBusinessRule.MaximumHourFilter;
+import ApplicationBusinessRule.filter.MaximumHourFilter;
 import org.junit.Test;
 import EnterpriseBusinessRules.Session;
 import ApplicationBusinessRule.Timetable;

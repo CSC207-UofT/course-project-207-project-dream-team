@@ -1,4 +1,4 @@
-import ApplicationBusinessRule.TimeslotFilter;
+import ApplicationBusinessRule.filter.TimeslotFilter;
 import org.junit.Test;
 import EnterpriseBusinessRules.Session;
 import ApplicationBusinessRule.Timetable;

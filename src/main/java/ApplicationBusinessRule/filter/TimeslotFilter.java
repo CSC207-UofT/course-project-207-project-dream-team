@@ -1,4 +1,7 @@
-package ApplicationBusinessRule;
+package ApplicationBusinessRule.filter;
+import ApplicationBusinessRule.Timetable;
+import ApplicationBusinessRule.filter.Filter;
+
 import java.util.ArrayList;
 
 public class TimeslotFilter extends Filter {
