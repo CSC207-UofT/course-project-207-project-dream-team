@@ -20,7 +20,7 @@ users’ acceptable study hours.
 - Open/closed principle:
   - An implementation of the Open/closed principle is the Filter class. The instance variables in Filter are made 
   private and can only be accessed through getter methods. The helper methods are also private so changes of the 
-  data in Filter can only be made inside the Filter class. However, outside of the Filter class, only access is allowed 
+  data in Filter can only be made inside the Filter class. However, outside the Filter class, only access is allowed 
   and no change shall occur to the data stored in the Filter class.
 
 - Liskov Substitution principle:
@@ -64,7 +64,7 @@ Template Method Design Pattern.
 ##Use of GitHub Features
 - Our group sufficiently used Pull Requests combined with branches to each finish the assigned tasks. Our Pull requests 
 are reviewed by people with related tasks (when classes communicate) unless changes are trivial or when we are meeting 
-in-person. We haven’t used Issues as much since we have been communicating over group chats or face-to-face everyday. 
+in-person. We haven’t used Issues as much since we have been communicating over group chats or face-to-face every day. 
 Actions is a great tracker of what we have been doing, so we use it as material for our meetings.
 
 ## Code Style and Documentation

@@ -1,13 +1,29 @@
 package InterfaceAdapters;
 
 import EnterpriseBusinessRules.Session;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static FrameworksDrivers.MakePDF.makePDF;
+
 public class ConvertToUI {
+
+    public static String[] allValidKey(int x, int y){
+        String strY = String.valueOf(y);
+        if (strY.length() < 2) {
+            strY = "0" + strY;
+        }
+        String singleHrKey = x + strY + (y + 1);
+        String dualHrKey = x + strY + (y + 2);
+        String tripleHrKey = x + strY + (y + 3);
+        return new String[]{singleHrKey, dualHrKey, tripleHrKey};
+    }
 
     public static ArrayList<ArrayList<String>> convertToUI(TreeMap<String, Session> timetable){
         ArrayList<Integer> record = new ArrayList<>();
@@ -19,21 +35,15 @@ public class ConvertToUI {
 
             for (int xCoords = 1; xCoords < 6; xCoords ++) {
                 // convert the position of the current cell to timetable key format
-                String strY = String.valueOf(yCoords);
-                if (strY.length() < 2) {
-                    strY = "0" + strY;
-                }
-                String singleHrKey = xCoords + strY + (yCoords + 1);
-                String dualHrKey = xCoords + strY + (yCoords + 2);
-                String tripleHrKey = xCoords + strY + (yCoords + 3);
+                String[] keys = allValidKey(xCoords, yCoords);
 
-                if (timetable.containsKey(singleHrKey)) {
-                    sameHr.add(timetable.get(singleHrKey).courseCode);
-                } else if (timetable.containsKey(dualHrKey)) {
-                    sameHr.add(timetable.get(dualHrKey).courseCode);
+                if (timetable.containsKey(keys[0])) {
+                    sameHr.add(timetable.get(keys[0]).courseCode + timetable.get(keys[0]).sessionCode.substring(0, 3));
+                } else if (timetable.containsKey(keys[1])) {
+                    sameHr.add(timetable.get(keys[1]).courseCode + timetable.get(keys[1]).sessionCode.substring(0, 3));
                     record.add(xCoords);
-                } else if (timetable.containsKey(tripleHrKey)) {
-                    sameHr.add(timetable.get(dualHrKey).courseCode);
+                } else if (timetable.containsKey(keys[2])) {
+                    sameHr.add(timetable.get(keys[2]).courseCode + timetable.get(keys[2]).sessionCode.substring(0, 3));
                     record.add(xCoords);
                     record.add(xCoords);
                 } else {
