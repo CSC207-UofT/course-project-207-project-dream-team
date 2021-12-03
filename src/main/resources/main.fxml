@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <HBox>
+                    <children>
+                        <TextField prefHeight="26.0" prefWidth="197.0" promptText="search courses" />
+                        <Separator orientation="VERTICAL" prefHeight="26.0" prefWidth="7.0" visible="false" />
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="156.0" text="search" />
+                        <MenuBar prefHeight="28.0" prefWidth="636.0" HBox.hgrow="ALWAYS">
+                            <menus>
+                                <Menu mnemonicParsing="false" text="knit to pdf" />
+                                <Menu mnemonicParsing="false" text="save" />
+                                <Menu mnemonicParsing="false" text="select timetable" />
+                            </menus>
+                            <opaqueInsets>
+                                <Insets left="8.0" />
+                            </opaqueInsets>
+                        </MenuBar>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </top>
+    <bottom>
+        <HBox alignment="CENTER" prefWidth="885.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="CSC207 Dream Team 2021, All Rights Reserved." />
+            </children>
+        </HBox>
+    </bottom>
+    <left>
+        <ListView prefHeight="404.0" prefWidth="186.0" BorderPane.alignment="CENTER" />
+    </left>
+    <center>
+        <TableView fx:id="tableView" prefHeight="471.0" prefWidth="603.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn resizable="false" text="Timeslot" />
+                <TableColumn prefWidth="90.0" resizable="false" text="Monday" />
+                <TableColumn prefWidth="90.0" resizable="false" text="Tuesday" />
+                <TableColumn prefWidth="90.0" resizable="false" text="Wednesday" />
+                <TableColumn minWidth="80.0" prefWidth="90.0" resizable="false" text="Thursday" />
+                <TableColumn minWidth="80.0" prefWidth="90.0" resizable="false" text="Friday" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+    </center>
+</BorderPane>
