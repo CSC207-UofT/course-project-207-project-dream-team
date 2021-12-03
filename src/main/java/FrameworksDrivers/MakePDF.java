@@ -11,6 +11,8 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+import static InterfaceAdapters.ConvertToUI.allValidKey;
+
 
 public class MakePDF {
 
@@ -36,16 +38,6 @@ public class MakePDF {
         table.addCell(FridayTitle);
     }
 
-    public static String[] allValidKey(int x, int y){
-        String strY = String.valueOf(y);
-        if (strY.length() < 2) {
-            strY = "0" + strY;
-        }
-        String singleHrKey = x + strY + (y + 1);
-        String dualHrKey = x + strY + (y + 2);
-        String tripleHrKey = x + strY + (y + 3);
-        return new String[]{singleHrKey, dualHrKey, tripleHrKey};
-    }
 
     private static void addCourses(TreeMap<String, Session> timetable, PdfPTable table, Font font){
         ArrayList<Integer> boxed = new ArrayList<>();
@@ -143,6 +135,7 @@ public class MakePDF {
         sampleTimetable.put("41314", COG250);
         sampleTimetable.put("41416", COG250);
         sampleTimetable.put("31416", COG250);
+        sampleTimetable.put("51618", COG250);
         makePDF(sampleTimetable, font);
     }
 }
