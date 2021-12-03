@@ -1,4 +1,4 @@
-import ApplicationBusinessRule.InstructorFilter;
+import ApplicationBusinessRule.filter.InstructorFilter;
 import org.junit.Test;
 import EnterpriseBusinessRules.Session;
 import ApplicationBusinessRule.Timetable;
