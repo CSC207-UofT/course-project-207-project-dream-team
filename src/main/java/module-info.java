@@ -3,7 +3,6 @@ module main{
     requires javafx.fxml;
     requires org.jsoup;
     requires java.sql;
-//    requires itextpdf;
 
     exports InterfaceAdapters;
     exports ApplicationBusinessRule;
