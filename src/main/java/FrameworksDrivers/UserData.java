@@ -9,11 +9,17 @@ import java.util.Arrays;
 
 public class UserData {
 
+    static Integer flag = 0;
     final static String path = "src\\input.txt";//the path should be changed after packaging
     final static File f = new File(path);
 
+    public static Integer getFlag(){
+        return flag;
+    }
+
     public static boolean inputExists() throws IOException {
         if (f.exists()){
+            flag = 1;
             return true;
         }else{
             initInput();
@@ -174,6 +180,7 @@ public class UserData {
         ArrayList<Course> cs = UserData.upload(path);
         System.out.println(cs.get(0).courseCode);*/
         inputExists();
+        System.out.println(getFlag());
         inputCourse("CSC108H1F");
         inputCourse("CSC207H1F");
         inputCourse("CSC258H1F");
@@ -192,5 +199,6 @@ public class UserData {
         removePreference(1, "6");
         removePreference(3, "11019");
         System.out.println(readCourses());
+        System.out.println(getFlag());
     }
 }
