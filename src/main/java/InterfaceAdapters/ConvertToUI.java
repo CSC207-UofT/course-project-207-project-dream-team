@@ -1,16 +1,8 @@
 package InterfaceAdapters;
 
 import EnterpriseBusinessRules.Session;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Font;
-
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.TreeMap;
-
-import static FrameworksDrivers.MakePDF.makePDF;
 
 public class ConvertToUI {
 
