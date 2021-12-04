@@ -1,12 +1,15 @@
 package InterfaceAdapters;
 
 import EnterpriseBusinessRules.Session;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableListBase;
+
 import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class ConvertToUI {
 
-    public static String[] allValidKey(int x, int y){
+    public static String[] allValidKey(int x, int y) {
         String strY = String.valueOf(y);
         if (strY.length() < 2) {
             strY = "0" + strY;
@@ -17,15 +20,15 @@ public class ConvertToUI {
         return new String[]{singleHrKey, dualHrKey, tripleHrKey};
     }
 
-    public static ArrayList<ArrayList<String>> convertToUI(TreeMap<String, Session> timetable){
+    public static ArrayList<ArrayList<String>> convertToUI(TreeMap<String, Session> timetable) {
         ArrayList<Integer> record = new ArrayList<>();
         ArrayList<ArrayList<String>> entireTable = new ArrayList<>();
 
-        for (int yCoords = 9; yCoords < 21; yCoords ++) {
+        for (int yCoords = 9; yCoords < 21; yCoords++) {
 
             ArrayList<String> sameHr = new ArrayList<>();
 
-            for (int xCoords = 1; xCoords < 6; xCoords ++) {
+            for (int xCoords = 1; xCoords < 6; xCoords++) {
                 // convert the position of the current cell to timetable key format
                 String[] keys = allValidKey(xCoords, yCoords);
 
@@ -51,4 +54,26 @@ public class ConvertToUI {
         }
         return entireTable;
     }
-}
+
+    public static ArrayList<String> timeslotToStrings(Integer dayInString, ArrayList<String> timeslots){
+        ArrayList<String> result = new ArrayList<>();
+        for (String i:timeslots){
+            String startTime = i.substring(0, 2);
+            String endTime = i.substring(8, 10);
+            String dayOfWeek = dayInString.toString();
+            String timeCode = dayOfWeek + startTime + endTime;
+            result.add(timeCode);
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        ArrayList<String> timeslots = new ArrayList<String>();
+        String t1 = "09:00 - 10:00";
+        String t2 = "13:00 - 15:00";
+        timeslots.add(t1);
+        timeslots.add(t2);
+        System.out.println(timeslotToStrings(1, timeslots));
+
+        }
+    }
