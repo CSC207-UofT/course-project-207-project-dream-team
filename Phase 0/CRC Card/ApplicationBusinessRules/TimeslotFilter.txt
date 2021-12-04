@@ -1,0 +1,10 @@
+Class name: TimeslotFilter
+Parent Class: Filter
+Subclass: None
+
+Responsibility:
+- Store the unwanted timeslots as an Arraylist of String
+- Rule out the unwanted timetables delivered on unwanted timeslots
+
+Collaborator:
+* Timetable
