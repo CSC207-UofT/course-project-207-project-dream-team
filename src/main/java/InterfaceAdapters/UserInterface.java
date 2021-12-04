@@ -211,8 +211,44 @@ public class UserInterface extends Application {
         Scene welcomeScene = new Scene(layout1, 300, 200);
 
 
+        // welcome scene when input not exist
+        VBox layout2 = new VBox();
+        layout2.setAlignment(Pos.CENTER);
+        layout2.setSpacing(6);
+
+        ToggleGroup toggleGroup1 = new ToggleGroup();
+        RadioButton rb4 = new RadioButton("Instructor");
+        RadioButton rb5 = new RadioButton("Max Hour");
+        RadioButton rb6 = new RadioButton("Time Slot");
+        rb4.setToggleGroup(toggleGroup1);
+        rb5.setToggleGroup(toggleGroup1);
+        rb6.setToggleGroup(toggleGroup1);
+
+        Button welcomeConfirmBtn = new Button("Confirm");
+
+        welcomeConfirmBtn.setOnAction(e -> {
+            if (rb4.isSelected()) {
+                window.setScene(insScene);
+            } else if (rb5.isSelected()) {
+                window.setScene(maxScene);
+            } else if (rb6.isSelected()){
+                window.setScene(timeSlotScene);
+            } else {
+                window.setScene(scene);
+            }
+        });
+
+        layout2.getChildren().addAll(rb4, rb5, rb6, welcomeConfirmBtn);
+
+        Scene welcomeSceneNew = new Scene(layout2, 300, 200);
+
+        if (UserData.inputExists()) {
+            window.setScene(welcomeScene);
+        } else {
+            window.setScene(welcomeSceneNew);
+        }
+
         primaryStage.setTitle("CSC207 dream team");
-        primaryStage.setScene(welcomeScene);
         primaryStage.show();
     }
 
