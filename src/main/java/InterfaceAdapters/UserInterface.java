@@ -1,10 +1,6 @@
 package InterfaceAdapters;
 
-import ApplicationBusinessRule.*;
-import ApplicationBusinessRule.filter.*;
-import EnterpriseBusinessRules.NewCourse;
 import FrameworksDrivers.UserData;
-import FrameworksDrivers.WebParse;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -12,19 +8,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class UserInterface extends Application {
 
@@ -72,6 +62,7 @@ public class UserInterface extends Application {
         Label timeAsk = new Label("Please select your unwanted timeslots");
         timeAsk.setFont(Font.font(20));
         GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
 
         VBox box00 = new VBox();
         Label label00 = new Label("Monday");
@@ -128,7 +119,10 @@ public class UserInterface extends Application {
         box11.setAlignment(Pos.CENTER);
         GridPane.setConstraints(box11, 1, 1);
 
+        ObservableList<String> prefferedSlotMonday = list00.getSelectionModel().getSelectedItems();
+
         VBox box21 = new VBox();
+        box21.setAlignment(Pos.CENTER);
         Button timeSlotConfirm = new Button("Confirm");
         Button timeSlotBack = new Button("Back");
         box21.setSpacing(8);
@@ -152,6 +146,9 @@ public class UserInterface extends Application {
         VBox maxHourVBox = new VBox();
         Label maxAsk = new Label("Please enter your preferred duration of classes each day");
         TextField maxPreferred = new TextField("Ex: 3");
+
+        String preferredMax = maxPreferred.getText();
+
         Button maxConfirm = new Button("Confirm");
         Button maxBack = new Button("Back");
         maxHourVBox.getChildren().addAll(maxAsk, maxPreferred, maxConfirm, maxBack);
@@ -225,6 +222,7 @@ public class UserInterface extends Application {
         rb6.setToggleGroup(toggleGroup1);
 
         Button welcomeConfirmBtn = new Button("Confirm");
+        Button welcomeNewBack = new Button("Back");
 
         welcomeConfirmBtn.setOnAction(e -> {
             if (rb4.isSelected()) {
@@ -238,7 +236,7 @@ public class UserInterface extends Application {
             }
         });
 
-        layout2.getChildren().addAll(rb4, rb5, rb6, welcomeConfirmBtn);
+        layout2.getChildren().addAll(rb4, rb5, rb6, welcomeConfirmBtn, welcomeNewBack);
 
         Scene welcomeSceneNew = new Scene(layout2, 300, 200);
 
@@ -247,6 +245,48 @@ public class UserInterface extends Application {
         } else {
             window.setScene(welcomeSceneNew);
         }
+
+        insBackButton.setOnAction(e -> {
+            if (UserData.getFlag() == 1) {
+                window.setScene(welcomeScene);
+            } else {
+                window.setScene(welcomeSceneNew);
+            }
+        });
+
+        welcomeNewBack.setOnAction(e -> {
+            if (UserData.getFlag() == 1) {
+                window.setScene(welcomeScene);
+            } else {
+                window.setScene(welcomeSceneNew);
+            }
+        });
+
+        timeSlotConfirm.setOnAction(e -> {
+            window.setScene(scene);
+        });
+
+        timeSlotBack.setOnAction(e -> {
+            if (UserData.getFlag() == 1) {
+                window.setScene(welcomeScene);
+            } else {
+                window.setScene(welcomeSceneNew);
+            }
+        });
+
+        maxConfirm.setOnAction(e -> {
+            window.setScene(scene);
+        });
+
+        maxBack.setOnAction(e -> {
+            if (UserData.getFlag() == 1) {
+                window.setScene(welcomeScene);
+            } else {
+                window.setScene(welcomeSceneNew);
+            }
+        });
+
+
 
         primaryStage.setTitle("CSC207 dream team");
         primaryStage.show();
