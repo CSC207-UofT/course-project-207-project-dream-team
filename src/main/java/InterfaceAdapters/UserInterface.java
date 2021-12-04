@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class UserInterface extends Application {
 
@@ -42,6 +43,15 @@ public class UserInterface extends Application {
         TextField unwanted4 = new TextField("Instructor 4");
         TextField unwanted5 = new TextField("Instructor 5");
         TextField unwanted6 = new TextField("Instructor 6");
+
+        ArrayList<String> unwantedInsList = new ArrayList<>();
+        unwantedInsList.add(unwanted1.getText());
+        unwantedInsList.add(unwanted2.getText());
+        unwantedInsList.add(unwanted3.getText());
+        unwantedInsList.add(unwanted4.getText());
+        unwantedInsList.add(unwanted5.getText());
+        unwantedInsList.add(unwanted6.getText());
+
         Button insConfirmButton = new Button("Confirm");
         Button insBackButton = new Button("Back");
 
@@ -119,7 +129,22 @@ public class UserInterface extends Application {
         box11.setAlignment(Pos.CENTER);
         GridPane.setConstraints(box11, 1, 1);
 
-        ObservableList<String> prefferedSlotMonday = list00.getSelectionModel().getSelectedItems();
+        ArrayList<String> prefferedListMon = new ArrayList<>(list00.getItems());
+        ArrayList<String> prefferedListTue = new ArrayList<>(list10.getItems());
+        ArrayList<String> prefferedListWed = new ArrayList<>(list20.getItems());
+        ArrayList<String> prefferedListThu = new ArrayList<>(list01.getItems());
+        ArrayList<String> prefferedListFri = new ArrayList<>(list11.getItems());
+
+        ArrayList<String> prefferedList1 = ConvertToUI.timeslotToStrings(1, prefferedListMon);
+        ArrayList<String> prefferedList2 = ConvertToUI.timeslotToStrings(2, prefferedListTue);
+        ArrayList<String> prefferedList3 = ConvertToUI.timeslotToStrings(3, prefferedListWed);
+        ArrayList<String> prefferedList4 = ConvertToUI.timeslotToStrings(4, prefferedListThu);
+        ArrayList<String> prefferedList5 = ConvertToUI.timeslotToStrings(5, prefferedListFri);
+
+        prefferedList1.addAll(prefferedList2);
+        prefferedList1.addAll(prefferedList3);
+        prefferedList1.addAll(prefferedList4);
+        prefferedList1.addAll(prefferedList5);
 
         VBox box21 = new VBox();
         box21.setAlignment(Pos.CENTER);
@@ -246,6 +271,15 @@ public class UserInterface extends Application {
             window.setScene(welcomeSceneNew);
         }
 
+        insConfirmButton.setOnAction(e -> {
+            try {
+                UserData.inputInstructor(unwantedInsList);
+            } catch (IOException c) {
+                c.printStackTrace();
+            }
+            window.setScene(scene);
+        });
+
         insBackButton.setOnAction(e -> {
             if (UserData.getFlag() == 1) {
                 window.setScene(welcomeScene);
@@ -263,6 +297,11 @@ public class UserInterface extends Application {
         });
 
         timeSlotConfirm.setOnAction(e -> {
+            try {
+                UserData.inputTimeslot(prefferedList1);
+            } catch (IOException c) {
+                c.printStackTrace();
+            }
             window.setScene(scene);
         });
 
@@ -275,6 +314,11 @@ public class UserInterface extends Application {
         });
 
         maxConfirm.setOnAction(e -> {
+            try {
+                UserData.inputMaxDuration(preferredMax);
+            } catch (IOException c) {
+                c.printStackTrace();
+            }
             window.setScene(scene);
         });
 
