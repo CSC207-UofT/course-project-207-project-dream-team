@@ -24,7 +24,6 @@ import java.util.HashSet;
 import java.util.ResourceBundle;
 
 import static FrameworksDrivers.WebParse.courseParse;
-import static InterfaceAdapters.ConvertToUI.convertToUI;
 
 public class Controller implements Initializable {
 
@@ -158,7 +157,7 @@ public class Controller implements Initializable {
     public static ObservableList<TimeSlotForGUI> getObservableList(Timetable currTimetable) {
         final ObservableList<TimeSlotForGUI> data = FXCollections.observableArrayList();
 
-        ArrayList<ArrayList<String>> listOfListOfCourseName = ConvertToUI.convertToUI(currTimetable.getTimeTable());
+        ArrayList<ArrayList<String>> listOfListOfCourseName = ConvertToUI.timetableToUI(currTimetable.getTimeTable());
         for (int i = 0; i < 12; i++) {
             String timeSlot = i + 9 + ":00";
             ArrayList<String> listOfCourseName = listOfListOfCourseName.get(i);

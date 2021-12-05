@@ -172,6 +172,7 @@ public class UserData {
         bwriter.close();
         }
 
+
     public static ArrayList<String> readPreference() throws IOException {
         String filterType = getFilterType();
         String[] lines = readAllLines();
