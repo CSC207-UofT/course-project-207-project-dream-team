@@ -1,10 +1,6 @@
 package InterfaceAdapters;
 
-import ApplicationBusinessRule.*;
-import ApplicationBusinessRule.filter.*;
-import EnterpriseBusinessRules.NewCourse;
 import FrameworksDrivers.UserData;
-import FrameworksDrivers.WebParse;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -12,10 +8,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -23,8 +16,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 public class UserInterface extends Application {
 
@@ -52,6 +43,15 @@ public class UserInterface extends Application {
         TextField unwanted4 = new TextField("Instructor 4");
         TextField unwanted5 = new TextField("Instructor 5");
         TextField unwanted6 = new TextField("Instructor 6");
+
+        ArrayList<String> unwantedInsList = new ArrayList<>();
+        unwantedInsList.add(unwanted1.getText());
+        unwantedInsList.add(unwanted2.getText());
+        unwantedInsList.add(unwanted3.getText());
+        unwantedInsList.add(unwanted4.getText());
+        unwantedInsList.add(unwanted5.getText());
+        unwantedInsList.add(unwanted6.getText());
+
         Button insConfirmButton = new Button("Confirm");
         Button insBackButton = new Button("Back");
 
@@ -72,6 +72,7 @@ public class UserInterface extends Application {
         Label timeAsk = new Label("Please select your unwanted timeslots");
         timeAsk.setFont(Font.font(20));
         GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
 
         VBox box00 = new VBox();
         Label label00 = new Label("Monday");
@@ -128,7 +129,25 @@ public class UserInterface extends Application {
         box11.setAlignment(Pos.CENTER);
         GridPane.setConstraints(box11, 1, 1);
 
+        ArrayList<String> prefferedListMon = new ArrayList<>(list00.getItems());
+        ArrayList<String> prefferedListTue = new ArrayList<>(list10.getItems());
+        ArrayList<String> prefferedListWed = new ArrayList<>(list20.getItems());
+        ArrayList<String> prefferedListThu = new ArrayList<>(list01.getItems());
+        ArrayList<String> prefferedListFri = new ArrayList<>(list11.getItems());
+
+        ArrayList<String> prefferedList1 = ConvertToUI.timeslotToStrings(1, prefferedListMon);
+        ArrayList<String> prefferedList2 = ConvertToUI.timeslotToStrings(2, prefferedListTue);
+        ArrayList<String> prefferedList3 = ConvertToUI.timeslotToStrings(3, prefferedListWed);
+        ArrayList<String> prefferedList4 = ConvertToUI.timeslotToStrings(4, prefferedListThu);
+        ArrayList<String> prefferedList5 = ConvertToUI.timeslotToStrings(5, prefferedListFri);
+
+        prefferedList1.addAll(prefferedList2);
+        prefferedList1.addAll(prefferedList3);
+        prefferedList1.addAll(prefferedList4);
+        prefferedList1.addAll(prefferedList5);
+
         VBox box21 = new VBox();
+        box21.setAlignment(Pos.CENTER);
         Button timeSlotConfirm = new Button("Confirm");
         Button timeSlotBack = new Button("Back");
         box21.setSpacing(8);
@@ -152,6 +171,9 @@ public class UserInterface extends Application {
         VBox maxHourVBox = new VBox();
         Label maxAsk = new Label("Please enter your preferred duration of classes each day");
         TextField maxPreferred = new TextField("Ex: 3");
+
+        String preferredMax = maxPreferred.getText();
+
         Button maxConfirm = new Button("Confirm");
         Button maxBack = new Button("Back");
         maxHourVBox.getChildren().addAll(maxAsk, maxPreferred, maxConfirm, maxBack);
@@ -211,8 +233,106 @@ public class UserInterface extends Application {
         Scene welcomeScene = new Scene(layout1, 300, 200);
 
 
+        // welcome scene when input not exist
+        VBox layout2 = new VBox();
+        layout2.setAlignment(Pos.CENTER);
+        layout2.setSpacing(6);
+
+        ToggleGroup toggleGroup1 = new ToggleGroup();
+        RadioButton rb4 = new RadioButton("Instructor");
+        RadioButton rb5 = new RadioButton("Max Hour");
+        RadioButton rb6 = new RadioButton("Time Slot");
+        rb4.setToggleGroup(toggleGroup1);
+        rb5.setToggleGroup(toggleGroup1);
+        rb6.setToggleGroup(toggleGroup1);
+
+        Button welcomeConfirmBtn = new Button("Confirm");
+        Button welcomeNewBack = new Button("Back");
+
+        welcomeConfirmBtn.setOnAction(e -> {
+            if (rb4.isSelected()) {
+                window.setScene(insScene);
+            } else if (rb5.isSelected()) {
+                window.setScene(maxScene);
+            } else if (rb6.isSelected()){
+                window.setScene(timeSlotScene);
+            } else {
+                window.setScene(scene);
+            }
+        });
+
+        layout2.getChildren().addAll(rb4, rb5, rb6, welcomeConfirmBtn, welcomeNewBack);
+
+        Scene welcomeSceneNew = new Scene(layout2, 300, 200);
+
+        if (UserData.inputExists()) {
+            window.setScene(welcomeScene);
+        } else {
+            window.setScene(welcomeSceneNew);
+        }
+
+        insConfirmButton.setOnAction(e -> {
+            try {
+                UserData.inputInstructor(unwantedInsList);
+            } catch (IOException c) {
+                c.printStackTrace();
+            }
+            window.setScene(scene);
+        });
+
+        insBackButton.setOnAction(e -> {
+            if (UserData.getFlag() == 1) {
+                window.setScene(welcomeScene);
+            } else {
+                window.setScene(welcomeSceneNew);
+            }
+        });
+
+        welcomeNewBack.setOnAction(e -> {
+            if (UserData.getFlag() == 1) {
+                window.setScene(welcomeScene);
+            } else {
+                window.setScene(welcomeSceneNew);
+            }
+        });
+
+        timeSlotConfirm.setOnAction(e -> {
+            try {
+                UserData.inputTimeslot(prefferedList1);
+            } catch (IOException c) {
+                c.printStackTrace();
+            }
+            window.setScene(scene);
+        });
+
+        timeSlotBack.setOnAction(e -> {
+            if (UserData.getFlag() == 1) {
+                window.setScene(welcomeScene);
+            } else {
+                window.setScene(welcomeSceneNew);
+            }
+        });
+
+        maxConfirm.setOnAction(e -> {
+            try {
+                UserData.inputMaxDuration(preferredMax);
+            } catch (IOException c) {
+                c.printStackTrace();
+            }
+            window.setScene(scene);
+        });
+
+        maxBack.setOnAction(e -> {
+            if (UserData.getFlag() == 1) {
+                window.setScene(welcomeScene);
+            } else {
+                window.setScene(welcomeSceneNew);
+            }
+        });
+
+
+
         primaryStage.setTitle("CSC207 dream team");
-        primaryStage.setScene(welcomeScene);
         primaryStage.show();
     }
 

@@ -32,25 +32,18 @@ public class WebParse {
     }
 
     public static Elements halfCourseToTags(String courseCode) throws IOException {
-        String url_f = "https://coursefinder.utoronto.ca/course-search/search/" +
-                "courseInquiry?methodToCall=start&viewId=CourseDetails-" +
-                "InquiryView&courseId=" + courseCode + "H1F20219";
-        String url_y = "https://coursefinder.utoronto.ca/course-search/search/" +
-                "courseInquiry?methodToCall=start&viewId=CourseDetails-" +
-                "InquiryView&courseId=" + courseCode + "Y1Y20219";
-        String url_s = "https://coursefinder.utoronto.ca/course-search/search/" +
-                "courseInquiry?methodToCall=start&viewId=CourseDetails-" +
-                "InquiryView&courseId=" + courseCode + "H1S20221";
-        String[] urls = {url_f, url_y, url_s};
-        Document html = null;
-        for (String url:urls){
-            html = Jsoup.connect(url).get();
-            Elements spans = html.select("span");
-            if (html.select("span").size() > 3) {
+        String courseCodeF = courseCode + "H1F";
+        String courseCodeY = courseCode + "Y1Y";
+        String courseCodeS = courseCode + "H1S";
+        String[] courseCodes = {courseCodeF, courseCodeY, courseCodeS};
+        Elements spans = null;
+        for (String cc: courseCodes){
+            spans = fullCourseToTags(cc);
+            if (spans.size() > 3) {
                 return spans;
             }
         }
-        return html.select("span");
+        return spans;
     }
 
     public static Elements courseToTags(String courseCode) throws IOException {
@@ -229,7 +222,8 @@ public class WebParse {
         NewCourse sta257 = courseParse("STA257");
         NewCourse bio130 = courseParse("BIO130H1S");
         NewCourse mat137 = courseParse("MAT137Y1Y");
-        //print(bio130);
-        //print(mat137);
+        print(sta257);
+        print(bio130);
+        print(mat137);
     }
 }
