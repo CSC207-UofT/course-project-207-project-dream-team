@@ -1,9 +1,7 @@
 package ApplicationBusinessRule;
 
 import EnterpriseBusinessRules.NewCourse;
-import FrameworksDrivers.WebParse;
 
-import java.io.IOException;
 import java.util.*;
 
 public class SimpleScheduler {
