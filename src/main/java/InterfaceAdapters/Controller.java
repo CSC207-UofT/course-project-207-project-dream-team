@@ -99,7 +99,10 @@ public class Controller implements Initializable {
             NewCourse foundedCourse = courseParse(course);
             String foundedString = foundedCourse.getCourseCode();
             if (!courseListView.getItems().contains(foundedString)) {
-                courseListView.getItems().add(foundedString);
+                if (!foundedString.equals("")) {
+                    courseListView.getItems().add(foundedString);
+                    UserData.inputCourse(foundedString);
+                }
             }
         } catch (IOException c) {
             c.printStackTrace();
