@@ -29,7 +29,7 @@ public class UserInterface extends Application {
 
         URL fxmlLocation = getClass().getResource("/main.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
-        Scene scene = new Scene(fxmlLoader.load(), 717, 516);
+        Scene scene = new Scene(fxmlLoader.load(), 764, 390);
 
 
         // create a scene for instructor filter event
@@ -62,7 +62,7 @@ public class UserInterface extends Application {
         insVBox.setSpacing(10);
         insVBox.setPadding(new Insets(20, 220, 20, 220));
 
-        Scene insScene = new Scene(insVBox, 855, 516);
+        Scene insScene = new Scene(insVBox, 764, 374);
 
 
 
@@ -162,7 +162,7 @@ public class UserInterface extends Application {
         grid.setPadding(new Insets(20, 20, 20, 20));
         grid.setAlignment(Pos.CENTER);
 
-        Scene timeSlotScene = new Scene(timeSlotVBox, 885, 516);
+        Scene timeSlotScene = new Scene(timeSlotVBox, 764, 374);
 
 
 
@@ -182,7 +182,7 @@ public class UserInterface extends Application {
         maxHourVBox.setPadding(new Insets(20, 220, 20, 220));
         maxHourVBox.setSpacing(8);
 
-        Scene maxScene = new Scene(maxHourVBox, 855, 516);
+        Scene maxScene = new Scene(maxHourVBox, 764, 374);
 
 
 
@@ -210,8 +210,10 @@ public class UserInterface extends Application {
                 window.setScene(insScene);
             } else if (rb2.isSelected()) {
                 window.setScene(maxScene);
-            } else {
+            } else if (rb3.isSelected()){
                 window.setScene(timeSlotScene);
+            } else {
+                window.setScene(scene);
             }
         });
 
@@ -222,8 +224,10 @@ public class UserInterface extends Application {
                 window.setScene(insScene);
             } else if (rb2.isSelected()) {
                 window.setScene(maxScene);
-            } else {
+            } else if (rb3.isSelected()) {
                 window.setScene(timeSlotScene);
+            } else {
+                window.setScene(scene);
             }
         });
 
@@ -332,7 +336,7 @@ public class UserInterface extends Application {
 
 
 
-        primaryStage.setTitle("CSC207 dream team");
+        primaryStage.setTitle("Course Schedule and Recommendation System");
         primaryStage.show();
     }
 
