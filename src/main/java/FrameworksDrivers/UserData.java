@@ -172,6 +172,19 @@ public class UserData {
         bwriter.close();
         }
 
+    public static void clearPreference() throws IOException{
+        String[] lines = readAllLines();
+        lines[1] = lines[1].substring(0, 14);
+        lines[2] = lines[2].substring(0, 13);
+        lines[3] = lines[3].substring(0, 11);
+
+        FileWriter fwriter = new FileWriter(f.getAbsolutePath());
+        BufferedWriter bwriter = new BufferedWriter(fwriter);
+        for (String line : lines) {
+            bwriter.write(line);
+        }
+        bwriter.close();
+    }
 
     public static ArrayList<String> readPreference() throws IOException {
         String filterType = getFilterType();
@@ -215,6 +228,7 @@ public class UserData {
         ArrayList<Course> cs = UserData.upload(path);
         System.out.println(cs.get(0).courseCode);*/
 
+        System.out.println(getFlag());
         inputExists();
         System.out.println(getFlag());
         inputCourse("CSC108H1F");
@@ -235,7 +249,7 @@ public class UserData {
 
         inputTimeslot(times);
         inputInstructor(names);
-        inputMaxDuration(duration);
+        //inputMaxDuration(duration);
 
         removeCourse("CSC104H1F");
         removeCourse("CSC108H1F");
@@ -246,14 +260,7 @@ public class UserData {
         System.out.println(getFilterType());
         System.out.println(getFilterType().equals("Instructors"));
         System.out.println(readPreference());
-
-        clearCourses();
-        System.out.println(getFilterType());
-        System.out.println(readPreference());
-
-
-        removeAll();
-        System.out.println(getFilterType());
+        clearPreference();
         System.out.println(readPreference());
     }
 }
