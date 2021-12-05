@@ -57,7 +57,9 @@ public class UserData {
                 }
             }
             if (counter > 1){
-                return lines[i].split(",")[0];
+                String result = lines[i].split(",")[0];
+                result = result.substring(1, result.length());
+                return result;
             }
         }
         return "No Filter";
@@ -171,20 +173,21 @@ public class UserData {
         }
     }
 
-    public static void removePreference(Integer type, String content) throws IOException{
+    public static ArrayList<String> readPreference() throws IOException {
+        String filterType = getFilterType();
         String[] lines = readAllLines();
-        if (!lines[type].contains(content)){
-            return;
-        }else {
-            FileWriter fwriter = new FileWriter(f.getAbsolutePath());
-            BufferedWriter bwriter = new BufferedWriter(fwriter);
-            Integer cLength = content.length();
-            lines[type] = lines[type].substring(0, lines[type].length()-cLength-1);
-            for (String line : lines) {
-                bwriter.write(line);
-            }
-            bwriter.close();
+        ArrayList<String> result = new ArrayList();
+        if (filterType.equals("Max Duration")) {
+            result = new ArrayList<>(Arrays.asList(lines[1].split(",")));
+            result.remove("\nMax Duration");
+        } else if (filterType.equals("Instructors")) {
+            result = new ArrayList<>(Arrays.asList(lines[2].split(",")));
+            result.remove("\nInstructors");
+        } else if (filterType.equals("Timeslots")) {
+            result = new ArrayList<>(Arrays.asList(lines[3].split(",")));
+            result.remove("\nTimeslots");
         }
+        return result;
     }
 
     //Readers
@@ -231,14 +234,15 @@ public class UserData {
         removeCourse("CSC104H1F");
         removeCourse("CSC108H1F");
 
-        removePreference(1, "6");
-        removePreference(3, "11019");
 
         System.out.println(readCourses());
         System.out.println(getFlag());
         System.out.println(getFilterType());
+        System.out.println(getFilterType().equals("Instructors"));
+        System.out.println(readPreference());
 
         removeAll();
         System.out.println(getFilterType());
+        System.out.println(readPreference());
     }
 }
