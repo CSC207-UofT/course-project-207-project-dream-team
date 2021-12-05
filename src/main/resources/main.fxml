@@ -28,7 +28,7 @@
                         <MenuBar prefHeight="28.0" prefWidth="636.0" HBox.hgrow="ALWAYS">
                             <menus>
                                 <Menu fx:id="knitToCsvMenu" mnemonicParsing="false" onAction="#knitClicked" text="knit to csv" />
-                                <Menu fx:id="selectTimetableMenu" mnemonicParsing="false" onAction="#selectTimetableMenuClicked" text="select timetable">
+                                <Menu fx:id="selectTimetableMenu" mnemonicParsing="false" text="select timetable">
                            <items>
                               <MenuItem fx:id="timeTable1" mnemonicParsing="false" onAction="#timeTable1Clicked" text="Timetable 1" />
                               <MenuItem fx:id="timeTable2" mnemonicParsing="false" onAction="#timeTable2Clicked" text="Timetable 2" />

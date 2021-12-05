@@ -145,6 +145,11 @@ public class Controller implements Initializable {
             arrangedTimetables = (ArrayList<Timetable>) arranged.subList(0, 4);
         } else {
             arrangedTimetables = arranged;
+            int space = 5 - arranged.size();
+            for (int i = 0; i < space; i++) {
+                arrangedTimetables.add(new Timetable());
+            }
+
         }
     }
 
