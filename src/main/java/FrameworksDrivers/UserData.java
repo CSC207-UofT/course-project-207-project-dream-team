@@ -47,6 +47,22 @@ public class UserData {
         bwriter.close();
     }
 
+    public static String getFilterType() throws IOException{
+        String[] lines = readAllLines();
+        for (int i=1; i<lines.length; i++){
+            int counter = 0;
+            for (int j = 0; j < lines[i].length(); j++){
+                if (lines[i].charAt(j) == ','){
+                    counter += 1;
+                }
+            }
+            if (counter > 1){
+                return lines[i].split(",")[0];
+            }
+        }
+        return "No Filter";
+    }
+
     public static void removeAll() throws IOException {
         String[] lines = readAllLines();
         FileWriter fwriter = new FileWriter(f.getAbsolutePath());
@@ -191,27 +207,38 @@ public class UserData {
         UserData.download(courses, path);
         ArrayList<Course> cs = UserData.upload(path);
         System.out.println(cs.get(0).courseCode);*/
+
         inputExists();
         System.out.println(getFlag());
         inputCourse("CSC108H1F");
         inputCourse("CSC207H1F");
         inputCourse("CSC258H1F");
+
         ArrayList<String> names = new ArrayList<>();
         ArrayList<String> times = new ArrayList<>();
+
         names.add("Piao");
         names.add("Ethan");
         names.add("Xuanyi");
+
         times.add("11019");
         times.add("51719");
+
+
         inputTimeslot(times);
         inputInstructor(names);
-        inputMaxDuration("6");
+
         removeCourse("CSC104H1F");
         removeCourse("CSC108H1F");
+
         removePreference(1, "6");
         removePreference(3, "11019");
-        removeAll();
+
         System.out.println(readCourses());
         System.out.println(getFlag());
+        System.out.println(getFilterType());
+
+        removeAll();
+        System.out.println(getFilterType());
     }
 }
