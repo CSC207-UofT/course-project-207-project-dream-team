@@ -31,7 +31,11 @@ public class MakeCSV {
                 body.append("\n").append(timeslot).append(",");
 
                 for (int x = 0; x < courses.get(y).size(); x ++) {
-                    body.append(courses.get(y).get(x)).append(",");
+                    if (courses.get(y).get(x) != null){
+                        body.append(courses.get(y).get(x)).append(",");
+                    } else {
+                        body.append(",");
+                    }
                 }
             }
             pw.write(body.toString());
