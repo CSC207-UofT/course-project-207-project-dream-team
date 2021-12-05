@@ -16,15 +16,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="516.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceAdapters.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceAdapters.Controller">
     <top>
         <VBox BorderPane.alignment="CENTER">
             <children>
                 <HBox>
                     <children>
-                        <TextField fx:id="courseSearchField" prefHeight="26.0" prefWidth="223.0" promptText="search courses" />
+                        <TextField fx:id="courseSearchField" prefHeight="26.0" prefWidth="176.0" promptText="search courses" />
                         <Separator orientation="VERTICAL" prefHeight="26.0" prefWidth="7.0" visible="false" />
-                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonClicked" prefHeight="26.0" prefWidth="156.0" text="search" />
+                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonClicked" prefHeight="26.0" prefWidth="114.0" text="search" />
                         <MenuBar prefHeight="28.0" prefWidth="636.0" HBox.hgrow="ALWAYS">
                             <menus>
                                 <Menu fx:id="knitToCsvMenu" mnemonicParsing="false" onAction="#knitClicked" text="knit to csv" />
@@ -57,11 +57,11 @@
         <TableView fx:id="tableView" prefHeight="471.0" prefWidth="603.0" BorderPane.alignment="CENTER">
             <columns>
                 <TableColumn fx:id="TimeSlotColumn" resizable="false" text="Timeslot" />
-                <TableColumn fx:id="MondayColumn" prefWidth="90.0" resizable="false" text="Monday" />
-                <TableColumn fx:id="TuesdayColumn" prefWidth="90.0" resizable="false" text="Tuesday" />
-                <TableColumn fx:id="WednesdayColumn" prefWidth="90.0" resizable="false" text="Wednesday" />
-                <TableColumn fx:id="ThursdayColumn" minWidth="80.0" prefWidth="90.0" resizable="false" text="Thursday" />
-                <TableColumn fx:id="FridayColumn" minWidth="80.0" prefWidth="90.0" resizable="false" text="Friday" />
+                <TableColumn fx:id="MondayColumn" prefWidth="100.0" resizable="false" text="Monday" />
+                <TableColumn fx:id="TuesdayColumn" prefWidth="100.0" resizable="false" text="Tuesday" />
+                <TableColumn fx:id="WednesdayColumn" prefWidth="100.0" resizable="false" text="Wednesday" />
+                <TableColumn fx:id="ThursdayColumn" minWidth="80.0" prefWidth="100.0" resizable="false" text="Thursday" />
+                <TableColumn fx:id="FridayColumn" minWidth="80.0" prefWidth="100.0" resizable="false" text="Friday" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -74,7 +74,8 @@
             <ListView fx:id="courseListView" prefHeight="600.0" prefWidth="186.0" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="confirmButton" layoutX="62.0" mnemonicParsing="false" onAction="#confirmButtonClicked" prefHeight="26.0" prefWidth="63.0" text="Confirm" />
+                  <Button fx:id="confirmButton" layoutX="21.0" layoutY="1.0" mnemonicParsing="false" onAction="#confirmButtonClicked" prefHeight="26.0" prefWidth="63.0" text="Confirm" />
+                  <Button layoutX="107.0" layoutY="1.0" mnemonicParsing="false" onAction="#clearButtonClicked" text="Clear" />
                </children>
             </AnchorPane>
          </children>
