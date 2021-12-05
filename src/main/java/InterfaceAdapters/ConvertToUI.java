@@ -1,14 +1,18 @@
 package InterfaceAdapters;
 
 import EnterpriseBusinessRules.Session;
-import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 
 import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class ConvertToUI {
 
+    /**
+     * Produce all possible valid keys given a point in time in a week.
+     * @param x an x coordinate that represent the relative position on a construct timetable.
+     * @param y a y coordinate that represent the relative position on a construct timetable.
+     * @return An array of all possible valid keys to look for in the timetable.
+     */
     public static String[] allValidKey(int x, int y) {
         String strY = String.valueOf(y);
         if (strY.length() < 2) {
@@ -20,7 +24,12 @@ public class ConvertToUI {
         return new String[]{singleHrKey, dualHrKey, tripleHrKey};
     }
 
-    public static ArrayList<ArrayList<String>> convertToUI(TreeMap<String, Session> timetable) {
+    /**
+     * Converts timetable to a nested array list of strings.
+     * @param timetable an ordered mapping of session time to course sessions, ordered from the earliest time to latest.
+     * @return a nested array list of all session codes in the timetable.
+     */
+    public static ArrayList<ArrayList<String>> timetableToUI(TreeMap<String, Session> timetable) {
         ArrayList<Integer> record = new ArrayList<>();
         ArrayList<ArrayList<String>> entireTable = new ArrayList<>();
 
@@ -55,7 +64,13 @@ public class ConvertToUI {
         return entireTable;
     }
 
-    public static ArrayList<String> timeslotToStrings(Integer dayInString, ArrayList<String> timeslots){
+    /**
+     * Converts an array list of timeslots to strings.
+     * @param dayInString an integer parameter representing the day in a week.
+     * @param timeslots an array list of timeslots.
+     * @return an array list of formatted timeslots in string.
+     */
+    public static ArrayList<String> timeslotToUI(Integer dayInString, ArrayList<String> timeslots){
         ArrayList<String> result = new ArrayList<>();
         for (String i:timeslots){
             String startTime = i.substring(0, 2);
@@ -73,7 +88,7 @@ public class ConvertToUI {
         String t2 = "13:00 - 15:00";
         timeslots.add(t1);
         timeslots.add(t2);
-        System.out.println(timeslotToStrings(1, timeslots));
+        System.out.println(timeslotToUI(1, timeslots));
 
         }
     }
