@@ -29,7 +29,7 @@ public class UserInterface extends Application {
 
         URL fxmlLocation = getClass().getResource("/main.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
-        Scene scene = new Scene(fxmlLoader.load(), 885, 516);
+        Scene scene = new Scene(fxmlLoader.load(), 717, 516);
 
 
         // create a scene for instructor filter event
