@@ -220,6 +220,11 @@ public class UserInterface extends Application {
         Button askButton2 = new Button("No");
 
         askButton2.setOnAction(e -> {
+            try {
+                UserData.removeAll();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             if (rb1.isSelected()) {
                 window.setScene(insScene);
             } else if (rb2.isSelected()) {
