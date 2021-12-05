@@ -351,6 +351,7 @@ public class UserInterface extends Application {
                     CornerRadii.EMPTY, Insets.EMPTY);
             Background bkg = new Background(background_fill);
             layout1.setBackground(bkg);
+            layout2.setBackground(bkg);
             maxHourVBox.setBackground(bkg);
             insVBox.setBackground(bkg);
             timeSlotVBox.setBackground(bkg);
@@ -398,6 +399,7 @@ public class UserInterface extends Application {
                     CornerRadii.EMPTY, Insets.EMPTY);
             Background bkg = new Background(background_fill);
             layout1.setBackground(bkg);
+            layout2.setBackground(bkg);
             maxHourVBox.setBackground(bkg);
             insVBox.setBackground(bkg);
             timeSlotVBox.setBackground(bkg);
