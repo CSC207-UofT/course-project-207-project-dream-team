@@ -10,10 +10,23 @@ public class SimpleScheduler {
 
     public ArrayList<NewCourse> coursesToSchedule;
 
+    /**
+     * Construct a scheduler for a given collection of courses.
+     * @param courses the courses that we wish to schedule.
+     */
     public SimpleScheduler(ArrayList<NewCourse> courses){
         coursesToSchedule = courses;
     }
 
+    /**
+     * Schedule the courses in SimpleScheduler to the initial timetable tb, and ignore the timetable solutions
+     * specified in seen.
+     * @param tb the initial timetable that we start with
+     * @param seen the string representation of timetables that we wish to ignore, that is, these timetables are not
+     *             included in the returned collection of timetables.
+     * @return the collection of all possible course combinations based on the given courses, where each course
+     * combination is represented by a timetable.
+     */
     public ArrayList<Timetable> arrange(Timetable tb, Set<String> seen) {
 
         ArrayList<Timetable> solutions = new ArrayList<>();
@@ -47,50 +60,6 @@ public class SimpleScheduler {
         }
         return solutions;
 
-    }
-
-
-    public static void main(String[] args) throws IOException {
-        ArrayList<NewCourse> courses = new ArrayList<>();
-
-//        Session csc207a = new Session("Paul Gries", "CSC207H1F", "LEC0101", new Integer[]{21314, 41314});
-//        Session csc207b = new Session("Paul Gries", "CSC207H1F", "LEC0201", new Integer[]{21415, 41415});
-//        Session csc207c = new Session("TBA", "CSC207H1F", "TUT0301", new Integer[]{11416});
-//
-//        ArrayList<Session> csc207tut = new ArrayList<>();
-//        csc207tut.add(csc207c);
-//
-//        ArrayList<Session> csc207lec = new ArrayList<>();
-//        csc207lec.add(csc207a);
-//        csc207lec.add(csc207b);
-//
-//        courses.add(new NewCourse("CSC207H1F", csc207tut, csc207lec, new ArrayList<>()));
-//
-//
-//        Session mat224a = new Session("Soheil", "MAT224H1F", "LEC0101", new Integer[]{11011, 31011, 41011});
-//        Session mat224c = new Session("TBA", "MAT224H1F", "TUT0102", new Integer[]{11112});
-//
-//        ArrayList<Session> mat224tut = new ArrayList<>();
-//        mat224tut.add(mat224c);
-//
-//        ArrayList<Session> mat224lec = new ArrayList<>();
-//        mat224lec.add(mat224a);
-//
-//        courses.add(new NewCourse("MAT224H1F", mat224tut, mat224lec, new ArrayList<>()));
-
-//        courses.add(WebParse.courseParse("CSC108H1F"));
-        courses.add(WebParse.courseParse("CSC258H1F"));
-        courses.add(WebParse.courseParse("CSC336H1F"));
-        courses.add(WebParse.courseParse("CSC236H1F"));
-        courses.add(WebParse.courseParse("STA257H1F"));
-
-        SimpleScheduler ss = new SimpleScheduler(courses);
-        Timetable tb = new Timetable();
-        Set<String> seen = new HashSet<>();
-        ArrayList<Timetable> solutions = ss.arrange(tb, seen);
-        for (Timetable t : solutions){
-            System.out.println(t.toString());
-        }
     }
 
 
