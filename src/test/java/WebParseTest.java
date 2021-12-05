@@ -16,6 +16,6 @@ public class WebParseTest {
         NewCourse mat137 = WebParse.courseParse("MAT137Y1Y");
         assertEquals(2, sta257.getTutorials().size());
         assertEquals(9, bio130.getLabs().size());
-        assertEquals(12, mat137.getTutorials().size());
+        assertEquals(14, mat137.getTutorials().size());
     }
 }
