@@ -14,6 +14,12 @@ import java.util.regex.Pattern;
 
 
 public class WebParse {
+    /**
+     * gets all contents start with a tag "span"
+     * @param courseCode a nine-digit course code to be searched
+     * @return a list of elements, each represents a content with tag "span
+     * @throws IOException if gets wrong input
+     */
     public static Elements fullCourseToTags(String courseCode) throws IOException {
         String url_fy = "https://coursefinder.utoronto.ca/course-search/search/" +
                 "courseInquiry?methodToCall=start&viewId=CourseDetails-" +
@@ -30,6 +36,12 @@ public class WebParse {
         return html.select("span");
     }
 
+    /**
+     * gets all contents start with a tag "span"
+     * @param courseCode a six-digit course code to be searched
+     * @return a list of elements, each represents a content with tag "span
+     * @throws IOException if gets wrong input
+     */
     public static Elements halfCourseToTags(String courseCode) throws IOException {
         String courseCodeF = courseCode + "H1F";
         String courseCodeY = courseCode + "Y1Y";
@@ -45,6 +57,12 @@ public class WebParse {
         return spans;
     }
 
+    /**
+     * get raw info from course code
+     * @param courseCode course code to be searched
+     * @return a list of elements, each represents a content with tag "span"
+     * @throws IOException if either courseToTags method runs abnormally
+     */
     public static Elements courseToTags(String courseCode) throws IOException {
         if (courseCode.length() == 6){
             return halfCourseToTags(courseCode);
@@ -53,6 +71,11 @@ public class WebParse {
         }
     }
 
+    /**
+     * test whether spanID matches a specific format
+     * @param spanID the spanID of an element
+     * @return true or false
+     */
     public static Boolean tagMatch(String spanID) {
         String regex = "u[0-9]*_line[0-9]*";
         Pattern pattern = Pattern.compile(regex);
@@ -60,6 +83,11 @@ public class WebParse {
         return matcher.matches();
     }
 
+    /**
+     * turn raw info into a list
+     * @param spans a list of elements
+     * @return an arraylist of strings, each represents a piece of information
+     */
     public static ArrayList<String> tagsToList(Elements spans) {
         ArrayList<String> infos = new ArrayList<>();
         for (Element span : spans) {
@@ -70,6 +98,11 @@ public class WebParse {
         return infos;
     }
 
+    /**
+     * break a long arraylist into an arraylist of several lists
+     * @param infos arraylist of strings, each represents a piece of info
+     * @return an arraylist of lists, each lists represents info of one single session
+     */
     public static ArrayList<String[]> breakList(ArrayList<String> infos) {
         ArrayList<String[]> infoSessions = new ArrayList<>();
         for (int i = 0; i < infos.size(); i = i + 7) {
@@ -82,6 +115,11 @@ public class WebParse {
         return infoSessions;
     }
 
+    /**
+     * remove all async courses from list infosession
+     * @param infoSessions an arraylist of lists, each represents info of one single session
+     * @return a cleaned arraylsit of lists
+     */
     public static ArrayList<String[]> removeAsync(ArrayList<String[]> infoSessions) {
         ArrayList<String[]> removeAsync = new ArrayList<>();
         for (String[] infoSession : infoSessions) {
@@ -92,6 +130,11 @@ public class WebParse {
         return removeAsync;
     }
 
+    /**
+     * divide list into three lists, each containing ino of lecs, tuts, and labs
+     * @param infoSessions arraylist of lists, cleaned infosession
+     * @return a list of arraylist of lists, each arraylist is infosession of a single type
+     */
     public static ArrayList<String[]>[] divideList(ArrayList<String[]> infoSessions) {
         ArrayList<String[]> lecs = new ArrayList<>();
         ArrayList<String[]> tuts = new ArrayList<>();
@@ -112,6 +155,11 @@ public class WebParse {
         return divided;
     }
 
+    /**
+     * remove tut sessions sharing same timeslots
+     * @param tuts arraylist of lists, each list represents info of one tut session
+     * @return a new arraylist of lists with duplication removed
+     */
     public static ArrayList<String[]> removeDuplicate(ArrayList<String[]> tuts) {
         ArrayList<String> time = new ArrayList<>();
         ArrayList<String[]> cleaned = new ArrayList<>();
@@ -135,12 +183,22 @@ public class WebParse {
         return cleaned;
     }
 
+    /**
+     * remove duplicates from all three types of infosessions
+     * @param divided a divided infosession, containing three separate infosessions
+     * @return a cleaned list of arraylists of lists
+     */
     public static ArrayList<String[]>[] cleanList(ArrayList<String[]>[] divided) {
         divided[1] = removeDuplicate(divided[1]);
         divided[2] = removeDuplicate(divided[2]);
         return divided;
     }
 
+    /**
+     * turn a string time into an integer digit format
+     * @param time a time in format of string
+     * @return a time in format of integer
+     */
     public static Integer[] toTimeslots(String time) {
         String[] list = time.split(" ");
         ArrayList<Integer> timeslots = new ArrayList<>();
@@ -155,7 +213,12 @@ public class WebParse {
         return timeslots.toArray(new Integer[0]);
     }
 
-
+    /**
+     * turn a single list into session type
+     * @param infoSession a list of strings, each represents an attribute of session
+     * @param courseCode the course code of the session
+     * @return a session type
+     */
     public static Session listToSession(String[] infoSession, String courseCode) {
         String instructor = infoSession[2];
         int end = infoSession[0].length();
@@ -165,6 +228,12 @@ public class WebParse {
         return new Session(instructor, courseCode, sessionCode, timeslots);
     }
 
+    /**
+     * turn a cleaned list of information into a list of sessions
+     * @param cleaned cleaned list of information
+     * @param courseCode the course code of sessions
+     * @return an arryalist of sessions
+     */
     public static ArrayList<Session>[] cleanSessions(ArrayList<String[]>[] cleaned, String courseCode) {
         ArrayList<Session>[] sessions = (ArrayList<Session>[]) new ArrayList[3];
         sessions[0] = new ArrayList<>();
@@ -178,10 +247,22 @@ public class WebParse {
         return sessions;
     }
 
+    /**
+     * turn several sessions into a course
+     * @param sessions a list of sessions
+     * @param courseCode course code of the course
+     * @return a NewCourse type
+     */
     public static NewCourse sessionsToCourse(ArrayList<Session>[] sessions, String courseCode) {
         return new NewCourse(courseCode, sessions[1], sessions[0], sessions[2]);
     }
 
+    /**
+     * get a NewCourse from a single course code
+     * @param courseCode the course code to search with
+     * @return a NewCourse type
+     * @throws IOException if any helper method throws an IOException
+     */
     public static NewCourse courseParse(String courseCode) throws IOException {
         Elements spans = courseToTags(courseCode);
         ArrayList<String> infos = tagsToList(spans);
@@ -200,6 +281,10 @@ public class WebParse {
         return course;
     }
 
+    /**
+     * print information of a NewCourse with a specific pattern
+     * @param course the NewCourse type
+     */
     public static void print(NewCourse course){
         System.out.println(course.getCourseCode());
         for (Session session : course.getLectures()) {
