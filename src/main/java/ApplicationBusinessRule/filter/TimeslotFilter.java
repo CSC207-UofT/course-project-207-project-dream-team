@@ -1,6 +1,5 @@
 package ApplicationBusinessRule.filter;
 import ApplicationBusinessRule.Timetable;
-import ApplicationBusinessRule.filter.Filter;
 
 import java.util.ArrayList;
 

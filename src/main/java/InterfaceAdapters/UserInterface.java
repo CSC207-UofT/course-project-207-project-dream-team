@@ -2,7 +2,6 @@ package InterfaceAdapters;
 
 import FrameworksDrivers.UserData;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -29,7 +28,7 @@ public class UserInterface extends Application {
 
         URL fxmlLocation = getClass().getResource("/main.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
-        Scene scene = new Scene(fxmlLoader.load(), 885, 516);
+        Scene scene = new Scene(fxmlLoader.load(), 764, 390);
 
 
         // create a scene for instructor filter event
@@ -62,7 +61,7 @@ public class UserInterface extends Application {
         insVBox.setSpacing(10);
         insVBox.setPadding(new Insets(20, 220, 20, 220));
 
-        Scene insScene = new Scene(insVBox, 855, 516);
+        Scene insScene = new Scene(insVBox, 764, 390);
 
 
 
@@ -135,11 +134,11 @@ public class UserInterface extends Application {
         ArrayList<String> prefferedListThu = new ArrayList<>(list01.getItems());
         ArrayList<String> prefferedListFri = new ArrayList<>(list11.getItems());
 
-        ArrayList<String> prefferedList1 = ConvertToUI.timeslotToStrings(1, prefferedListMon);
-        ArrayList<String> prefferedList2 = ConvertToUI.timeslotToStrings(2, prefferedListTue);
-        ArrayList<String> prefferedList3 = ConvertToUI.timeslotToStrings(3, prefferedListWed);
-        ArrayList<String> prefferedList4 = ConvertToUI.timeslotToStrings(4, prefferedListThu);
-        ArrayList<String> prefferedList5 = ConvertToUI.timeslotToStrings(5, prefferedListFri);
+        ArrayList<String> prefferedList1 = ConvertToUI.timeslotToUI(1, prefferedListMon);
+        ArrayList<String> prefferedList2 = ConvertToUI.timeslotToUI(2, prefferedListTue);
+        ArrayList<String> prefferedList3 = ConvertToUI.timeslotToUI(3, prefferedListWed);
+        ArrayList<String> prefferedList4 = ConvertToUI.timeslotToUI(4, prefferedListThu);
+        ArrayList<String> prefferedList5 = ConvertToUI.timeslotToUI(5, prefferedListFri);
 
         prefferedList1.addAll(prefferedList2);
         prefferedList1.addAll(prefferedList3);
@@ -162,7 +161,7 @@ public class UserInterface extends Application {
         grid.setPadding(new Insets(20, 20, 20, 20));
         grid.setAlignment(Pos.CENTER);
 
-        Scene timeSlotScene = new Scene(timeSlotVBox, 885, 516);
+        Scene timeSlotScene = new Scene(timeSlotVBox, 764, 390);
 
 
 
@@ -182,7 +181,7 @@ public class UserInterface extends Application {
         maxHourVBox.setPadding(new Insets(20, 220, 20, 220));
         maxHourVBox.setSpacing(8);
 
-        Scene maxScene = new Scene(maxHourVBox, 855, 516);
+        Scene maxScene = new Scene(maxHourVBox, 764, 390);
 
 
 
@@ -210,20 +209,29 @@ public class UserInterface extends Application {
                 window.setScene(insScene);
             } else if (rb2.isSelected()) {
                 window.setScene(maxScene);
-            } else {
+            } else if (rb3.isSelected()){
                 window.setScene(timeSlotScene);
+            } else {
+                window.setScene(scene);
             }
         });
 
         Button askButton2 = new Button("No");
 
         askButton2.setOnAction(e -> {
+            try {
+                UserData.removeAll();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
             if (rb1.isSelected()) {
                 window.setScene(insScene);
             } else if (rb2.isSelected()) {
                 window.setScene(maxScene);
-            } else {
+            } else if (rb3.isSelected()) {
                 window.setScene(timeSlotScene);
+            } else {
+                window.setScene(scene);
             }
         });
 
@@ -332,7 +340,7 @@ public class UserInterface extends Application {
 
 
 
-        primaryStage.setTitle("CSC207 dream team");
+        primaryStage.setTitle("Course Schedule and Recommendation System");
         primaryStage.show();
     }
 
