@@ -173,6 +173,17 @@ public class UserData {
         }
     }
 
+    public static void clearCourses() throws IOException{
+        String[] lines = readAllLines();
+        lines[0] = lines[0].substring(0, 13);
+        FileWriter fwriter = new FileWriter(f.getAbsolutePath());
+        BufferedWriter bwriter = new BufferedWriter(fwriter);
+        for (String line : lines) {
+            bwriter.write(line);
+        }
+        bwriter.close();
+        }
+
     public static ArrayList<String> readPreference() throws IOException {
         String filterType = getFilterType();
         String[] lines = readAllLines();
@@ -227,9 +238,11 @@ public class UserData {
         times.add("11019");
         times.add("51719");
 
+        String duration = "2";
 
         inputTimeslot(times);
         inputInstructor(names);
+        inputMaxDuration(duration);
 
         removeCourse("CSC104H1F");
         removeCourse("CSC108H1F");
@@ -241,7 +254,12 @@ public class UserData {
         System.out.println(getFilterType().equals("Instructors"));
         System.out.println(readPreference());
 
-        removeAll();
+        clearCourses();
+        System.out.println(getFilterType());
+        System.out.println(readPreference());
+
+
+        //removeAll();
         System.out.println(getFilterType());
         System.out.println(readPreference());
     }
