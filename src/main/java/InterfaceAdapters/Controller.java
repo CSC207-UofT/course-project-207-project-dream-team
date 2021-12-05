@@ -98,7 +98,9 @@ public class Controller implements Initializable {
         try {
             NewCourse foundedCourse = courseParse(course);
             String foundedString = foundedCourse.getCourseCode();
-            courseListView.getItems().add(foundedString);
+            if (!courseListView.getItems().contains(foundedString)) {
+                courseListView.getItems().add(foundedString);
+            }
         } catch (IOException c) {
             c.printStackTrace();
             AlertBox.display("Course not found error", "The course is not found");
@@ -215,8 +217,9 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void clearButtonClicked() {
+    public void clearButtonClicked() throws IOException {
         courseListView.getItems().clear();
+        UserData.clearCourses();
     }
 
     @Override
