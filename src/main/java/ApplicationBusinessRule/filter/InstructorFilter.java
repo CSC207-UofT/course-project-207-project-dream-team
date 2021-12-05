@@ -12,10 +12,20 @@ public class InstructorFilter extends Filter {
 
     // ApplicationBusinessRule.filter out the timetables with unwanted timetables
 
+    /**
+     * constructor the InstructorFilter
+     * @param input an Arraylist of timetable
+     * @param unwanted an Arraylist of string representing unwanted instructors
+     */
+
     public InstructorFilter(ArrayList<Timetable> input, ArrayList<String> unwanted) {
         super(input, unwanted);
     }
 
+    /**
+     * sort out timetables with unwanted instructors
+     * @return an Arraylist of sorted timetable
+     */
     @Override
     public ArrayList<Timetable> sort() {
 

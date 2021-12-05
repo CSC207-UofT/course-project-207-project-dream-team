@@ -10,6 +10,12 @@ import java.util.TreeMap;
 
 public class MaximumHourFilter extends Filter {
 
+    /**
+     * constructor the MaximumHourFilter
+     * @param input an Arraylist of timetable
+     * @param unwanted an Arraylist of string representing unwanted maximum hour
+     */
+
     public MaximumHourFilter(ArrayList<Timetable> input, ArrayList<String> unwanted) {
         super(input, unwanted);
     }
@@ -18,6 +24,10 @@ public class MaximumHourFilter extends Filter {
     // Here, the unwanted is an ArrayList of String of length 1.
     // {"7"}: the maximum hour of study time not should not exceed 7 Hours per day.
 
+    /**
+     * sort out the timetables with class hours more than the unwanted hours
+     * @return an Arraylist of timetable
+     */
     @Override
     public ArrayList<Timetable> sort() {
 
