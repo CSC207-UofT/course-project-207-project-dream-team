@@ -47,6 +47,18 @@ public class UserData {
         bwriter.close();
     }
 
+    public static void removeAll() throws IOException {
+        String[] lines = readAllLines();
+        FileWriter fwriter = new FileWriter(f.getAbsolutePath());
+        BufferedWriter bwriter = new BufferedWriter(fwriter);
+        for (String line : lines) {
+            bwriter.write("");
+        }
+        bwriter.close();
+
+        initInput();
+    }
+
     public static String[] readAllLines() throws IOException{
         FileReader freader = new FileReader(f.getAbsolutePath());
         BufferedReader breader = new BufferedReader(freader);
@@ -198,6 +210,7 @@ public class UserData {
         removeCourse("CSC108H1F");
         removePreference(1, "6");
         removePreference(3, "11019");
+        removeAll();
         System.out.println(readCourses());
         System.out.println(getFlag());
     }
