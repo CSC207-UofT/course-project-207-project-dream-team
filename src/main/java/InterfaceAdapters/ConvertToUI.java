@@ -42,12 +42,12 @@ public class ConvertToUI {
                 String[] keys = allValidKey(xCoords, yCoords);
 
                 if (timetable.containsKey(keys[0])) {
-                    sameHr.add(timetable.get(keys[0]).courseCode + timetable.get(keys[0]).sessionCode.substring(0, 3));
+                    sameHr.add(timetable.get(keys[0]).courseCode + "\n" + timetable.get(keys[0]).sessionCode.substring(0, 7));
                 } else if (timetable.containsKey(keys[1])) {
-                    sameHr.add(timetable.get(keys[1]).courseCode + timetable.get(keys[1]).sessionCode.substring(0, 3));
+                    sameHr.add(timetable.get(keys[1]).courseCode + "\n" +  timetable.get(keys[1]).sessionCode.substring(0, 7));
                     record.add(xCoords);
                 } else if (timetable.containsKey(keys[2])) {
-                    sameHr.add(timetable.get(keys[2]).courseCode + timetable.get(keys[2]).sessionCode.substring(0, 3));
+                    sameHr.add(timetable.get(keys[2]).courseCode + "\n" +  timetable.get(keys[2]).sessionCode.substring(0, 7));
                     record.add(xCoords);
                     record.add(xCoords);
                 } else {
@@ -83,7 +83,7 @@ public class ConvertToUI {
     }
 
     public static void main(String[] args) {
-        ArrayList<String> timeslots = new ArrayList<String>();
+        ArrayList<String> timeslots = new ArrayList<>();
         String t1 = "09:00 - 10:00";
         String t2 = "13:00 - 15:00";
         timeslots.add(t1);
