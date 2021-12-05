@@ -221,6 +221,7 @@ public class UserInterface extends Application {
 
         askButton2.setOnAction(e -> {
             try {
+                UserData.clearCourses();
                 UserData.removeAll();
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -307,6 +308,7 @@ public class UserInterface extends Application {
 
         timeSlotConfirm.setOnAction(e -> {
             try {
+
                 UserData.inputTimeslot(prefferedList1);
             } catch (IOException c) {
                 c.printStackTrace();

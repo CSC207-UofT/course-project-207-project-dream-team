@@ -33,12 +33,12 @@ public class ConvertToUI {
                 String[] keys = allValidKey(xCoords, yCoords);
 
                 if (timetable.containsKey(keys[0])) {
-                    sameHr.add(timetable.get(keys[0]).courseCode + timetable.get(keys[0]).sessionCode.substring(0, 3));
+                    sameHr.add(timetable.get(keys[0]).courseCode + timetable.get(keys[0]).sessionCode.substring(0, 7));
                 } else if (timetable.containsKey(keys[1])) {
-                    sameHr.add(timetable.get(keys[1]).courseCode + timetable.get(keys[1]).sessionCode.substring(0, 3));
+                    sameHr.add(timetable.get(keys[1]).courseCode + timetable.get(keys[1]).sessionCode.substring(0, 7));
                     record.add(xCoords);
                 } else if (timetable.containsKey(keys[2])) {
-                    sameHr.add(timetable.get(keys[2]).courseCode + timetable.get(keys[2]).sessionCode.substring(0, 3));
+                    sameHr.add(timetable.get(keys[2]).courseCode + timetable.get(keys[2]).sessionCode.substring(0, 7));
                     record.add(xCoords);
                     record.add(xCoords);
                 } else {
