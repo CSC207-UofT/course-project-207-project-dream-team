@@ -215,7 +215,6 @@ public class Controller implements Initializable {
             for (int i = 0; i < space; i++) {
                 filteredTimetables.add(new Timetable());
             }
-
         }
     }
 
