@@ -1,9 +1,6 @@
 package FrameworksDrivers;
 
 import java.io.*;
-import java.lang.reflect.AnnotatedArrayType;
-import java.nio.file.Files;
-import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -58,7 +55,7 @@ public class UserData {
             }
             if (counter > 1){
                 String result = lines[i].split(",")[0];
-                result = result.substring(1, result.length());
+                result = result.substring(1);
                 return result;
             }
         }
@@ -66,12 +63,9 @@ public class UserData {
     }
 
     public static void removeAll() throws IOException {
-        String[] lines = readAllLines();
         FileWriter fwriter = new FileWriter(f.getAbsolutePath());
         BufferedWriter bwriter = new BufferedWriter(fwriter);
-        for (String line : lines) {
-            bwriter.write("");
-        }
+        bwriter.write("");
         bwriter.close();
 
         initInput();
@@ -86,7 +80,7 @@ public class UserData {
             lines[i] = "\n" + line;
             i++;
         }
-        lines[0] = lines[0].substring(1,lines[0].length());
+        lines[0] = lines[0].substring(1);
         return lines;
     }
 
@@ -94,9 +88,7 @@ public class UserData {
     //Inputers
     public static void inputCourse(String courseCode) throws IOException{
        String[] lines = readAllLines();
-        if (lines[0].contains(courseCode)){
-            return;
-        }else {
+        if (!lines[0].contains(courseCode)){
             FileWriter fwriter = new FileWriter(f.getAbsolutePath());
             BufferedWriter bwriter = new BufferedWriter(fwriter);
             lines[0] = lines[0] + courseCode + ",";
@@ -126,9 +118,7 @@ public class UserData {
 
     public static void inputMaxDuration(String hour) throws IOException{
         String[] lines = readAllLines();
-            if (lines[1].contains(hour)) {
-                return;
-            } else {
+            if (!lines[1].contains(hour)) {
                 FileWriter fwriter = new FileWriter(f.getAbsolutePath());
                 BufferedWriter bwriter = new BufferedWriter(fwriter);
                 lines[1] = lines[1] + hour + ",";
@@ -159,12 +149,10 @@ public class UserData {
     //Removers
     public static void removeCourse(String courseCode) throws IOException{
         String[] lines = readAllLines();
-        if (!lines[0].contains(courseCode)){
-            return;
-        }else {
+        if (lines[0].contains(courseCode)){
             FileWriter fwriter = new FileWriter(f.getAbsolutePath());
             BufferedWriter bwriter = new BufferedWriter(fwriter);
-            Integer ccLength = courseCode.length();
+            int ccLength = courseCode.length();
             lines[0] = lines[0].substring(0, lines[0].length()-ccLength-1);
             for (String line : lines) {
                 bwriter.write(line);
@@ -187,16 +175,20 @@ public class UserData {
     public static ArrayList<String> readPreference() throws IOException {
         String filterType = getFilterType();
         String[] lines = readAllLines();
-        ArrayList<String> result = new ArrayList();
-        if (filterType.equals("Max Duration")) {
-            result = new ArrayList<>(Arrays.asList(lines[1].split(",")));
-            result.remove("\nMax Duration");
-        } else if (filterType.equals("Instructors")) {
-            result = new ArrayList<>(Arrays.asList(lines[2].split(",")));
-            result.remove("\nInstructors");
-        } else if (filterType.equals("Timeslots")) {
-            result = new ArrayList<>(Arrays.asList(lines[3].split(",")));
-            result.remove("\nTimeslots");
+        ArrayList<String> result = new ArrayList<>();
+        switch (filterType) {
+            case "Max Duration":
+                result = new ArrayList<>(Arrays.asList(lines[1].split(",")));
+                result.remove("\nMax Duration");
+                break;
+            case "Instructors":
+                result = new ArrayList<>(Arrays.asList(lines[2].split(",")));
+                result.remove("\nInstructors");
+                break;
+            case "Timeslots":
+                result = new ArrayList<>(Arrays.asList(lines[3].split(",")));
+                result.remove("\nTimeslots");
+                break;
         }
         return result;
     }
@@ -259,7 +251,7 @@ public class UserData {
         System.out.println(readPreference());
 
 
-        //removeAll();
+        removeAll();
         System.out.println(getFilterType());
         System.out.println(readPreference());
     }
