@@ -109,6 +109,11 @@ public class Controller implements Initializable {
     @FXML
     public void timeTable1Clicked() {
         currTimetable = arrangedTimetables.get(0);
+
+        final ObservableList<TimeSlotForGUI> data = FXCollections.observableArrayList(
+
+        );
+        tableView.setItems(data);
     }
 
     @FXML
@@ -141,8 +146,14 @@ public class Controller implements Initializable {
         }
         SimpleScheduler Ss = new SimpleScheduler(newCourseList);
         ArrayList<Timetable> arranged = Ss.arrange(new Timetable(), new HashSet<>());
+        String filter = UserData.getFilterType();
         if (arranged.size() > 5) {
-            arrangedTimetables = (ArrayList<Timetable>) arranged.subList(0, 4);
+            arrangedTimetables = new ArrayList<Timetable>();
+            arrangedTimetables.add(arranged.get(0));
+            arrangedTimetables.add(arranged.get(1));
+            arrangedTimetables.add(arranged.get(2));
+            arrangedTimetables.add(arranged.get(3));
+            arrangedTimetables.add(arranged.get(4));
         } else {
             arrangedTimetables = arranged;
             int space = 5 - arranged.size();
