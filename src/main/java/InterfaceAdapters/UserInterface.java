@@ -2,7 +2,6 @@ package InterfaceAdapters;
 
 import FrameworksDrivers.UserData;
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -135,11 +134,11 @@ public class UserInterface extends Application {
         ArrayList<String> prefferedListThu = new ArrayList<>(list01.getItems());
         ArrayList<String> prefferedListFri = new ArrayList<>(list11.getItems());
 
-        ArrayList<String> prefferedList1 = ConvertToUI.timeslotToStrings(1, prefferedListMon);
-        ArrayList<String> prefferedList2 = ConvertToUI.timeslotToStrings(2, prefferedListTue);
-        ArrayList<String> prefferedList3 = ConvertToUI.timeslotToStrings(3, prefferedListWed);
-        ArrayList<String> prefferedList4 = ConvertToUI.timeslotToStrings(4, prefferedListThu);
-        ArrayList<String> prefferedList5 = ConvertToUI.timeslotToStrings(5, prefferedListFri);
+        ArrayList<String> prefferedList1 = ConvertToUI.timeslotToUI(1, prefferedListMon);
+        ArrayList<String> prefferedList2 = ConvertToUI.timeslotToUI(2, prefferedListTue);
+        ArrayList<String> prefferedList3 = ConvertToUI.timeslotToUI(3, prefferedListWed);
+        ArrayList<String> prefferedList4 = ConvertToUI.timeslotToUI(4, prefferedListThu);
+        ArrayList<String> prefferedList5 = ConvertToUI.timeslotToUI(5, prefferedListFri);
 
         prefferedList1.addAll(prefferedList2);
         prefferedList1.addAll(prefferedList3);

@@ -9,9 +9,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-import static InterfaceAdapters.ConvertToUI.convertToUI;
+import static InterfaceAdapters.ConvertToUI.timetableToUI;
 
 public class MakeCSV {
+    /**
+     * Produce a csv file containing the selected timetable
+     * @param timetable an ordered mapping of session time to course sessions, ordered from the earliest time to latest.
+     */
     public static void makeCSV(TreeMap<String, Session> timetable) {
         PrintWriter pw;
         try {
@@ -23,7 +27,7 @@ public class MakeCSV {
             pw.write("Time,Monday,Tuesday,Wednesday,Thursday,Friday");
 
             // write data
-            ArrayList<ArrayList<String>> courses = convertToUI(timetable);
+            ArrayList<ArrayList<String>> courses = timetableToUI(timetable);
             for (int y = 0; y < courses.size(); y ++) {
 
                 String timeslot = (y + 9) + ":00-" + (y + 10) + ":00";
