@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -16,31 +11,21 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceAdapters.Controller">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="InterfaceAdapters.Controller">
     <top>
         <VBox BorderPane.alignment="CENTER">
             <children>
-                <HBox>
+                <HBox spacing="6.0">
                     <children>
-                        <TextField fx:id="courseSearchField" prefHeight="26.0" prefWidth="176.0" promptText="search courses" />
-                        <Separator orientation="VERTICAL" prefHeight="26.0" prefWidth="7.0" visible="false" />
-                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonClicked" prefHeight="26.0" prefWidth="114.0" text="search" />
-                        <MenuBar prefHeight="28.0" prefWidth="636.0" HBox.hgrow="ALWAYS">
-                            <menus>
-                                <Menu fx:id="knitToCsvMenu" mnemonicParsing="false" onAction="#knitClicked" text="knit to csv" />
-                                <Menu fx:id="selectTimetableMenu" mnemonicParsing="false" text="select timetable">
-                           <items>
-                              <MenuItem fx:id="timeTable1" mnemonicParsing="false" onAction="#timeTable1Clicked" text="Timetable 1" />
-                              <MenuItem fx:id="timeTable2" mnemonicParsing="false" onAction="#timeTable2Clicked" text="Timetable 2" />
-                              <MenuItem fx:id="timeTable3" mnemonicParsing="false" onAction="#timeTable3Clicked" text="Timetable 3" />
-                              <MenuItem fx:id="timeTable4" mnemonicParsing="false" onAction="#timeTable4Clicked" text="Timetable 4" />
-                              <MenuItem fx:id="timeTable5" mnemonicParsing="false" onAction="#timeTable5Clicked" text="Timetable 5" />
-                           </items></Menu>
-                            </menus>
-                            <opaqueInsets>
-                                <Insets left="8.0" />
-                            </opaqueInsets>
-                        </MenuBar>
+                        <TextField fx:id="courseSearchField" prefHeight="26.0" prefWidth="108.0" promptText="search courses" />
+                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchButtonClicked" prefHeight="26.0" prefWidth="68.0" text="search" />
+                  <Button fx:id="knitBtn" mnemonicParsing="false" onAction="#knitClicked" prefHeight="26.0" prefWidth="85.0" text="knit to csv" />
+                  <Button mnemonicParsing="false" onAction="#highContrastBtnClicked" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #0027FF#0027FF;" text="High Contrast" textFill="#fbff00" />
+                  <Button fx:id="choice1" mnemonicParsing="false" onAction="#timeTable1Clicked" text="Choice1" />
+                  <Button fx:id="choice2" mnemonicParsing="false" onAction="#timeTable2Clicked" text="Choice2" />
+                  <Button fx:id="choice3" mnemonicParsing="false" onAction="#timeTable3Clicked" text="Choice3" />
+                  <Button fx:id="choice4" mnemonicParsing="false" onAction="#timeTable4Clicked" text="Choice4" />
+                  <Button fx:id="choice5" mnemonicParsing="false" onAction="#timeTable5Clicked" text="Choice5" />
                     </children>
                 </HBox>
             </children>
@@ -49,7 +34,7 @@
     <bottom>
         <HBox alignment="CENTER" prefWidth="885.0" BorderPane.alignment="CENTER">
             <children>
-                <Label text="CSC207 Dream Team 2021, All Rights Reserved." />
+                <Label fx:id="botLabel" text="CSC207 Dream Team 2021, All Rights Reserved." />
             </children>
         </HBox>
     </bottom>
@@ -75,7 +60,7 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Button fx:id="confirmButton" layoutX="21.0" layoutY="1.0" mnemonicParsing="false" onAction="#confirmButtonClicked" prefHeight="26.0" prefWidth="63.0" text="Confirm" />
-                  <Button layoutX="107.0" layoutY="1.0" mnemonicParsing="false" onAction="#clearButtonClicked" text="Clear" />
+                  <Button fx:id="clearButton" layoutX="107.0" layoutY="1.0" mnemonicParsing="false" onAction="#clearButtonClicked" text="Clear" />
                </children>
             </AnchorPane>
          </children>

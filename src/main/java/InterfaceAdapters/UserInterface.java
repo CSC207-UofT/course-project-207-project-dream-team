@@ -7,8 +7,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -59,7 +59,7 @@ public class UserInterface extends Application {
         insVBox.setAlignment(Pos.TOP_CENTER);
 
         insVBox.setSpacing(10);
-        insVBox.setPadding(new Insets(20, 220, 20, 220));
+        insVBox.setPadding(new Insets(20, 200, 20, 200));
 
         Scene insScene = new Scene(insVBox, 764, 390);
 
@@ -236,10 +236,13 @@ public class UserInterface extends Application {
             }
         });
 
-        layout1.getChildren().addAll(askLabel, askButton1, askButton2, chooseFilterLabel, rb1, rb2, rb3);
+        Button highContrastBtn = new Button("High Contrast Mode");
+        highContrastBtn.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+
+        layout1.getChildren().addAll(askLabel, askButton1, askButton2, chooseFilterLabel, rb1, rb2, rb3, highContrastBtn);
 
         // create a welcome scene
-        Scene welcomeScene = new Scene(layout1, 300, 200);
+        Scene welcomeScene = new Scene(layout1, 300, 250);
 
 
         // welcome scene when input not exist
@@ -270,9 +273,12 @@ public class UserInterface extends Application {
             }
         });
 
-        layout2.getChildren().addAll(rb4, rb5, rb6, welcomeConfirmBtn, welcomeNewBack);
+        Button highContrastBtnNew = new Button("High Contrast Mode");
+        highContrastBtnNew.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
 
-        Scene welcomeSceneNew = new Scene(layout2, 300, 200);
+        layout2.getChildren().addAll(rb4, rb5, rb6, welcomeConfirmBtn, welcomeNewBack, highContrastBtnNew);
+
+        Scene welcomeSceneNew = new Scene(layout2, 300, 250);
 
         if (UserData.inputExists()) {
             window.setScene(welcomeScene);
@@ -340,7 +346,98 @@ public class UserInterface extends Application {
             }
         });
 
+        highContrastBtn.setOnAction(e -> {
+            BackgroundFill background_fill = new BackgroundFill(Color.web("#0027FF"),
+                    CornerRadii.EMPTY, Insets.EMPTY);
+            Background bkg = new Background(background_fill);
+            layout1.setBackground(bkg);
+            maxHourVBox.setBackground(bkg);
+            insVBox.setBackground(bkg);
+            timeSlotVBox.setBackground(bkg);
 
+            // welcome
+            askLabel.setStyle("-fx-text-fill: #FBFF00");
+            chooseFilterLabel.setStyle("-fx-text-fill: #FBFF00");
+            rb1.setStyle("-fx-text-fill: #FBFF00");
+            rb2.setStyle("-fx-text-fill: #FBFF00");
+            rb3.setStyle("-fx-text-fill: #FBFF00");
+            rb4.setStyle("-fx-text-fill: #FBFF00");
+            rb5.setStyle("-fx-text-fill: #FBFF00");
+            rb6.setStyle("-fx-text-fill: #FBFF00");
+
+            // ins
+            insAsk2.setStyle("-fx-text-fill: #FBFF00");
+            unwanted1.setStyle("-fx-text-fill: #FBFF00");
+            unwanted2.setStyle("-fx-text-fill: #FBFF00");
+            unwanted3.setStyle("-fx-text-fill: #FBFF00");
+            unwanted4.setStyle("-fx-text-fill: #FBFF00");
+            unwanted5.setStyle("-fx-text-fill: #FBFF00");
+            unwanted6.setStyle("-fx-text-fill: #FBFF00");
+            insConfirmButton.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+            insBackButton.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+
+            //timeSlot
+            timeAsk.setStyle("-fx-text-fill: #FBFF00");
+            label00.setStyle("-fx-text-fill: #FBFF00");
+            label10.setStyle("-fx-text-fill: #FBFF00");
+            label20.setStyle("-fx-text-fill: #FBFF00");
+            label01.setStyle("-fx-text-fill: #FBFF00");
+            label11.setStyle("-fx-text-fill: #FBFF00");
+            timeSlotConfirm.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+            timeSlotBack.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+
+            //max
+            maxAsk.setStyle("-fx-text-fill: #FBFF00");
+            maxConfirm.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+            maxBack.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+
+        });
+
+        highContrastBtnNew.setOnAction(e -> {
+            BackgroundFill background_fill = new BackgroundFill(Color.web("#0027FF"),
+                    CornerRadii.EMPTY, Insets.EMPTY);
+            Background bkg = new Background(background_fill);
+            layout1.setBackground(bkg);
+            maxHourVBox.setBackground(bkg);
+            insVBox.setBackground(bkg);
+            timeSlotVBox.setBackground(bkg);
+
+            // welcome
+            askLabel.setStyle("-fx-text-fill: #FBFF00");
+            chooseFilterLabel.setStyle("-fx-text-fill: #FBFF00");
+            rb1.setStyle("-fx-text-fill: #FBFF00");
+            rb2.setStyle("-fx-text-fill: #FBFF00");
+            rb3.setStyle("-fx-text-fill: #FBFF00");
+            rb4.setStyle("-fx-text-fill: #FBFF00");
+            rb5.setStyle("-fx-text-fill: #FBFF00");
+            rb6.setStyle("-fx-text-fill: #FBFF00");
+
+            // ins
+            insAsk2.setStyle("-fx-text-fill: #FBFF00");
+            unwanted1.setStyle("-fx-text-fill: #FBFF00");
+            unwanted2.setStyle("-fx-text-fill: #FBFF00");
+            unwanted3.setStyle("-fx-text-fill: #FBFF00");
+            unwanted4.setStyle("-fx-text-fill: #FBFF00");
+            unwanted5.setStyle("-fx-text-fill: #FBFF00");
+            unwanted6.setStyle("-fx-text-fill: #FBFF00");
+            insConfirmButton.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+            insBackButton.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+
+            //timeSlot
+            timeAsk.setStyle("-fx-text-fill: #FBFF00");
+            label00.setStyle("-fx-text-fill: #FBFF00");
+            label10.setStyle("-fx-text-fill: #FBFF00");
+            label20.setStyle("-fx-text-fill: #FBFF00");
+            label01.setStyle("-fx-text-fill: #FBFF00");
+            label11.setStyle("-fx-text-fill: #FBFF00");
+            timeSlotConfirm.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+            timeSlotBack.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+
+            //max
+            maxAsk.setStyle("-fx-text-fill: #FBFF00");
+            maxConfirm.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+            maxBack.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        });
 
         primaryStage.setTitle("Course Schedule and Recommendation System");
         primaryStage.show();

@@ -1,0 +1,22 @@
+.list-view .list-cell:odd {
+    -fx-background-color: #0027FF;
+    -fx-text-fill: #FBFF00;
+}
+
+.list-view .list-cell:even {
+    -fx-background-color: #0027FF;
+    -fx-text-fill: #FBFF00;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #FBFF00;
+    -fx-font-weight: bold;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color: #0027FF;
+}
+
+.table-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color: #0027FF;
+}
