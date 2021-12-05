@@ -1,7 +1,6 @@
 package FrameworksDrivers;
 
 
-import ApplicationBusinessRule.Timetable;
 import EnterpriseBusinessRules.NewCourse;
 import EnterpriseBusinessRules.Session;
 
@@ -18,7 +17,7 @@ public class MakeCSV {
         try {
             pw = new PrintWriter("test.csv");
 
-            StringBuilder body = new StringBuilder("");
+            StringBuilder body = new StringBuilder();
 
             // write header
             pw.write("Time,Monday,Tuesday,Wednesday,Thursday,Friday");
