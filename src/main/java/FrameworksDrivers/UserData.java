@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class UserData {
 
     static Integer flag = 0;
-    final static String path = "src\\input.txt";//the path should be changed after packaging
+    final static String path = "input.txt";//the path should be changed after packaging
     final static File f = new File(path);
 
     /**

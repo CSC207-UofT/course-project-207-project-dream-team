@@ -16,6 +16,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,31 +35,31 @@ public class Controller implements Initializable {
 
     // top of the anchor pane
     @FXML
+    BorderPane borderPane;
+
+    @FXML
     TextField courseSearchField;
 
     @FXML
     Button searchButton;
 
     @FXML
-    Menu knitToCsvMenu;
+    Button knitBtn;
 
     @FXML
-    Menu selectTimetableMenu;
+    Button choice1;
 
     @FXML
-    MenuItem timeTable1;
+    Button choice2;
 
     @FXML
-    MenuItem timeTable2;
+    Button choice3;
 
     @FXML
-    MenuItem timeTable3;
+    Button choice4;
 
     @FXML
-    MenuItem timeTable4;
-
-    @FXML
-    MenuItem timeTable5;
+    Button choice5;
 
     // left of the pane
     @FXML
@@ -65,6 +67,9 @@ public class Controller implements Initializable {
 
     @FXML
     Button confirmButton;
+
+    @FXML
+    Button clearButton;
 
     // middle of the pane
     @FXML
@@ -88,6 +93,8 @@ public class Controller implements Initializable {
     @FXML
     TableColumn<TimeSlotForGUI, String> FridayColumn;
 
+    @FXML
+    Label botLabel;
 
 
     // click events
@@ -221,6 +228,40 @@ public class Controller implements Initializable {
     public void clearButtonClicked() throws IOException {
         courseListView.getItems().clear();
         UserData.clearCourses();
+    }
+
+    @FXML
+    public void highContrastBtnClicked() {
+        borderPane.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+
+        courseSearchField.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        searchButton.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+
+        courseListView.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        courseListView.getStylesheets().add("style.css");
+
+        tableView.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        tableView.getStylesheets().add("style.css");
+
+        TimeSlotColumn.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        MondayColumn.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        TuesdayColumn.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        WednesdayColumn.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        ThursdayColumn.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        FridayColumn.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+
+        choice1.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        choice2.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        choice3.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        choice4.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        choice5.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+
+        confirmButton.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+        clearButton.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+
+        knitBtn.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
+
+        botLabel.setStyle("-fx-text-fill: #FBFF00");
     }
 
     @Override
