@@ -170,7 +170,7 @@ public class UserInterface extends Application {
         // create a scene for max hour filter event
         VBox maxHourVBox = new VBox();
         Label maxAsk = new Label("Please enter your preferred duration of classes each day");
-        TextField maxPreferred = new TextField("Ex: 3");
+        TextField maxPreferred = new TextField();
 
         String preferredMax = maxPreferred.getText();
 
