@@ -191,7 +191,7 @@ public class UserInterface extends Application {
         VBox layout1 = new VBox();
         layout1.setAlignment(Pos.CENTER);
         layout1.setSpacing(6);
-        Label askLabel = new Label("Continue from last edit?");
+        Label askLabel = new Label("Discard previous choices in the next edit?");
 
         Label chooseFilterLabel = new Label("Please choose your wanted filter.");
 
@@ -203,7 +203,7 @@ public class UserInterface extends Application {
         rb2.setToggleGroup(toggleGroup);
         rb3.setToggleGroup(toggleGroup);
 
-        Button askButton1 = new Button("Yes");
+        Button askButton1 = new Button("No");
 
         askButton1.setOnAction(e -> {
             if (rb1.isSelected()) {
@@ -217,7 +217,7 @@ public class UserInterface extends Application {
             }
         });
 
-        Button askButton2 = new Button("No");
+        Button askButton2 = new Button("Yes");
 
         askButton2.setOnAction(e -> {
             try {
@@ -241,10 +241,10 @@ public class UserInterface extends Application {
         Button highContrastBtn = new Button("High Contrast Mode");
         highContrastBtn.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
 
-        layout1.getChildren().addAll(askLabel, askButton1, askButton2, chooseFilterLabel, rb1, rb2, rb3, highContrastBtn);
+        layout1.getChildren().addAll(askLabel, askButton2, askButton1, chooseFilterLabel, rb1, rb2, rb3, highContrastBtn);
 
         // create a welcome scene
-        Scene welcomeScene = new Scene(layout1, 300, 250);
+        Scene welcomeScene = new Scene(layout1, 350, 250);
 
 
         // welcome scene when input not exist
@@ -280,7 +280,7 @@ public class UserInterface extends Application {
 
         layout2.getChildren().addAll(rb4, rb5, rb6, welcomeConfirmBtn, welcomeNewBack, highContrastBtnNew);
 
-        Scene welcomeSceneNew = new Scene(layout2, 300, 250);
+        Scene welcomeSceneNew = new Scene(layout2, 350, 250);
 
         if (UserData.inputExists()) {
             window.setScene(welcomeScene);
