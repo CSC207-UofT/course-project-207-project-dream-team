@@ -42,6 +42,7 @@ public class MakeCSV {
         }
     }
 
+
     public static void makeCSV(ArrayList<Timetable> timetables){
         try{
         PrintWriter pw = new PrintWriter("test.csv");
