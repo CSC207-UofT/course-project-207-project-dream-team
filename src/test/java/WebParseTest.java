@@ -1,8 +1,10 @@
 import EnterpriseBusinessRules.NewCourse;
 import FrameworksDrivers.WebParse;
+import org.jsoup.select.Elements;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,12 +12,17 @@ public class WebParseTest {
 
     @Test(timeout = 1000000)
     public void TestSort() throws IOException {
-
+        NewCourse csc104 = WebParse.courseParse("CSC104");
         NewCourse sta257 = WebParse.courseParse("STA257H1F");
         NewCourse bio130 = WebParse.courseParse("BIO130H1S");
-        NewCourse mat137 = WebParse.courseParse("MAT137Y1Y");
+        ArrayList mat137List = WebParse.tagsToList(WebParse.halfCourseToTags("MAT137"));
+        Elements tags = WebParse.halfCourseToTags("MAT137");
+        assertEquals(1055, tags.size());
+
         assertEquals(2, sta257.getTutorials().size());
         assertEquals(9, bio130.getLabs().size());
-        assertEquals(14, mat137.getTutorials().size());
+        assertEquals(329, mat137List.size());
+        assertEquals(0, csc104.getLabs().size());
+        WebParse.print(bio130);
     }
 }
