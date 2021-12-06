@@ -28,6 +28,7 @@ import static FrameworksDrivers.WebParse.courseParse;
 
 public class Controller implements Initializable {
 
+
     ArrayList<Timetable> filteredTimetables = new ArrayList<>();
 
     Timetable currTimetable = new Timetable();

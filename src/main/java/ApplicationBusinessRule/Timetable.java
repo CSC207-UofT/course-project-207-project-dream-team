@@ -7,6 +7,7 @@ import java.util.*;
 
 public class Timetable {
 
+
     private final TreeMap<String, Session> timeTable;
     private final ArrayList<String> occupied;       // quick checker for time occupied in timeslot.
 

@@ -11,6 +11,7 @@ import java.util.TreeMap;
 import static InterfaceAdapters.ConvertToUI.timetableToUI;
 
 public class MakeCSV {
+
     final static String path = "test.csv";
     /**
      * Produce a csv file containing the selected timetable
