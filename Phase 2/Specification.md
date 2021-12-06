@@ -11,14 +11,16 @@ Java (1.7 or later)
 ## Get Started
 
 ### Phase 0:
-- [CRC Card](Phase%200/CRC%20Card)
-- [README](Phase%200/README.md)
+- [CRC Card](../Phase%200/CRC%20Card)
+- [README](../Phase%200/README.md)
 - [Progress Report](Phase%200/Report%20Files%20(.md)/Progress_Report.md)
 - [Scenario Walk Through](Phase%200/Report%20Files%20(.md)/Scenario_Walk_Through.md)
 ### Phase 1:
 - [Design Document](Phase%201/Design%20Document.md)
 ### Phase 2:
-- [Design Document 2.0](Phase%202/Design_Document_phase_2.md)
+- [Design Document 2.0](Design_Document_phase_2.md)
+- [Progress Report](Progress%20Report.md)
+- [Project Accessibility Report](Project%20Accessibility%20Report.md)
 
 
 ## Our Goal
