@@ -220,6 +220,7 @@ public class UserInterface extends Application {
 
         askButton2.setOnAction(e -> {
             try {
+                UserData.initInput();
                 UserData.clearCourses();
                 UserData.removeAll();
             } catch (IOException ex) {
