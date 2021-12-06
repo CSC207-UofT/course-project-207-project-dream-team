@@ -1,0 +1,9 @@
+Class name: UserData
+Parent Class: None
+Subclass: None
+
+Responsibility:
+- Stores information from the user in order to let them access it again.
+
+Collaborator:
+* Session, NewCourse, WebParse

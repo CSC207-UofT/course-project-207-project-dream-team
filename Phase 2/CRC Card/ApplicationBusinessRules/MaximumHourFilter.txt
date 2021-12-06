@@ -1,0 +1,10 @@
+Class name: MaximumHourFilter
+Parent Class: Filter
+Subclass: None
+
+Responsibility:
+- Store the maximum lecture hours the user want to take every day
+- Rule out the timetables that the lecture hours exceeds the users' everyday studying hours
+
+Collaborator:
+* Timetable

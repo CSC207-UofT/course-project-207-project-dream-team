@@ -1,7 +1,7 @@
 ##Design Pattern
 
 ##Introduction:
-- Our program aims to help UofT (only St. George Campus) students organize appropriate timetables based on provided 
+- Our program aims to help UofT students organize appropriate timetables based on provided 
 courses and users’ preferences. For instance, if a user want to take five courses in the winter semester, he or she 
 can enter all the course codes (e.g. CSC207H1) on the user interface, and our algorithms will return all the possible 
 combinations for the given courses. Specifically, our program has three different filters including Instructor Filter, 
@@ -15,7 +15,7 @@ users’ acceptable study hours.
   - SimpleScheduler: only responsible for scheduling the timetable via recursion. 
   - Filter and its subclasses: For our three non-abstract ApplicationBusinessRule.filter classes, each of them is responsible for dealing with 
   one kind of user preference. For instance, Instructor Filter only works if users want to rule out specific unwanted 
-  instructors. Therefore, one non-abstract ApplicationBusinessRule.filter class has its own responsibility, and will change if and only its own ApplicationBusinessRule.filter method (named “sort” in the algorithms) changes.
+  instructors. Therefore, one non-abstract ApplicationBusinessRule.filter class has its own responsibility, and will change if and only if its own ApplicationBusinessRule.filter method (named “sort” in the algorithms) changes.
   
 - Open/closed principle:
   - An implementation of the Open/closed principle is the Filter class. The instance variables in Filter are made 
@@ -27,6 +27,8 @@ users’ acceptable study hours.
   - For our Filter Class and its subclasses, all three subclasses of Filter only has an overwritten version the parent 
   class's abstract sort() method, which is used to ApplicationBusinessRule.filter out the unwanted timetables based on users' preference. We did 
   not replace the parent class.
+
+- Interface Segregation principle & Dependency Inversion Principle: we did not implement any interface in the project
 
 ## Clean Architecture
 
@@ -60,6 +62,8 @@ users’ preference. The isFilter() method will check if the programs rule out s
 the whether the output is empty. If the output is empty, the method will print out “Timetable are not filtered”. 
 Else, it will print out “Timetable are successfully filtered.” For #33 pull request, we started to implement the 
 Template Method Design Pattern. 
+
+- 
 
 ##Use of GitHub Features
 - Our group sufficiently used Pull Requests combined with branches to each finish the assigned tasks. Our Pull requests 
