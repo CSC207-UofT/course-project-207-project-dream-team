@@ -1,7 +1,7 @@
 import ApplicationBusinessRule.Timetable;
 import EnterpriseBusinessRules.NewCourse;
 import EnterpriseBusinessRules.Session;
-import FrameworksDrivers.MakeCSV;
+import InterfaceAdapters.MakeCSV;
 import FrameworksDrivers.WebParse;
 import InterfaceAdapters.ConvertToUI;
 import org.junit.Test;

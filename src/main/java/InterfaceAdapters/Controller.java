@@ -6,7 +6,6 @@ import ApplicationBusinessRule.filter.InstructorFilter;
 import ApplicationBusinessRule.filter.MaximumHourFilter;
 import ApplicationBusinessRule.filter.TimeslotFilter;
 import EnterpriseBusinessRules.NewCourse;
-import FrameworksDrivers.MakeCSV;
 import FrameworksDrivers.UserData;
 import FrameworksDrivers.WebParse;
 import javafx.application.Application;
@@ -16,7 +15,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 import java.io.FileNotFoundException;
