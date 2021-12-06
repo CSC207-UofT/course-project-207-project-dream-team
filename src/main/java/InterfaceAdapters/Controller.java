@@ -19,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -118,7 +119,7 @@ public class Controller implements Initializable {
 
 
     @FXML
-    public void knitClicked() {
+    public void knitClicked() throws FileNotFoundException {
         MakeCSV.makeCSV(filteredTimetables);
     }
 

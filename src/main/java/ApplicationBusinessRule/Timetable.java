@@ -2,7 +2,9 @@ package ApplicationBusinessRule;
 
 import EnterpriseBusinessRules.NewCourse;
 import EnterpriseBusinessRules.Session;
+import FrameworksDrivers.WebParse;
 
+import java.io.IOException;
 import java.util.*;
 
 public class Timetable {
@@ -134,7 +136,7 @@ public class Timetable {
      * @param sessionToAdd a session that we add to the timetable.
      * @return a new timetable with the given session added
      */
-    private Timetable addSession(Session sessionToAdd){
+    public Timetable addSession(Session sessionToAdd){
         TreeMap<String, Session> newMapping = new TreeMap<>(this.timeTable);
         ArrayList<String> newOccupied = new ArrayList<>(this.occupied);
 

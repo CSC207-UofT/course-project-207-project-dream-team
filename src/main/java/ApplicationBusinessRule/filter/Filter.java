@@ -76,7 +76,7 @@ public abstract class Filter {
     public final void isFiltered() {
         try{
             if(this.sort().size() > 0){
-                System.out.println("Timetables are sucessfully filtered.");
+                System.out.println("Timetables are successfully filtered.");
             }
         }
         catch (Exception e) {

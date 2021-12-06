@@ -1,44 +1,48 @@
+import ApplicationBusinessRule.Timetable;
 import EnterpriseBusinessRules.NewCourse;
 import EnterpriseBusinessRules.Session;
 import FrameworksDrivers.MakeCSV;
-import com.sun.source.tree.Tree;
+import FrameworksDrivers.WebParse;
+import InterfaceAdapters.ConvertToUI;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.TreeMap;
+import java.util.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 
 public class MakeCSVTest {
+
     @Test(timeout = 1000000)
     public void TestSort() throws IOException {
+            Timetable timetable = new Timetable();
+            NewCourse csc207 = WebParse.courseParse("CSC207");
+            NewCourse csc165 = WebParse.courseParse("CSC165");
+            Session s1 = csc165.getLectures().get(0);
+            Session s3 = csc207.getLectures().get(0);
+            timetable = timetable.addSession(s1);
+            timetable = timetable.addSession(s3);
 
-        Session lecInTb;
-        Session tutInTb;
-        ArrayList<NewCourse> coursesInTb;
-        TreeMap<String, Session> map = new TreeMap<>();
-        lecInTb = new Session("Gries", "CSC207H1F", "LEC0101", new Integer[]{41314});
-        map.put("41314", lecInTb);
+            ArrayList<Timetable> timetables = new ArrayList<>();
+            timetables.add(timetable);
+            timetables.add(timetable);
 
-        tutInTb = new Session("TBA", "CSC207H1F", "TUT0301", new Integer[]{11415, 11516});
-        map.put("11415", tutInTb);
-        map.put("11516", tutInTb);
+            ArrayList<TreeMap<String,Session>> maps = MakeCSV.convertTimetables(timetables);
 
-        ArrayList<Session> csc207tut = new ArrayList<>();
-        csc207tut.add(tutInTb);
-        ArrayList<Session> csc207lec = new ArrayList<>();
-        csc207lec.add(lecInTb);
+            assertEquals(2, maps.size());
 
-        coursesInTb = new ArrayList<>();
-        coursesInTb.add(new NewCourse("CSC207H1F", csc207tut, csc207lec, new ArrayList<>()));
+            ArrayList<ArrayList<String>> uiMaps = ConvertToUI.timetableToUI(timetables.get(0).getTimeTable());
+            ArrayList<String> uiMap = uiMaps.get(0);
+            String twoRows = MakeCSV.twoRows(uiMap);
 
-        ArrayList<String> occupied = new ArrayList<>();
-        occupied.add("41314");
-        occupied.add("11415");
-        occupied.add("11516");
+            assertEquals(38, twoRows.length());
 
-        ArrayList<TreeMap> maps = new ArrayList<>();
-        maps.add(map);
-        maps.add(map);
+            boolean result1 = MakeCSV.makeCSV(timetables);
+            assertTrue(result1);
 
+            boolean result2 = MakeCSV.makeCSV2(timetables.get(0).getTimeTable());
+            assertTrue(result2);
     }
 }
