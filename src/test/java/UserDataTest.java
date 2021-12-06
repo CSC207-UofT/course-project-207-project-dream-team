@@ -1,11 +1,9 @@
-import EnterpriseBusinessRules.NewCourse;
+
 import FrameworksDrivers.UserData;
-import FrameworksDrivers.WebParse;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
@@ -62,5 +60,9 @@ public class UserDataTest {
         UserData.inputMaxDuration("3");
         assertEquals("Max Duration", UserData.getFilterType());
         assertEquals("3", UserData.readPreference().get(0));
+
+        Boolean inputExists2 = UserData.inputExists();
+        Boolean flag2 = (UserData.getFlag() == 1);
+        assertEquals(flag2, inputExists2);
     }
 }
