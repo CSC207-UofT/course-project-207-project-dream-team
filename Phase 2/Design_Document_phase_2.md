@@ -68,8 +68,8 @@
   Actions is a great tracker of what we have been doing, so we use it as material for our meetings.
 
 ## Code Style and Documentation
-- We have resolved all the warnings in our algorithms. In most classes, we have added comments. In the pull requests we
-  posted, we have added detail description to prevent confusion.
+- We have resolved all the warnings in our algorithms. We have added comments to our code. In the pull requests we
+  posted, we have added detail description to prevent confusion. Javadoc is all updated to the methods.
 
 ## Testing
 - In our program, we have tested that NewCourse and Session can successfully initialize new course instances and new
@@ -85,6 +85,7 @@
   designed based on Template Method Design Pattern.
 - For #46 pull request, we have refactored the Presenter class: safe delete Presenter.
 - For #55 and #58 pull requests, we used refactoring functionality to package all Java files.
+- For #99, we used refactoring to change method name.
 
 ## Code Organization
 - We have splitted our classes into four packages including ApplicationBusinessRule, EnterpriseBusinessRules, Frameworks
