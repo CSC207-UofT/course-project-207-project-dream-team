@@ -1,0 +1,11 @@
+Class name: TimeSlotForGUI
+Parent class: None
+Subclass: None
+
+Responsibility:
+* Allow timeslots to be displayed on the user interface
+
+Collaborator：
+* UserInterface
+* Controller
+

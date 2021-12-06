@@ -1,0 +1,14 @@
+Class name: Controller
+Parent class: None
+Subclass: None
+
+Responsibility:
+* Utilize multiple classes to obtain course information from the web and user and provide possible timetables to the
+ user.
+
+Collaborator：
+* UserInterface
+* Filter
+* Scheduler
+* Timetable
+* MakePDF

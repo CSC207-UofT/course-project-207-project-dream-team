@@ -1,0 +1,10 @@
+Class name: SimpleScheduler
+Parent Class: None
+Subclass: None
+
+Responsibility:
+- Schedule the course combinations via recursion.
+
+Collaborator:
+* Course
+* Timetable

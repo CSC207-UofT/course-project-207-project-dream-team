@@ -1,0 +1,9 @@
+Class name: WebParse
+Parent Class: None
+Subclass: None
+
+Responsibility:
+- Gain information from the web and let user choose course by inputs.
+
+Collaborator:
+* Session, NewCourse

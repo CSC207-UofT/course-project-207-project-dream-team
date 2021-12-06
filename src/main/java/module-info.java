@@ -10,4 +10,5 @@ module main{
     exports ApplicationBusinessRule;
     exports EnterpriseBusinessRules;
     exports FrameworksDrivers;
+    opens FrameworksDrivers to javafx.base, javafx.fxml, javafx.graphics;
 }
