@@ -7,7 +7,6 @@ import ApplicationBusinessRule.filter.MaximumHourFilter;
 import ApplicationBusinessRule.filter.TimeslotFilter;
 import EnterpriseBusinessRules.NewCourse;
 import FrameworksDrivers.UserData;
-import FrameworksDrivers.UserInterface;
 import FrameworksDrivers.WebParse;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
