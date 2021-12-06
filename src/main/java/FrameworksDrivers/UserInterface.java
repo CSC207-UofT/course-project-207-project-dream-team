@@ -69,7 +69,7 @@ public class UserInterface extends Application {
 
         // create a scene for timeslot filter event
         VBox timeSlotVBox = new VBox();
-        Label timeAsk = new Label("Please select your unwanted timeslots");
+        Label timeAsk = new Label("Please select your wanted timeslots");
         timeAsk.setFont(Font.font(20));
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
@@ -129,11 +129,11 @@ public class UserInterface extends Application {
         box11.setAlignment(Pos.CENTER);
         GridPane.setConstraints(box11, 1, 1);
 
-        ArrayList<String> prefferedListMon = new ArrayList<>(list00.getItems());
-        ArrayList<String> prefferedListTue = new ArrayList<>(list10.getItems());
-        ArrayList<String> prefferedListWed = new ArrayList<>(list20.getItems());
-        ArrayList<String> prefferedListThu = new ArrayList<>(list01.getItems());
-        ArrayList<String> prefferedListFri = new ArrayList<>(list11.getItems());
+        ArrayList<String> prefferedListMon = new ArrayList<>(list00.getSelectionModel().getSelectedItems());
+        ArrayList<String> prefferedListTue = new ArrayList<>(list10.getSelectionModel().getSelectedItems());
+        ArrayList<String> prefferedListWed = new ArrayList<>(list20.getSelectionModel().getSelectedItems());
+        ArrayList<String> prefferedListThu = new ArrayList<>(list01.getSelectionModel().getSelectedItems());
+        ArrayList<String> prefferedListFri = new ArrayList<>(list11.getSelectionModel().getSelectedItems());
 
         ArrayList<String> prefferedList1 = ConvertToUI.timeslotToUI(1, prefferedListMon);
         ArrayList<String> prefferedList2 = ConvertToUI.timeslotToUI(2, prefferedListTue);
@@ -203,7 +203,7 @@ public class UserInterface extends Application {
         rb2.setToggleGroup(toggleGroup);
         rb3.setToggleGroup(toggleGroup);
 
-        Button askButton1 = new Button("No");
+        Button askButton1 = new Button("Continue from last time");
 
         askButton1.setOnAction(e -> {
             if (rb1.isSelected()) {
@@ -241,7 +241,7 @@ public class UserInterface extends Application {
         Button highContrastBtn = new Button("High Contrast Mode");
         highContrastBtn.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
 
-        layout1.getChildren().addAll(askLabel, askButton2, askButton1, chooseFilterLabel, rb1, rb2, rb3, highContrastBtn);
+        layout1.getChildren().addAll(askButton1, chooseFilterLabel, rb1, rb2, rb3, highContrastBtn);
 
         // create a welcome scene
         Scene welcomeScene = new Scene(layout1, 350, 250);
