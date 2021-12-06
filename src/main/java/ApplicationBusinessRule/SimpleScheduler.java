@@ -6,7 +6,7 @@ import java.util.*;
 
 public class SimpleScheduler {
 
-    public ArrayList<NewCourse> coursesToSchedule;
+    private final ArrayList<NewCourse> coursesToSchedule;
 
     /**
      * Construct a scheduler for a given collection of courses.
