@@ -7,6 +7,7 @@ import java.util.*;
 
 public class Timetable {
 
+
     private final TreeMap<String, Session> timeTable;
     private final ArrayList<String> occupied;       // quick checker for time occupied in timeslot.
 
@@ -134,7 +135,7 @@ public class Timetable {
      * @param sessionToAdd a session that we add to the timetable.
      * @return a new timetable with the given session added
      */
-    private Timetable addSession(Session sessionToAdd){
+    public Timetable addSession(Session sessionToAdd){
         TreeMap<String, Session> newMapping = new TreeMap<>(this.timeTable);
         ArrayList<String> newOccupied = new ArrayList<>(this.occupied);
 

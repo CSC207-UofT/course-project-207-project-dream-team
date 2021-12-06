@@ -18,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ import java.util.ResourceBundle;
 import static FrameworksDrivers.WebParse.courseParse;
 
 public class Controller implements Initializable {
+
 
     ArrayList<Timetable> filteredTimetables = new ArrayList<>();
 
@@ -117,7 +119,7 @@ public class Controller implements Initializable {
 
 
     @FXML
-    public void knitClicked() {
+    public void knitClicked() throws FileNotFoundException {
         MakeCSV.makeCSV(filteredTimetables);
     }
 
