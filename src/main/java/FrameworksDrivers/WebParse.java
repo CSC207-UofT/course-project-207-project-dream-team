@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 
 
 public class WebParse {
+    public static String suffix = "";
     /**
      * gets all contents start with a tag "span"
      * @param courseCode a nine-digit course code to be searched
@@ -51,6 +52,7 @@ public class WebParse {
         for (String cc: courseCodes){
             spans = fullCourseToTags(cc);
             if (spans.size() > 3) {
+                suffix = cc.substring(6);
                 return spans;
             }
         }
@@ -254,7 +256,11 @@ public class WebParse {
      * @return a NewCourse type
      */
     public static NewCourse sessionsToCourse(ArrayList<Session>[] sessions, String courseCode) {
-        return new NewCourse(courseCode, sessions[1], sessions[0], sessions[2]);
+        String newCourseCode = courseCode;
+        if (courseCode.length() == 6){
+            newCourseCode = newCourseCode + suffix;
+        }
+        return new NewCourse(newCourseCode, sessions[1], sessions[0], sessions[2]);
     }
 
     /**
