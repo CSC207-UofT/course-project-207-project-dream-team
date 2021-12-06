@@ -77,6 +77,7 @@ public class MakeCSV {
         }
         return result;
     }
+
     public static String twoRows(ArrayList<String> sessions){
         String twoRows = "";
         for (int i=0; i<5;i++){
@@ -89,7 +90,7 @@ public class MakeCSV {
         twoRows = twoRows + "\n" + ",";
         for (int j=0; j<5; j++){
             if (sessions.get(j) != null){
-                twoRows = twoRows + sessions.get(j).substring(10)+ ",";
+                twoRows = twoRows + sessions.get(j).substring(sessions.get(j).length()-7)+ ",";
             }else{
                 twoRows = twoRows + ",";
             }

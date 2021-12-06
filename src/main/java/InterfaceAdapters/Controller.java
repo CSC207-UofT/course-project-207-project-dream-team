@@ -118,7 +118,7 @@ public class Controller implements Initializable {
 
     @FXML
     public void knitClicked() {
-        MakeCSV.makeCSV(currTimetable.getTimeTable());
+        MakeCSV.makeCSV(filteredTimetables);
     }
 
     @FXML
