@@ -302,14 +302,4 @@ public class WebParse {
     }
 
 
-    public static void main(String[] args) throws IOException {
-        NewCourse sta257 = courseParse("STA257");
-        NewCourse psy100 = courseParse("PSY100");
-        NewCourse bio130 = courseParse("BIO130H1S");
-        NewCourse mat137 = courseParse("MAT137Y1Y");
-        print(psy100);
-        print(sta257);
-        print(bio130);
-        print(mat137);
-    }
 }
