@@ -134,7 +134,7 @@ public class Timetable {
      * @param sessionToAdd a session that we add to the timetable.
      * @return a new timetable with the given session added
      */
-    private Timetable addSession(Session sessionToAdd){
+    public Timetable addSession(Session sessionToAdd){
         TreeMap<String, Session> newMapping = new TreeMap<>(this.timeTable);
         ArrayList<String> newOccupied = new ArrayList<>(this.occupied);
 
