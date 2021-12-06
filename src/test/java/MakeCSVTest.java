@@ -1,6 +1,7 @@
 import EnterpriseBusinessRules.NewCourse;
 import EnterpriseBusinessRules.Session;
 import FrameworksDrivers.MakeCSV;
+import com.sun.source.tree.Tree;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -34,6 +35,10 @@ public class MakeCSVTest {
         occupied.add("41314");
         occupied.add("11415");
         occupied.add("11516");
+
+        ArrayList<TreeMap> maps = new ArrayList<>();
+        maps.add(map);
+        maps.add(map);
 
     }
 }
