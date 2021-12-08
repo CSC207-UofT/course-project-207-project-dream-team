@@ -203,7 +203,16 @@ Package were divided based on clean architecture:
     - [#33 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/33):
       - established and completed the Abstract Filter class and two subclasses (InstructorFilter and TimeslotFilter), the 
       program started to include algorithms dealing with different user preferences
-- Yiteng Zhang
+- Yiteng Zhang：3th4novo
+  - To modify the GUI for the accessibility feature in the project, add a high-contrast mode option.
+  - Fixing bugs found in the process of GUI developing.
+  - Reorganize GUI related classes to make them more extenable and readable.
+  - Redesigned the scenes of the GUI to make it more enjoyable to the users.
+  - Pull Request
+    - [#75 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/75)
+      - The pull request reorganized the UserInterface class by using the fxml and controller feature of javafx module.
+      - The use of the controller makes the generated gui code more readable, and also makes the subsequent function
+      expansion more convenient.
 
 
 
