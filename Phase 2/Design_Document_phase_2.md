@@ -62,7 +62,12 @@ implicitly stated the basic information and functions of the classes.
   Else, it will print out “Timetable are successfully filtered.” For #33 pull request, we started to implement the
   Template Method Design Pattern.
 
-###injection
+###Dependency Injection 
+- [SimpleScheduler](../src/main/java/ApplicationBusinessRule/SimpleScheduler.java): Using the class SimpleScheduler
+  depends on a collection of courses that we wish to schedule, which are instances of [NewCourse](../src/main/java/EnterpriseBusinessRules/NewCourse.java).
+  However, initializing such instances within SimpleScheduler creates hard dependency, that is, these instances of NewCourse
+  cannot be used or tested independently, which is potentially more difficult to debug. As a result, The ArrayList of NewCourse instances
+  is constructed outside SimpleScheduler and passed to an instance of SimpleScheduler when it is initialized.
 
 ##Use of GitHub Features
 ###Issues
@@ -180,7 +185,12 @@ Package were divided based on clean architecture:
     - This is when MakePDF is ready to be used. Later we decided to get rid of the PDF function as CSV is much simpler.
       MakePDF is deleted in #76 Pull Request in which MakeCSV is first added.
 - Piao :
-- Yan :
+- Jerry Yan : noaoch
+  - Implemented a design pattern for SimpleScheduler
+  - Added javadoc to classes SimpleScheduler, Timetable, NewCourse and Session
+  - Pull Request: [#39 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/39) Made significant adjustments to the 
+    scheduling algorithm, such that SimpleScheduler now returns the correct timetable combinations in a much more efficient manner. I believe this is quite important as the whole goal
+    of this program is to help students schedule courses.
 - Chenchen Zhang: czzcczz
   - updating Design Document and Specification
   - writing Progress Report and Project Accessibility
