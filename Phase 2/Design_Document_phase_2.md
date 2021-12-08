@@ -176,7 +176,11 @@ Package were divided based on clean architecture:
 - We include a high-contrast mode for user with visual deficit
 
 ##Summary for Group Member
-- Zhonghan Chen
+- Zhonghan Chen : OscarC9912
+  - Complete the testing for InstructorFilter, MaximumHourFilter, TimeslotFilter classes.
+  - Update the design patterns for the project.
+  - Pull Request: [#42 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/42)
+    Re-design the InstructorFilter and MaximumHourFilter, which is one of the main sorting algorithm in the project.
 - Lewei Er: 
   - [#86 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/86):
     - This is when MakeCSV is ready to be used. Although in this commit, I only fixed the brain fart I had in the last
