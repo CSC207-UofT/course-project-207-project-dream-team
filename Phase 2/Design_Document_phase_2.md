@@ -38,18 +38,15 @@
 (ApplicationBusinessRules, EnterpriseBusinessRules, Frameworks&Drivers, InterfaceAdapters). On each CRC card, we have 
 implicitly stated the basic information and functions of the classes.
 
-### Scenario walk-through (尔总改一改）:
-- The Controller class is the center of the operation. When run, it activates the Javafx application. The application
-is the user interface. This is one of our Frameworks & Drivers. The Javafx application interacts with WebParse, which
-is the other member of Frameworks & Drivers. They cooperate to get information from both the user and the web
-(In this case, it would be the UofT Coursefinder website). Then the controller calls the simple scheduler, giving it
-the information from the user and the web. This way, it is clear who is doing what task. If the user has any
-preference, the controller learns this fact and hands it to the Filter. The filter determines what preference should
-be applied. The finished product is in the form of a Timetable instance. Of course, the Timetable class also helps
-this process by providing the state of itself. We achieved this by implementing helper methods in the Timetable class.
-The data is handed over in the form of a Timetable to Javafx application for initial display to the user.
-Finally, if the user desires, MakePDF is called by the Controller represented by the Javafx application.
-MakePDF outputs a pdf file that is friendly to digital use and printing.
+### Scenario walk-through:
+- A typical walk-though of the program starts with running the Controller. The Controller class then activates the 
+  UserInterface, which present all option concerning preferences and progress saving. Then, UserInterface collaborates 
+  with WebParse to gather inputs from both the user and the UofT Course Finder site. This information is further passed
+  on to the SimpleScheduler and then the Filter classes. They will run our algorithm to produce the timetables fitting 
+  to the user's demands. The last task of the UserInterface is to present the generated timetables to the user, in which
+  it uses help from ConvertToUI. If the user wants, a csv file can be generated containing all presented timetables. 
+  Throughout the program, there is an option in the UserInterface to make the entire interface display in high contrast 
+  colors.
 
 ## Design Pattern
 ###Template Method Pattern
@@ -65,7 +62,12 @@ MakePDF outputs a pdf file that is friendly to digital use and printing.
   Else, it will print out “Timetable are successfully filtered.” For #33 pull request, we started to implement the
   Template Method Design Pattern.
 
-###injection
+###Dependency Injection 
+- [SimpleScheduler](../src/main/java/ApplicationBusinessRule/SimpleScheduler.java): Using the class SimpleScheduler
+  depends on a collection of courses that we wish to schedule, which are instances of [NewCourse](../src/main/java/EnterpriseBusinessRules/NewCourse.java).
+  However, initializing such instances within SimpleScheduler creates hard dependency, that is, these instances of NewCourse
+  cannot be used or tested independently, which is potentially more difficult to debug. As a result, The ArrayList of NewCourse instances
+  is constructed outside SimpleScheduler and passed to an instance of SimpleScheduler when it is initialized.
 
 ##Use of GitHub Features
 ###Issues
@@ -176,8 +178,19 @@ Package were divided based on clean architecture:
 ##Summary for Group Member
 - Zhonghan Chen
 - Lewei Er: 
+  - [#86 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/86):
+    - This is when MakeCSV is ready to be used. Although in this commit, I only fixed the brain fart I had in the last
+      version.
+  - [#74 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/74):
+    - This is when MakePDF is ready to be used. Later we decided to get rid of the PDF function as CSV is much simpler.
+      MakePDF is deleted in #76 Pull Request in which MakeCSV is first added.
 - Piao :
-- Yan :
+- Jerry Yan : noaoch
+  - Implemented a design pattern for SimpleScheduler
+  - Added javadoc to classes SimpleScheduler, Timetable, NewCourse and Session
+  - Pull Request: [#39 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/39) Made significant adjustments to the 
+    scheduling algorithm, such that SimpleScheduler now returns the correct timetable combinations in a much more efficient manner. I believe this is quite important as the whole goal
+    of this program is to help students schedule courses.
 - Chenchen Zhang: czzcczz
   - updating Design Document and Specification
   - writing Progress Report and Project Accessibility
