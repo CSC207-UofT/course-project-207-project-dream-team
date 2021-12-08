@@ -1,0 +1,4 @@
+Course Codes,
+Max Duration,
+Instructors,
+Timeslots,
