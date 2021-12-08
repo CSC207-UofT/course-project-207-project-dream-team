@@ -7,7 +7,7 @@ public abstract class Filter {
 
 
     private final ArrayList<Timetable> input;
-    private ArrayList<Timetable> output;     // timetables that meets users' preferences
+    private final ArrayList<Timetable> output;     // timetables that meets users' preferences
     private final ArrayList<String> unwanted;      // a list of unwanted instructors, timeslot etc.
 
     /**

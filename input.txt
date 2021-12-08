@@ -1,4 +1,4 @@
 Course Codes,
-Max Duration,
+Max Duration,3,
 Instructors,
 Timeslots,
