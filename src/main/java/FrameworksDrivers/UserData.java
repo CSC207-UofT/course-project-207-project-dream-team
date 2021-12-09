@@ -6,29 +6,31 @@ import java.util.Arrays;
 
 public class UserData {
 
-    static Integer flag = 0;
     final static String path = "input.txt";//the path should be changed after packaging
     final static File f = new File(path);
+    static Integer flag = 0;
 
     /**
      * Get the indivator flag that shows whether input.txt exists before the program begins
+     *
      * @return flag, an indicator 0 or 1
      */
-    public static Integer getFlag(){
+    public static Integer getFlag() {
         return flag;
     }
 
     /**
      * Show if input.txt exists in directory.
      * If input.txt does not exist, create a new one.
+     *
      * @return true or false
      * @throws IOException if initInput runs abnormally
      */
     public static boolean inputExists() throws IOException {
-        if (f.exists()){
+        if (f.exists()) {
             flag = 1;
             return true;
-        }else{
+        } else {
             initInput();
             return false;
         }
@@ -36,19 +38,21 @@ public class UserData {
 
     /**
      * Out put header of input.txt
+     *
      * @return a list of strings, each string represents a line
      */
-    public static String[] initHeader(){
+    public static String[] initHeader() {
         String[] header = new String[4];//{courseCode, duration, instructor, timeslots}
-        header[0]="Course Codes,";
-        header[1]=("\nMax Duration,");
-        header[2]=("\nInstructors,");
-        header[3]=("\nTimeslots,");
+        header[0] = "Course Codes,";
+        header[1] = ("\nMax Duration,");
+        header[2] = ("\nInstructors,");
+        header[3] = ("\nTimeslots,");
         return header;
     }
 
     /**
      * Initialize empty input.txt
+     *
      * @throws IOException if f.createNewFile() accepts wrong path
      */
     public static void initInput() throws IOException {
@@ -56,7 +60,7 @@ public class UserData {
         FileWriter fwriter = new FileWriter(f.getAbsolutePath());
         BufferedWriter bwriter = new BufferedWriter(fwriter);
         String[] header = initHeader();
-        for (String line:header){
+        for (String line : header) {
             bwriter.write(line);
         }
         bwriter.close();
@@ -64,19 +68,20 @@ public class UserData {
 
     /**
      * Get the filter type used last time
+     *
      * @return a string indicating the type of filter
      * @throws IOException if readAllLines() runs abnormally
      */
-    public static String getFilterType() throws IOException{
+    public static String getFilterType() throws IOException {
         String[] lines = readAllLines();
-        for (int i=1; i<lines.length; i++){
+        for (int i = 1; i < lines.length; i++) {
             int counter = 0;
-            for (int j = 0; j < lines[i].length(); j++){
-                if (lines[i].charAt(j) == ','){
+            for (int j = 0; j < lines[i].length(); j++) {
+                if (lines[i].charAt(j) == ',') {
                     counter += 1;
                 }
             }
-            if (counter > 1){
+            if (counter > 1) {
                 String result = lines[i].split(",")[0];
                 result = result.substring(1);
                 return result;
@@ -87,6 +92,7 @@ public class UserData {
 
     /**
      * Turn input.txt back into an empty input
+     *
      * @throws IOException if filewriter gets wrong input
      */
     public static void removeAll() throws IOException {
@@ -101,15 +107,16 @@ public class UserData {
 
     /**
      * read all lines from input.txt
+     *
      * @return a list of strings, each represents a line
      * @throws IOException if fileReader runs abnormally
      */
-    public static String[] readAllLines() throws IOException{
+    public static String[] readAllLines() throws IOException {
         FileReader freader = new FileReader(f.getAbsolutePath());
         BufferedReader breader = new BufferedReader(freader);
         String[] lines = new String[4];
         int i = 0;
-        for(String line = breader.readLine(); line != null; line = breader.readLine()){
+        for (String line = breader.readLine(); line != null; line = breader.readLine()) {
             lines[i] = "\n" + line;
             i++;
         }
@@ -120,12 +127,13 @@ public class UserData {
 
     /**
      * input courses into input.txt
+     *
      * @param courseCode course code to be added
      * @throws IOException if gets input with wrong format
      */
-    public static void inputCourse(String courseCode) throws IOException{
-       String[] lines = readAllLines();
-        if (!lines[0].contains(courseCode)){
+    public static void inputCourse(String courseCode) throws IOException {
+        String[] lines = readAllLines();
+        if (!lines[0].contains(courseCode)) {
             FileWriter fwriter = new FileWriter(f.getAbsolutePath());
             BufferedWriter bwriter = new BufferedWriter(fwriter);
             lines[0] = lines[0] + courseCode + ",";
@@ -138,12 +146,13 @@ public class UserData {
 
     /**
      * input unwanted instructors to input.txt
+     *
      * @param names an arraylist of strings, each string is a name
      * @throws IOException if gets input of wrong format
      */
-    public static void inputInstructor(ArrayList<String> names) throws IOException{
+    public static void inputInstructor(ArrayList<String> names) throws IOException {
         String[] lines = readAllLines();
-        for (String name:names) {
+        for (String name : names) {
             if (lines[2].contains(name)) {
                 return;
             } else {
@@ -160,30 +169,32 @@ public class UserData {
 
     /**
      * input maximum duration of each day to input.txt
+     *
      * @param hour a string representing num of hours
      * @throws IOException if gets input of wrong format
      */
-    public static void inputMaxDuration(String hour) throws IOException{
+    public static void inputMaxDuration(String hour) throws IOException {
         String[] lines = readAllLines();
-            if (!lines[1].contains(hour)) {
-                FileWriter fwriter = new FileWriter(f.getAbsolutePath());
-                BufferedWriter bwriter = new BufferedWriter(fwriter);
-                lines[1] = lines[1] + hour + ",";
-                for (String line : lines) {
-                    bwriter.write(line);
-                }
-                bwriter.close();
+        if (!lines[1].contains(hour)) {
+            FileWriter fwriter = new FileWriter(f.getAbsolutePath());
+            BufferedWriter bwriter = new BufferedWriter(fwriter);
+            lines[1] = lines[1] + hour + ",";
+            for (String line : lines) {
+                bwriter.write(line);
             }
+            bwriter.close();
+        }
     }
 
     /**
      * input unwanted timeslots to input.txt
+     *
      * @param times an arraylist of strings, each representing a timeslot
      * @throws IOException if gets input of wrong format
      */
-    public static void inputTimeslot(ArrayList<String> times) throws IOException{
+    public static void inputTimeslot(ArrayList<String> times) throws IOException {
         String[] lines = readAllLines();
-        for (String time:times) {
+        for (String time : times) {
             if (lines[3].contains(time)) {
                 return;
             } else {
@@ -200,16 +211,17 @@ public class UserData {
 
     /**
      * remove one course recorded in input.txt
+     *
      * @param courseCode course code to be removed
      * @throws IOException if get course code of wrong format
      */
-    public static void removeCourse(String courseCode) throws IOException{
+    public static void removeCourse(String courseCode) throws IOException {
         String[] lines = readAllLines();
-        if (lines[0].contains(courseCode)){
+        if (lines[0].contains(courseCode)) {
             FileWriter fwriter = new FileWriter(f.getAbsolutePath());
             BufferedWriter bwriter = new BufferedWriter(fwriter);
             int ccLength = courseCode.length();
-            lines[0] = lines[0].substring(0, lines[0].length()-ccLength-1);
+            lines[0] = lines[0].substring(0, lines[0].length() - ccLength - 1);
             for (String line : lines) {
                 bwriter.write(line);
             }
@@ -219,9 +231,10 @@ public class UserData {
 
     /**
      * remove all courses from input.txt
+     *
      * @throws IOException if FileWriter runs abnormally
      */
-    public static void clearCourses() throws IOException{
+    public static void clearCourses() throws IOException {
         String[] lines = readAllLines();
         lines[0] = lines[0].substring(0, 13);
         FileWriter fwriter = new FileWriter(f.getAbsolutePath());
@@ -230,13 +243,14 @@ public class UserData {
             bwriter.write(line);
         }
         bwriter.close();
-        }
+    }
 
     /**
      * remove all preference from input.txt
+     *
      * @throws IOException if readAllLines runs abnormally
      */
-    public static void clearPreference() throws IOException{
+    public static void clearPreference() throws IOException {
         String[] lines = readAllLines();
         lines[1] = lines[1].substring(0, 14);
         lines[2] = lines[2].substring(0, 13);
@@ -252,6 +266,7 @@ public class UserData {
 
     /**
      * get preference from input.
+     *
      * @return an arraylist of strings, each represents one name/ timeslot/ duration
      * @throws IOException if readAllLines runs abnormally
      */
@@ -278,10 +293,11 @@ public class UserData {
 
     /**
      * get course codes recorded in input.txt
+     *
      * @return an arraylist of strings, each represents a course code
      * @throws IOException if FileReader runs abnormally
      */
-    public static ArrayList<String> readCourses() throws IOException{
+    public static ArrayList<String> readCourses() throws IOException {
         FileReader freader = new FileReader(f.getAbsolutePath());
         BufferedReader breader = new BufferedReader(freader);
         String firstLine = breader.readLine();

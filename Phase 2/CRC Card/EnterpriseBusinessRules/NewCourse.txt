@@ -1,0 +1,8 @@
+Class name: NewCourse
+Parent class: None
+Subclass: None
+
+Responsibility:
+* Store information for one course including all sessions it has.
+
+Collaborator：Session

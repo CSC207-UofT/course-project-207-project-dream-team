@@ -64,8 +64,6 @@ public class UserInterface extends Application {
         Scene insScene = new Scene(insVBox, 764, 390);
 
 
-
-
         // create a scene for timeslot filter event
         VBox timeSlotVBox = new VBox();
         Label timeAsk = new Label("Please select your unwanted timeslots");
@@ -128,11 +126,11 @@ public class UserInterface extends Application {
         box11.setAlignment(Pos.CENTER);
         GridPane.setConstraints(box11, 1, 1);
 
-        ArrayList<String> prefferedListMon = new ArrayList<>(list00.getItems());
-        ArrayList<String> prefferedListTue = new ArrayList<>(list10.getItems());
-        ArrayList<String> prefferedListWed = new ArrayList<>(list20.getItems());
-        ArrayList<String> prefferedListThu = new ArrayList<>(list01.getItems());
-        ArrayList<String> prefferedListFri = new ArrayList<>(list11.getItems());
+        ArrayList<String> prefferedListMon = new ArrayList<>(list00.getSelectionModel().getSelectedItems());
+        ArrayList<String> prefferedListTue = new ArrayList<>(list10.getSelectionModel().getSelectedItems());
+        ArrayList<String> prefferedListWed = new ArrayList<>(list20.getSelectionModel().getSelectedItems());
+        ArrayList<String> prefferedListThu = new ArrayList<>(list01.getSelectionModel().getSelectedItems());
+        ArrayList<String> prefferedListFri = new ArrayList<>(list11.getSelectionModel().getSelectedItems());
 
         ArrayList<String> prefferedList1 = ConvertToUI.timeslotToUI(1, prefferedListMon);
         ArrayList<String> prefferedList2 = ConvertToUI.timeslotToUI(2, prefferedListTue);
@@ -164,8 +162,6 @@ public class UserInterface extends Application {
         Scene timeSlotScene = new Scene(timeSlotVBox, 764, 390);
 
 
-
-
         // create a scene for max hour filter event
         VBox maxHourVBox = new VBox();
         Label maxAsk = new Label("Please enter your preferred duration of classes each day");
@@ -184,13 +180,11 @@ public class UserInterface extends Application {
         Scene maxScene = new Scene(maxHourVBox, 764, 390);
 
 
-
-
         // create a layout
         VBox layout1 = new VBox();
         layout1.setAlignment(Pos.CENTER);
         layout1.setSpacing(6);
-        Label askLabel = new Label("Continue from last edit?");
+        Label askLabel = new Label("Discard previous choices in the next edit?");
 
         Label chooseFilterLabel = new Label("Please choose your wanted filter.");
 
@@ -202,21 +196,21 @@ public class UserInterface extends Application {
         rb2.setToggleGroup(toggleGroup);
         rb3.setToggleGroup(toggleGroup);
 
-        Button askButton1 = new Button("Yes");
+        Button askButton1 = new Button("Continue from last time");
 
         askButton1.setOnAction(e -> {
             if (rb1.isSelected()) {
                 window.setScene(insScene);
             } else if (rb2.isSelected()) {
                 window.setScene(maxScene);
-            } else if (rb3.isSelected()){
+            } else if (rb3.isSelected()) {
                 window.setScene(timeSlotScene);
             } else {
                 window.setScene(scene);
             }
         });
 
-        Button askButton2 = new Button("No");
+        Button askButton2 = new Button("Yes");
 
         askButton2.setOnAction(e -> {
             try {
@@ -240,10 +234,10 @@ public class UserInterface extends Application {
         Button highContrastBtn = new Button("High Contrast Mode");
         highContrastBtn.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
 
-        layout1.getChildren().addAll(askLabel, askButton1, askButton2, chooseFilterLabel, rb1, rb2, rb3, highContrastBtn);
+        layout1.getChildren().addAll(askButton1, chooseFilterLabel, rb1, rb2, rb3, highContrastBtn);
 
         // create a welcome scene
-        Scene welcomeScene = new Scene(layout1, 300, 250);
+        Scene welcomeScene = new Scene(layout1, 350, 250);
 
 
         // welcome scene when input not exist
@@ -267,7 +261,7 @@ public class UserInterface extends Application {
                 window.setScene(insScene);
             } else if (rb5.isSelected()) {
                 window.setScene(maxScene);
-            } else if (rb6.isSelected()){
+            } else if (rb6.isSelected()) {
                 window.setScene(timeSlotScene);
             } else {
                 window.setScene(scene);
@@ -279,7 +273,7 @@ public class UserInterface extends Application {
 
         layout2.getChildren().addAll(rb4, rb5, rb6, welcomeConfirmBtn, welcomeNewBack, highContrastBtnNew);
 
-        Scene welcomeSceneNew = new Scene(layout2, 300, 250);
+        Scene welcomeSceneNew = new Scene(layout2, 350, 250);
 
         if (UserData.inputExists()) {
             window.setScene(welcomeScene);

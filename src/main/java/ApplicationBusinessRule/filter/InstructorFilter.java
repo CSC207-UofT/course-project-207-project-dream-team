@@ -14,7 +14,8 @@ public class InstructorFilter extends Filter {
 
     /**
      * constructor the InstructorFilter
-     * @param input an Arraylist of timetable
+     *
+     * @param input    an Arraylist of timetable
      * @param unwanted an Arraylist of string representing unwanted instructors
      */
 
@@ -24,6 +25,7 @@ public class InstructorFilter extends Filter {
 
     /**
      * sort out timetables with unwanted instructors
+     *
      * @return an Arraylist of sorted timetable
      */
     @Override

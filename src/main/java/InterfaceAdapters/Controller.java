@@ -28,6 +28,7 @@ import static FrameworksDrivers.WebParse.courseParse;
 
 public class Controller implements Initializable {
 
+
     ArrayList<Timetable> filteredTimetables = new ArrayList<>();
 
     Timetable currTimetable = new Timetable();
@@ -95,6 +96,29 @@ public class Controller implements Initializable {
     @FXML
     Label botLabel;
 
+    public static ObservableList<TimeSlotForGUI> getObservableList(Timetable currTimetable) {
+        final ObservableList<TimeSlotForGUI> data = FXCollections.observableArrayList();
+
+        ArrayList<ArrayList<String>> listOfListOfCourseName = ConvertToUI.timetableToUI(currTimetable.getTimeTable());
+        for (int i = 0; i < 12; i++) {
+            String timeSlot = i + 9 + ":00";
+            ArrayList<String> listOfCourseName = listOfListOfCourseName.get(i);
+            listOfCourseName.add(0, timeSlot);
+            TimeSlotForGUI tsf = new TimeSlotForGUI(listOfCourseName.get(0),
+                    listOfCourseName.get(1),
+                    listOfCourseName.get(2),
+                    listOfCourseName.get(3),
+                    listOfCourseName.get(4),
+                    listOfCourseName.get(5));
+            data.add(tsf);
+        }
+
+        return data;
+    }
+
+    public static void main(String[] args) {
+        Application.launch(UserInterface.class, args);
+    }
 
     // click events
     @FXML
@@ -114,7 +138,6 @@ public class Controller implements Initializable {
             AlertBox.display("Course not found error", "The course is not found");
         }
     }
-
 
     @FXML
     public void knitClicked() throws FileNotFoundException {
@@ -161,31 +184,11 @@ public class Controller implements Initializable {
         tableView.setItems(data);
     }
 
-    public static ObservableList<TimeSlotForGUI> getObservableList(Timetable currTimetable) {
-        final ObservableList<TimeSlotForGUI> data = FXCollections.observableArrayList();
-
-        ArrayList<ArrayList<String>> listOfListOfCourseName = ConvertToUI.timetableToUI(currTimetable.getTimeTable());
-        for (int i = 0; i < 12; i++) {
-            String timeSlot = i + 9 + ":00";
-            ArrayList<String> listOfCourseName = listOfListOfCourseName.get(i);
-            listOfCourseName.add(0, timeSlot);
-            TimeSlotForGUI tsf = new TimeSlotForGUI(listOfCourseName.get(0),
-                                                    listOfCourseName.get(1),
-                                                    listOfCourseName.get(2),
-                                                    listOfCourseName.get(3),
-                                                    listOfCourseName.get(4),
-                                                    listOfCourseName.get(5));
-            data.add(tsf);
-        }
-
-        return data;
-    }
-
     @FXML
     public void confirmButtonClicked() throws IOException {
         ArrayList<String> courseNameList = new ArrayList<>(courseListView.getItems());
         ArrayList<NewCourse> newCourseList = new ArrayList<>();
-        for (String courseName: courseNameList) {
+        for (String courseName : courseNameList) {
             NewCourse parsedCourse = WebParse.courseParse(courseName);
             newCourseList.add(parsedCourse);
         }
@@ -193,23 +196,28 @@ public class Controller implements Initializable {
         ArrayList<Timetable> arranged = Ss.arrange(new Timetable(), new HashSet<>());
         ArrayList<Timetable> filtered;
         String filter = UserData.getFilterType();
-        if (filter.equals("Instructors")) {
-            ArrayList<String> insPreference = UserData.readPreference();
-            InstructorFilter IF = new InstructorFilter(arranged, insPreference);
-            filtered = IF.sort();
-        } else if (filter.equals("Max Duration")) {
-            ArrayList<String> maxPreference = UserData.readPreference();
-            MaximumHourFilter MHF = new MaximumHourFilter(arranged, maxPreference);
-            filtered = MHF.sort();
-        } else if (filter.equals("Timeslots")) { // timeslots
-            ArrayList<String> timeSlotPreference = UserData.readPreference();
-            TimeslotFilter TSF = new TimeslotFilter(arranged, timeSlotPreference);
-            filtered = TSF.sort();
-        } else { // no filter
-            filtered = arranged;
+        switch (filter) {
+            case "Instructors":
+                ArrayList<String> insPreference = UserData.readPreference();
+                InstructorFilter IF = new InstructorFilter(arranged, insPreference);
+                filtered = IF.sort();
+                break;
+            case "Max Duration":
+                ArrayList<String> maxPreference = UserData.readPreference();
+                MaximumHourFilter MHF = new MaximumHourFilter(arranged, maxPreference);
+                filtered = MHF.sort();
+                break;
+            case "Timeslots":  // timeslots
+                ArrayList<String> timeSlotPreference = UserData.readPreference();
+                TimeslotFilter TSF = new TimeslotFilter(arranged, timeSlotPreference);
+                filtered = TSF.sort();
+                break;
+            default:  // no filter
+                filtered = arranged;
+                break;
         }
         if (filtered.size() > 5) {
-            filteredTimetables = new ArrayList<Timetable>();
+            filteredTimetables = new ArrayList<>();
             filteredTimetables.add(filtered.get(0));
             filteredTimetables.add(filtered.get(1));
             filteredTimetables.add(filtered.get(2));
@@ -270,7 +278,7 @@ public class Controller implements Initializable {
         // read in the previous courses
         try {
             ArrayList<String> loadedCoursesName = UserData.readCourses();
-            for (String courseName: loadedCoursesName) {
+            for (String courseName : loadedCoursesName) {
                 courseListView.getItems().add(courseName);
             }
         } catch (IOException e) {
@@ -280,18 +288,14 @@ public class Controller implements Initializable {
 
         final ObservableList<TimeSlotForGUI> data = getObservableList(currTimetable);
 
-        TimeSlotColumn.setCellValueFactory(new PropertyValueFactory<TimeSlotForGUI, String>("TimeSlot"));
-        MondayColumn.setCellValueFactory(new PropertyValueFactory<TimeSlotForGUI, String>("MondaySession"));
-        TuesdayColumn.setCellValueFactory(new PropertyValueFactory<TimeSlotForGUI, String>("TuesdaySession"));
-        WednesdayColumn.setCellValueFactory(new PropertyValueFactory<TimeSlotForGUI, String>("WednesdaySession"));
-        ThursdayColumn.setCellValueFactory(new PropertyValueFactory<TimeSlotForGUI, String>("ThursdaySession"));
-        FridayColumn.setCellValueFactory(new PropertyValueFactory<TimeSlotForGUI, String>("FridaySession"));
+        TimeSlotColumn.setCellValueFactory(new PropertyValueFactory<>("TimeSlot"));
+        MondayColumn.setCellValueFactory(new PropertyValueFactory<>("MondaySession"));
+        TuesdayColumn.setCellValueFactory(new PropertyValueFactory<>("TuesdaySession"));
+        WednesdayColumn.setCellValueFactory(new PropertyValueFactory<>("WednesdaySession"));
+        ThursdayColumn.setCellValueFactory(new PropertyValueFactory<>("ThursdaySession"));
+        FridayColumn.setCellValueFactory(new PropertyValueFactory<>("FridaySession"));
 
         // add data inside table
         tableView.setItems(data);
-    }
-
-    public static void main(String[] args) {
-        Application.launch(UserInterface.class, args);
     }
 }

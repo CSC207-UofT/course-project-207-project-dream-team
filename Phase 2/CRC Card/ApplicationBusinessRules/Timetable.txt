@@ -1,0 +1,10 @@
+Class name: Timetable
+Parent Class: None
+Subclass: None
+
+Responsibility:
+* Stores an accessible mapping from timeslot to Course instance.
+
+Collaborator:
+* Course
+* Presenter

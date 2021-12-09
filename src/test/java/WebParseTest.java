@@ -13,6 +13,7 @@ public class WebParseTest {
     @Test(timeout = 1000000)
     public void TestSort() throws IOException {
         NewCourse csc104 = WebParse.courseParse("CSC104");
+        NewCourse sta257s = WebParse.courseParse("STA257");
         NewCourse sta257 = WebParse.courseParse("STA257H1F");
         NewCourse bio130 = WebParse.courseParse("BIO130H1S");
         ArrayList<String> mat137List = WebParse.tagsToList(WebParse.halfCourseToTags("MAT137"));
@@ -25,6 +26,7 @@ public class WebParseTest {
         assertEquals(9, bio130.getLabs().size());
         assertEquals(329, mat137List.size());
         assertEquals(0, csc104.getLabs().size());
+        assertEquals(9, sta257s.getCourseCode().length());
         WebParse.print(bio130);
         WebParse.print(sta257);
     }

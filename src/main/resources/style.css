@@ -13,7 +13,7 @@
     -fx-font-weight: bold;
 }
 
-.table-view .virtual-flow .scroll-bar:vertical .thumb{
+.table-view .virtual-flow .scroll-bar:vertical .thumb {
     -fx-background-color: #0027FF;
 }
 

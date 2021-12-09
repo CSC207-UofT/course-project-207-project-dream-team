@@ -35,10 +35,6 @@ public class TimeSlotForGUI {
         TimeSlot.set(timeSlot);
     }
 
-    public StringProperty timeSlotProperty() {
-        return TimeSlot;
-    }
-
     // Monday
     public String getMondaySession() {
         return MondaySession.get();

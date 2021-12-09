@@ -1,0 +1,10 @@
+Class name: CovertToUI
+Parent class: None
+Subclass: None
+
+Responsibility:
+* Convert the format of timetables, so that the timetables can be displayed by the user interface
+
+Collaborator：
+* TimeTable
+* Controller

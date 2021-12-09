@@ -1,4 +1,4 @@
-module main{
+module main {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.jsoup;
@@ -10,4 +10,5 @@ module main{
     exports ApplicationBusinessRule;
     exports EnterpriseBusinessRules;
     exports FrameworksDrivers;
+    opens FrameworksDrivers to javafx.base, javafx.fxml, javafx.graphics;
 }

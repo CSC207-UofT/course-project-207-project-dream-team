@@ -2,12 +2,11 @@ package ApplicationBusinessRule;
 
 import EnterpriseBusinessRules.NewCourse;
 import EnterpriseBusinessRules.Session;
-import FrameworksDrivers.WebParse;
 
-import java.io.IOException;
 import java.util.*;
 
 public class Timetable {
+
 
     private final TreeMap<String, Session> timeTable;
     private final ArrayList<String> occupied;       // quick checker for time occupied in timeslot.
@@ -27,79 +26,74 @@ public class Timetable {
     /**
      * Construct a timetable with given sessions, and the corresponding timeslots that are occupied given by timeTable
      * and occupied.
+     *
      * @param timeTable an ordered mapping of session time to course sessions, ordered from the earliest time to latest.
-     * @param occupied the session times that are occupied in this timetable.
+     * @param occupied  the session times that are occupied in this timetable.
      */
     // Overloaded Constructor
-    public Timetable(TreeMap<String, Session> timeTable, ArrayList<String> occupied){
+    public Timetable(TreeMap<String, Session> timeTable, ArrayList<String> occupied) {
         this.timeTable = timeTable;
         this.occupied = occupied;
     }
 
     /**
      * A getter for private variable "timetable".
+     *
      * @return the ordered mapping of session time to course sessions.
      */
-    public TreeMap<String, Session> getTimeTable(){
+    public TreeMap<String, Session> getTimeTable() {
         return this.timeTable;
     }
 
 
     /**
      * A getter for private variable "occupied".
+     *
      * @return the session times that are occupied in this timetable.
      */
-    public ArrayList<String> getOccupied(){
+    public ArrayList<String> getOccupied() {
         return this.occupied;
     }
-
-    // Check if the timeSpan is empty in timeTable
-    public boolean isEmpty(String timeCode) {
-     return !this.occupied.contains(timeCode);
-    }
-
 
 
     /**
      * Convert this timetable to a string.
+     *
      * @return a string comprised of every session in this timetable, sorted by time in ascending order.
      */
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder result = new StringBuilder();
-        for (Session s : this.timeTable.values()){
+        for (Session s : this.timeTable.values()) {
             result.append(s.courseCode).append(s.sessionCode).append(Arrays.toString(s.timeslots)).append(s.instructor);
         }
         return result.toString();
     }
 
 
-
-
     /**
      * Convert this timetable to a collection of session codes that it contains, in every course it contains.
      * e.g. If timetable has tut0101 and lec0201 for CSC207, then we return {"CSC207": ["TUT", "LEC"]}, where {} means
      * a dictionary and [] means a set.
-     *
+     * <p>
      * Precondition: the timetable is set up correctly.
      *
      * @return a mapping of course codes to what types of sessions are already in the timetable (e.g. Lec, Tut), based
      * on the sessions that are in timetable.
      */
-    private Map<String, Set<String>> courseToSession(){
+    private Map<String, Set<String>> courseToSession() {
         Collection<Session> sessionsInTimetable = this.timeTable.values();
 
         Map<String, Set<String>> result = new HashMap<>();
 
-        if (sessionsInTimetable.isEmpty()){
+        if (sessionsInTimetable.isEmpty()) {
             return result;
         }
 
-        for (Session s : sessionsInTimetable){
-            if (result.containsKey(s.courseCode)){
+        for (Session s : sessionsInTimetable) {
+            if (result.containsKey(s.courseCode)) {
                 result.get(s.courseCode).add(s.sessionCode.substring(0, 3));
-            }
-            else {
+            } else {
                 Set<String> newVal = new HashSet<>(Collections.singleton(s.sessionCode.substring(0, 3)));
                 result.put(s.courseCode, newVal);
             }
@@ -108,23 +102,22 @@ public class Timetable {
     }
 
 
-
-
     /**
      * Check whether a given session sessionToAdd has conflict with this timetable.
+     *
      * @param sessionToAdd a session to be added to the timetable
      * @return true iff sessionToAdd has no time conflict with the Timetable, and is reasonable to be added, that is,
      * for example, we don't want a LEC0101 and a LEC0201 for CSC207 in the same timetable.
      */
-    private boolean hasNoConflict(Session sessionToAdd){
+    private boolean hasNoConflict(Session sessionToAdd) {
         Map<String, Set<String>> mapping = this.courseToSession();
-        for (int time:sessionToAdd.timeslots){
-            if (this.occupied.contains(Integer.toString(time))){
+        for (int time : sessionToAdd.timeslots) {
+            if (this.occupied.contains(Integer.toString(time))) {
                 return false;
             }
         }
-        if (mapping.containsKey(sessionToAdd.courseCode)){
-            return !mapping.get(sessionToAdd.courseCode).contains(sessionToAdd.sessionCode.substring(0,3));
+        if (mapping.containsKey(sessionToAdd.courseCode)) {
+            return !mapping.get(sessionToAdd.courseCode).contains(sessionToAdd.sessionCode.substring(0, 3));
         }
         return true;
     }
@@ -133,14 +126,15 @@ public class Timetable {
     /**
      * Add given session sessionToAdd to the timetable.
      * Precondition: this session has no conflict with the timetable.
+     *
      * @param sessionToAdd a session that we add to the timetable.
      * @return a new timetable with the given session added
      */
-    public Timetable addSession(Session sessionToAdd){
+    public Timetable addSession(Session sessionToAdd) {
         TreeMap<String, Session> newMapping = new TreeMap<>(this.timeTable);
         ArrayList<String> newOccupied = new ArrayList<>(this.occupied);
 
-        for (int time : sessionToAdd.timeslots){
+        for (int time : sessionToAdd.timeslots) {
             String timeString = Integer.toString(time);
             newMapping.put(timeString, sessionToAdd);
             newOccupied.add(timeString);
@@ -152,22 +146,23 @@ public class Timetable {
 
     /**
      * Find all possible extensions of our timetable based on a given set of courses.
+     *
      * @param courses the collection of courses that we want to add to the timetable
      * @return all possible timetables with one more potential session (that has no conflict) added.
      */
-    public ArrayList<Timetable> extensions (ArrayList<NewCourse> courses){
+    public ArrayList<Timetable> extensions(ArrayList<NewCourse> courses) {
         ArrayList<Timetable> result = new ArrayList<>();
 
         Set<Session> courseSessions = new HashSet<>();
-        for (NewCourse course : courses){
+        for (NewCourse course : courses) {
             courseSessions.addAll(course.getLectures());
             courseSessions.addAll(course.getLabs());
             courseSessions.addAll(course.getTutorials());
         }
 
         // Got Problems Here!!!
-        for (Session s : courseSessions){
-            if (this.hasNoConflict(s)){
+        for (Session s : courseSessions) {
+            if (this.hasNoConflict(s)) {
                 result.add(this.addSession(s));
             }
         }
@@ -175,26 +170,24 @@ public class Timetable {
     }
 
 
-
-
     /**
      * Check whether the timetable contains all the courses that we wish to add, with all of their required sessions,
      * based on the given courses.
+     *
      * @param courses the collection of courses that we wish to add to the timetable.
      * @return true iff timetable has all the sessions required, given by our collection of courses.
      */
-    public boolean isSolved (ArrayList<NewCourse> courses) {
+    public boolean isSolved(ArrayList<NewCourse> courses) {
         Map<String, Set<String>> mapping = this.courseToSession();
 
-        for (NewCourse course : courses){
-            if (!(mapping.containsKey(course.getCourseCode()))){
+        for (NewCourse course : courses) {
+            if (!(mapping.containsKey(course.getCourseCode()))) {
                 return false;
-            }
-            else {
+            } else {
                 Set<String> currentSessions = mapping.get(course.getCourseCode());
                 Set<String> allNeededSessions = course.allRequiredSessions();
                 allNeededSessions.removeAll(currentSessions);
-                if (!(allNeededSessions.isEmpty())){
+                if (!(allNeededSessions.isEmpty())) {
                     return false;
                 }
             }

@@ -1,11 +1,12 @@
-import ApplicationBusinessRule.filter.TimeslotFilter;
-import org.junit.Test;
-import EnterpriseBusinessRules.Session;
 import ApplicationBusinessRule.Timetable;
+import ApplicationBusinessRule.filter.TimeslotFilter;
+import EnterpriseBusinessRules.Session;
+import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TimeslotFilterTest {
 
