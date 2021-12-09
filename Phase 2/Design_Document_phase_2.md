@@ -1,7 +1,7 @@
 #Design Document
 
 ##Introduction:
-- Our program aims to help UofT students organize appropriate timetables based on provided
+- Our program aims to help UofT undergraduate students organize appropriate timetables based on provided
   courses and users’ preferences. For instance, if users want to take five courses in the winter semester, they
   can enter all the course codes (e.g. CSC207H1) on the user interface, and our algorithms will return all the possible
   combinations for the given courses. Specifically, our program has three different filters including Instructor Filter,
@@ -182,9 +182,7 @@ Package were divided based on clean architecture:
   - updating Design Document and Specification
   - writing Progress Report and Project Accessibility
   - making PPT
-  - Pull Request
-    - [#33 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/33):
-      - established and completed the Abstract Filter class and two subclasses (InstructorFilter and TimeslotFilter), the 
+  - Pull Request：[#33 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/33) established and completed the Abstract Filter class and two subclasses (InstructorFilter and TimeslotFilter), the 
       program started to include algorithms dealing with different user preferences
 - Yiteng Zhang：3th4novo
   - To modify the GUI for the accessibility feature in the project, add a high-contrast mode option.
