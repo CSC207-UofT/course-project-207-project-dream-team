@@ -44,7 +44,7 @@ like games". Try to give a bit more detail along with the category.
 For example, a program that converts txt files to files that can be printed by a braille printer are less likely to 
 be used by people who do not read braille.
 
-   - Our project are less likely to be used by individuals who are not students. Our project is designed to schedule 
+   - Our project is less likely to be used by individuals who are not students. Our project is designed to schedule 
    appropriate course timetables based on the provided courses and user preferences, which is only necessary for students. 
    Individuals other than students do not have to schedule course timetables. More over, our algorithms only provide 
    services for University of Toronto students at the current stage because we only find the corresponding course information
