@@ -69,7 +69,7 @@ public class UserInterface extends Application {
 
         // create a scene for timeslot filter event
         VBox timeSlotVBox = new VBox();
-        Label timeAsk = new Label("Please select your wanted timeslots");
+        Label timeAsk = new Label("Please select your unwanted timeslots");
         timeAsk.setFont(Font.font(20));
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);

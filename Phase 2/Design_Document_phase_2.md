@@ -50,17 +50,15 @@ implicitly stated the basic information and functions of the classes.
 
 ## Design Pattern
 ###Template Method Pattern
-- [Filter and its subclasses](../src/main/java/ApplicationBusinessRule/filter): In our project, we have implemented Template Method Design Pattern in the Filter Class and its subclasses. The Filter
-  is the base case that has constructor, call(), abstract sort(), getInput(), getOutput(), getUnwanted(), and
-  isFiltered() methods. The Filter class has three subclasses including Instructor Filter, Timeslot Filter and
-  Maximum Hour Filter. By running Filter class, the class will constructor a filter instance and call the call() method,
-  which is a template method. If the user chooses Instructor Filter, the call() method will call InstructorFilter.
-  If the user chooses Timeslot Filter, the call() will call TimeslotFilter. If the user chooses Maximum Hour Filter,
-  the call() will call Maximum Hour Filter. The three child filter will rule out all the unwanted timetables based on the
-  users’ preference. The isFilter() method will check if the programs rule out some unwanted timetables by checking
-  the whether the output is empty. If the output is empty, the method will print out “Timetable are not filtered”.
-  Else, it will print out “Timetable are successfully filtered.” For #33 pull request, we started to implement the
-  Template Method Design Pattern.
+- [Filter and its subclasses](../src/main/java/ApplicationBusinessRule/filter): In our project, we have implemented 
+  Template Method Design Pattern in the Filter Class and its subclasses. The Filter is the abstract class that has 
+  constructor, call(), abstract sort(), getInput(), getOutput(), and getUnwanted() methods. The Filter 
+  class has three subclasses including Instructor Filter, Timeslot Filter and Maximum Hour Filter which are the concrete
+  derived classes. By running Filter class, the placeholder class will constructor a filter instance and call the call() 
+  method, which is a template method. If the user chooses Instructor Filter, the call() method will call 
+  InstructorFilter, and so on. The three child filter will rule out all the unwanted timetables based on the user input. 
+  We chose to use abstract class instead of interface as implementation of some method is required to avoid reuse of 
+  code and allow the possibility of not having any preference.
 
 ###Dependency Injection 
 - [SimpleScheduler](../src/main/java/ApplicationBusinessRule/SimpleScheduler.java): Using the class SimpleScheduler
@@ -135,32 +133,17 @@ Package were divided based on clean architecture:
 
 
 - The following are the functions of each class:
-    - Timetable class is a data structure that stores the result of a scheduled timetable. Each Timetable instance has
-      an attribute timetable which is in TreeMap type. The key is a 5-digit string representation of the time in which each
-      stored session takes place. The values are Session instances from which we can gather information to display to the
-      user later. The second attribute is occupied. It stores the same 5-digit string representation, this may seem
-      redundant given the timetable attribute already has the time info. However, this makes the Timetable more transparent
-      to debugging, and the program more adaptive to further extension.
-
-    - NewCourse is the replacement for the old Course class. By moving to the NewCourse data structure. we can easily
-      manage sessions that belong to one course therefore shorten the time in accessing session attributes to determine
-      what course it belongs to on many occasions. The old Course class is now the Session class and once scheduler
-      decides what session it puts on the timetable. Information stored in Session is still sufficient for the timetable
-      output.
+    - Timetable class is a data structure that contains timetable information.
+    - NewCourse is the replacement for the old Course class. It has Session inside one of its attribute for more 
+      efficient access.
     - Session is essentially the old Course class. It contains less information when compared to the old Course class for
-      the sake of efficiency. Session instances are stored in NewCourse.
+      the sake of efficiency.
     - Filter is an abstract class that will call different child classes based on the users' preference.
-    - Instructor Filter: if you have any preference on instructors, for instance, you prefer not to enroll in specific
-      instructors’ sessions, please choose the Instructor Filter. With this filter, our program will automatically rule out
-      the lecture sessions delivered by your unwanted instructors in your schedule.
-    - Maximum Hour Filter: if you have any preference on study hours per day, for instance, you prefer not to take more
-      than 5 hours of lecture each day, please choose the Maximum Hour Filter. Our program will organize a timetable with an
-      everyday lecture hour less or equal to your provided number.
-    - Timeslot Filter: if you have any preference on certain time slots, for instance, you prefer not to take a morning
-      course (e.g. 9 am – 10 am) or a night course (e.g. 8 pm – 10 pm), please choose the Timeslot Filter. We will rule out
-      the sessions with your unwanted timeslots in your timetable.
-    - MakeCSV class has a method that takes in data in TreeMap type which contains an entire arranged timetable. Then it
-      utilizes ConvertToUI to output a csv file that contains the arranged timetable.
+    - Instructor Filter filters out the timetables containing unwanted professors indicated by the user.
+    - Maximum Hour Filter filters out the timetables that has too many hours in one day according to the user's 
+      preference.
+    - Timeslot Filter filters out timetables that contains classes at the time which user does't want to have classes.
+    - MakeCSV class makes a csv file containing all timetables presented.
 
 
 - Our program can store the state and load state as the users continue. Everytime a user inputs one course, our
@@ -176,7 +159,11 @@ Package were divided based on clean architecture:
 - We include a high-contrast mode for user with visual deficit
 
 ##Summary for Group Member
-- Zhonghan Chen
+- Zhonghan Chen : OscarC9912
+  - Complete the testing for InstructorFilter, MaximumHourFilter, TimeslotFilter classes.
+  - Update the design patterns for the project.
+  - Pull Request: [#42 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/42)
+    Re-design the InstructorFilter and MaximumHourFilter, which is one of the main sorting algorithm in the project.
 - Lewei Er: 
   - [#86 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/86):
     - This is when MakeCSV is ready to be used. Although in this commit, I only fixed the brain fart I had in the last
@@ -197,7 +184,16 @@ Package were divided based on clean architecture:
   - making PPT
   - Pull Request：[#33 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/33) established and completed the Abstract Filter class and two subclasses (InstructorFilter and TimeslotFilter), the 
       program started to include algorithms dealing with different user preferences
-- Yiteng Zhang
+- Yiteng Zhang：3th4novo
+  - To modify the GUI for the accessibility feature in the project, add a high-contrast mode option.
+  - Fixing bugs found in the process of GUI developing.
+  - Reorganize GUI related classes to make them more extenable and readable.
+  - Redesigned the scenes of the GUI to make it more enjoyable to the users.
+  - Pull Request
+    - [#75 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/75)
+      - The pull request reorganized the UserInterface class by using the fxml and controller feature of javafx module.
+      - The use of the controller makes the generated gui code more readable, and also makes the subsequent function
+      expansion more convenient.
 
 
 
