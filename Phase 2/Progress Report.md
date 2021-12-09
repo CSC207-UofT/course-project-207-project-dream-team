@@ -27,7 +27,7 @@ Whether the program can schedule one's personal activities or estimate the build
 - Controller: Utilize multiple classes to retrieval course information from users and provide possible timetables to the users
 
 ## Scenario Walk-Through
-We have included a basic work-through scenario.
+- Scenario Walk-Through is included in the [Design Document](Design Document.md)
 
 
 ## Skeleton Program
@@ -36,45 +36,45 @@ We have defined 12 basic classes for the programs (please check the Class sectio
 In Presenter and Timetable, we have implemented a list of basic methods.
 
 - InputInfo:
-    - askCourse: ask the number of courses a user want to enter
-    - askSingleCourse: ask user to enter course information
+  - askCourse: ask the number of courses a user want to enter
+  - askSingleCourse: ask user to enter course information
 
 - Timetable:
-    - canAdd: check if the course can be added to timetable
-    - isEmpty: check if timeslot is empty
-    - addCourse: add course to the timetable.
+  - canAdd: check if the course can be added to timetable
+  - isEmpty: check if timeslot is empty
+  - addCourse: add course to the timetable.
 
 - Presenter:
-    - addRow: add cells to the timetable
-    - print: print the complete timetable
-    - printLine: print the "|" and "-" for timetable
-    - printRow: print the empty cell for the timetable
-    - presentable: transform arranged timetable into Presenter recognized form
+  - addRow: add cells to the timetable
+  - print: print the complete timetable
+  - printLine: print the "|" and "-" for timetable
+  - printRow: print the empty cell for the timetable
+  - presentable: transform arranged timetable into Presenter recognized form
 
 - Controller
-    - main: utilize the InputInfo class to ask for user's information about courses; utilize the Scheduler class to Schedule the courses entered;
-      utilize the Presenter class to print the timetable in terminal
+  - main: utilize the InputInfo class to ask for user's information about courses; utilize the Scheduler class to Schedule the courses entered;
+    utilize the Presenter class to print the timetable in terminal
 
 The methods for Scheduler have not been designed and implemented explicitly.
 
 ## Members Tasks
 - Everyone participated in designing the program structure.
 - Everyone participated in coding the skeleton programs and unittest.
-- Members all participated in writing scenario_walk_through and progress_report.
+- Members all participated in writing design document.
 
 ## Next Step
-- We will design the specific implementations for all the Scheduler class
-- We will discuss how the programs should include features like scheduling one's personal activities or estimating the
-  distance between buildings, and try to implement the classes
+- We might include more course information for other schools, so that more students can use our program.
 
 ## Worked Well
-- We have successfully designed and implemented InterfaceAdapters (Controller, Presenter);
-- We have successfully designed and implemented Frameworks&Driver (InputInfo);
-- We have successfully designed and implemented EnterpriseBusiness (Course, Timetable);
-- We have successfully designed and ran the unittests for TimeTable.
+- We have successfully designed and implemented [Application Business Rule](../src/main/java/ApplicationBusinessRule): [Filter and its subclasses](../src/main/java/ApplicationBusinessRule/filter);
+- We have successfully designed and implemented [Enterprise Business Rule](../src/main/java/EnterpriseBusinessRules): [NewCourse](../src/main/java/EnterpriseBusinessRules/NewCourse.java) and
+  [Session](../src/main/java/EnterpriseBusinessRules/Session.java);
+- We have successfully designed and implemented [Frameworks & Drivers](../src/main/java/FrameworksDrivers): [Userdata](../src/main/java/FrameworksDrivers/UserData.java) and [WebParse](../src/main/java/FrameworksDrivers/WebParse.java);
+- We have successfully designed and implemented [Interface Adapter](../src/main/java/InterfaceAdapters): [AlertBox](../src/main/java/InterfaceAdapters/AlertBox.java), [Controller](../src/main/java/InterfaceAdapters/Controller.java),
+  [ConvertToUI](../src/main/java/InterfaceAdapters/ConvertToUI.java), [MakeCSV](../src/main/java/InterfaceAdapters/MakeCSV.java),
+  [TimeSlotForGUI](../src/main/java/InterfaceAdapters/TimeSlotForGUI.java) and [UserInterface](../src/main/java/InterfaceAdapters/UserInterface.java)
+- We also design an accessibility feature for visual deficit user -- high-contrast mode.
 - We are effective during in-person meetings.
-
-
 
 ##Summary for Group Member
 - Zhonghan Chen : OscarC9912
@@ -89,14 +89,7 @@ The methods for Scheduler have not been designed and implemented explicitly.
   - [#74 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/74):
     - This is when MakePDF is ready to be used. Later we decided to get rid of the PDF function as CSV is much simpler.
       MakePDF is deleted in #76 Pull Request in which MakeCSV is first added.
-- Xuanyi Piao : PIAO-A-PIAO
-  - [#77 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/77):
-    - Implemented the last method of class WebParse. WebParse is designed to parse information of a course online and to
-      cast it into a NewCourse class item. This save the efforts for both developers and users to manually type in the
-      information of different courses.
-  - [#102 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/102):
-    - Implemented the last method of class UserData. UserData is designed to interact between GUI and back-end codes. It's
-      main purpose is to help store and present users' history inputs.
+- Piao :
 - Jerry Yan : noaoch
   - Implemented a design pattern for SimpleScheduler
   - Added javadoc to classes SimpleScheduler, Timetable, NewCourse and Session
@@ -107,6 +100,7 @@ The methods for Scheduler have not been designed and implemented explicitly.
   - updating Design Document and Specification
   - writing Progress Report and Project Accessibility
   - making PPT
+  - add javadoc to the Filter classes and its subclasses
   - Pull Request：[#33 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/33) established and completed the Abstract Filter class and two subclasses (InstructorFilter and TimeslotFilter), the
     program started to include algorithms dealing with different user preferences
 - Yiteng Zhang：3th4novo
@@ -114,14 +108,11 @@ The methods for Scheduler have not been designed and implemented explicitly.
   - Fixing bugs found in the process of GUI developing.
   - Reorganize GUI related classes to make them more extenable and readable.
   - Redesigned the scenes of the GUI to make it more enjoyable to the users.
-  - Pull Request
-    - [#75 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/75)
-      - The pull request reorganized the UserInterface class by using the fxml and controller feature of javafx module.
-      - The use of the controller makes the generated gui code more readable, and also makes the subsequent function
-        expansion more convenient.
+  - Pull Request: [#75 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/75)
+    - The pull request reorganized the UserInterface class by using the fxml and controller feature of javafx module.
+    - The use of the controller makes the generated gui code more readable, and also makes the subsequent function
+      expansion more convenient.
 
 ## One Open Question
-- How to consider multiple preferences at the same time in our program in an efficient and effective manner, how do the
-  classes interact during such tasks.
-- How to make UI enjoyable to the user
-- Result output alternatives: website, pdf file. How can they be accomplished.
+- How to consider multiple preferences at the same time in our program in an efficient and effective manner?
+- How to make UI more enjoyable to the user?

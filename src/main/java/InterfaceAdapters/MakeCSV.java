@@ -27,6 +27,12 @@ public class MakeCSV {
         pw.write("Time,Monday,Tuesday,Wednesday,Thursday,Friday");
 
         // write data
+        listToString(timetable, pw, body);
+        pw.close();
+        return true;
+    }
+
+    private static void listToString(TreeMap<String, Session> timetable, PrintWriter pw, StringBuilder body) {
         ArrayList<ArrayList<String>> courses = timetableToUI(timetable);
         for (int y = 0; y < courses.size(); y ++) {
 
@@ -35,8 +41,6 @@ public class MakeCSV {
             body.append(twoRows(courses.get(y)));
         }
         pw.write(body.toString());
-        pw.close();
-        return true;
     }
 
     public static boolean makeCSV(ArrayList<Timetable> timetables) throws FileNotFoundException {
@@ -50,14 +54,7 @@ public class MakeCSV {
             pw.write("\nTime,Monday,Tuesday,Wednesday,Thursday,Friday");
 
             // write data
-            ArrayList<ArrayList<String>> courses = timetableToUI(stringSessionTreeMap);
-            for (int y = 0; y < courses.size(); y++) {
-
-                String timeslot = (y + 9) + ":00-" + (y + 10) + ":00";
-                body.append("\n").append(timeslot).append(",");
-                body.append(twoRows(courses.get(y)));
-            }
-            pw.write(body.toString());
+            listToString(stringSessionTreeMap, pw, body);
         }
         pw.close();
         return true;
@@ -72,22 +69,24 @@ public class MakeCSV {
     }
 
     public static String twoRows(ArrayList<String> sessions){
-        String twoRows = "";
-        for (int i=0; i<5;i++){
+        StringBuilder twoRowsBuilder = new StringBuilder();
+        for (int i = 0; i<5; i++){
             if (sessions.get(i) != null){
-                twoRows = twoRows + sessions.get(i).substring(0, 6)+ ",";
+                twoRowsBuilder.append(sessions.get(i), 0, 6).append(",");
             }else{
-                twoRows = twoRows + ",";
+                twoRowsBuilder.append(",");
             }
         }
-        twoRows = twoRows + "\n" + ",";
-        for (int j=0; j<5; j++){
+        String twoRows = twoRowsBuilder.toString();
+        StringBuilder twoRowsBuilder1 = new StringBuilder(twoRows + "\n" + ",");
+        for (int j = 0; j<5; j++){
             if (sessions.get(j) != null){
-                twoRows = twoRows + sessions.get(j).substring(sessions.get(j).length()-7)+ ",";
+                twoRowsBuilder1.append(sessions.get(j).substring(sessions.get(j).length() - 7)).append(",");
             }else{
-                twoRows = twoRows + ",";
+                twoRowsBuilder1.append(",");
             }
         }
+        twoRows = twoRowsBuilder1.toString();
         return twoRows;
     }
 

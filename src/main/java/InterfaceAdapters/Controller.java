@@ -7,7 +7,6 @@ import ApplicationBusinessRule.filter.MaximumHourFilter;
 import ApplicationBusinessRule.filter.TimeslotFilter;
 import EnterpriseBusinessRules.NewCourse;
 import FrameworksDrivers.UserData;
-import FrameworksDrivers.UserInterface;
 import FrameworksDrivers.WebParse;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -195,23 +194,28 @@ public class Controller implements Initializable {
         ArrayList<Timetable> arranged = Ss.arrange(new Timetable(), new HashSet<>());
         ArrayList<Timetable> filtered;
         String filter = UserData.getFilterType();
-        if (filter.equals("Instructors")) {
-            ArrayList<String> insPreference = UserData.readPreference();
-            InstructorFilter IF = new InstructorFilter(arranged, insPreference);
-            filtered = IF.sort();
-        } else if (filter.equals("Max Duration")) {
-            ArrayList<String> maxPreference = UserData.readPreference();
-            MaximumHourFilter MHF = new MaximumHourFilter(arranged, maxPreference);
-            filtered = MHF.sort();
-        } else if (filter.equals("Timeslots")) { // timeslots
-            ArrayList<String> timeSlotPreference = UserData.readPreference();
-            TimeslotFilter TSF = new TimeslotFilter(arranged, timeSlotPreference);
-            filtered = TSF.sort();
-        } else { // no filter
-            filtered = arranged;
+        switch (filter) {
+            case "Instructors":
+                ArrayList<String> insPreference = UserData.readPreference();
+                InstructorFilter IF = new InstructorFilter(arranged, insPreference);
+                filtered = IF.sort();
+                break;
+            case "Max Duration":
+                ArrayList<String> maxPreference = UserData.readPreference();
+                MaximumHourFilter MHF = new MaximumHourFilter(arranged, maxPreference);
+                filtered = MHF.sort();
+                break;
+            case "Timeslots":  // timeslots
+                ArrayList<String> timeSlotPreference = UserData.readPreference();
+                TimeslotFilter TSF = new TimeslotFilter(arranged, timeSlotPreference);
+                filtered = TSF.sort();
+                break;
+            default:  // no filter
+                filtered = arranged;
+                break;
         }
         if (filtered.size() > 5) {
-            filteredTimetables = new ArrayList<Timetable>();
+            filteredTimetables = new ArrayList<>();
             filteredTimetables.add(filtered.get(0));
             filteredTimetables.add(filtered.get(1));
             filteredTimetables.add(filtered.get(2));
@@ -282,12 +286,12 @@ public class Controller implements Initializable {
 
         final ObservableList<TimeSlotForGUI> data = getObservableList(currTimetable);
 
-        TimeSlotColumn.setCellValueFactory(new PropertyValueFactory<TimeSlotForGUI, String>("TimeSlot"));
-        MondayColumn.setCellValueFactory(new PropertyValueFactory<TimeSlotForGUI, String>("MondaySession"));
-        TuesdayColumn.setCellValueFactory(new PropertyValueFactory<TimeSlotForGUI, String>("TuesdaySession"));
-        WednesdayColumn.setCellValueFactory(new PropertyValueFactory<TimeSlotForGUI, String>("WednesdaySession"));
-        ThursdayColumn.setCellValueFactory(new PropertyValueFactory<TimeSlotForGUI, String>("ThursdaySession"));
-        FridayColumn.setCellValueFactory(new PropertyValueFactory<TimeSlotForGUI, String>("FridaySession"));
+        TimeSlotColumn.setCellValueFactory(new PropertyValueFactory<>("TimeSlot"));
+        MondayColumn.setCellValueFactory(new PropertyValueFactory<>("MondaySession"));
+        TuesdayColumn.setCellValueFactory(new PropertyValueFactory<>("TuesdaySession"));
+        WednesdayColumn.setCellValueFactory(new PropertyValueFactory<>("WednesdaySession"));
+        ThursdayColumn.setCellValueFactory(new PropertyValueFactory<>("ThursdaySession"));
+        FridayColumn.setCellValueFactory(new PropertyValueFactory<>("FridaySession"));
 
         // add data inside table
         tableView.setItems(data);
