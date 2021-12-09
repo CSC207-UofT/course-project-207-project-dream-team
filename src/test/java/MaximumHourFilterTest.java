@@ -1,12 +1,11 @@
-import ApplicationBusinessRule.filter.MaximumHourFilter;
-import org.junit.Test;
-import EnterpriseBusinessRules.Session;
 import ApplicationBusinessRule.Timetable;
+import ApplicationBusinessRule.filter.MaximumHourFilter;
+import EnterpriseBusinessRules.Session;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import java.util.*;
+import java.util.TreeMap;
 
 import static org.junit.Assert.assertEquals;
 

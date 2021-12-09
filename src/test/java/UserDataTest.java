@@ -1,4 +1,3 @@
-
 import FrameworksDrivers.UserData;
 import org.junit.Test;
 
@@ -51,10 +50,10 @@ public class UserDataTest {
         UserData.removeCourse("CSC108H1F");
 
         assertEquals("Timeslots", UserData.getFilterType());
-        assertEquals(2 ,UserData.readCourses().size());
+        assertEquals(2, UserData.readCourses().size());
 
         UserData.clearCourses();
-        assertEquals(0 ,UserData.readCourses().size());
+        assertEquals(0, UserData.readCourses().size());
 
         UserData.clearPreference();
         UserData.inputMaxDuration("3");

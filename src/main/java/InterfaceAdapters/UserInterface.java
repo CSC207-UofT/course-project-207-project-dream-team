@@ -64,8 +64,6 @@ public class UserInterface extends Application {
         Scene insScene = new Scene(insVBox, 764, 390);
 
 
-
-
         // create a scene for timeslot filter event
         VBox timeSlotVBox = new VBox();
         Label timeAsk = new Label("Please select your unwanted timeslots");
@@ -164,8 +162,6 @@ public class UserInterface extends Application {
         Scene timeSlotScene = new Scene(timeSlotVBox, 764, 390);
 
 
-
-
         // create a scene for max hour filter event
         VBox maxHourVBox = new VBox();
         Label maxAsk = new Label("Please enter your preferred duration of classes each day");
@@ -182,8 +178,6 @@ public class UserInterface extends Application {
         maxHourVBox.setSpacing(8);
 
         Scene maxScene = new Scene(maxHourVBox, 764, 390);
-
-
 
 
         // create a layout
@@ -209,7 +203,7 @@ public class UserInterface extends Application {
                 window.setScene(insScene);
             } else if (rb2.isSelected()) {
                 window.setScene(maxScene);
-            } else if (rb3.isSelected()){
+            } else if (rb3.isSelected()) {
                 window.setScene(timeSlotScene);
             } else {
                 window.setScene(scene);
@@ -267,7 +261,7 @@ public class UserInterface extends Application {
                 window.setScene(insScene);
             } else if (rb5.isSelected()) {
                 window.setScene(maxScene);
-            } else if (rb6.isSelected()){
+            } else if (rb6.isSelected()) {
                 window.setScene(timeSlotScene);
             } else {
                 window.setScene(scene);

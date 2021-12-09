@@ -12,7 +12,8 @@ public class MaximumHourFilter extends Filter {
 
     /**
      * constructor the MaximumHourFilter
-     * @param input an Arraylist of timetable
+     *
+     * @param input    an Arraylist of timetable
      * @param unwanted an Arraylist of string representing unwanted maximum hour
      */
 
@@ -26,6 +27,7 @@ public class MaximumHourFilter extends Filter {
 
     /**
      * sort out the timetables with class hours more than the unwanted hours
+     *
      * @return an Arraylist of timetable
      */
     @Override
@@ -48,18 +50,18 @@ public class MaximumHourFilter extends Filter {
             Set<String> keys = dataTimetable.keySet();
 
             // i refers to the day: {1: Monday 2: Tuesday ...}
-            for (int i=1; i < 6; i++) {
+            for (int i = 1; i < 6; i++) {
 
                 // counter of the hours study everyday
                 int dailyHour = 0;
 
                 // Checker: ApplicationBusinessRule.filter sort the time of the same day::
                 // "11517" -> all times on Monday
-                for (String key: keys) {
+                for (String key : keys) {
 
                     // if statement here has the following functionality:
                     // the first char of key == the Day (Monday)
-                    if (key.substring(0,1).equals(String.valueOf(i))){
+                    if (key.substring(0, 1).equals(String.valueOf(i))) {
 
                         int diff = Integer.parseInt(key.substring(3, 5)) -
                                 Integer.parseInt(key.substring(1, 3));
@@ -68,7 +70,8 @@ public class MaximumHourFilter extends Filter {
                     }
                 }
                 if (dailyHour <= maxHour) {
-                    weeklyCounter ++;}
+                    weeklyCounter++;
+                }
             }
             // Check if all five day of the week satisfies.
             if (weeklyCounter == 5) {

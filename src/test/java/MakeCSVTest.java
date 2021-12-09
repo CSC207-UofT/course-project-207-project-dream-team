@@ -1,13 +1,14 @@
 import ApplicationBusinessRule.Timetable;
 import EnterpriseBusinessRules.NewCourse;
 import EnterpriseBusinessRules.Session;
-import InterfaceAdapters.MakeCSV;
 import FrameworksDrivers.WebParse;
 import InterfaceAdapters.ConvertToUI;
+import InterfaceAdapters.MakeCSV;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -30,7 +31,7 @@ public class MakeCSVTest {
         timetables.add(timetable);
         timetables.add(timetable);
 
-        ArrayList<TreeMap<String,Session>> maps = MakeCSV.convertTimetables(timetables);
+        ArrayList<TreeMap<String, Session>> maps = MakeCSV.convertTimetables(timetables);
 
         assertEquals(2, maps.size());
 
