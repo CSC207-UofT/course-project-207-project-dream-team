@@ -1,7 +1,6 @@
 package InterfaceAdapters;
 
 import FrameworksDrivers.UserData;
-import InterfaceAdapters.ConvertToUI;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
