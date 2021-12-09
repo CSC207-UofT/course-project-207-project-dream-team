@@ -50,17 +50,15 @@ implicitly stated the basic information and functions of the classes.
 
 ## Design Pattern
 ###Template Method Pattern
-- [Filter and its subclasses](../src/main/java/ApplicationBusinessRule/filter): In our project, we have implemented Template Method Design Pattern in the Filter Class and its subclasses. The Filter
-  is the base case that has constructor, call(), abstract sort(), getInput(), getOutput(), getUnwanted(), and
-  isFiltered() methods. The Filter class has three subclasses including Instructor Filter, Timeslot Filter and
-  Maximum Hour Filter. By running Filter class, the class will constructor a filter instance and call the call() method,
-  which is a template method. If the user chooses Instructor Filter, the call() method will call InstructorFilter.
-  If the user chooses Timeslot Filter, the call() will call TimeslotFilter. If the user chooses Maximum Hour Filter,
-  the call() will call Maximum Hour Filter. The three child filter will rule out all the unwanted timetables based on the
-  users’ preference. The isFilter() method will check if the programs rule out some unwanted timetables by checking
-  the whether the output is empty. If the output is empty, the method will print out “Timetable are not filtered”.
-  Else, it will print out “Timetable are successfully filtered.” For #33 pull request, we started to implement the
-  Template Method Design Pattern.
+- [Filter and its subclasses](../src/main/java/ApplicationBusinessRule/filter): In our project, we have implemented 
+  Template Method Design Pattern in the Filter Class and its subclasses. The Filter is the abstract class that has 
+  constructor, call(), abstract sort(), getInput(), getOutput(), and getUnwanted() methods. The Filter 
+  class has three subclasses including Instructor Filter, Timeslot Filter and Maximum Hour Filter which are the concrete
+  derived classes. By running Filter class, the placeholder class will constructor a filter instance and call the call() 
+  method, which is a template method. If the user chooses Instructor Filter, the call() method will call 
+  InstructorFilter, and so on. The three child filter will rule out all the unwanted timetables based on the user input. 
+  We chose to use abstract class instead of interface as implementation of some method is required to avoid reuse of 
+  code and allow the possibility of not having any preference.
 
 ###Dependency Injection 
 - [SimpleScheduler](../src/main/java/ApplicationBusinessRule/SimpleScheduler.java): Using the class SimpleScheduler
