@@ -27,7 +27,7 @@ Whether the program can schedule one's personal activities or estimate the build
 - Controller: Utilize multiple classes to retrieval course information from users and provide possible timetables to the users
 
 ## Scenario Walk-Through
-- Scenario Walk-Through is included in the [Design Document](Design Document.md)
+- Scenario Walk-Through is included in the [Design Document](Design_Document_phase_2.md)
 
 
 ## Skeleton Program
