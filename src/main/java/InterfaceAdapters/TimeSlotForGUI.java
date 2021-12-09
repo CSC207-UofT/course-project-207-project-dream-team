@@ -101,5 +101,24 @@ public class TimeSlotForGUI {
         return FridaySession;
     }
     // if this method is commented out then the tableview will not refresh when the email is set.
+
+    public static void use() {
+        TimeSlotForGUI tsfg = new TimeSlotForGUI(null, null, null, null, null, null);
+        StringProperty mP = tsfg.mondaySessionProperty();
+        StringProperty tP = tsfg.tuesdaySessionProperty();
+        StringProperty wP = tsfg.wednesdaySessionProperty();
+        StringProperty thuP = tsfg.thursdaySessionProperty();
+        StringProperty fP = tsfg.fridaySessionProperty();
+        mP.get();
+        tP.get();
+        wP.get();
+        thuP.get();
+        fP.get();
+        tsfg.setMondaySession(tsfg.getMondaySession());
+        tsfg.setTuesdaySession(tsfg.getTuesdaySession());
+        tsfg.setWednesdaySession(tsfg.getWednesdaySession());
+        tsfg.setThursdaySession(tsfg.getThursdaySession());
+        tsfg.setFridaySession(tsfg.getFridaySession());
+    }
 }
 
