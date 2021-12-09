@@ -1,10 +1,11 @@
 import ApplicationBusinessRule.Timetable;
 import EnterpriseBusinessRules.NewCourse;
 import EnterpriseBusinessRules.Session;
-import org.junit.Test;
 import org.junit.Before;
+import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 import static org.junit.Assert.*;
 
@@ -21,7 +22,7 @@ public class TimetableTest {
     ArrayList<NewCourse> coursesInTb;
 
     @Before
-    public void setup(){
+    public void setup() {
         TreeMap<String, Session> map = new TreeMap<>();
 
         // Create the starting timetable, which has 1 course added already.
@@ -61,15 +62,15 @@ public class TimetableTest {
         coursesToSchedule.add(new NewCourse("MAT224H1F", mat224tut, mat224lec, new ArrayList<>()));
     }
 
-    @ Test (timeout = 1000)
-    public void testToString(){
+    @Test(timeout = 1000)
+    public void testToString() {
         String expected = "CSC207H1FTUT0301[11415, 11516]TBACSC207H1FTUT0301[11415, 11516]TBACSC207H1FLEC0101[41314]Gries";
         assertEquals(expected, tb.toString());
     }
 
 
-    @Test (timeout = 1000)
-    public void testExtensions(){
+    @Test(timeout = 1000)
+    public void testExtensions() {
 
         TreeMap<String, Session> map2 = new TreeMap<>(tb.getTimeTable());
         ArrayList<String> occupied2 = new ArrayList<>(tb.getOccupied());
@@ -78,7 +79,7 @@ public class TimetableTest {
         Timetable extension2 = new Timetable(map2, occupied2);
 
         ArrayList<String> extensionStrings = new ArrayList<>();
-        for (Timetable t : tb.extensions(coursesToSchedule)){
+        for (Timetable t : tb.extensions(coursesToSchedule)) {
             extensionStrings.add(t.toString());
         }
 
@@ -87,8 +88,8 @@ public class TimetableTest {
     }
 
 
-    @ Test (timeout = 1000)
-    public void testIsSolved(){
+    @Test(timeout = 1000)
+    public void testIsSolved() {
         assertFalse(tb.isSolved(coursesToSchedule));
         assertTrue(tb.isSolved(coursesInTb));
     }

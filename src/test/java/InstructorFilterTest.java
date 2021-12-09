@@ -1,16 +1,17 @@
-import ApplicationBusinessRule.filter.InstructorFilter;
-import org.junit.Test;
-import EnterpriseBusinessRules.Session;
 import ApplicationBusinessRule.Timetable;
+import ApplicationBusinessRule.filter.InstructorFilter;
+import EnterpriseBusinessRules.Session;
+import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class InstructorFilterTest {
 
     @Test(timeout = 1000000)
-    public void TestSort(){
+    public void TestSort() {
 
         // the data set that contains all the timetables to be filtered
         ArrayList<Timetable> timetables = new ArrayList<>();
@@ -25,7 +26,7 @@ public class InstructorFilterTest {
                 new Session("Gries", "CSC207H1F", "LEC0101", new Integer[]{41314});
 
         // A single timetable
-       //  Timetable timetable1 = new Timetable();
+        //  Timetable timetable1 = new Timetable();
 
         TreeMap<String, Session> mapTimeTable = new TreeMap<String, Session>();
         mapTimeTable.put("41314", csc207a);
@@ -33,7 +34,7 @@ public class InstructorFilterTest {
         ArrayList<String> occupied = new ArrayList<String>();
         occupied.add("41314");
 
-        Timetable timetable1 = new Timetable(mapTimeTable,occupied);
+        Timetable timetable1 = new Timetable(mapTimeTable, occupied);
 
         timetables.add(timetable1);
 
@@ -42,7 +43,7 @@ public class InstructorFilterTest {
         ArrayList<Timetable> tt = is.sort();
 
         assertEquals(0, tt.size());
-        
+
         // more test to be added in the neadsr future !1!!!.
         //ss
     }

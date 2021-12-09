@@ -1,17 +1,20 @@
-import org.junit.Test;
-import EnterpriseBusinessRules.NewCourse;
-import EnterpriseBusinessRules.Session;
 import ApplicationBusinessRule.SimpleScheduler;
 import ApplicationBusinessRule.Timetable;
+import EnterpriseBusinessRules.NewCourse;
+import EnterpriseBusinessRules.Session;
+import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeMap;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class SimpleSchedulerTest {
 
     @Test(timeout = 1000000)
-    public void TestArrange(){
+    public void TestArrange() {
         ArrayList<NewCourse> courses = new ArrayList<>();
 
         // Initialize a new course CSC207

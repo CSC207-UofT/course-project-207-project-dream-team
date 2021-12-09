@@ -1,4 +1,5 @@
 package ApplicationBusinessRule.filter;
+
 import ApplicationBusinessRule.Timetable;
 
 import java.util.ArrayList;
@@ -12,7 +13,8 @@ public abstract class Filter {
 
     /**
      * abstract Filter Class with three child class.
-     * @param input an Arraylist of timetable
+     *
+     * @param input    an Arraylist of timetable
      * @param unwanted an Arraylist of string (e.g. unwanted instructors, timeslots, maximum hours)
      */
 
@@ -26,12 +28,14 @@ public abstract class Filter {
 
     /**
      * sort out unwanted timetables
+     *
      * @return an Arraylist of sorted timetable
      */
     public abstract ArrayList<Timetable> sort();
 
     /**
      * get the input
+     *
      * @return an arraylist of timetable
      */
     public ArrayList<Timetable> getInput() {
@@ -40,6 +44,7 @@ public abstract class Filter {
 
     /**
      * get the output
+     *
      * @return an arraylist of timetable
      */
     public ArrayList<Timetable> getOutput() {
@@ -48,6 +53,7 @@ public abstract class Filter {
 
     /**
      * get the unwanted objects
+     *
      * @return an arraylist of string
      */
     public ArrayList<String> getUnwanted() {
@@ -74,12 +80,11 @@ public abstract class Filter {
 //     }
 
     public final void isFiltered() {
-        try{
-            if(this.sort().size() > 0){
+        try {
+            if (this.sort().size() > 0) {
                 System.out.println("Timetables are sucessfully filtered.");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Timetable are not filtered.");
         }
     }

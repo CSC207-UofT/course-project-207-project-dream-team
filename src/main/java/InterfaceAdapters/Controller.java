@@ -96,6 +96,29 @@ public class Controller implements Initializable {
     @FXML
     Label botLabel;
 
+    public static ObservableList<TimeSlotForGUI> getObservableList(Timetable currTimetable) {
+        final ObservableList<TimeSlotForGUI> data = FXCollections.observableArrayList();
+
+        ArrayList<ArrayList<String>> listOfListOfCourseName = ConvertToUI.timetableToUI(currTimetable.getTimeTable());
+        for (int i = 0; i < 12; i++) {
+            String timeSlot = i + 9 + ":00";
+            ArrayList<String> listOfCourseName = listOfListOfCourseName.get(i);
+            listOfCourseName.add(0, timeSlot);
+            TimeSlotForGUI tsf = new TimeSlotForGUI(listOfCourseName.get(0),
+                    listOfCourseName.get(1),
+                    listOfCourseName.get(2),
+                    listOfCourseName.get(3),
+                    listOfCourseName.get(4),
+                    listOfCourseName.get(5));
+            data.add(tsf);
+        }
+
+        return data;
+    }
+
+    public static void main(String[] args) {
+        Application.launch(UserInterface.class, args);
+    }
 
     // click events
     @FXML
@@ -115,7 +138,6 @@ public class Controller implements Initializable {
             AlertBox.display("Course not found error", "The course is not found");
         }
     }
-
 
     @FXML
     public void knitClicked() throws FileNotFoundException {
@@ -162,31 +184,11 @@ public class Controller implements Initializable {
         tableView.setItems(data);
     }
 
-    public static ObservableList<TimeSlotForGUI> getObservableList(Timetable currTimetable) {
-        final ObservableList<TimeSlotForGUI> data = FXCollections.observableArrayList();
-
-        ArrayList<ArrayList<String>> listOfListOfCourseName = ConvertToUI.timetableToUI(currTimetable.getTimeTable());
-        for (int i = 0; i < 12; i++) {
-            String timeSlot = i + 9 + ":00";
-            ArrayList<String> listOfCourseName = listOfListOfCourseName.get(i);
-            listOfCourseName.add(0, timeSlot);
-            TimeSlotForGUI tsf = new TimeSlotForGUI(listOfCourseName.get(0),
-                                                    listOfCourseName.get(1),
-                                                    listOfCourseName.get(2),
-                                                    listOfCourseName.get(3),
-                                                    listOfCourseName.get(4),
-                                                    listOfCourseName.get(5));
-            data.add(tsf);
-        }
-
-        return data;
-    }
-
     @FXML
     public void confirmButtonClicked() throws IOException {
         ArrayList<String> courseNameList = new ArrayList<>(courseListView.getItems());
         ArrayList<NewCourse> newCourseList = new ArrayList<>();
-        for (String courseName: courseNameList) {
+        for (String courseName : courseNameList) {
             NewCourse parsedCourse = WebParse.courseParse(courseName);
             newCourseList.add(parsedCourse);
         }
@@ -276,7 +278,7 @@ public class Controller implements Initializable {
         // read in the previous courses
         try {
             ArrayList<String> loadedCoursesName = UserData.readCourses();
-            for (String courseName: loadedCoursesName) {
+            for (String courseName : loadedCoursesName) {
                 courseListView.getItems().add(courseName);
             }
         } catch (IOException e) {
@@ -295,9 +297,5 @@ public class Controller implements Initializable {
 
         // add data inside table
         tableView.setItems(data);
-    }
-
-    public static void main(String[] args) {
-        Application.launch(UserInterface.class, args);
     }
 }

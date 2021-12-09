@@ -6,6 +6,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import java.io.IOException;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -15,8 +16,10 @@ import java.util.regex.Pattern;
 
 public class WebParse {
     public static String suffix = "";
+
     /**
      * gets all contents start with a tag "span"
+     *
      * @param courseCode a nine-digit course code to be searched
      * @return a list of elements, each represents a content with tag "span
      * @throws IOException if gets wrong input
@@ -39,6 +42,7 @@ public class WebParse {
 
     /**
      * gets all contents start with a tag "span"
+     *
      * @param courseCode a six-digit course code to be searched
      * @return a list of elements, each represents a content with tag "span
      * @throws IOException if gets wrong input
@@ -49,7 +53,7 @@ public class WebParse {
         String courseCodeS = courseCode + "H1S";
         String[] courseCodes = {courseCodeF, courseCodeY, courseCodeS};
         Elements spans = null;
-        for (String cc: courseCodes){
+        for (String cc : courseCodes) {
             spans = fullCourseToTags(cc);
             if (spans.size() > 3) {
                 suffix = cc.substring(6);
@@ -61,12 +65,13 @@ public class WebParse {
 
     /**
      * get raw info from course code
+     *
      * @param courseCode course code to be searched
      * @return a list of elements, each represents a content with tag "span"
      * @throws IOException if either courseToTags method runs abnormally
      */
     public static Elements courseToTags(String courseCode) throws IOException {
-        if (courseCode.length() == 6){
+        if (courseCode.length() == 6) {
             return halfCourseToTags(courseCode);
         } else {
             return fullCourseToTags(courseCode);
@@ -75,6 +80,7 @@ public class WebParse {
 
     /**
      * test whether spanID matches a specific format
+     *
      * @param spanID the spanID of an element
      * @return true or false
      */
@@ -87,6 +93,7 @@ public class WebParse {
 
     /**
      * turn raw info into a list
+     *
      * @param spans a list of elements
      * @return an arraylist of strings, each represents a piece of information
      */
@@ -102,6 +109,7 @@ public class WebParse {
 
     /**
      * break a long arraylist into an arraylist of several lists
+     *
      * @param infos arraylist of strings, each represents a piece of info
      * @return an arraylist of lists, each lists represents info of one single session
      */
@@ -119,6 +127,7 @@ public class WebParse {
 
     /**
      * remove all async courses from list infosession
+     *
      * @param infoSessions an arraylist of lists, each represents info of one single session
      * @return a cleaned arraylsit of lists
      */
@@ -134,6 +143,7 @@ public class WebParse {
 
     /**
      * divide list into three lists, each containing ino of lecs, tuts, and labs
+     *
      * @param infoSessions arraylist of lists, cleaned infosession
      * @return a list of arraylist of lists, each arraylist is infosession of a single type
      */
@@ -159,6 +169,7 @@ public class WebParse {
 
     /**
      * remove tut sessions sharing same timeslots
+     *
      * @param tuts arraylist of lists, each list represents info of one tut session
      * @return a new arraylist of lists with duplication removed
      */
@@ -187,6 +198,7 @@ public class WebParse {
 
     /**
      * remove duplicates from all three types of infosessions
+     *
      * @param divided a divided infosession, containing three separate infosessions
      * @return a cleaned list of arraylists of lists
      */
@@ -198,6 +210,7 @@ public class WebParse {
 
     /**
      * turn a string time into an integer digit format
+     *
      * @param time a time in format of string
      * @return a time in format of integer
      */
@@ -208,8 +221,8 @@ public class WebParse {
             int day = DayOfWeek.valueOf(list[i]).getValue();
             int start = Integer.parseInt(list[i + 1].substring(0, 2));
             int end = Integer.parseInt(list[i + 1].substring(6, 8));
-            for (int j=0; j<end-start; j++){
-                timeslots.add(day * 10000 + (start+j)*100 + (start+1+j));
+            for (int j = 0; j < end - start; j++) {
+                timeslots.add(day * 10000 + (start + j) * 100 + (start + 1 + j));
             }
         }
         return timeslots.toArray(new Integer[0]);
@@ -217,8 +230,9 @@ public class WebParse {
 
     /**
      * turn a single list into session type
+     *
      * @param infoSession a list of strings, each represents an attribute of session
-     * @param courseCode the course code of the session
+     * @param courseCode  the course code of the session
      * @return a session type
      */
     public static Session listToSession(String[] infoSession, String courseCode) {
@@ -232,7 +246,8 @@ public class WebParse {
 
     /**
      * turn a cleaned list of information into a list of sessions
-     * @param cleaned cleaned list of information
+     *
+     * @param cleaned    cleaned list of information
      * @param courseCode the course code of sessions
      * @return an arryalist of sessions
      */
@@ -251,13 +266,14 @@ public class WebParse {
 
     /**
      * turn several sessions into a course
-     * @param sessions a list of sessions
+     *
+     * @param sessions   a list of sessions
      * @param courseCode course code of the course
      * @return a NewCourse type
      */
     public static NewCourse sessionsToCourse(ArrayList<Session>[] sessions, String courseCode) {
         String newCourseCode = courseCode;
-        if (courseCode.length() == 6){
+        if (courseCode.length() == 6) {
             newCourseCode = newCourseCode + suffix;
         }
         return new NewCourse(newCourseCode, sessions[1], sessions[0], sessions[2]);
@@ -265,6 +281,7 @@ public class WebParse {
 
     /**
      * get a NewCourse from a single course code
+     *
      * @param courseCode the course code to search with
      * @return a NewCourse type
      * @throws IOException if any helper method throws an IOException
@@ -289,9 +306,10 @@ public class WebParse {
 
     /**
      * print information of a NewCourse with a specific pattern
+     *
      * @param course the NewCourse type
      */
-    public static void print(NewCourse course){
+    public static void print(NewCourse course) {
         System.out.println(course.getCourseCode());
         for (Session session : course.getLectures()) {
             System.out.println(session.sessionCode);
