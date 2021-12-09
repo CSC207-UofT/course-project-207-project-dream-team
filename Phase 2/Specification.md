@@ -46,41 +46,27 @@ Filter will organize a timetable with everyday lecture hours less or equal to th
   program will automatically load all the sessions of those courses via methods in the WebParse class. Afterwards, the
   Controller will call the Timetable class to generate a new Timetable instance, in which Sessions are stored in the
   values led by keys indicating the time of the Session. Afterwards, the SimpleScheduler will schedule all appropriate
-  timetables and return them in an Arraylist. The Controller will then call the Filter class. If the user chooses the
-  Instructor Filter, the Filter class will then call it to rule out the timetables that contain the unwanted sessions
-  delivered by unwanted instructors. If the user chooses the TimeslotFilter, the Filter class will then call it to rule
-  out the timetables with unwanted time slots (e.g. some people do not want to take morning class). If the user chooses
-  Maximum Hour Filter, the Filter Class will then call it to rule out the timetables that have more everyday lecture
-  hours that exceed the users’ acceptable study hour. The data is handed over in the form of a Timetable to Javafx
-  application for initial display to the user.
+  timetables and return them in an Arraylist. The Controller will then call the specific classes indicated by the user
+  by preference input. If the user chooses the Instructor Filter, the Controller class will then call it to rule out the
+  timetables that contain the unwanted sessions delivered by unwanted instructors, and so on. The data is handed over in
+  the form of a Timetable to Javafx application for initial display to the user. UserInterface displays at most 5
+  timetables each time. If the user chooses to, the program can be asked to produce a csv file to with a button press.
+  The output csv file contains basic information and the user has the choice to manipulate it anyway they like outside
+  the program.
 
 
-- The following is the functions of each class:
-    - Timetable class is a data structure that stores the result of a scheduled timetable. Each Timetable instance has
-      an attribute timetable which is in TreeMap type. The key is a 5-digit string representation of the time in which
-      each stored session takes place. The values are Session instances from which we can gather information to display
-      to the user later. The second attribute is occupied. It stores the same 5-digit string representation, this may
-      seem redundant given the timetable attribute already has the time info. However, this makes the Timetable more
-      transparent to debugging, and the program more adaptive to further extension.
-
-    - NewCourse is the replacement for the old Course class. By moving to the NewCourse data structure. we can easily
-      manage sessions that belong to one course therefore shorten the time in accessing session attributes to determine
-      what course it belongs to on many occasions. The old Course class is now the Session class and once scheduler
-      decides what session it puts on the timetable. Information stored in Session is still sufficient for the timetable
-      output.
+- The following are the functions of each class:
+    - Timetable class is a data structure that contains timetable information.
+    - NewCourse is the replacement for the old Course class. It has Session inside one of its attribute for more
+      efficient access.
     - Session is essentially the old Course class. It contains less information when compared to the old Course class
-      for the sake of efficiency. Session instances are stored in NewCourse.
+      for the sake of efficiency.
     - Filter is an abstract class that will call different child classes based on the users' preference.
-    - Instructor ApplicationBusinessRule.filter: if you have any preference on instructors, for instance, you prefer not
-      to enroll in specific instructors’ sessions, please choose the Instructor Filter. With this
-      ApplicationBusinessRule.filter, our program will automatically rule out the lecture sessions delivered by your
-      unwanted instructors in your schedule.
-    - Maximum Hour Filter: if you have any preference on study hours per day, for instance, you prefer not to take more
-      than 5 hours of lecture each day, please choose the Maximum Hour Filter. Our program will organize a timetable
-      with an everyday lecture hour less or equal to your provided number.
-    - Timeslot ApplicationBusinessRule.filter: if you have any preference on certain time slots, for instance, you
-      prefer not to take a morning course (e.g. 9 am – 10 am) or a night course (e.g. 8 pm – 10 pm), please choose the
-      Timeslot Filter. We will rule out the sessions with your unwanted timeslots in your timetable.
+    - Instructor Filter filters out the timetables containing unwanted professors indicated by the user.
+    - Maximum Hour Filter filters out the timetables that has too many hours in one day according to the user's
+      preference.
+    - Timeslot Filter filters out timetables that contains classes at the time which user does't want to have classes.
+    - MakeCSV class makes a csv file containing all timetables presented.
 
 
 - Our program can store the state and load state as the users continue. Everytime a user inputs one course, our
@@ -89,8 +75,11 @@ Filter will organize a timetable with everyday lecture hours less or equal to th
   method. Everytime a user starts the program, our algorithms will automatically detect if the user has used the program
   before by calling inputExist(). If our program detects that there is an existing version stored on the computer, we
   would ask if you want to load your last version. If the user answers “Yes”, our program will load his or her stored
-  last version on the computer, and continue the rest process -- schedule timetables and ApplicationBusinessRule.filter
-  unwanted timetables based on the users’ preferences. The state persists across runs of our program.
+  last version on the computer, and continue the rest process -- schedule timetables and filter unwanted timetables
+  based on the users’ preferences. The state persists across runs of our program.
+
+
+- We include a high-contrast mode for user with visual deficit.
 
 ## Compiling
 
