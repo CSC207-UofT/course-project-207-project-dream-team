@@ -39,6 +39,9 @@
         - This is when MakePDF is ready to be used. Later we decided to get rid of the PDF function as CSV is much
           simpler. MakePDF is deleted in #76 Pull Request in which MakeCSV is first added.
 - Xuanyi Piao : PIAO-A-PIAO
+    - Added new helper methods in UserData to support GUI
+    - Modified methods in MakeCSV to print multiple timetables 
+    - Added tests to classes
     - [#77 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/77):
         - Implemented the last method of class WebParse. WebParse is designed to parse information of a course online
           and to cast it into a NewCourse class item. This save the efforts for both developers and users to manually
