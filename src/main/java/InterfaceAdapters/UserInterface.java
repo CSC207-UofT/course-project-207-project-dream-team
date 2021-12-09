@@ -16,9 +16,25 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import static InterfaceAdapters.TimeSlotForGUI.use;
+
 public class UserInterface extends Application {
 
     Stage window;
+
+    ListView<String> list00 = new ListView<>();
+
+    ListView<String> list10 = new ListView<>();
+
+    ListView<String> list20 = new ListView<>();
+
+    ListView<String> list01 = new ListView<>();
+
+    ListView<String> list11 = new ListView<>();
+
+    ToggleGroup toggleGroup = new ToggleGroup();
+
+    ToggleGroup toggleGroup1 = new ToggleGroup();
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -73,7 +89,7 @@ public class UserInterface extends Application {
 
         VBox box00 = new VBox();
         Label label00 = new Label("Monday");
-        ListView<String> list00 = new ListView<>();
+//        ListView<String> list00 = new ListView<>();
         list00.getItems().addAll("09:00 - 10:00", "10:00 - 11:00", "11:00 - 12:00", "12:00 - 13:00",
                 "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00",
                 "19:00 - 20:00", "20:00 - 21:00");
@@ -84,7 +100,7 @@ public class UserInterface extends Application {
 
         VBox box10 = new VBox();
         Label label10 = new Label("Tuesday");
-        ListView<String> list10 = new ListView<>();
+//        ListView<String> list10 = new ListView<>();
         list10.getItems().addAll("09:00 - 10:00", "10:00 - 11:00", "11:00 - 12:00", "12:00 - 13:00",
                 "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00",
                 "19:00 - 20:00", "20:00 - 21:00");
@@ -95,7 +111,7 @@ public class UserInterface extends Application {
 
         VBox box20 = new VBox();
         Label label20 = new Label("Wednesday");
-        ListView<String> list20 = new ListView<>();
+//        ListView<String> list20 = new ListView<>();
         list20.getItems().addAll("09:00 - 10:00", "10:00 - 11:00", "11:00 - 12:00", "12:00 - 13:00",
                 "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00",
                 "19:00 - 20:00", "20:00 - 21:00");
@@ -106,7 +122,7 @@ public class UserInterface extends Application {
 
         VBox box01 = new VBox();
         Label label01 = new Label("Thursday");
-        ListView<String> list01 = new ListView<>();
+//        ListView<String> list01 = new ListView<>();
         list01.getItems().addAll("09:00 - 10:00", "10:00 - 11:00", "11:00 - 12:00", "12:00 - 13:00",
                 "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00",
                 "19:00 - 20:00", "20:00 - 21:00");
@@ -117,7 +133,7 @@ public class UserInterface extends Application {
 
         VBox box11 = new VBox();
         Label label11 = new Label("Friday");
-        ListView<String> list11 = new ListView<>();
+//        ListView<String> list11 = new ListView<>();
         list11.getItems().addAll("09:00 - 10:00", "10:00 - 11:00", "11:00 - 12:00", "12:00 - 13:00",
                 "13:00 - 14:00", "14:00 - 15:00", "15:00 - 16:00", "16:00 - 17:00", "17:00 - 18:00", "18:00 - 19:00",
                 "19:00 - 20:00", "20:00 - 21:00");
@@ -188,7 +204,7 @@ public class UserInterface extends Application {
 
         Label chooseFilterLabel = new Label("Please choose your wanted filter.");
 
-        ToggleGroup toggleGroup = new ToggleGroup();
+//        ToggleGroup toggleGroup = new ToggleGroup();
         RadioButton rb1 = new RadioButton("Instructor");
         RadioButton rb2 = new RadioButton("Max Hour");
         RadioButton rb3 = new RadioButton("Time Slot");
@@ -245,7 +261,7 @@ public class UserInterface extends Application {
         layout2.setAlignment(Pos.CENTER);
         layout2.setSpacing(6);
 
-        ToggleGroup toggleGroup1 = new ToggleGroup();
+//        ToggleGroup toggleGroup1 = new ToggleGroup();
         RadioButton rb4 = new RadioButton("Instructor");
         RadioButton rb5 = new RadioButton("Max Hour");
         RadioButton rb6 = new RadioButton("Time Slot");
@@ -341,6 +357,17 @@ public class UserInterface extends Application {
             }
         });
 
+        helper(insVBox, insAsk2, unwanted1, unwanted2, unwanted3, unwanted4, unwanted5, unwanted6, insConfirmButton, insBackButton, timeSlotVBox, timeAsk, label00, label10, label20, label01, label11, timeSlotConfirm, timeSlotBack, maxHourVBox, maxAsk, maxConfirm, maxBack, layout1, askLabel, chooseFilterLabel, rb1, rb2, rb3, highContrastBtn, layout2, rb4, rb5, rb6);
+
+        helper(insVBox, insAsk2, unwanted1, unwanted2, unwanted3, unwanted4, unwanted5, unwanted6, insConfirmButton, insBackButton, timeSlotVBox, timeAsk, label00, label10, label20, label01, label11, timeSlotConfirm, timeSlotBack, maxHourVBox, maxAsk, maxConfirm, maxBack, layout1, askLabel, chooseFilterLabel, rb1, rb2, rb3, highContrastBtnNew, layout2, rb4, rb5, rb6);
+
+        use();
+
+        primaryStage.setTitle("Course Schedule and Recommendation System");
+        primaryStage.show();
+    }
+
+    private void helper(VBox insVBox, Label insAsk2, TextField unwanted1, TextField unwanted2, TextField unwanted3, TextField unwanted4, TextField unwanted5, TextField unwanted6, Button insConfirmButton, Button insBackButton, VBox timeSlotVBox, Label timeAsk, Label label00, Label label10, Label label20, Label label01, Label label11, Button timeSlotConfirm, Button timeSlotBack, VBox maxHourVBox, Label maxAsk, Button maxConfirm, Button maxBack, VBox layout1, Label askLabel, Label chooseFilterLabel, RadioButton rb1, RadioButton rb2, RadioButton rb3, Button highContrastBtn, VBox layout2, RadioButton rb4, RadioButton rb5, RadioButton rb6) {
         highContrastBtn.setOnAction(e -> {
             BackgroundFill background_fill = new BackgroundFill(Color.web("#0027FF"),
                     CornerRadii.EMPTY, Insets.EMPTY);
@@ -388,56 +415,6 @@ public class UserInterface extends Application {
             maxBack.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
 
         });
-
-        highContrastBtnNew.setOnAction(e -> {
-            BackgroundFill background_fill = new BackgroundFill(Color.web("#0027FF"),
-                    CornerRadii.EMPTY, Insets.EMPTY);
-            Background bkg = new Background(background_fill);
-            layout1.setBackground(bkg);
-            layout2.setBackground(bkg);
-            maxHourVBox.setBackground(bkg);
-            insVBox.setBackground(bkg);
-            timeSlotVBox.setBackground(bkg);
-
-            // welcome
-            askLabel.setStyle("-fx-text-fill: #FBFF00");
-            chooseFilterLabel.setStyle("-fx-text-fill: #FBFF00");
-            rb1.setStyle("-fx-text-fill: #FBFF00");
-            rb2.setStyle("-fx-text-fill: #FBFF00");
-            rb3.setStyle("-fx-text-fill: #FBFF00");
-            rb4.setStyle("-fx-text-fill: #FBFF00");
-            rb5.setStyle("-fx-text-fill: #FBFF00");
-            rb6.setStyle("-fx-text-fill: #FBFF00");
-
-            // ins
-            insAsk2.setStyle("-fx-text-fill: #FBFF00");
-            unwanted1.setStyle("-fx-text-fill: #FBFF00");
-            unwanted2.setStyle("-fx-text-fill: #FBFF00");
-            unwanted3.setStyle("-fx-text-fill: #FBFF00");
-            unwanted4.setStyle("-fx-text-fill: #FBFF00");
-            unwanted5.setStyle("-fx-text-fill: #FBFF00");
-            unwanted6.setStyle("-fx-text-fill: #FBFF00");
-            insConfirmButton.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
-            insBackButton.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
-
-            //timeSlot
-            timeAsk.setStyle("-fx-text-fill: #FBFF00");
-            label00.setStyle("-fx-text-fill: #FBFF00");
-            label10.setStyle("-fx-text-fill: #FBFF00");
-            label20.setStyle("-fx-text-fill: #FBFF00");
-            label01.setStyle("-fx-text-fill: #FBFF00");
-            label11.setStyle("-fx-text-fill: #FBFF00");
-            timeSlotConfirm.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
-            timeSlotBack.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
-
-            //max
-            maxAsk.setStyle("-fx-text-fill: #FBFF00");
-            maxConfirm.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
-            maxBack.setStyle("-fx-background-color: #0027FF; -fx-text-fill: #FBFF00");
-        });
-
-        primaryStage.setTitle("Course Schedule and Recommendation System");
-        primaryStage.show();
     }
 
 }
