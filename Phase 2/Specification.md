@@ -18,7 +18,7 @@ Java (1.7 or later)
 ### Phase 1:
 - [Design Document](../Phase%201/Design%20Document.md)
 ### Phase 2:
-- [Design Document 2.0](Design_Document_phase_2.md)
+- [Design Document 2.0](Design Document.md)
 - [Progress Report](Progress%20Report.md)
 - [Project Accessibility Report](Project%20Accessibility%20Report.md)
 

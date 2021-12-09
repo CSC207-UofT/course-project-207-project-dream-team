@@ -189,8 +189,7 @@ Package were divided based on clean architecture:
   - Fixing bugs found in the process of GUI developing.
   - Reorganize GUI related classes to make them more extenable and readable.
   - Redesigned the scenes of the GUI to make it more enjoyable to the users.
-  - Pull Request
-    - [#75 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/75)
+  - Pull Request: [#75 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/75)
       - The pull request reorganized the UserInterface class by using the fxml and controller feature of javafx module.
       - The use of the controller makes the generated gui code more readable, and also makes the subsequent function
       expansion more convenient.

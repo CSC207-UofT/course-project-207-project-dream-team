@@ -73,14 +73,14 @@ public abstract class Filter {
 //         return new ArrayList<>(0);
 //     }
 
-    public final void isFiltered() {
-        try{
-            if(this.sort().size() > 0){
-                System.out.println("Timetables are sucessfully filtered.");
-            }
-        }
-        catch (Exception e) {
-            System.out.println("Timetable are not filtered.");
-        }
-    }
+//    public final void isFiltered() {
+//        try{
+//            if(this.sort().size() > 0){
+//                System.out.println("Timetables are sucessfully filtered.");
+//            }
+//        }
+//        catch (Exception e) {
+//            System.out.println("Timetable are not filtered.");
+//        }
+//    }
 }
