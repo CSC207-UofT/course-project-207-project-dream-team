@@ -147,7 +147,7 @@ public class WebParse {
      * @param infoSessions arraylist of lists, cleaned infosession
      * @return a list of arraylist of lists, each arraylist is infosession of a single type
      */
-    public static ArrayList<String[]>[] divideList(ArrayList<String[]> infoSessions) {
+    public static ArrayList<ArrayList<String[]>> divideList(ArrayList<String[]> infoSessions) {
         ArrayList<String[]> lecs = new ArrayList<>();
         ArrayList<String[]> tuts = new ArrayList<>();
         ArrayList<String[]> pras = new ArrayList<>();
@@ -160,10 +160,10 @@ public class WebParse {
                 pras.add(infoSession);
             }
         }
-        ArrayList<String[]>[] divided = (ArrayList<String[]>[]) new ArrayList[3];
-        divided[0] = lecs;
-        divided[1] = tuts;
-        divided[2] = pras;
+        ArrayList<ArrayList<String[]>> divided = new ArrayList<>();
+        divided.add(lecs);
+        divided.add(tuts);
+        divided.add(pras);
         return divided;
     }
 
@@ -202,10 +202,12 @@ public class WebParse {
      * @param divided a divided infosession, containing three separate infosessions
      * @return a cleaned list of arraylists of lists
      */
-    public static ArrayList<String[]>[] cleanList(ArrayList<String[]>[] divided) {
-        divided[1] = removeDuplicate(divided[1]);
-        divided[2] = removeDuplicate(divided[2]);
-        return divided;
+    public static ArrayList<ArrayList<String[]>> cleanList(ArrayList<ArrayList<String[]>> divided) {
+        ArrayList<ArrayList<String[]>> result = new ArrayList<>();
+        result.add(divided.get(0));
+        result.add(removeDuplicate(divided.get(1)));
+        result.add(removeDuplicate(divided.get(2)));
+        return result;
     }
 
     /**
@@ -251,14 +253,17 @@ public class WebParse {
      * @param courseCode the course code of sessions
      * @return an arryalist of sessions
      */
-    public static ArrayList<Session>[] cleanSessions(ArrayList<String[]>[] cleaned, String courseCode) {
-        ArrayList<Session>[] sessions = (ArrayList<Session>[]) new ArrayList[3];
-        sessions[0] = new ArrayList<>();
-        sessions[1] = new ArrayList<>();
-        sessions[2] = new ArrayList<>();
+    public static ArrayList<ArrayList<Session>> cleanSessions(ArrayList<ArrayList<String[]>> cleaned, String courseCode) {
+        ArrayList<ArrayList<Session>> sessions = new ArrayList<>();
+        ArrayList<Session> s1 = new ArrayList<>();
+        ArrayList<Session> s2 = new ArrayList<>();
+        ArrayList<Session> s3 = new ArrayList<>();
+        sessions.add(s1);
+        sessions.add(s2);
+        sessions.add(s3);
         for (int i = 0; i < 3; i++) {
-            for (String[] list : cleaned[i]) {
-                sessions[i].add(listToSession(list, courseCode));
+            for (String[] list : cleaned.get(i)) {
+                sessions.get(i).add(listToSession(list, courseCode));
             }
         }
         return sessions;
@@ -271,12 +276,12 @@ public class WebParse {
      * @param courseCode course code of the course
      * @return a NewCourse type
      */
-    public static NewCourse sessionsToCourse(ArrayList<Session>[] sessions, String courseCode) {
+    public static NewCourse sessionsToCourse(ArrayList<ArrayList<Session>> sessions, String courseCode) {
         String newCourseCode = courseCode;
         if (courseCode.length() == 6) {
             newCourseCode = newCourseCode + suffix;
         }
-        return new NewCourse(newCourseCode, sessions[1], sessions[0], sessions[2]);
+        return new NewCourse(newCourseCode, sessions.get(1), sessions.get(0), sessions.get(2));
     }
 
     /**
@@ -296,9 +301,9 @@ public class WebParse {
         } else {
             ArrayList<String[]> infoSessions = breakList(infos);
             ArrayList<String[]> removeAsync = removeAsync(infoSessions);
-            ArrayList<String[]>[] divided = divideList(removeAsync);
-            ArrayList<String[]>[] cleaned = cleanList(divided);
-            ArrayList<Session>[] sessions = cleanSessions(cleaned, courseCode);
+            ArrayList<ArrayList<String[]>> divided = divideList(removeAsync);
+            ArrayList<ArrayList<String[]>> cleaned = cleanList(divided);
+            ArrayList<ArrayList<Session>> sessions = cleanSessions(cleaned, courseCode);
             course = sessionsToCourse(sessions, courseCode);
         }
         return course;

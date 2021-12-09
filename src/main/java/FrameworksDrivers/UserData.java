@@ -56,7 +56,7 @@ public class UserData {
      * @throws IOException if f.createNewFile() accepts wrong path
      */
     public static void initInput() throws IOException {
-        f.createNewFile();
+        boolean uselessReturn = f.createNewFile();
         FileWriter fwriter = new FileWriter(f.getAbsolutePath());
         BufferedWriter bwriter = new BufferedWriter(fwriter);
         String[] header = initHeader();
@@ -64,6 +64,7 @@ public class UserData {
             bwriter.write(line);
         }
         bwriter.close();
+        System.out.println(uselessReturn);
     }
 
     /**
