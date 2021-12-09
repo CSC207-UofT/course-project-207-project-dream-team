@@ -38,10 +38,6 @@ public class SimpleScheduler {
             return new ArrayList<>();
         }
 
-//        // If we see a state that has no possible extensions and is not solved, return no solution.
-//        if (tb.failFast(this.coursesToSchedule)){
-//            return new ArrayList<>();
-//        }
 
         if (tb.isSolved(this.coursesToSchedule)) {
             solutions.add(tb);

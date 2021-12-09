@@ -30,6 +30,8 @@
     - Pull Request: [#42 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/42)
       Re-design the InstructorFilter and MaximumHourFilter, which is one of the main sorting algorithm in the project.
 - Lewei Er:
+    - Implemented MakePDF
+    - Deleted MakePDF and implemented MakeCSV
     - [#86 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/86):
         - This is when MakeCSV is ready to be used. Although in this commit, I only fixed the brain fart I had in the
           last version.

@@ -55,11 +55,6 @@ public class Timetable {
         return this.occupied;
     }
 
-    // Check if the timeSpan is empty in timeTable
-    public boolean isEmpty(String timeCode) {
-        return !this.occupied.contains(timeCode);
-    }
-
 
     /**
      * Convert this timetable to a string.
