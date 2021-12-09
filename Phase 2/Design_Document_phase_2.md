@@ -121,15 +121,13 @@ Package were divided based on clean architecture:
   our program will automatically load all the sessions of those courses via methods in the WebParse class. Afterwards,
   the Controller will call the Timetable class to generate a new Timetable instance, in which Sessions are stored in the
   values led by keys indicating the time of the Session. Afterwards, the SimpleScheduler will schedule all appropriate
-  timetables and return them in an Arraylist. The Controller will then call the Filter class. If the user chooses the
-  Instructor Filter, the Filter class will then call it to rule out the timetables that contain the unwanted sessions
-  delivered by unwanted instructors. If the user chooses the TimeslotFilter, the Filter class will then call it to rule
-  out the timetables with unwanted time slots (e.g. some people do not want to take morning class). If the user chooses
-  Maximum Hour Filter, the Filter Class will then call it to rule out the timetables that have more everyday lecture
-  hours that exceed the users’ acceptable study hour. The data is handed over in the form of a Timetable to Javafx
-  application for initial display to the user. If the user chooses to, the program can be asked to produce a csv file
+  timetables and return them in an Arraylist. The Controller will then call the specific classes indicated by the user by preference input. If the user chooses the
+  Instructor Filter, the Controller class will then call it to rule out the timetables that contain the unwanted sessions
+  delivered by unwanted instructors, and so on. The data is handed over in the form of a Timetable to Javafx
+  application for initial display to the user. UserInterface displays at most 5 timetables each time. If the user chooses to, the program can be asked to produce a csv file
   to with a button press. The output csv file contains basic information and the user has the choice to manipulate it
   anyway they like outside the program.
+
 
 
 - The following are the functions of each class:
@@ -155,7 +153,7 @@ Package were divided based on clean architecture:
   last version on the computer, and continue the rest process -- schedule timetables and filter unwanted timetables based
   on the users’ preferences. The state persists across runs of our program. 
 
-###Accessibility Feature
+
 - We include a high-contrast mode for user with visual deficit
 
 
