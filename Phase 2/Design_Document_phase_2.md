@@ -171,7 +171,14 @@ Package were divided based on clean architecture:
   - [#74 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/74):
     - This is when MakePDF is ready to be used. Later we decided to get rid of the PDF function as CSV is much simpler.
       MakePDF is deleted in #76 Pull Request in which MakeCSV is first added.
-- Piao :
+- Xuanyi Piao : PIAO-A-PIAO
+  - [#77 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/77):
+    - Implemented the last method of class WebParse. WebParse is designed to parse information of a course online and to 
+    cast it into a NewCourse class item. This save the efforts for both developers and users to manually type in the
+    information of different courses.
+  - [#102 Pull Request](https://github.com/CSC207-UofT/course-project-207-project-dream-team/pull/102):
+    - Implemented the last method of class UserData. UserData is designed to interact between GUI and back-end codes. It's
+    main purpose is to help store and present users' history inputs.
 - Jerry Yan : noaoch
   - Implemented a design pattern for SimpleScheduler
   - Added javadoc to classes SimpleScheduler, Timetable, NewCourse and Session
