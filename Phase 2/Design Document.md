@@ -54,8 +54,7 @@ implicitly stated the basic information and functions of the classes.
   Template Method Design Pattern in the Filter Class and its subclasses. The Filter is the abstract class that has 
   constructor, call(), abstract sort(), getInput(), getOutput(), and getUnwanted() methods. The Filter 
   class has three subclasses including Instructor Filter, Timeslot Filter and Maximum Hour Filter which are the concrete
-  derived classes. By running Filter class, the placeholder class will constructor a filter instance and call the call() 
-  method, which is a template method. If the user chooses Instructor Filter, the call() method will call 
+  derived classes. By running Controller, if the user chooses Instructor Filter, the Controller will call 
   InstructorFilter, and so on. The three child filter will rule out all the unwanted timetables based on the user input. 
   We chose to use abstract class instead of interface as implementation of some method is required to avoid reuse of 
   code and allow the possibility of not having any preference.
@@ -117,17 +116,17 @@ Package were divided based on clean architecture:
 
 ## Functionality
 - When someone starts our program, the Controller class will call the user interface. On the User Interface, our program
-  will ask the user to input the course code (e.g. CSC207H1) of the classes he or she are going to take. Afterwards,
+  will ask the users to input the course code (e.g. CSC207H1) of the classes they are going to take. Afterwards,
   our program will automatically load all the sessions of those courses via methods in the WebParse class. Afterwards,
   the Controller will call the Timetable class to generate a new Timetable instance, in which Sessions are stored in the
   values led by keys indicating the time of the Session. Afterwards, the SimpleScheduler will schedule all appropriate
-  timetables and return them in an Arraylist. The Controller will then call the Filter class. If the user chooses the
-  Instructor Filter, the Filter class will then call it to rule out the timetables that contain the unwanted sessions
-  delivered by unwanted instructors. If the user chooses the TimeslotFilter, the Filter class will then call it to rule
+  timetables and return them in an Arraylist. The Controller will then call specific filter class based on the users' preference. If the user chooses the
+  Instructor Filter, the Controller will then call it to rule out the timetables that contain the unwanted sessions
+  delivered by unwanted instructors. If the user chooses the TimeslotFilter, the Controller will then call it to rule
   out the timetables with unwanted time slots (e.g. some people do not want to take morning class). If the user chooses
-  Maximum Hour Filter, the Filter Class will then call it to rule out the timetables that have more everyday lecture
+  Maximum Hour Filter, the Controller will then call it to rule out the timetables that have more everyday lecture
   hours that exceed the users’ acceptable study hour. The data is handed over in the form of a Timetable to Javafx
-  application for initial display to the user. If the user chooses to, the program can be asked to produce a csv file
+  application for initial display to the user. We provide at most five timetables each time for display. If the user chooses to, the program can be asked to produce a csv file
   to with a button press. The output csv file contains basic information and the user has the choice to manipulate it
   anyway they like outside the program.
 
